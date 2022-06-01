@@ -1,0 +1,111 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2563738 */
+  src: url('iconfont.woff2?t=1651655367236') format('woff2'),
+       url('iconfont.woff?t=1651655367236') format('woff'),
+       url('iconfont.ttf?t=1651655367236') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dingdan:before {
+  content: "\e62e";
+}
+
+.icon-pause1:before {
+  content: "\e81f";
+}
+
+.icon-playcircle:before {
+  content: "\e80f";
+}
+
+.icon-music1:before {
+  content: "\e619";
+}
+
+.icon-radio:before {
+  content: "\e6b5";
+}
+
+.icon-paixingbang:before {
+  content: "\e7bd";
+}
+
+.icon-shuffling-banner:before {
+  content: "\e764";
+}
+
+.icon-shujukanban:before {
+  content: "\e63b";
+}
+
+.icon-dacha:before {
+  content: "\e711";
+}
+
+.icon-ttpodicon:before {
+  content: "\e62f";
+}
+
+.icon-zhuanji:before {
+  content: "\e675";
+}
+
+.icon-yinle-liebiao:before {
+  content: "\e83e";
+}
+
+.icon-bxs-radio:before {
+  content: "\e6d3";
+}
+
+.icon-jiahao:before {
+  content: "\eaf3";
+}
+
+.icon-youjiantou:before {
+  content: "\e624";
+}
+
+.icon-love:before {
+  content: "\e66a";
+}
+
+.icon-download:before {
+  content: "\e643";
+}
+
+.icon-video:before {
+  content: "\e600";
+}
+
+.icon-tupian:before {
+  content: "\e6e5";
+}
+
+.icon-user:before {
+  content: "\e682";
+}
+
+.icon-search:before {
+  content: "\e687";
+}
+
+.icon-music:before {
+  content: "\e902";
+}
+
+.icon-music-albums:before {
+  content: "\e756";
+}
+
+.icon-user1:before {
+  content: "\e916";
+}
+

@@ -1,0 +1,25 @@
+const mysql = require('mysql2');
+const {
+  DATABASE_HOST,
+  DATABASE_NAME,
+  DATABASE_USER,
+  DATABASE_PORT,
+  PASSWORD
+} = require('./config');
+const connection = mysql.createPool({
+  host: DATABASE_HOST,
+  database: DATABASE_NAME,
+  user: DATABASE_USER,
+  port: DATABASE_PORT,
+  password: PASSWORD
+});
+connection.getConnection((err, connect) => {
+  connect.connect((err) => {
+    if (err) {
+      console.log('MySQL 连接失败');
+    } else {
+      console.log('MySQL 连接成功');
+    }
+  });
+});
+module.exports = connection.promise();

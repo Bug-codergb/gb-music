@@ -1,0 +1,177 @@
+{
+  "id": "2563738",
+  "name": "gb-music-vue",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "807964",
+      "name": "订单",
+      "font_class": "dingdan",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "129101",
+      "name": "pause",
+      "font_class": "pause1",
+      "unicode": "e81f",
+      "unicode_decimal": 59423
+    },
+    {
+      "icon_id": "6151262",
+      "name": "play circle",
+      "font_class": "playcircle",
+      "unicode": "e80f",
+      "unicode_decimal": 59407
+    },
+    {
+      "icon_id": "448690",
+      "name": "music",
+      "font_class": "music1",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "2142861",
+      "name": "radio",
+      "font_class": "radio",
+      "unicode": "e6b5",
+      "unicode_decimal": 59061
+    },
+    {
+      "icon_id": "435934",
+      "name": "排行榜",
+      "font_class": "paixingbang",
+      "unicode": "e7bd",
+      "unicode_decimal": 59325
+    },
+    {
+      "icon_id": "11488131",
+      "name": "shuffling-banner",
+      "font_class": "shuffling-banner",
+      "unicode": "e764",
+      "unicode_decimal": 59236
+    },
+    {
+      "icon_id": "15726914",
+      "name": "数据看板",
+      "font_class": "shujukanban",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "6874543",
+      "name": "打叉",
+      "font_class": "dacha",
+      "unicode": "e711",
+      "unicode_decimal": 59153
+    },
+    {
+      "icon_id": "40242",
+      "name": "歌手",
+      "font_class": "ttpodicon",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "159271",
+      "name": "专辑",
+      "font_class": "zhuanji",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "15277691",
+      "name": "音乐 - 列表",
+      "font_class": "yinle-liebiao",
+      "unicode": "e83e",
+      "unicode_decimal": 59454
+    },
+    {
+      "icon_id": "20113690",
+      "name": "bxs-radio",
+      "font_class": "bxs-radio",
+      "unicode": "e6d3",
+      "unicode_decimal": 59091
+    },
+    {
+      "icon_id": "5387527",
+      "name": "加号",
+      "font_class": "jiahao",
+      "unicode": "eaf3",
+      "unicode_decimal": 60147
+    },
+    {
+      "icon_id": "1304892",
+      "name": "右箭头",
+      "font_class": "youjiantou",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "806829",
+      "name": "love",
+      "font_class": "love",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "18202598",
+      "name": "download",
+      "font_class": "download",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "397548",
+      "name": "video",
+      "font_class": "video",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "881774",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e6e5",
+      "unicode_decimal": 59109
+    },
+    {
+      "icon_id": "321429",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "581033",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e687",
+      "unicode_decimal": 59015
+    },
+    {
+      "icon_id": "7736242",
+      "name": "music",
+      "font_class": "music",
+      "unicode": "e902",
+      "unicode_decimal": 59650
+    },
+    {
+      "icon_id": "19135769",
+      "name": "music-albums",
+      "font_class": "music-albums",
+      "unicode": "e756",
+      "unicode_decimal": 59222
+    },
+    {
+      "icon_id": "20452374",
+      "name": "user",
+      "font_class": "user1",
+      "unicode": "e916",
+      "unicode_decimal": 59670
+    }
+  ]
+}

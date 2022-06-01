@@ -1,0 +1,2 @@
+(this["webpackJsonpgb-music-react"]=this["webpackJsonpgb-music-react"]||[]).push([[62],{556:function(c,t,e){"use strict";e.r(t);var s,i=e(0),a=e(11),n=e(12).a.div(s||(s=Object(a.a)([""]))),r=e(2),u=function(){return Object(r.jsx)(n,{children:"\u4f5c\u54c1\u6570\u636e"})};t.default=Object(i.memo)(u)}}]);
+//# sourceMappingURL=62.8fe1e387.chunk.js.map
