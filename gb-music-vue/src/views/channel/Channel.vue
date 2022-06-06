@@ -141,7 +141,7 @@ export default {
   flex-wrap: nowrap;
   background-color: #fff;
   overflow-y: scroll;
-  height: 81vh;
+  /*height: 81vh;*/
   .left-channel {
     width: 100%;
     padding: 20px 20px 20px 0;

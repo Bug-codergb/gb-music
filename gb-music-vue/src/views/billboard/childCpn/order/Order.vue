@@ -76,7 +76,7 @@ export default {
         top: '32%',
         bottom: '6%',
         left: '5%',
-        right: '5%',
+        right: '2%',
         containLabel: true
       },
       xAxis: [
@@ -118,7 +118,7 @@ export default {
 
 <style scoped lang="less">
 .order-container {
-  width: 432px;
+  width: 100%;
   height: 178px;
 }
 </style>

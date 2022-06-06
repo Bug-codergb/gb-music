@@ -105,22 +105,23 @@ export default {
 <style scoped lang="less">
   .crumb{
     width: 100%;
-    height:100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 5px 0 0;
     .nav-list{
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       padding: 0;
+      margin: 0 5px 0 0;
       &>li{
         margin: 0 5px 5px 0;
         background-color: rgba(245, 108, 108,.15);
         color: #ec4141;
         padding: 5px 10px;
         cursor: pointer;
-        border-radius: 4px;
+        border-radius: 3px;
+        white-space: nowrap;
         &.active{
           background-color: rgba(245, 108, 108,.7);
           color: #fff;
@@ -133,6 +134,9 @@ export default {
           cursor: pointer;
         }
       }
+    }
+    .el-icon-arrow-down{
+      font-weight: bolder;
     }
   }
 </style>

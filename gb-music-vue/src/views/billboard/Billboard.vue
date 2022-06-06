@@ -65,20 +65,20 @@ export default {
 <style scoped lang="less">
 .billboard {
   width: 100%;
-  height: 645px;
-  background-color: #fff;
+  background-color:#e9eef3;
   display: flex;
+  overflow: scroll;
   .left {
-    flex: 1;
-    height: 645px;
+    width: 33%;
+    height: 100%;
   }
   & > .center {
-    flex: 1;
+    width: 33%;
     height: 645px;
     margin: 0 10px;
   }
   .right {
-    flex: 1;
+    width: 33%;
     height: 645px;
   }
   & > .left,

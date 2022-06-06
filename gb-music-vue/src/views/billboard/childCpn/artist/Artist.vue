@@ -145,7 +145,7 @@ export default {
 
 <style scoped lang="less">
 .artist-container {
-  width: 432px;
+  width: 100%;
   height: 178px;
 }
 </style>

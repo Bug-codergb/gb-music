@@ -50,7 +50,7 @@ export default {
       legend: {
         type: 'scroll',
         top: '20%',
-        left: '50%',
+        left: '45%',
         orient: 'vertical',
         height: '110',
         formatter: (params) => {
@@ -133,7 +133,7 @@ export default {
 
 <style scoped lang="less">
 .channel-container {
-  width: 432px;
+  width: 100%;
   height: 178px;
 }
 </style>

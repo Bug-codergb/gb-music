@@ -101,7 +101,7 @@ export default {
   background-color: #fff;
 }
 .left-content {
-  height: 645px;
+  /*height: 645px;*/
   overflow-y: scroll;
   width: 80%;
   position: relative;
@@ -127,9 +127,11 @@ export default {
     margin: 30px 0 0 0;
     background-color: #f56c6c;
     color: #fff;
-    padding: 8px 105px;
+    padding: 8px 0;
     border-radius: 4px;
     cursor: pointer;
+    white-space: nowrap;
+    width:97% ;
   }
 }
 </style>

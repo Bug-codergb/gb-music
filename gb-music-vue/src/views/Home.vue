@@ -1,15 +1,20 @@
 <template>
   <div class="home">
-    <top-bar @change-fold="changeFold"/>
-    <div class="content">
-      <nav-list :is-fold="isFold"/>
-      <div class="router-view">
-        <div class="crumb-outer">
-          <crumb/>
-        </div>
-        <router-view class="home-router"/>
-      </div>
-    </div>
+    <el-container>
+      <el-header>
+        <top-bar @change-fold="changeFold"/>
+      </el-header>
+      <el-container>
+        <el-aside :width="isFold?'60px':'180px'">
+          <nav-list :is-fold="isFold"/>
+        </el-aside>
+        <el-main>
+          <div class="router-view">
+            <router-view class="home-router"/>
+          </div>
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
@@ -38,11 +43,26 @@ export default {
 </script>
 <style scoped lang="less">
 .home {
+  .el-header, .el-footer {
+    background-color: #fff;
+    color: #333;
+  }
+  .el-aside {
+    background-color: #FFF;
+    color: #333;
+    transition: width 0.3s;
+  }
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    height: 91vh;
+
+  }
   .content {
     background-color: #f5f5f5;
     border: 1px solid #e0e0e0;
     width: 100%;
-    height:91vh;
+   /* height:91vh;*/
     margin: 0 auto;
     display: flex;
     box-sizing: border-box;
@@ -59,10 +79,11 @@ export default {
     .router-view {
       box-sizing: border-box;
       padding: 0 0 20px 20px;
-      flex: 1;
-      width: 1044px;
-      height: 91vh;
+      width: 80%;
+      /*height: 91vh;*/
+      overflow-x: hidden;
       overflow-y:hidden ;
+      background-color: #5daf34;
       .home-router{
         height: 84vh;
         overflow: hidden;

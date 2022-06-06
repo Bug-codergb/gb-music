@@ -231,7 +231,7 @@ export default {
     .user-name {
       font-size: 13px;
       color: #656565;
-      width: 15%;
+      width: 14%;
     }
 
     .del-btn {

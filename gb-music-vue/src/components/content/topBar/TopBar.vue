@@ -10,6 +10,9 @@
           <i class="el-icon-s-fold" v-show="!isFold"></i>
         </div>
       </div>
+      <div class="crumb-outer">
+        <crumb/>
+      </div>
       <div class="user-msg">
         <div class="avatar" @click.stop="changeShow">
           <img :src="this.$store.state.userMsg.avatarUrl" alt="头像" />
@@ -73,20 +76,21 @@ export default {
 .top-bar {
   box-sizing: border-box;
   height: 65px;
+  background-color: #fff;
   border-bottom: 1px solid #e0e0e0;
+  width: 100%;
   .content {
     display: flex;
     align-items: center;
-    width: 1480px;
-    margin: 0 auto;
-    justify-content: space-between;
+    width: 100%;
     height: 100%;
     .top-bar-left{
       display: flex;
       align-items: center;
       justify-content: space-between;
+      height: 100%;
+      width: 11%;
       .is-fold{
-        margin-left:40px ;
         i{
           font-size: 28px;
           color: #656565;
@@ -96,10 +100,26 @@ export default {
           }
         }
       }
+
+    }
+    .crumb-outer{
+      height: 100%;
+      display: flex;
+      align-items:flex-end;
+      width: 80%;
+      padding: 0 5px 2px 10px;
+      overflow-x: scroll;
+      margin: 0 20px;
+      &::-webkit-scrollbar{
+        width: 10px;
+        height: 10px;
+        background-color: rgba(140, 147, 157,.3);
+        border-radius: 20%;
+      }
     }
   }
   .logo {
-    margin: 0 80px 0 0;
+    margin: 0 20px 0 0;
     img {
       width: 40px;
       border-radius: 5px;

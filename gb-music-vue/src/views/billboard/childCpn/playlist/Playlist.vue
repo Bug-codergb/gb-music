@@ -192,7 +192,7 @@ export default {
 <style scoped lang="less">
 .playlist-data {
   .playlist-container {
-    width: 432px;
+    width: 100%;
     height: 178px;
   }
 }

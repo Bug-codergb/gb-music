@@ -108,4 +108,7 @@ export default {
 .el-col-400 {
   min-width: 180px !important;
 }
+.el-menu{
+  border-right: solid 1px #fff!important;
+}
 </style>

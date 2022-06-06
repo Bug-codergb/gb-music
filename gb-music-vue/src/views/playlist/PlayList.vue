@@ -40,7 +40,7 @@ export default {
   background-color: #fff;
 }
 .left-content {
-  height: 655px;
+  /*height: 655px;*/
   width: 80%;
   position: relative;
   border: 1px solid #e0e0e0;

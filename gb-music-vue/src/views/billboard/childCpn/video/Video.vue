@@ -199,7 +199,7 @@ export default {
 
 <style scoped lang="less">
 .video-container {
-  width: 432px;
+  width: 100%;
   height: 178px;
 }
 </style>

@@ -34,7 +34,7 @@ export default {
       this.option = {
         legend: {
           top: '25%',
-          left: '50%',
+          left: '45%',
           orient: 'vertical',
           height: '100',
           formatter: (params) => {
@@ -89,7 +89,7 @@ export default {
 
 <style scoped lang="less">
 .album-container {
-  width: 432px;
+  width: 100%;
   height: 178px;
 }
 </style>
