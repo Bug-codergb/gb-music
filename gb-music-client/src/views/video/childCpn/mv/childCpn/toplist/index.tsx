@@ -17,9 +17,11 @@ const Toplist: FC<RouteComponentProps> = (props): ReactElement => {
   useEffect(() => {
     getVideoCate<ICategory[]>(1).then((data) => {
       setCate(data);
-      getMvToplist<IVideo[]>(data[0].id, 0, 10).then((data) => {
-        setMV(data);
-      });
+      if(data.length!==0){
+        getMvToplist<IVideo[]>(data[0].id, 0, 10).then((data) => {
+          setMV(data);
+        });
+      }
     });
   }, []);
   const cateClick = (item: ICategory, index: number) => {

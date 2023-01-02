@@ -1,6 +1,6 @@
 import React, { FC, memo, ReactElement, useEffect, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { Spin, Image } from 'antd';
+import {Spin, Image, Empty} from 'antd';
 import { RecPlaylistWrapper } from './style';
 import placeholder from '../../../../../../assets/img/holder/placeholder.png';
 //组件
@@ -59,6 +59,9 @@ const RecPlaylist: FC<IProps> = (props): ReactElement => {
               );
             })}
         </ul>
+        {
+          recPlaylist && recPlaylist.length==0 &&<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={"暂无热门歌单"}/>
+        }
       </RecPlaylistWrapper>
     </Spin>
   );

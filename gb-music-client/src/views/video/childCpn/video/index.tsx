@@ -18,8 +18,10 @@ const Video: React.FC<RouteComponentProps> = (props) => {
   const [cateId, setCateId] = useState<string>('');
   useEffect(() => {
     getVideoCate<ICategory[]>(0).then((data) => {
-      setCate(data);
-      cateClick(data[0], 0);
+      if(data.length!==0){
+        setCate(data);
+        cateClick(data[0], 0);
+      }
     });
   }, []);
   const cateClick = (item: ICategory, index: number) => {

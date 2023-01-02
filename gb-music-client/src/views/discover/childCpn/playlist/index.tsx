@@ -27,8 +27,10 @@ const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
   const [count, setCount] = useState<number>(0);
   useEffect(() => {
     getAllCate<ICategory[]>(0, 10).then((data) => {
-      setCate(data);
-      cateClick(data[0], 0);
+      if(data.length!==0){
+        setCate(data);
+        cateClick(data[0], 0);
+      }
     });
   }, []);
   const cateClick = (item: ICategory, index: number) => {

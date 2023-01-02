@@ -1,6 +1,6 @@
 import React, { memo, FC, useEffect, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { Image, Spin } from 'antd';
+import {Empty, Image, Spin} from 'antd';
 import MsgItem from '../../../../../../components/content/msgItem';
 import placeholder from '../../../../../../assets/img/holder/placeholder.png';
 import { getRecAlbum } from '../../../../../../network/album';
@@ -55,6 +55,9 @@ const RecAlbum: FC<IProps> = (props) => {
               );
             })}
         </ul>
+        {
+          recAlbum && recAlbum.length===0 &&<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={"暂无热门专辑"}/>
+        }
       </RecAlbumWrapper>
     </Spin>
   );

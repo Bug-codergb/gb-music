@@ -23,8 +23,10 @@ const Album: FC<RouteComponentProps> = (props): ReactElement => {
   const [cateId, setCateId] = useState<string>('');
   useEffect(() => {
     getAlbumCate<ICategory[]>().then((data) => {
-      setCateList(data);
-      cateClick(data[0], 0);
+      if(data.length!==0){
+        setCateList(data);
+        cateClick(data[0], 0);
+      }
     });
   }, []);
   const cateClick = (item: ICategory, index: number) => {

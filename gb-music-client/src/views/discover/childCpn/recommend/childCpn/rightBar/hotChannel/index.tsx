@@ -1,6 +1,6 @@
 import React, { memo, ReactElement, FC, useEffect, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { Image } from 'antd';
+import {Empty, Image} from 'antd';
 import { HotChannelWrapper } from './style';
 import { getHotChannel } from '../../../../../../../network/channel';
 import placeholder from '../../../../../../../assets/img/holder/music-placeholder.png';
@@ -65,6 +65,9 @@ const HotChannel: FC<RouteComponentProps> = (props): ReactElement => {
               </li>
             );
           })}
+        {
+          channel && channel.length===0 &&<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={"暂无热门电台"}/>
+        }
       </ul>
     </HotChannelWrapper>
   );
