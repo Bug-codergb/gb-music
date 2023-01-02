@@ -24,3 +24,4 @@ export function formatTime(dateS: number | string, fmt: string) {
 function padLeftZero(str: string) {
   return ('00' + str).substr(str.length);
 }
+console.log(formatTime(251179,"mm:ss"))
