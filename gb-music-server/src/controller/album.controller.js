@@ -83,16 +83,22 @@ class AlbumController {
     const { id, w = '130', h } = req.query;
     if (!isEmpty(id, 'id不能为空', next)) {
       const result = await getAlbumCoverService(id);
-      const { dest, mimetype, filename } = result[0];
-      try {
-        const filePath = path.resolve(__dirname, '../../', dest, filename);
-        const buffer = await tran(filePath, `${dest}/${filename}`, mimetype, w, h);
-        res.set('content-type', mimetype);
-        res.send(buffer);
-      } catch (e) {
-        console.log(e);
-        res.set('content-type', mimetype);
-        res.sendFile(path.resolve(__dirname, '../../', `${dest}/${filename}`));
+      if(result.length!==0){
+        const { dest, mimetype, filename } = result[0];
+        try {
+          const filePath = path.resolve(__dirname, '../../', dest, filename);
+          const buffer = await tran(filePath, `${dest}/${filename}`, mimetype, w, h);
+          res.set('content-type', mimetype);
+          res.send(buffer);
+        } catch (e) {
+          res.set('content-type', mimetype);
+          res.sendFile(path.resolve(__dirname, '../../', `${dest}/${filename}`));
+        }
+      }else{
+        res.send({
+          message:"封面未找到",
+          status:400
+        })
       }
     }
   }

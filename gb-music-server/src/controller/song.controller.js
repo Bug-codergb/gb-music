@@ -75,9 +75,16 @@ class SongController {
     const { id } = req.query;
     if (!isEmpty(id, '歌曲ID不能为空', next)) {
       const result = await getSongSourceService(id);
-      const { dest, filename, mimetype } = result[0];
-      res.set('content-type', mimetype);
-      res.sendFile(path.resolve(__dirname, '../../', `${dest}/${filename}`));
+      if(result.length!==0){
+        const { dest, filename, mimetype } = result[0];
+        res.set('content-type', mimetype);
+        res.sendFile(path.resolve(__dirname, '../../', `${dest}/${filename}`));
+      }else{
+        res.send({
+          message:"歌曲未找到",
+          status:400
+        })
+      }
     }
   }
   //获取推荐歌曲
