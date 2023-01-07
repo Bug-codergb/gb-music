@@ -147,7 +147,7 @@ export default {
     padding: 20px 20px 20px 0;
     position: relative;
     border: 1px solid #e6e6e6;
-    height: 100%;
+    height: 90vh;
     overflow-y: scroll;
     .add-btn {
       display: flex;
@@ -288,6 +288,8 @@ export default {
   }
   .right {
     width: 20%;
+    height: 90vh;
+    overflow-y: scroll;
   }
 }
 </style>

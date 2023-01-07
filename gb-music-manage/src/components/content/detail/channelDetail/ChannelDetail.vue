@@ -204,9 +204,11 @@ export default {
   padding: 0 0 30px 0;
 }
 .left {
-  width: 90%;
+  width: 80%;
   border: 1px solid #e0e0e0;
   position: relative;
+  height: 90vh;
+  overflow-y: scroll;
   .upload-content {
     position: absolute;
     top: 50%;
@@ -271,6 +273,7 @@ export default {
         color: #9b9b9b;
       }
       .btn {
+        width: 20%;
         button {
           background-color: #f56c6c;
           color: #fff;

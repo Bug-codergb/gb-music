@@ -21,7 +21,7 @@
           </div>
         </upload>
       </div>
-      <video-list />
+      <video-list :key="keyIndex"/>
     </div>
     <div class="right-content">
       <add-msg title="添加视频" @add-content="addVideo">
@@ -58,7 +58,8 @@ export default {
       cateId: '',
       title: '',
       desc: '',
-      isShow: false
+      isShow: false,
+      keyIndex:0
     };
   },
   created() {
@@ -121,12 +122,12 @@ export default {
             formData.append('video', this.video);
             formData.append('dt', this.dt);
             uploadVideo(formData, id).then((data) => {
-              console.log(data);
+
             });
             let coverFormData = new FormData();
             coverFormData.append('cover', this.cover);
             uploadCover(coverFormData, id).then((data) => {
-              console.log(data);
+
               this.isShow = false;
               this.desc = '';
               this.cateId = '';
@@ -134,6 +135,8 @@ export default {
               this.cover = null;
               this.title = '';
               this.isShowPreview = false;
+
+              this.keyIndex+=1;
             });
           }
         });

@@ -20,7 +20,7 @@ export const ArtistWrapper = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     & > li {
-      width: 130px;
+      width: 120px;
       margin: 0 0 15px 0;
       .artist-name {
         font-size: 13px;

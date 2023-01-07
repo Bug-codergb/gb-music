@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const TopBarWrapper = styled.div`
   height: 63px;
-  background-color: #fff;
+  background-color: #242424;
   z-index: 99999999;
   width: 100%;
 `;
@@ -29,7 +29,7 @@ export const CenterContent = styled.div`
       font-size: 13px;
       margin: 0 20px;
       border-radius: 3px;
-      color: #757575;
+      color: #fff;
       cursor: pointer;
       &:hover {
         color: #000;

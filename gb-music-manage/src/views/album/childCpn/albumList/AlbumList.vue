@@ -18,7 +18,9 @@
       <li v-for="(item, index) in albumList" :key="item.id">
         <div class="index">{{ (index + 1).toString().padStart(2, '0') }}</div>
         <div class="img-container" @click="albumRouter(item, index)"
-             v-lazy-container="{selector:'img',loading:require('../../../../assets/img/holder/music-placeholder.png')}">
+             v-lazy-container="{selector:'img',
+                                error:require('../../../../assets/img/holder/music-placeholder.png'),
+                                loading:require('../../../../assets/img/holder/music-placeholder.png')}">
           <img :data-src="item.coverUrl" :atl="item.name" />
         </div>
         <div class="state" @click="albumRouter(item, index)">{{ item.name }}</div>

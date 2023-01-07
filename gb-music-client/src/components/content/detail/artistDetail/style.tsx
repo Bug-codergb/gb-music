@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 export const ArtistDetailWrapper = styled.div`
-  background-color: #f5f5f5;
+  background-color: #fff;
 `;
 export const CenterContent = styled.div`
-  width: 1160px;
+  width: 1220px;
   margin: 0 auto;
   background-color: #fff;
   display: flex;
   flex-wrap: nowrap;
-  border-left: 1px solid #d3d3d3;
-  border-right: 1px solid #d3d3d3;
 `;
 export const LeftContent = styled.div`
   border-right: 1px solid #e0e0e0;

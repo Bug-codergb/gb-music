@@ -86,6 +86,7 @@ export default {
           uploadArtistAvatar(id, formData).then((data) => {
             if (data) {
               this.$emit('cancel');
+              this.$emit("success");
               this.$toast.show('添加成功', 1500);
             }
           });
@@ -158,9 +159,11 @@ export default {
   }
   .cate {
     display: flex;
+    flex-wrap: wrap;
+    width: 400px;
     li {
       cursor: pointer;
-      margin: 0 15px 0 0;
+      margin: 0 15px 10px 0;
       background-color: rgba(236, 65, 65, 0.4);
       color: #fff;
       font-size: 13px;

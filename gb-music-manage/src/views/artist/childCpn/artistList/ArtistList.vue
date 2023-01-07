@@ -27,8 +27,10 @@
       <li v-for="(item, index) in artists" :key="item.id">
         <div class="index">{{ (index + 1).toString().padStart(2, '0') }}</div>
         <div class="artist-img-container"
-             v-lazy-container="{selector:'img',loading:require('../../../../assets/img/holder/music-placeholder.png')}">
-          <img :data-src="item.avatarUrl" alt="" />
+             v-lazy-container="{selector:'.artist-avatar',
+                                error:require('../../../../assets/img/holder/music-placeholder.png'),
+                                loading:require('../../../../assets/img/holder/music-placeholder.png')}">
+          <img class="artist-avatar" :data-src="item.avatarUrl" alt="" />
         </div>
         <div class="artist-state">{{ item.name }}</div>
 
@@ -126,18 +128,21 @@ export default {
     };
   },
   created() {
-    getArtistCate().then((data) => {
-      this.cateList = data;
-      this.liCLick(data[0], 0);
-      getCateArtistDetail(data[0].id, '全部', '', 0, 8).then((data) => {
-        //console.log(data);
-      });
-    });
-    getArtistType().then((data) => {
-      this.types = data;
-    });
+    this.init();
   },
   methods: {
+    init(){
+      getArtistCate().then((data) => {
+        this.cateList = data;
+        this.liCLick(data[0], 0);
+        getCateArtistDetail(data[0].id, '全部', '', 0, 8).then((data) => {
+          //console.log(data);
+        });
+      });
+      getArtistType().then((data) => {
+        this.types = data;
+      });
+    },
     liCLick(item, index) {
       this.currentIndex = index;
       this.cateId = item.id;
@@ -238,7 +243,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   li {
-    margin: 0 20px 0 0;
+    margin: 0 20px 5px 0;
     font-size: 13px;
     padding: 3px 10px;
     cursor: pointer;
@@ -270,6 +275,8 @@ export default {
     }
   }
   .artist-img-container {
+    height: 45px;
+    width: 45px;
     img {
       width: 45px;
       border-radius: 3px;

@@ -3,9 +3,9 @@ export const SearchMatchWrapper = styled.div`
   position: absolute;
   background-color: #fff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  width: 300px;
+  width: 340px;
   z-index: 99999965;
-  left: 50%;
+  left: 43%;
   top: 105%;
   transform: translate(-50%, 0);
   border-radius: 5px;

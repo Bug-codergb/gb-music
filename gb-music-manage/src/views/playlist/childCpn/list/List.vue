@@ -24,7 +24,11 @@
       <li v-for="(item, index) in playlist" :key="item.id">
         <div class="index">{{ (index + 1).toString().padStart(2, '0') }}</div>
         <div class="img-container"
-             v-lazy-container="{selector:'img',loading:require('../../../../assets/img/holder/music-placeholder.png')}">
+             v-lazy-container="{
+               selector:'img',
+               loading:require('../../../../assets/img/holder/music-placeholder.png'),
+               error:require('../../../../assets/img/holder/music-placeholder.png')
+               }">
           <img :data-src="item.coverUrl" alt="cover" />
         </div>
         <div class="name text-nowrap">{{ item.name }}</div>

@@ -75,28 +75,29 @@ const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
             catePlay.length !== 0 &&
             catePlay.map((item, index) => {
               return (
-                <li key={item.playlist.id}>
+                <li key={item.playlist?.id}>
                   <MsgItem
                     isShowPlayCount={true}
                     img={
                       <Image
                         width={150}
                         height={150}
-                        src={item.playlist.coverUrl}
+                        src={item.playlist?.coverUrl}
                         preview={false}
                         onClick={(e) => playlistRouter(item.playlist, index)}
                         className="cover-img"
+                        fallback={placeholder}
                         placeholder={<Image preview={false} src={placeholder} width={150} height={150} />}
                       />
                     }
-                    state={<span>{item.playlist.name}</span>}
-                    playCount={item.playlist.playCount}
+                    state={<span>{item.playlist?.name}</span>}
+                    playCount={item.playlist?.playCount}
                     itemWidth="150px"
                     scale={1}
                   />
                   <div className="user-msg" onClick={(e) => userRouter(item.playlist.user)}>
                     <i className="iconfont icon-ttpodicon"> </i>
-                    <span>{item.playlist.user.userName}</span>
+                    <span>{item.playlist?.user.userName}</span>
                   </div>
                 </li>
               );

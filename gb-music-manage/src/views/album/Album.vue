@@ -138,7 +138,8 @@ export default {
   display: flex;
   background-color: #fff;
   .left-content {
-    height: 100%;
+    height: 90vh;
+    overflow-y: scroll;
     width: 80%;
     position: relative;
     border: 1px solid #e0e0e0;
@@ -157,7 +158,8 @@ export default {
     }
   }
   .right-content {
-    height: 100%;
+    height: 90vh;
+    overflow-y: scroll;
     width: 20%;
     text-align: center;
     padding: 10px 10px 0 10px;

@@ -1,15 +1,15 @@
 <template>
   <div class="artist">
     <div class="left-content">
-      <artist-list />
-      <add-artist @cancel="cancel" v-if="isShow" />
+      <artist-list :key="keyIndex"/>
+      <add-artist @cancel="cancel" v-if="isShow" @success="refresh"/>
     </div>
     <div class="right-content">
       <div class="avatar-outer">
         <i class="iconfont icon-ttpodicon"></i>
       </div>
       <div class="add-artist" @click="addArtist">添加歌手</div>
-      <cate-type />
+      <cate-type @refresh="refresh"/>
     </div>
   </div>
 </template>
@@ -23,7 +23,8 @@ export default {
   components: { CateType, ArtistList, AddArtist },
   data() {
     return {
-      isShow: false
+      isShow: false,
+      keyIndex:0
     };
   },
   methods: {
@@ -32,6 +33,9 @@ export default {
     },
     addArtist() {
       this.isShow = true;
+    },
+    refresh(){
+      this.keyIndex+=1;
     }
   }
 };
@@ -52,10 +56,11 @@ export default {
     }
   }
   .right-content {
-    height: 100%;
+    height: 90vh;
     width: 25%;
     text-align: center;
     padding: 0 10px;
+    overflow-y: scroll;
     .avatar-outer {
       width: 80px;
       height: 80px;

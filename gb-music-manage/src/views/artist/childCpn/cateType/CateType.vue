@@ -75,6 +75,7 @@ export default {
             this.cateList = data;
             this.cate = '';
             this.$toast.show('添加cate成功', 1500);
+            this.$emit("refresh")
           });
         });
       }
@@ -86,6 +87,7 @@ export default {
             this.typeList = data;
             this.type = '';
             this.$toast.show('添加type成功', 1500);
+            this.$emit("refresh")
           });
         });
       }

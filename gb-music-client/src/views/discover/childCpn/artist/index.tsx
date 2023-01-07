@@ -125,17 +125,17 @@ const Artist: FC<RouteComponentProps> = (props): ReactElement => {
                 <MsgItem
                   img={
                     <Image
-                      width={130}
-                      height={130}
+                      width={120}
+                      height={120}
                       src={item.avatarUrl}
                       preview={false}
                       fallback={placeholder}
-                      placeholder={<Image preview={false} src={placeholder} width={130} height={130} />}
+                      placeholder={<Image preview={false} src={placeholder} width={120} height={120} />}
                     />
                   }
                   state={<span className="artist-name">{item.name}</span>}
                   isShowPlayCount={false}
-                  itemWidth="130px"
+                  itemWidth="120px"
                   scale={1}
                   cover={
                     <div className="mask" onClick={(e) => playlistRouter(item, index)}>

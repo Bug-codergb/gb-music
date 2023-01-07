@@ -40,7 +40,7 @@ export default {
   background-color: #fff;
 }
 .left-content {
-  /*height: 655px;*/
+  height: 90vh;
   width: 80%;
   position: relative;
   border: 1px solid #e0e0e0;
@@ -51,10 +51,11 @@ export default {
   }
 }
 .right-content {
-  height: 100%;
   width: 20%;
   text-align: center;
   padding: 20px 10px;
+  height: 90vh;
+  overflow-y: scroll;
   .icon {
     font-size: 30px;
   }

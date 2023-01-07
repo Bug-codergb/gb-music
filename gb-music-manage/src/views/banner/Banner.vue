@@ -66,6 +66,7 @@ export default {
 .banner {
   padding: 30px 0;
   background-color: #fff;
+  height: 90vh;
   .header-controller {
     display: flex;
     align-items: center;
