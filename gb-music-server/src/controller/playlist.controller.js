@@ -146,8 +146,10 @@ class PlaylistController {
   //获取各单详情
   async getPlayDetail(req, res, next) {
     const { id } = req.query;
+    console.log(id)
     if (!isEmpty(id, '歌单id不能为空', next)) {
       const result = await getPlayDetailService(id);
+      console.log(result[0])
       res.json(result[0]);
     }
   }

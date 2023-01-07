@@ -121,7 +121,7 @@ class PlaylistService {
        ))
           from playlist_song as ps
           LEFT JOIN song on song.id=ps.songId
-          where ps.pId=p.id) as songs\t
+          where ps.pId=p.id) as songs
           from playlist as p
           LEFT JOIN playlist_category as pc on pc.pId=p.id
           INNER JOIN playlist_cate on playlist_cate.id=pc.cateId
