@@ -1,20 +1,20 @@
 .DS_Store
 /node_modules/
 /build
-/upload/album/cover/*
-/upload/artist/*
-/upload/avatar/upload/*
-/upload/banner/recommend/*
-/upload/channel/cover/*
-/upload/channel/program/*
-/upload/moment/picture/*
-/upload/moment/song/*
-/upload/song/*
-/upload/topic/cover/*
-/upload/toplist/cover/*
-/upload/video/cover/*
-/upload/video/source/*
-/upload/playlist/cover/*
+/upload/album/cover/
+/upload/artist/
+/upload/avatar/upload/
+/upload/banner/recommend/
+/upload/channel/cover/
+/upload/channel/program/
+/upload/moment/picture/
+/upload/moment/song/
+/upload/song/
+/upload/topic/cover/
+/upload/toplist/cover/
+/upload/video/cover/
+/upload/video/source/
+/upload/playlist/cover/
 
 
 .env.local
