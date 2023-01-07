@@ -1,4 +1,5 @@
 import React, { memo, FC, ReactElement, useState, MouseEvent, ChangeEvent } from 'react';
+import { message } from 'antd';
 import { CreatePlayListWrapper } from './style';
 interface IProps {
   onClick: Function;
@@ -7,7 +8,7 @@ interface IProps {
 const CreatePlayList: FC<IProps> = ({ onClick, cancelClick }): ReactElement => {
   const [name, setName] = useState<string>('');
   const [desc, setDesc] = useState<string>('');
-  const [file, setFile] = useState<File>(null!);
+  const [file, setFile] = useState<File | null>(null);
 
   const nameInp = (e: any): void => {
     setName(e.target.value);
@@ -17,7 +18,11 @@ const CreatePlayList: FC<IProps> = ({ onClick, cancelClick }): ReactElement => {
   };
   //确定
   const define = (): void => {
-    onClick(name, desc, file);
+    if(file){
+      onClick(name, desc, file);
+    }else{
+      message.warning('请选择歌单封面');
+    }
   };
   const cancel = (): void => {
     cancelClick();

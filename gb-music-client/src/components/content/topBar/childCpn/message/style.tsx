@@ -6,8 +6,8 @@ export const MessageWrapper = styled.div`
   padding: 20px 30px;
   position: absolute;
   left: 0;
-  top: 100%;
-  transform: translate(-70%, 3%);
+  top: 60%;
+  transform: translate(-90%, 3%);
   background-color: #fff;
   .title {
     display: flex;
@@ -28,9 +28,12 @@ export const MessageWrapper = styled.div`
   .msg-list {
     display: flex;
     flex-wrap: nowrap;
+    align-items: center;
     border: 1px solid #bbbbbb;
     border-radius: 15px;
+    height: 30px;
     & > li {
+      height: 100%;
       background-color: #fff;
       color: #373737;
       padding: 4px 25px;
@@ -38,6 +41,8 @@ export const MessageWrapper = styled.div`
       font-size: 13px;
       border-radius: 15px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
       &.active {
         background-color: #bbbbbb;
         color: #fff;

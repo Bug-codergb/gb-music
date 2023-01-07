@@ -1,5 +1,6 @@
 import React, { memo, FC, ReactElement, ChangeEvent, useState } from 'react';
 import { Map } from 'immutable';
+import { message } from 'antd';
 import { ProfileWrapper } from './style';
 import { useSelector } from 'react-redux';
 import { uploadAvatar } from '../../../../../../../network/user';
@@ -9,25 +10,33 @@ interface IProps {
 }
 const Profile: FC<IProps> = memo((props): ReactElement => {
   const { onClick } = props;
-  const [file, setFile] = useState<Blob>(new Blob());
+  const [file, setFile] = useState<Blob | null>(null);
   const [isShowPrev, setIsShowPrev] = useState<boolean>(false);
   const [prevURL, setPrevURL] = useState<string>('');
   const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
     userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
   }));
   const upload = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.currentTarget.files)
     if (e.currentTarget.files) {
-      setPrevURL(URL.createObjectURL(e.currentTarget.files[0]));
-      setFile(e.currentTarget.files[0]);
-      setIsShowPrev(true);
+      const {type} = e.currentTarget.files[0];
+      if(!type.includes("image")){
+        message.warning('This is a warning message');
+      }else{
+        setPrevURL(URL.createObjectURL(e.currentTarget.files[0]));
+        setFile(e.currentTarget.files[0]);
+        setIsShowPrev(true);
+      }
     }
   };
   const define = () => {
-    let formData = new FormData();
-    formData.append('avatar', file);
-    uploadAvatar(formData).then((data) => {
-      onClick();
-    });
+    if(file){
+      let formData = new FormData();
+      formData.append('avatar', file);
+      uploadAvatar(formData).then((data) => {
+        onClick();
+      });
+    }
   };
   const cancel = () => {
     onClick();

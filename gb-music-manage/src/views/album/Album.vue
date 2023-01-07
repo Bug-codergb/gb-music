@@ -32,7 +32,7 @@
           </div>
         </upload>
       </div>
-      <AlbumList />
+      <AlbumList :key="keyIndex"/>
     </div>
     <div class="right-content">
       <add-msg title="添加专辑" @add-content="addAlbum">
@@ -64,7 +64,8 @@ export default {
       cateId: '',
       cover: null,
       publishTime: '',
-      isShow: false
+      isShow: false,
+      keyIndex:0
     };
   },
   created() {
@@ -116,6 +117,7 @@ export default {
               if (data) {
                 this.isShow = false;
                 this.$toast.show('添加成功', 1500);
+                this.keyIndex+=1;
               }
             });
             publishAlbum(this.arId, '发布了', id);

@@ -65,16 +65,24 @@ class PlaylistController {
     const { id, w = '150', h } = req.query;
     if (!isEmpty(id, '歌单ID不能为空', next)) {
       const result = await getPlayListCoverService(id);
-      const { mimetype, dest, filename } = result[0];
-      const filePath = path.resolve(__dirname, '../../', dest, filename);
-      try {
-        const buffer = await tran(filePath, `${dest}/${filename}`, mimetype, w, h);
-        res.set('content-type', mimetype);
-        res.send(buffer);
-      } catch (e) {
-        res.set('content-type', mimetype);
-        res.sendFile(path.resolve(__dirname, '../../', `${dest}/${filename}`));
+      if(result.length!==0){
+        const { mimetype, dest, filename } = result[0];
+        const filePath = path.resolve(__dirname, '../../', dest, filename);
+        try {
+          const buffer = await tran(filePath, `${dest}/${filename}`, mimetype, w, h);
+          res.set('content-type', mimetype);
+          res.send(buffer);
+        } catch (e) {
+          res.set('content-type', mimetype);
+          res.sendFile(path.resolve(__dirname, '../../', `${dest}/${filename}`));
+        }
+      }else{
+        res.json({
+          message:"暂无图片",
+          status:404
+        })
       }
+
     }
   }
   //添加歌单分类
@@ -188,6 +196,8 @@ class PlaylistController {
       } catch (e) {
         console.log(e);
         next(new Error(errorType.FILE_OPERATION_FAILED));
+      }finally {
+        const result = await delPlaylistService(id);
       }
     }
   }

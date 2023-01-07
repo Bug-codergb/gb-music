@@ -32,15 +32,15 @@ export const CenterContent = styled.div`
       color: #fff;
       cursor: pointer;
       &:hover {
-        color: #000;
+        color: #fff;
       }
     }
     .msg {
-      margin: 0 0 0 10px;
+      margin: 0 20px 0 30px;
       position: relative;
       i {
         font-size: 20px;
-        color: #262626;
+        color: #fff;
         cursor: pointer;
       }
       .count {
