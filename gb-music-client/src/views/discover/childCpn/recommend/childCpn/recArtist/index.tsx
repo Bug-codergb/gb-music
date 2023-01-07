@@ -49,6 +49,7 @@ const RecArtist: FC<RouteComponentProps> = (props): ReactElement => {
                             height={120}
                             src={item.avatarUrl}
                             preview={false}
+                            fallback={placeholder}
                             placeholder={<Image preview={false} src={placeholder} width={120} height={120} />}
                           />
                         }

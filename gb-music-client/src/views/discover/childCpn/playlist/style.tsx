@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 export const PlaylistWrapper = styled.div`
   padding: 20px 15px;
-  border-left: 1px solid #d3d3d3;
-  border-right: 1px solid #d3d3d3;
   .header {
     display: flex;
     justify-content: space-between;

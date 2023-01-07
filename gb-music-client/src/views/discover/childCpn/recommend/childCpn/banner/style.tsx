@@ -13,7 +13,7 @@ export const BannerWrapper: any = styled.div`
     filter: blur(30px);
   }
   .banner-outer {
-    width: 1190px;
+    width: 1220px;
     margin: 0 auto;
     .img-container {
       width: 1160px;

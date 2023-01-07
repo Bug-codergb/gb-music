@@ -81,6 +81,7 @@ const Toplist: FC<RouteComponentProps> = (props): ReactElement => {
                     height={170}
                     src={item.coverUrl}
                     preview={false}
+                    fallback={placeholder}
                     placeholder={<Image preview={false} src={placeholder} width={170} height={170} />}
                     onClick={(e) => toplistRouter(item, index)}
                   />

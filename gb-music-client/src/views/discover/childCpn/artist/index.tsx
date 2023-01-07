@@ -86,7 +86,6 @@ const Artist: FC<RouteComponentProps> = (props): ReactElement => {
       setArtists(data.artists);
       setLetter(item);
       setCount(data.count);
-      console.log(data.count);
     });
   };
   const playlistRouter = (item: IArtist, index: number) => {
@@ -130,6 +129,7 @@ const Artist: FC<RouteComponentProps> = (props): ReactElement => {
                       height={130}
                       src={item.avatarUrl}
                       preview={false}
+                      fallback={placeholder}
                       placeholder={<Image preview={false} src={placeholder} width={130} height={130} />}
                     />
                   }

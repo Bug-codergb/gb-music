@@ -71,6 +71,7 @@ const RecSong: FC<RouteComponentProps> = (props): ReactElement => {
                         src={item.album.coverUrl + '&w=60'}
                         preview={false}
                         onClick={(e: MouseEvent<HTMLDivElement>) => playSong(item)}
+                        fallback={placeholder}
                         placeholder={<Image preview={false} src={placeholder} width={60} height={60} />}
                       />
                     }

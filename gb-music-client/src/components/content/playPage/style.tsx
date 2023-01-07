@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import singlecover from '../../../assets/img/singlecover.png';
 export const PlayPageWrapper = styled.div`
-  background-color: #f5f5f5;
-
-  border-left: 1px solid #e0e0e0;
-  border-right: 1px solid #e0e0e0;
+  background-color: #fff;
   .play {
     padding: 50px 0 0 0;
     display: flex;

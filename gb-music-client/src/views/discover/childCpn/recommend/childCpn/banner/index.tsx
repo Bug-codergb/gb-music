@@ -78,11 +78,11 @@ const Banner: FC<RouteComponentProps> = (props): ReactElement => {
               return (
                 <div key={item.id} className="img-container">
                   <Image
-                    width={1190}
-                    height={370}
+                    width={1220}
+                    height={300}
                     src={item.picUrl}
                     preview={false}
-                    placeholder={<Image preview={false} src={placeholder} width={1190} height={370} />}
+                    placeholder={<Image preview={false} src={placeholder} width={1220} height={300} />}
                     onClick={(e) => bannerClick(item, index)}
                   />
                 </div>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import coverall from '../../../assets/img/coverall.png';
 export const PlayCoinWrapper = styled.div`
   background-color: #fff;
-  height: 100px;
+  height:70px;
   padding: 10px 0;
   border-top: 1px solid #e0e0e0;
   width: 100%;
@@ -16,6 +16,7 @@ export const CenterContent = styled.div`
   align-items: center;
   background-color: #fff;
   justify-content: space-between;
+  padding: 10px 0;
   .img-container {
     width: 55px;
     height: 55px;

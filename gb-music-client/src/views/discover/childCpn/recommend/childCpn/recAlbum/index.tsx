@@ -38,6 +38,7 @@ const RecAlbum: FC<IProps> = (props) => {
                         height={130}
                         src={item.coverUrl}
                         preview={false}
+                        fallback={placeholder}
                         placeholder={<Image preview={false} src={placeholder} width={130} height={130} />}
                       />
                     }

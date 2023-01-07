@@ -79,6 +79,7 @@ const Album: FC<RouteComponentProps> = (props): ReactElement => {
                         src={item.coverUrl}
                         preview={false}
                         className="cover-img"
+                        fallback={placeholder}
                         placeholder={<Image preview={false} src={placeholder} width={130} height={130} />}
                       />
                     }

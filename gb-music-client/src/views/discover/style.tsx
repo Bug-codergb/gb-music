@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 export const DiscoverWrapper = styled.div`
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   .list-outer {
-    background-color: #2c323b;
-    height: 55px;
+    background-color: #ffffff;
+    height: 50px;
+    margin: 0 0 15px 0;
+    padding: 10px 0;
   }
   .discover-list {
     width: 1190px;
@@ -13,19 +15,19 @@ export const DiscoverWrapper = styled.div`
     li {
       cursor: pointer;
       height: 100%;
+      margin: 0 25px 0 0;
       span {
         font-size: 16px;
-        padding: 0 15px;
+        padding: 0;
         display: flex;
         align-items: center;
         height: 100%;
-        color: #dddddd;
+        color: #333333;
       }
       &.active {
         span {
           font-weight: bold;
-          background-color: #ec4141;
-          color: #fff;
+          border-bottom: 3px solid #ec4141;
         }
       }
     }

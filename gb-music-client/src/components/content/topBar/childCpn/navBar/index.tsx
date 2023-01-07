@@ -17,7 +17,7 @@ const NavBar: React.FC<RouteComponentProps> = (props) => {
   return (
     <NavBarWrapper>
       <ul className="nav-list">
-        {navList.map((item, index: number) => {
+        {navList && navList.map((item, index: number) => {
           return (
             <li
               key={item.name}

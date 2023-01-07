@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 export const MyMusicWrapper = styled.div`
-  /* margin: 20px auto 0;*/
-  background-color: #f5f5f5;
-
+  background-color: #ffffff;
   .my-music-list-outer {
     width: 100%;
     background-color: #2c323b;
@@ -31,8 +29,6 @@ export const MyMusicWrapper = styled.div`
     }
   }
   .my-music-content {
-    border-left: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
     padding: 20px 15px 0 15px;
   }
 `;

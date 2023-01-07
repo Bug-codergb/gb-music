@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 export const TopBarWrapper = styled.div`
-  height: 65px;
-  border-bottom: 1px solid #f9d5cb;
+  height: 63px;
   background-color: #fff;
   z-index: 99999999;
   width: 100%;
 `;
 export const CenterContent = styled.div`
   height: 100%;
-  width: 1280px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -23,6 +22,9 @@ export const CenterContent = styled.div`
     align-items: center;
     .innovation {
       border: 1px solid #ec4141;
+      height: 40px;
+      display: flex;
+      align-items: center;
       padding: 7px 15px;
       font-size: 13px;
       margin: 0 20px;
@@ -69,18 +71,24 @@ export const CenterContent = styled.div`
     display: flex;
     align-items: center;
     position: relative;
+    height: 40px;
     input {
       border: 1px solid #ec4141;
       padding: 8px 15px;
       font-size: 13px;
       border-radius: 3px 0 0 3px;
-      width: 240px;
+      width: 340px;
+      height: 100%;
     }
     & > button {
       background-color: #ec4141;
       color: #fff;
       padding: 7px 20px;
       border-radius: 0 3px 3px 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       &:hover {
         background-color: #d73535;
         cursor: pointer;

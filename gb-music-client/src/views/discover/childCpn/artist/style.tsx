@@ -3,8 +3,6 @@ import coverall from '../../../../assets/img/coverall.png';
 export const ArtistWrapper = styled.div`
   margin: 0 auto;
   padding: 20px 15px;
-  border-left: 1px solid #d3d3d3;
-  border-right: 1px solid #d3d3d3;
   .filter {
     & > li {
       margin: 0 0 10px 0;

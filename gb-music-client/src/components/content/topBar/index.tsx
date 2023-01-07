@@ -86,27 +86,26 @@ const TopBar: React.FC<RouteComponentProps> = (props) => {
           <div className="logo" onClick={(e: MouseEvent<HTMLDivElement>) => homeRouter()}>
             <img src={logo} alt="logo" />
           </div>
-          <div className="nav-bar">
-            <NavBar />
-          </div>
+
+        </div>
+        <div className="search-outer">
+          <input
+            type="text"
+            placeholder="搜索"
+            onFocus={(e) => searchFocus()}
+            onClick={(e) => searchClick(e)}
+            onInput={(e) => searchInp(e)}
+          />
+          <button onClick={(e) => searchRouter()}>
+            <i className="iconfont icon-search"> </i>
+          </button>
+          <CSSTransition in={isShow} timeout={1000} classNames="search" unmountOnExit={true}>
+            <SearchMatch keyword={keyword} />
+          </CSSTransition>
         </div>
         <div className="right-content">
           {/*搜索*/}
-          <div className="search-outer">
-            <input
-              type="text"
-              placeholder="搜索"
-              onFocus={(e) => searchFocus()}
-              onClick={(e) => searchClick(e)}
-              onInput={(e) => searchInp(e)}
-            />
-            <button onClick={(e) => searchRouter()}>
-              <i className="iconfont icon-search"> </i>
-            </button>
-            <CSSTransition in={isShow} timeout={1000} classNames="search" unmountOnExit={true}>
-              <SearchMatch keyword={keyword} />
-            </CSSTransition>
-          </div>
+
           {/*创作者中心*/}
           <div className="innovation" onClick={(e) => innovateClick()}>
             创作者中心

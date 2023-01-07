@@ -21,7 +21,9 @@ import VipOuter from '../../components/content/vip';
 import { ILogin, IUserMsg } from '../../constant/store/login';
 import useAuth from '../../hooks/useAuth/index';
 import { Redirect } from 'react-router';
-
+import { Layout } from 'antd';
+import NavBar from "../../components/content/topBar/childCpn/navBar";
+const { Header, Footer, Sider, Content } = Layout;
 interface RouterType extends RouteComponentProps {
   route: any;
 }
@@ -81,26 +83,40 @@ const Home: React.FC<RouterType> = (props) => {
     return (
       <HomeWrapper>
         {(!userMsg || !userMsg.token) && <Redirect to={'/Login'} />}
-        <TopBar />
+
         {isShow && <VipOuter />}
-        <div className="content-body">
-          <Suspense
-            fallback={
-              <div className="router-loading">
-                <Skeleton active paragraph={{ rows: 15 }} />
+        <Layout>
+          <Header className="gb-music-header">
+            <TopBar />
+          </Header>
+          <Layout>
+            <Sider className={"gb-music-sider"}>
+              <NavBar/>
+            </Sider>
+            <Content className="gb-music-content">
+              <div className="content-body">
+                <Suspense
+                  fallback={
+                    <div className="router-loading">
+                      <Skeleton active paragraph={{ rows: 15 }} />
+                    </div>
+                  }
+                >
+                  {renderRoutes(props.route.routes)}
+                </Suspense>
               </div>
-            }
-          >
-            {renderRoutes(props.route.routes)}
-          </Suspense>
-        </div>
-        <PlayCoin />
-        {isShowBack && (
-          <div className="back-to-top" onClick={(e) => backToTop()}>
-            <VerticalAlignTopOutlined />
-            top
-          </div>
-        )}
+            </Content>
+          </Layout>
+          <Footer className={"gb-music-footer"}>
+            <PlayCoin />
+            {isShowBack && (
+              <div className="back-to-top" onClick={(e) => backToTop()}>
+                <VerticalAlignTopOutlined />
+                top
+              </div>
+            )}
+          </Footer>
+        </Layout>
       </HomeWrapper>
     );
   }

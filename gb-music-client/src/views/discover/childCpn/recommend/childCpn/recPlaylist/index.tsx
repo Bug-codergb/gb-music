@@ -42,6 +42,7 @@ const RecPlaylist: FC<IProps> = (props): ReactElement => {
                         height={145}
                         src={item.coverUrl}
                         preview={false}
+                        fallback={placeholder}
                         placeholder={<Image preview={false} src={placeholder} width={145} height={145} />}
                       />
                     }

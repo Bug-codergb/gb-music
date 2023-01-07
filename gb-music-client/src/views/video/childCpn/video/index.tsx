@@ -73,6 +73,7 @@ const Video: React.FC<RouteComponentProps> = (props) => {
                         height={120}
                         src={item.coverUrl}
                         preview={false}
+                        fallback={placeholder}
                         placeholder={<Image preview={false} src={placeholder} width={200} height={120} />}
                         onClick={(e) => videoRouter(item, index)}
                       />

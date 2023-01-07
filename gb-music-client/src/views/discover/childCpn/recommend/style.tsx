@@ -6,12 +6,11 @@ export const RecommendWrapper = styled.div`
     font-size: 16px;
   }
   .rec-content {
-    width: 1190px;
+    width: 1220px;
     margin: 0 auto;
     padding: 0 0 20px 15px;
     background-color: #fff;
-    border-left: 1px solid #d3d3d3;
-    border-right: 1px solid #d3d3d3;
+
     display: flex;
     overflow: hidden;
   }

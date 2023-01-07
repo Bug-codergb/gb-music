@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 export const VideoWrapper = styled.div`
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   .video-content {
-    width: 1190px;
+    width: 1220px;
     margin: 0 auto;
     padding: 20px;
     background-color: #ffffff;
-    border-left: 1px solid #d3d3d3;
-    border-right: 1px solid #d3d3d3;
   }
   .video-nav-list {
     display: flex;

@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 export const MomentWrapper = styled.div`
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 `;
 export const CenterContent = styled.div`
-  width: 1190px;
+  width: 1220px;
   margin: 0 auto;
-  border-left: 1px solid #e0e0e0;
-  border-right: 1px solid #e0e0e0;
   display: flex;
   background-color: #fff;
 `;

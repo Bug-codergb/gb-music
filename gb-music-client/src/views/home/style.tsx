@@ -5,10 +5,35 @@ export const HomeWrapper = styled.div`
     width: 100%;
     margin: 0 auto;
     .router-loading {
-      width: 1190px;
+      width: 1220px;
       margin: 0 auto;
       padding: 30px 0;
     }
+  }
+  .gb-music-header{
+    background-color:#ffffff;
+    padding: 0 20px!important;
+    box-shadow: 0 15px 20px rgba(0,0,0,.7);
+    border-bottom: 1px solid #d3d3d3;
+  }
+  .gb-music-sider{
+    height: 78vh;
+    background-color: white;
+    margin: 2px 0 0 0;
+    min-width: 180px!important;
+    max-width: 180px!important;
+    border-right: 1px solid #d3d3d3;
+  }
+  .gb-music-footer{
+    padding: 0 20px;
+    background-color: #fff;
+    height: 12vh;
+    overflow: hidden;
+  }
+  .gb-music-content{
+    height: 78vh;
+    overflow-y: scroll;
+    background-color: white;
   }
   .back-to-top {
     display: flex;
