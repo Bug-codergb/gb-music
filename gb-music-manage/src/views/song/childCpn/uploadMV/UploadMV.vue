@@ -61,6 +61,16 @@ export default {
       this.cateId = item.id;
     },
     changeMV(e) {
+      if(e.target.files && e.target.files[0]){
+        const {type} = e.target.files[0];
+        if(!type.includes("mp4")){
+          this.$message({
+            message:"请选择MP4视频文件",
+            type:"warning"
+          })
+          return ;
+        }
+      }
       this.mv = e.target.files[0];
       const url = URL.createObjectURL(e.target.files[0]);
       getVideoBase64(url).then((data) => {
@@ -74,6 +84,16 @@ export default {
       });
     },
     changeCover(e) {
+      if(e.target.files[0]){
+        const {type} = e.target.files[0];
+        if(!type.includes("image")){
+          this.$message({
+            message:"请选择图片文件",
+            type:"warning"
+          })
+          return ;
+        }
+      }
       this.cover = e.target.files[0];
       this.isShowCoverPrev = true;
       this.coverUrl = URL.createObjectURL(e.target.files[0]);

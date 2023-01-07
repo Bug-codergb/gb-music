@@ -38,7 +38,7 @@
         </label>
         <i class="iconfont icon-search search-icon"></i>
       </div>
-      <song-list :keyword="keyword" />
+      <song-list :keyword="keyword" :key="keyIndex"/>
     </div>
 
     <div class="right-content">
@@ -75,7 +75,8 @@ export default {
       alId: '',
       song: null,
       allAlbum: [],
-      keyword: ''
+      keyword: '',
+      keyIndex:0
     };
   },
   created() {
@@ -131,7 +132,7 @@ export default {
               if (data) {
                 formData.append('dt', data.toString());
                 uploadSong(formData, songId).then((data) => {
-                  console.log(data);
+                  this.keyIndex+=1;
                 });
               }
             });
@@ -152,7 +153,7 @@ export default {
   flex-wrap: nowrap;
   background-color: #fff;
   .left-content {
-    height: 100%;
+    height: 90vh;
     width: 80%;
     overflow-y: scroll;
     position: relative;
@@ -198,7 +199,7 @@ export default {
     }
   }
   .right-content {
-    height: 100%;
+    height: 90vh;
     width: 20%;
     text-align: center;
     padding: 0 20px;

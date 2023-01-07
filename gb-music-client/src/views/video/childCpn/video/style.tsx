@@ -9,7 +9,7 @@ export const VideoWrapper = styled.div`
     flex-wrap: wrap;
     & > li {
       margin: 0 0 20px 0;
-      width: 200px;
+      width: 180px;
     }
   }
   .page {

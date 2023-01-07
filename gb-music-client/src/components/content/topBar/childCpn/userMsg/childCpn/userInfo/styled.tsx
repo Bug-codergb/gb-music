@@ -5,7 +5,7 @@ export const UserInoWrapper = styled.div`
   width: 240px;
   height: 240px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-  left: 40%;
+  left: 0;
   top: 100%;
   transform: translate(-50%, 0);
   z-index: 999998;
@@ -15,7 +15,7 @@ export const UserInoWrapper = styled.div`
   .vip {
     border-bottom: 1px solid #ededed;
     justify-content: center;
-    padding: 15px 0;
+    padding: 0;
     display: flex;
     align-items: center;
     cursor: pointer;

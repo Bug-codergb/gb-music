@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export const ProfileWrapper = styled.div`
   position: fixed;
   left: 50%;
-  top: 35%;
+  top: 45%;
   transform: translate(-50%, -50%);
   z-index: 999999696;
   background-color: #fff;
@@ -27,8 +27,10 @@ export const ProfileWrapper = styled.div`
         }
         input {
           border: 1px solid #e1e4e8;
-          width: 200px;
-          padding: 5px 0;
+          width: 280px;
+          color: #000;
+          height: 40px;
+          padding: 5px 0 5px 10px;
         }
       }
     }
@@ -44,9 +46,9 @@ export const ProfileWrapper = styled.div`
       .outer {
         background-color: inherit;
         width: 100%;
-        height: 100%;
         overflow: hidden;
         position: relative;
+        height: 50px;
         i {
           font-size: 35px;
           line-height: 100px;
@@ -56,18 +58,22 @@ export const ProfileWrapper = styled.div`
           display: block;
           opacity: 0;
           width: 100%;
-          height: 100%;
         }
       }
     }
   }
   .control-btn {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
     margin: 40px 0 0 0;
+    height: 35px;
     button {
+      height: 100%;
       cursor: pointer;
       margin: 0 10px;
+      display: flex;
+      align-items: center;
       padding: 5px 15px;
       font-size: 13px;
       background-color: #f6a0a0;

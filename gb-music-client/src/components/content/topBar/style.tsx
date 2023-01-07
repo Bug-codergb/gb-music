@@ -27,7 +27,7 @@ export const CenterContent = styled.div`
       align-items: center;
       padding: 7px 15px;
       font-size: 13px;
-      margin: 0 20px;
+      margin: 0 5vw 0 20px;
       border-radius: 3px;
       color: #fff;
       cursor: pointer;

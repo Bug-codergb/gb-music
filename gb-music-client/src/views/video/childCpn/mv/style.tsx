@@ -7,7 +7,7 @@ export const MVWrapper = styled.div`
     justify-content: space-between;
     & > li {
       margin: 0 0 15px 0;
-      width: 200px;
+      width: 180px;
     }
   }
   .page {

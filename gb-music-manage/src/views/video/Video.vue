@@ -79,10 +79,30 @@ export default {
     },
     //选择视频封面
     selectCover(file) {
+      if(file){
+        const {type} = file;
+        if(!type.includes("image")){
+          this.$message({
+            message:"请选择图片文件",
+            type:"warning"
+          })
+          return ;
+        }
+      }
       this.cover = file;
     },
     //选择视频
     change(e) {
+      if(e.target.files && e.target.files[0]){
+        const {type} = e.target.files[0];
+        if(!type.includes("mp4")){
+          this.$message({
+            message:"请选择MP4视频文件",
+            type:"warning"
+          })
+          return ;
+        }
+      }
       const url = URL.createObjectURL(e.target.files[0]);
       getVideoBase64(url).then((data) => {
         this.videoUrl = data;

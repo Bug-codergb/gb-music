@@ -64,20 +64,20 @@ const MV: FC<RouteComponentProps> = (props): ReactElement => {
               <li key={item.id}>
                 <MsgItem
                   playCount={item.playCount}
-                  itemWidth="200px"
+                  itemWidth="180px"
                   isShowPlayCount={true}
                   img={
                     <Image
-                      width={200}
-                      height={120}
+                      width={180}
+                      height={110}
                       src={item.coverUrl}
                       preview={false}
-                      placeholder={<Image preview={false} src={placeholder} width={200} height={120} />}
+                      placeholder={<Image preview={false} src={placeholder} width={180} height={110} />}
                       onClick={(e) => videoRouter(item, index)}
                     />
                   }
                   state={<span>{item.name}</span>}
-                  scale={0.6}
+                  scale={0.53}
                   dt={item.dt}
                   userName={'name' in item.user ? item.user.name : item.user.userName}
                   onClick={() => userRouter('id' in item.user ? item.user.id : item.user.userId)}

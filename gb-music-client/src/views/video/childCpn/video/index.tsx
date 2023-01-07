@@ -66,20 +66,20 @@ const Video: React.FC<RouteComponentProps> = (props) => {
                   <MsgItem
                     playCount={item.playCount}
                     isShowPlayCount={true}
-                    itemWidth="200px"
+                    itemWidth="180px"
                     img={
                       <Image
-                        width={200}
-                        height={120}
+                        width={180}
+                        height={110}
                         src={item.coverUrl}
                         preview={false}
                         fallback={placeholder}
-                        placeholder={<Image preview={false} src={placeholder} width={200} height={120} />}
+                        placeholder={<Image preview={false} src={placeholder} width={180} height={110} />}
                         onClick={(e) => videoRouter(item, index)}
                       />
                     }
                     state={<span>{item.name}</span>}
-                    scale={0.6}
+                    scale={0.53}
                     dt={item.dt}
                     userName={'userName' in item.user ? item.user.userName : item.user.name}
                     onClick={() => userRouter('userId' in item.user ? item.user.userId : item.user.id)}

@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import bgc from '../../../assets/img/member-bgc.png';
 export const MemberWrapper = styled.div`
-  background-color: #f5f5f5;
+  background-color: #f3f4f5;
 `;
 export const CenterContent = styled.div`
-  width: 1160px;
+  width: 1220px;
   margin: 0 auto;
-  border-left: 1px solid #d3d3d3;
-  border-right: 1px solid #d3d3d3;
   .header-msg {
     display: flex;
     align-items: flex-start;
