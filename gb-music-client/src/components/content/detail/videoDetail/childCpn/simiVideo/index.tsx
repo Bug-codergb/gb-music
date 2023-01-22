@@ -53,11 +53,11 @@ const SimiVideo: FC<IProps> = memo((props): ReactElement => {
             item.id !== vid && (
               <li key={item.id}>
                 <SimiItem
-                  itemWidth="130px"
+                  itemWidth="140px"
                   userName={'userName' in item.user ? item.user.userName : item.user.name}
                   userId={'userId' in item.user ? item.user.userId : item.user.name}
                   state={
-                    <span className="simi-video-state" title={item.name}>
+                    <span className="simi-video-state text-nowrap" title={item.name}>
                       {item.name}
                     </span>
                   }

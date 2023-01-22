@@ -14,11 +14,17 @@ export const SearchMatchWrapper = styled.div`
     padding: 3px 10px;
     background-color: #f5f5f7;
     font-size: 12px;
+    display: flex;
+    align-items: center;
+    height: 50px;
   }
   .list {
     & > li {
       font-size: 12px;
       padding: 2px 20px;
+      display: flex;
+      align-items: center;
+      height: 30px;
       &:hover {
         background-color: #f2f2f2;
         cursor: pointer;

@@ -45,8 +45,8 @@ export const CenterContent = styled.div`
       }
       .count {
         position: absolute;
-        left: 0;
-        top: 0;
+        left: 5%;
+        top: 20%;
         background-color: #ec4141;
         color: #fff;
         font-size: 12px;

@@ -147,7 +147,7 @@ const Artist: FC<RouteComponentProps> = (props): ReactElement => {
             );
           })}
         {artists &&
-          holder(artists.length, 8).map((item: number) => {
+          holder(artists.length, 9).map((item: number) => {
             return <li key={item}> </li>;
           })}
       </ul>

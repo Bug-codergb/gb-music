@@ -5,7 +5,7 @@ export const SimiItemWrapper: any = styled.div`
   .img-container {
     position: relative;
     width: ${(props) => (props as any).itemWidth};
-    height: ${(props) => parseInt((props as any).itemWidth) * 0.6 + 'px'};
+    height: ${(props) => parseInt((props as any).itemWidth) * 0.56 + 'px'};
     overflow: hidden;
     border-radius: 5px;
     img {

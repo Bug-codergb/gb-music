@@ -14,6 +14,7 @@ export const NavListWrapper = styled.div`
     font-size: 18px;
     color: #333333;
     padding-left: 30px;
+    white-space: nowrap;
     i.iconfont {
       color: #a4a4a4;
     }
@@ -21,6 +22,8 @@ export const NavListWrapper = styled.div`
   .nav-item {
     padding: 9px 70px 9px 55px;
     cursor: pointer;
+    white-space: nowrap;
+    font-size: 1vw;
     &.active {
       color: #ec4141;
     }

@@ -4,7 +4,7 @@ export const TopBarWrapper = styled.div`
   background-color: #fff;
 `;
 export const CenterContent = styled.div`
-  width: 1460px;
+  width: 97vw;
   margin: 0 auto;
   display: flex;
   align-items: center;
