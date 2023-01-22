@@ -26,6 +26,7 @@
               @define="define"
               @cancel="cancel"
               v-if="isShow"
+              file-type="audio"
               @select-file="change"
             >
               <span slot="title">名称</span>
@@ -101,7 +102,15 @@ export default {
       this.isShow = true;
     },
     change(file) {
-      this.song = file;
+      const { type } = file;
+      if(!type.includes("audio")){
+        this.$message({
+          message:"请上传音频文件",
+          type:"warning"
+        })
+      }else{
+        this.song = file;
+      }
     },
     define() {
       if (this.title.trim().length === 0) {
@@ -129,6 +138,11 @@ export default {
                 formData.append('dt', data.toString());
                 uploadSong(formData, songId).then((data) => {
                   this.isShow = false;
+
+                  getAlbumDetail(this.$route.query.albumId).then((data) => {
+                    this.albumDetail = data;
+                  });
+
                 });
               }
             });

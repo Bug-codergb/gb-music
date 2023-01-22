@@ -113,11 +113,11 @@ const routes: routerType[] = [
           }
         ]
       },
-      {
+      /*{
         path: '/Home/myMusic',
         component: myMusic,
         routes: myMusicRoutes
-      },
+      }*/
       {
         path: '/Home/moment',
         component: moment
@@ -130,6 +130,7 @@ const routes: routerType[] = [
         path: '/Home/channel',
         component: channel
       },
+      ...myMusicRoutes,
       albumRouter,
       playPageRouter,
       playlistRouter,

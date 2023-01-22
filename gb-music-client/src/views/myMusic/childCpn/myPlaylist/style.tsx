@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const MyPlayList = styled.div`
   position: relative;
+  padding: 20px;
   .create-playlist {
     display: flex;
     align-items: center;

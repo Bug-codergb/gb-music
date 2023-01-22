@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4916788",
+      "name": "22.Music-Playlist",
+      "font_class": "Music-Playlist",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "927733",
+      "name": "ico-add-user",
+      "font_class": "ico-add-user",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "2471385",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "6665573",
+      "name": "资讯动态",
+      "font_class": "airudiantubiaohuizhi-zhuanqu_zixundongtai",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    },
+    {
+      "icon_id": "7138103",
+      "name": "ios-radio",
+      "font_class": "ios-radio",
+      "unicode": "e7f4",
+      "unicode_decimal": 59380
+    },
+    {
+      "icon_id": "9687983",
+      "name": "发现",
+      "font_class": "faxian",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
       "icon_id": "2076282",
       "name": " 订单",
       "font_class": "dingdan",

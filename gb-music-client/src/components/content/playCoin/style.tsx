@@ -9,22 +9,23 @@ export const PlayCoinWrapper = styled.div`
 `;
 export const CenterContent = styled.div`
   position: relative;
-  width: 1280px;
+  width: 1380px;
   margin: 0 auto;
   height: 100%;
   display: flex;
   align-items: center;
+  flex-direction: row;
   background-color: #fff;
   justify-content: space-between;
   padding: 10px 0;
   .img-container {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     overflow: hidden;
     border-radius: 5px;
     position: relative;
     img {
-      width: 55px;
+      width: 50px;
     }
     .mask {
       position: absolute;
@@ -75,12 +76,12 @@ export const CenterContent = styled.div`
   }
   .control {
     background-color: #fff;
-    width: 700px;
+    width: 800px;
     .control-btn {
       display: flex;
-      width: 450px;
+      width: 550px;
       justify-content: space-evenly;
-      margin: 0 auto;
+      margin: 12px auto 0;
       align-items: center;
       .lyric {
         cursor: pointer;
@@ -128,6 +129,9 @@ export const CenterContent = styled.div`
       justify-content: space-between;
       .progress-bar {
         width: 90%;
+        .ant-slider{
+          margin: 0!important 6px;
+        }
       }
       .ant-slider-handle {
         width: 12px;

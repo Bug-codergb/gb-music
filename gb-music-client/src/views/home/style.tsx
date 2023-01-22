@@ -11,7 +11,7 @@ export const HomeWrapper = styled.div`
     }
   }
   .gb-music-header{
-    background-color:#242424;
+    background-color:#fff;
     padding: 0 20px!important;
     box-shadow: 0 15px 20px rgba(0,0,0,.7);
     border-bottom: 1px solid #d3d3d3;

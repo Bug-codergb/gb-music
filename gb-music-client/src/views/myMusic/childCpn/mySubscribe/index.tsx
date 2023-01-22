@@ -9,7 +9,7 @@ import Channel from './childCpn/channel';
 
 const MySubscribe: FC = (): ReactElement => {
   return (
-    <div>
+    <div style={{padding:'20px'}}>
       {
         <TabControl
           list={['专辑', '歌手', '歌单', '视频', '电台']}

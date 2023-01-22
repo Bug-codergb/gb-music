@@ -106,6 +106,7 @@ class ArtistService {
                         ? `and ar.name like '%${keyword}%'`
                         : ''
                     }
+                    order by id desc
                    limit ?,?`;
       const countSQL = `select count(*) as count from artist as ar ${
         type === '0' && area === '0' ? '' : 'where'

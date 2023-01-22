@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2576717 */
-  src: url('iconfont.woff2?t=1651655018999') format('woff2'),
-       url('iconfont.woff?t=1651655018999') format('woff'),
-       url('iconfont.ttf?t=1651655018999') format('truetype');
+  src: url('iconfont.woff2?t=1674353030957') format('woff2'),
+       url('iconfont.woff?t=1674353030957') format('woff'),
+       url('iconfont.ttf?t=1674353030957') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,30 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Music-Playlist:before {
+  content: "\e60e";
+}
+
+.icon-ico-add-user:before {
+  content: "\e656";
+}
+
+.icon-shipin:before {
+  content: "\e67a";
+}
+
+.icon-airudiantubiaohuizhi-zhuanqu_zixundongtai:before {
+  content: "\e69d";
+}
+
+.icon-ios-radio:before {
+  content: "\e7f4";
+}
+
+.icon-faxian:before {
+  content: "\e61c";
 }
 
 .icon-dingdan:before {

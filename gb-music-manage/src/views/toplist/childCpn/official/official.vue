@@ -4,7 +4,10 @@
     <ul class="official-list">
       <li v-for="(item, index) in official" :key="item.id">
         <div class="img-container" @click="detailRouter(item)"
-             v-lazy-container="{selector:'img',loading:require('../../../../assets/img/holder/music-placeholder.png')}">
+             v-lazy-container="{selector:'img',
+                                loading:require('../../../../assets/img/holder/music-placeholder.png'),
+                                error:require('../../../../assets/img/holder/music-placeholder.png')
+                              }">
           <img :data-src="item.coverUrl" :alt="item.name" />
         </div>
         <div class="name" @click="detailRouter(item)">{{ item.name }}</div>

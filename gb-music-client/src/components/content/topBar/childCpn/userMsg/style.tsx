@@ -30,7 +30,7 @@ export const UserMsgWrapper = styled.div`
     font-size: 13px;
     margin: 0 5px;
     cursor: pointer;
-    color: #fff;
+    color: #333333;;
   }
   .is-vip {
     color: #eb6363;

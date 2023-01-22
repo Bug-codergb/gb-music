@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 export const MyFavoriteWrapper = styled.div`
+  padding: 20px;
   .user-favorite-list {
     & > li {
       display: flex;
@@ -86,5 +87,4 @@ export const MyFavoriteWrapper = styled.div`
     display: flex;
     justify-content: center;
   }
-  padding: 0 0 30px 0;
 `;

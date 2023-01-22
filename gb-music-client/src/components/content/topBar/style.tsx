@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const TopBarWrapper = styled.div`
   height: 63px;
-  background-color: #242424;
+  background-color: #fff;
   z-index: 99999999;
   width: 100%;
 `;
@@ -29,10 +29,10 @@ export const CenterContent = styled.div`
       font-size: 13px;
       margin: 0 5vw 0 20px;
       border-radius: 3px;
-      color: #fff;
+      color: #333333;
       cursor: pointer;
       &:hover {
-        color: #fff;
+        color: #000;
       }
     }
     .msg {
@@ -40,7 +40,7 @@ export const CenterContent = styled.div`
       position: relative;
       i {
         font-size: 20px;
-        color: #fff;
+        color: #333333;
         cursor: pointer;
       }
       .count {

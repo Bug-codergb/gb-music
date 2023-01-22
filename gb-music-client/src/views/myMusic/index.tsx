@@ -19,7 +19,7 @@ const MyMusic: FC<Iprops> = (Iprops): ReactElement => {
   return (
     <MyMusicWrapper>
       <div className="my-music-list-outer">
-        <ul className="my-music-list center-content">
+        {/*<ul className="my-music-list center-content">
           {myMusic.map((item: navListType, index: number) => {
             return (
               <li
@@ -31,9 +31,9 @@ const MyMusic: FC<Iprops> = (Iprops): ReactElement => {
               </li>
             );
           })}
-        </ul>
+        </ul>*/}
       </div>
-      <div className="my-music-content center-content">{renderRoutes(Iprops.route.routes)}</div>
+      {/*<div className="my-music-content center-content">{renderRoutes(Iprops.route.routes)}</div>*/}
     </MyMusicWrapper>
   );
 };

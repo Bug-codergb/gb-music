@@ -119,6 +119,10 @@ export default {
     showForm: {
       type: String,
       default: 'img'
+    },
+    fileType:{
+      type:String,
+      default:""
     }
   },
   methods: {
@@ -129,8 +133,13 @@ export default {
       this.$emit('contentInp', this.content);
     },
     change(e) {
-      this.imgUrl = URL.createObjectURL(e.target.files[0]);
-      this.isShowPreview = !this.isShowPreview;
+      if(e.target.files && e.target.files[0]){
+        const {type} = e.target.files[0];
+        if(type.includes(this.fileType)){
+          this.isShowPreview = !this.isShowPreview;
+          this.imgUrl = URL.createObjectURL(e.target.files[0]);
+        }
+      }
       this.$emit('select-file', e.target.files[0]);
     },
     liClick(item, index) {
