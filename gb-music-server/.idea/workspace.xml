@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2A1RaQy1pIxu0R8sT90zkh4E1fZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="E:\project\gb-music\gb-music-be\node_modules\prettier" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\project\gb-music\gb-music-be" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="" />
+      <created>1654175167893</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654175167893</updated>
+      <workItem from="1654175168931" duration="153000" />
+      <workItem from="1654222382510" duration="1790000" />
+      <workItem from="1654255138201" duration="59000" />
+      <workItem from="1654520327125" duration="21000" />
+      <workItem from="1654520357514" duration="1969000" />
+      <workItem from="1654600045022" duration="20000" />
+      <workItem from="1655423818685" duration="3370000" />
+      <workItem from="1656124276985" duration="33000" />
+      <workItem from="1657354206595" duration="741000" />
+      <workItem from="1658149792935" duration="304000" />
+      <workItem from="1658150329246" duration="270000" />
+      <workItem from="1659159713304" duration="16000" />
+      <workItem from="1662188453628" duration="13000" />
+      <workItem from="1664781967023" duration="34000" />
+      <workItem from="1664791710493" duration="169000" />
+      <workItem from="1664863066610" duration="19000" />
+      <workItem from="1664864283302" duration="852000" />
+      <workItem from="1664957898205" duration="1332000" />
+      <workItem from="1667561139586" duration="339000" />
+      <workItem from="1667561676221" duration="13000" />
+      <workItem from="1667628688854" duration="1156000" />
+      <workItem from="1668234747958" duration="17000" />
+      <workItem from="1668782315708" duration="1716000" />
+      <workItem from="1668938414998" duration="1432000" />
+      <workItem from="1668949989029" duration="212000" />
+      <workItem from="1671620376821" duration="639000" />
+      <workItem from="1672647268348" duration="6000" />
+      <workItem from="1673065129397" duration="11910000" />
+      <workItem from="1673158306830" duration="27000" />
+      <workItem from="1674350738429" duration="3105000" />
+      <workItem from="1674362523661" duration="2149000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
