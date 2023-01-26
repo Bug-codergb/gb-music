@@ -21,7 +21,7 @@ export const CenterContent = styled.div`
     justify-content: space-between;
     align-items: center;
     .innovation {
-      border: 1px solid #ec4141;
+      border: 1px solid #00aeec;
       height: 40px;
       display: flex;
       align-items: center;

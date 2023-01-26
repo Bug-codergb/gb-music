@@ -48,7 +48,7 @@ const LoginCpn: React.FC<LoginType> = (props) => {
   return (
     <LoginCpnWrapper>
       <div className="title-system-name">
-        <span className="title">gb-music</span>
+        <span className="title">ln-music</span>
       </div>
       <div className="user-name">
         <span>用户名:</span>

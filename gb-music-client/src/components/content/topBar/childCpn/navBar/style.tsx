@@ -10,12 +10,12 @@ export const NavBarWrapper = styled.div`
       display: flex;
       align-items: center;
       &.active {
-        color: #ec4141;
+        color: #7293fe;
         font-weight: bolder;
         font-size: 16px;
         background-color: #f6f6f7;
         .nav-icon{
-          color: #ec4141;
+          color: #7293fe;
         }
       }
       .nav-icon{

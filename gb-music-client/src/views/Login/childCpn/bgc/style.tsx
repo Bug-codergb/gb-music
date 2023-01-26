@@ -26,116 +26,185 @@ export const BgcWrapper = styled.div`
     height: 100vh;
   }
   // Start here
-  .container {
+  .cta-container-images {
     width: 100%;
     height: 100vh;
     background: #f3f4f5;
-
+    padding-top: 40px;
     overflow: hidden;
-  }
-  .photo-container {
+    .cta-singular-cell {
     position: relative;
-    top: -90px; // Adjust
-    left: -120px; // Adjust
-    transform: rotate(10deg);
-  }
-  .photo-cont-item {
-    display: flex;
-    width: calc(380px * 6); // 320px + 60px margin
-    .photo-item {
-      width: 320px;
+    float: left;
+    height: $ctaHeight;
+    @media (max-width: 1920px) {
       height: 200px;
-      margin-right: 60px;
-      margin-bottom: 60px;
-      border-radius: 16px;
+    }
+    .cta-even-image,
+    .cta-odd-image {
+      width: 100%;
       background-size: cover;
-      background-repeat: no-repeat;
       background-position: center;
-      box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.15);
+      background-repeat: no-repeat;
+      height: $ctaHeight;
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-filter: grayscale(1%);
+      filter: grayscale(1%);
+      @media (max-width: 576px) {
+        height: 200px;
+      }
+    }
+    .cta-even-image {
+      z-index: 10;
+    }
+    .cta-odd-image {
+      z-index: 11;
+    }
+    &:nth-child(10) {
+      width: 15%;
+    }
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(5),
+    &:nth-child(9) {
+      width: 20%;
+    }
+    &:nth-child(6),
+    &:nth-child(7),
+    &:nth-child(11) {
+      width: 25%;
+    }
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(8) {
+      width: 30%;
+    }
+    &:nth-child(12) {
+      width: 40%;
     }
   }
+}
 
-  // Every row
-  .animation-1 {
-    animation: scroller 40s linear infinite;
-    display: flex;
-    width: calc(380px * 12);
-  }
-  .animation-2 {
-    margin-left: 150px;
-    animation: scroller 30s linear infinite;
-    display: flex;
-    width: calc(380px * 12);
-  }
-  .animation-3 {
-    animation: scroller 50s linear infinite;
-    display: flex;
-    width: calc(380px * 12);
-  }
+// Images
+.image-1 {
+  background-image: url(${mv6});
+}
+.image-2 {
+  background-image: url(${mv5});
+}
+.image-3 {
+  background-image: url(${mv4});
+}
+.image-4 {
+  background-image: url(${mv3});
+}
+.image-5 {
+  background-image: url(${mv2});
+}
+.image-6 {
+  background-image: url(${mv1});
+}
+.image-7 {
+  background-image: url(${artist7});
+}
+.image-8 {
+  background-image: url(${artist2});
+}
+.image-9 {
+  background-image: url(${artist3});
+}
+.image-10 {
+  background-image: url(${artist4});
+}
+.image-11 {
+  background-image: url(${artist5});
+}
+.image-12 {
+  background-image: url(${artist6});
+}
+.image-13 {
+  background-image: url(${album1});
+}
+.image-14 {
+  background-image: url(${album2});
+}
+.image-15 {
+  background-image: url(${album3});
+}
+.image-16 {
+  background-image: url(${album4});
+}
+.image-17 {
+  background-image: url(${album5});
+}
+.image-18 {
+  background-image: url(${album6});
+}
 
-  // Animations
-  @keyframes scroller {
-    0% {
-      transform: translateX(0);
+// Animation images
+.cta-singular-cell {
+  perspective: 1000px;
+  padding-bottom: 8px;
+  padding-right: 5px;
+  .cta-internal-image-cont {
+    height: 100%;
+    transition: all 3s linear;
+    transform-style: preserve-3d;
+
+    // Animation
+    animation-name: photoFlip;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    &.flip-1 {
+      animation-delay: 1s;
     }
-    100% {
-      transform: translateX(calc(-380px * 6)); // 320px + 60px margin
+    &.flip-2 {
+      animation-delay: 2s;
+    }
+    &.flip-3 {
+      animation-delay: 4s;
+    }
+    &.flip-4 {
+      animation-delay: 6s;
+    }
+    &.flip-5 {
+      animation-delay: 8s;
+    }
+    &.flip-6 {
+      animation-delay: 5s;
+    }
+    .cta-even-image,
+    .cta-odd-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+    .cta-even-image {
+      z-index: 2;
+      transform: rotateY(0deg);
+    }
+    .cta-odd-image {
+      z-index: 1;
+      transform: rotateY(180deg);
     }
   }
+}
 
-  // All selected images
-  .photo-1 {
-    background-image: url(${artist2});
+@keyframes photoFlip {
+  0% {
+    transform: rotateY(0deg);
   }
-  .photo-2 {
-    background-image: url(${artist3});
+  20% {
+    transform: rotateY(180deg);
   }
-  .photo-3 {
-    background-image: url(${artist4});
+  80% {
+    transform: rotateY(180deg);
   }
-  .photo-4 {
-    background-image: url(${artist5});
+  100% {
+    transform: rotateY(0deg);
   }
-  .photo-5 {
-    background-image: url(${artist6});
-  }
-  .photo-6 {
-    background-image: url(${artist7});
-  }
-  .photo-7 {
-    background-image: url(${mv1});
-  }
-  .photo-8 {
-    background-image: url(${mv2});
-  }
-  .photo-9 {
-    background-image: url(${mv3});
-  }
-  .photo-10 {
-    background-image: url(${mv4});
-  }
-  .photo-11 {
-    background-image: url(${mv5});
-  }
-  .photo-12 {
-    background-image: url(${mv6});
-  }
-  .photo-13 {
-    background-image: url(${album1});
-  }
-  .photo-14 {
-    background-image: url(${album2});
-  }
-  .photo-15 {
-    background-image: url(${album3});
-  }
-  .photo-16 {
-    background-image: url(${album4});
-  }
-  .photo-17 {
-    background-image: url(${album5});
-  }
-  .photo-18 {
-    background-image: url(${album6});
-  }
+}
 `;

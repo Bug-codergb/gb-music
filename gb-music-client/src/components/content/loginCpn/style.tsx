@@ -15,12 +15,12 @@ export const LoginCpnWrapper = styled.div`
     }
   }
   .title::after {
-    content: 'gb-music';
+    content: 'ln-music';
     position: absolute;
     left: 0;
     top: 0;
     color: transparent;
-    background: linear-gradient(to right, #dc0d66, #ec4141);
+    background: linear-gradient(to right, #00aeec, #4cc4ed);
     background-clip: text;
     -webkit-background-clip: text;
     clip-path: circle(100px at 0% 50%);
@@ -44,7 +44,7 @@ export const LoginCpnWrapper = styled.div`
   .password {
     input {
       width: 260px;
-      border: 1px solid #ec4141;
+      border: 1px solid #00aeec;
       padding: 10px 22px;
       border-radius: 4px;
     }
@@ -57,7 +57,7 @@ export const LoginCpnWrapper = styled.div`
   }
   .user-name-check,
   .password-check {
-    color: #ec4141;
+    color: #00aeec;
     text-align: right;
     margin: 8px 0 15px 0;
   }
@@ -71,7 +71,7 @@ export const LoginCpnWrapper = styled.div`
     text-align: right;
     span {
       &:nth-child(2) {
-        color: #ec4141;
+        color: #00aeec;
         margin: 0 0 0 5px;
         cursor: pointer;
       }

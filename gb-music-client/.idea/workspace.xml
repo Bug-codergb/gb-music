@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../codergb-hub.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../codergb-hub.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/songList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/songList/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/detail/topicDetail/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/topicDetail/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/detail/toplistDetail/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/toplistDetail/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/video/childCpn/video/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/video/childCpn/video/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/main.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/loginCpn/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/loginCpn/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/loginCpn/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/loginCpn/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/topBar/childCpn/navBar/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/topBar/childCpn/navBar/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/topBar/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/topBar/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login/childCpn/bgc/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login/childCpn/bgc/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login/childCpn/bgc/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login/childCpn/bgc/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/discover/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/discover/style.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +88,8 @@
       <workItem from="1674362525260" duration="5778000" />
       <workItem from="1674370750939" duration="29000" />
       <workItem from="1674528902300" duration="17000" />
-      <workItem from="1674730612669" duration="2194000" />
+      <workItem from="1674730612669" duration="2496000" />
+      <workItem from="1674735030701" duration="1823000" />
     </task>
     <servers />
   </component>

@@ -14,7 +14,7 @@ export const LoginWrapper = styled.div`
     .login-btn {
       width: 100%;
       padding: 11px 0;
-      background-color: #ec4141;
+      background-color: #00aeec;
       color: #fff;
       cursor: pointer;
       border-radius: 4px;

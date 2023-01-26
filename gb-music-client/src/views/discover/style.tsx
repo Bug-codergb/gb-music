@@ -27,7 +27,7 @@ export const DiscoverWrapper = styled.div`
       &.active {
         span {
           font-weight: bold;
-          border-bottom: 3px solid #ec4141;
+          border-bottom: 3px solid #7293fe;
         }
       }
     }
