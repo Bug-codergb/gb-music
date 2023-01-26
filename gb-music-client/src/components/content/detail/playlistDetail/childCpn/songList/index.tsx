@@ -47,10 +47,10 @@ const SongList: FC<IProps> = ({ songs, pId, isShowUp,tId }): ReactElement => {
                   index={index}
                   state={item.name}
                   id={item.id}
-                  creator={item.artist.name}
-                  alName={item.album.name}
-                  alId={item.album.id}
-                  arId={item.artist.id}
+                  creator={item.artist?.name}
+                  alName={item.album?.name}
+                  alId={item.album?.id}
+                  arId={item.artist?.id}
                   time={item.publishTime}
                   dt={item.duration!}
                   vip={item.vip}

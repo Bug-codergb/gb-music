@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="" />
+    <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../codergb-hub.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../codergb-hub.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +73,9 @@
       <workItem from="1673065129397" duration="11910000" />
       <workItem from="1673158306830" duration="27000" />
       <workItem from="1674350738429" duration="3105000" />
-      <workItem from="1674362523661" duration="2149000" />
+      <workItem from="1674362523661" duration="2301000" />
+      <workItem from="1674370748407" duration="43000" />
+      <workItem from="1674730599688" duration="1270000" />
     </task>
     <servers />
   </component>

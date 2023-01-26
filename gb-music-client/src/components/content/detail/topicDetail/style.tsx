@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 export const TopicDetailWrapper = styled.div`
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 `;
 export const CenterContent = styled.div`
-  width: 980px;
-  border-right: 1px solid #d3d3d3;
-  border-left: 1px solid #d3d3d3;
+  width: 1220px;
   margin: 0 auto;
   background-color: #fff;
   .header {

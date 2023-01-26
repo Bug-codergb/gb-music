@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 export const ToplistDetailWrapper = styled.div`
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 `;
 export const CenterContentWrapper = styled.div`
-  width: 1190px;
+  width: 1220px;
   margin: 0 auto;
   background-color: #fff;
-  border-right: 1px solid #d3d3d3;
-  border-left: 1px solid #d3d3d3;
   display: flex;
   align-items: flex-start;
 `;

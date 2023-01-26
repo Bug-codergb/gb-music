@@ -99,6 +99,7 @@ export default {
 .toplist {
   display: flex;
   background-color: #fff;
+  height: 90vh;
 }
 .left-content {
   /*height: 645px;*/

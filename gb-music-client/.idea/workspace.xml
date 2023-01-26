@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../codergb-hub.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../codergb-hub.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/songList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/songList/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/topicDetail/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/topicDetail/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/toplistDetail/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/toplistDetail/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/video/childCpn/video/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/video/childCpn/video/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2A2zE6tI779afNZRcKdhXu4eDvZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="D:\AntSoftware\Jetbrains Webstrom\WebStorm 2021.1.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\gb-music\gb-music-client\public" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="" />
+      <created>1654222355880</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654222355880</updated>
+      <workItem from="1654222358624" duration="1829000" />
+      <workItem from="1654255140997" duration="46000" />
+      <workItem from="1654421176698" duration="101000" />
+      <workItem from="1654421655311" duration="1880000" />
+      <workItem from="1654520320962" duration="5000" />
+      <workItem from="1654520349694" duration="2545000" />
+      <workItem from="1654600046083" duration="38000" />
+      <workItem from="1654600092416" duration="12000" />
+      <workItem from="1655423806094" duration="1825000" />
+      <workItem from="1656124277735" duration="20000" />
+      <workItem from="1657349230300" duration="80000" />
+      <workItem from="1657357090730" duration="271000" />
+      <workItem from="1658149834805" duration="269000" />
+      <workItem from="1658150326682" duration="298000" />
+      <workItem from="1664973745991" duration="634000" />
+      <workItem from="1665578392771" duration="639000" />
+      <workItem from="1665661154339" duration="2440000" />
+      <workItem from="1666525120177" duration="3000" />
+      <workItem from="1666787261782" duration="14000" />
+      <workItem from="1667121555867" duration="757000" />
+      <workItem from="1667219550051" duration="25000" />
+      <workItem from="1667561087503" duration="359000" />
+      <workItem from="1667561691217" duration="1091000" />
+      <workItem from="1667628681948" duration="6000" />
+      <workItem from="1668950027304" duration="174000" />
+      <workItem from="1669122655157" duration="93000" />
+      <workItem from="1672647239312" duration="2758000" />
+      <workItem from="1673065130569" duration="18596000" />
+      <workItem from="1673158306267" duration="35000" />
+      <workItem from="1674350750838" duration="6438000" />
+      <workItem from="1674362525260" duration="5778000" />
+      <workItem from="1674370750939" duration="29000" />
+      <workItem from="1674528902300" duration="17000" />
+      <workItem from="1674730612669" duration="2194000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -89,7 +89,7 @@ const Video: React.FC<RouteComponentProps> = (props) => {
             })}
           {video &&
             video.length !== 0 &&
-            holder(video.length, 5).map((item: number) => {
+            holder(video.length,6).map((item: number) => {
               return <li key={item}> </li>;
             })}
         </ul>
