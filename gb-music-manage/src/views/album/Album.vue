@@ -12,7 +12,8 @@
           @select-artist="selectArtist"
           @cancel="cancel"
           @define="define"
-          v-if="isShow"
+          :is-show="isShow"
+          :key="addIndex"
         >
           <span slot="title">名称</span>
           <span slot="desc-name">简介</span>
@@ -65,7 +66,8 @@ export default {
       cover: null,
       publishTime: '',
       isShow: false,
-      keyIndex:0
+      keyIndex:0,
+      addIndex:0
     };
   },
   created() {
@@ -113,11 +115,11 @@ export default {
             let formData = new FormData();
             formData.append('album_cover', this.cover);
             uploadAlbumCover(formData, id).then((data) => {
-              console.log(data);
               if (data) {
                 this.isShow = false;
                 this.$toast.show('添加成功', 1500);
                 this.keyIndex+=1;
+                this.addIndex+=1;
               }
             });
             publishAlbum(this.arId, '发布了', id);
@@ -127,6 +129,7 @@ export default {
     },
     cancel() {
       this.isShow = false;
+      this.addIndex+=1;
     },
     addAlbum() {
       this.isShow = true;
@@ -147,10 +150,6 @@ export default {
     border: 1px solid #e0e0e0;
     .upload-album {
       display: flex;
-      position: absolute;
-      left: 60%;
-      top: 0;
-      transform: translate(-50%, 0);
       width: 80%;
     }
     .album-publish-time {

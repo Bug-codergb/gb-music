@@ -1,82 +1,89 @@
 <template>
-  <div class="upload">
-    <!--标题-->
-    <div class="state">
-      <div class="title">
-        <slot name="title"></slot>
-      </div>
-      <textarea cols="50" rows="2" @input="titleInp" v-model="title"></textarea>
-    </div>
-    <!--简介-->
-    <div class="desc">
-      <div class="desc-name">
-        <slot name="desc-name"></slot>
-      </div>
-      <textarea cols="50" rows="7" @input="contentInp" v-model="content"></textarea>
-    </div>
-    <div class="time">
-      <slot name="time"></slot>
-    </div>
-    <!--上传文件-->
-    <div class="upload-img">
-      <div class="upload-name">
-        <slot name="upload-name"></slot>
-      </div>
-      <div class="upload-preview">
-        <div class="img-content">
-          <input type="file" @change="change" v-show="!isShowPreview" />
-          <i class="iconfont icon-tupian" v-show="!isShowPreview && showForm === 'img'"></i>
-          <img :src="imgUrl" v-show="isShowPreview && showForm === 'img'" alt="" />
+  <el-dialog
+    title="添加"
+    :visible.sync="isShow"
+    top="4vh"
+    :show-close="false"
+    :close-on-click-modal="false"
+    width="38%">
+    <div class="upload">
+      <!--标题-->
+      <div class="state">
+        <div class="title">
+          <slot name="title"></slot>
         </div>
-        <slot name="vide-content" />
+        <textarea cols="50" rows="2" @input="titleInp" v-model="title"></textarea>
+      </div>
+      <!--简介-->
+      <div class="desc">
+        <div class="desc-name">
+          <slot name="desc-name"></slot>
+        </div>
+        <textarea cols="50" rows="7" @input="contentInp" v-model="content"></textarea>
+      </div>
+      <div class="time">
+        <slot name="time"></slot>
+      </div>
+      <!--上传文件-->
+      <div class="upload-img">
+        <div class="upload-name">
+          <slot name="upload-name"></slot>
+        </div>
+        <div class="upload-preview">
+          <div class="img-content">
+            <input type="file" @change="change" v-show="!isShowPreview" />
+            <i class="iconfont icon-tupian" v-show="!isShowPreview && showForm === 'img'"></i>
+            <img :src="imgUrl" v-show="isShowPreview && showForm === 'img'" alt="" />
+          </div>
+          <slot name="vide-content" />
+        </div>
+      </div>
+      <!--分类-->
+      <div class="cate" v-if="cateList.length">
+        <div class="cate-name">
+          <slot name="cate"></slot>
+        </div>
+        <ul class="cate-outer">
+          <li
+            v-for="(item, index) in cateList"
+            :key="item.id"
+            :class="{ active: currentIndex === index }"
+            @click="liClick(item, index)"
+          >
+            {{ item.name }}
+          </li>
+        </ul>
+      </div>
+      <!--歌手-->
+      <div class="artist-list" v-if="artists.length">
+        <div class="artist-title" @click="showArtist">
+          <slot name="artistTitle"></slot>
+        </div>
+        <list
+          :list="artists"
+          v-show="isShowArtist"
+          @defineArtist="defineArtist"
+          @select-artist="artistClick"
+        />
+      </div>
+      <!--专辑-->
+      <div class="album-list" v-if="albums.length">
+        <div class="album-title" @click="showAlbum">
+          <slot name="albumTitle"></slot>
+        </div>
+        <list
+          :list="albums"
+          v-show="isShowAlbum"
+          @defineArtist="defineAlbum"
+          @select-artist="albumClick"
+        />
       </div>
     </div>
-    <!--分类-->
-    <div class="cate" v-if="cateList.length">
-      <div class="cate-name">
-        <slot name="cate"></slot>
-      </div>
-      <ul class="cate-outer">
-        <li
-          v-for="(item, index) in cateList"
-          :key="item.id"
-          :class="{ active: currentIndex === index }"
-          @click="liClick(item, index)"
-        >
-          {{ item.name }}
-        </li>
-      </ul>
-    </div>
-    <!--歌手-->
-    <div class="artist-list" v-if="artists.length">
-      <div class="artist-title" @click="showArtist">
-        <slot name="artistTitle"></slot>
-      </div>
-      <list
-        :list="artists"
-        v-show="isShowArtist"
-        @defineArtist="defineArtist"
-        @select-artist="artistClick"
-      />
-    </div>
-    <!--专辑-->
-    <div class="album-list" v-if="albums.length">
-      <div class="album-title" @click="showAlbum">
-        <slot name="albumTitle"></slot>
-      </div>
-      <list
-        :list="albums"
-        v-show="isShowAlbum"
-        @defineArtist="defineAlbum"
-        @select-artist="albumClick"
-      />
-    </div>
-
-    <div class="control-btn">
-      <button @click="define">确定</button>
-      <button @click="cancel">取消</button>
-    </div>
-  </div>
+    <span slot="footer" class="dialog-footer">
+    <el-button size="small" @click="cancel">取 消</el-button>
+    <el-button size="small" type="primary" @click="define">确 定</el-button>
+  </span>
+  </el-dialog>
 </template>
 
 <script>
@@ -98,6 +105,10 @@ export default {
     };
   },
   props: {
+    isShow:{
+      type:Boolean,
+      default:false,
+    },
     cateList: {
       type: Array,
       default() {
@@ -181,18 +192,22 @@ export default {
 .upload {
   background-color: #fff;
   z-index: 99;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  padding: 40px;
+  padding: 0 10px;
   position: relative;
   .state,
   .desc {
     margin: 0 0 15px 0;
     display: flex;
+    width: 100%;
+    textarea{
+      flex: 1;
+    }
   }
   .state .title,
   .desc .desc-name {
     margin: 0 5px 0 0;
     white-space: nowrap;
+
   }
   .time {
     margin: 10px 0;

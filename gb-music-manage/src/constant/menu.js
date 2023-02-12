@@ -5,7 +5,7 @@ const menu = [
     index: '1',
     children: [
       {
-        index:'11-1',
+        index:'1-1',
         name: '歌手',
         path: '/Home/artist'
       }
@@ -17,7 +17,7 @@ const menu = [
     index: '2',
     children: [
       {
-        index:"21",
+        index:"2-1",
         name: '专辑',
         path: '/Home/album'
       }
@@ -26,15 +26,15 @@ const menu = [
   {
     name: '歌单信息',
     icon: 'iconfont icon-yinle-liebiao',
-    index: '4',
+    index: '3',
     children: [
       {
-        index: '41',
+        index: '3-1',
         name: '歌单',
         path: '/Home/playlist'
       },
       {
-        index:"42",
+        index:"3-2",
         name: '歌曲',
         path: '/Home/song'
       }
@@ -43,15 +43,15 @@ const menu = [
   {
     name: '视频信息',
     icon: 'iconfont icon-video',
-    index: '5',
+    index: '4',
     children: [
       {
-        index:"51",
+        index:"4-1",
         name: '视频',
         path: '/Home/video'
       },
       {
-        index:"52",
+        index:"4-2",
         name: 'MV',
         path: '/Home/mv'
       }
@@ -60,10 +60,10 @@ const menu = [
   {
     name: '排行榜信息',
     icon: 'iconfont icon-paixingbang',
-    index: '6',
+    index: '5',
     children: [
       {
-        index:"61",
+        index:"5-1",
         name: '排行榜',
         path: '/Home/toplist'
       }
@@ -72,10 +72,10 @@ const menu = [
   {
     name: '电台信息',
     icon: 'iconfont icon-radio',
-    index: '7',
+    index: '6',
     children: [
       {
-        index:"71",
+        index:"6-1",
         name: '电台',
         path: '/Home/channel'
       }
@@ -84,10 +84,10 @@ const menu = [
   {
     name: 'banner',
     icon: 'iconfont icon-shuffling-banner',
-    index: '8',
+    index: '7',
     children: [
       {
-        index:"81",
+        index:"7-1",
         name: 'banner',
         path: '/Home/banner'
       }
@@ -96,10 +96,10 @@ const menu = [
   {
     name: '用户管理',
     icon: 'iconfont icon-ttpodicon',
-    index: '9',
+    index: '8',
     children: [
       {
-        index:"91",
+        index:"8-1",
         name: '用户',
         path: '/Home/user'
       }
@@ -108,10 +108,10 @@ const menu = [
   {
     name:'订单管理',
     icon:"iconfont icon-dingdan",
-    index:'10',
+    index:'9',
     children: [
       {
-        index:'101',
+        index:'9-1',
         name:"订单",
         path:"/Home/order"
       }
@@ -120,10 +120,10 @@ const menu = [
   {
     name: '音乐看板',
     icon: 'iconfont icon-shujukanban',
-    index: '11',
+    index: '10',
     children: [
       {
-        index:"111",
+        index:"10-1",
         name: 'billboard',
         path: '/Home/billboard'
       }

@@ -2,7 +2,7 @@
   <div class="artist">
     <div class="left-content">
       <artist-list :key="keyIndex"/>
-      <add-artist @cancel="cancel" v-if="isShow" @success="refresh"/>
+      <add-artist @cancel="cancel" :is-show="isShow" @success="refresh"/>
     </div>
     <div class="right-content">
       <div class="avatar-outer">
@@ -36,6 +36,7 @@ export default {
     },
     refresh(){
       this.keyIndex+=1;
+      this.isShow=false;
     }
   }
 };
@@ -84,6 +85,7 @@ export default {
       border-radius: 3px;
       width: 70%;
       margin: 0 auto;
+      cursor: pointer;
     }
   }
 }
