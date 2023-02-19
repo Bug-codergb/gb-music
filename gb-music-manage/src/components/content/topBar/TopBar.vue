@@ -15,7 +15,7 @@
       </div>
       <div class="user-msg">
         <div class="avatar" @click.stop="changeShow">
-          <img :src="this.$store.state.userMsg.avatarUrl" alt="头像" />
+          <el-avatar :size="40" :src="this.$store.state.userMsg.avatarUrl"></el-avatar>
         </div>
         <div class="user-name" @click.stop="changeShow">
           {{ this.$store.state.userMsg.userName }}
@@ -146,8 +146,8 @@ export default {
     margin: 0 20px 0 0;
     position: relative;
     .avatar {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       overflow: hidden;
       border-radius: 50%;
       cursor: pointer;

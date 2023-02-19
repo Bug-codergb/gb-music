@@ -1,8 +1,9 @@
 <template>
   <div class="video">
     <div class="left-content">
-      <div class="upload-video" v-if="isShow">
+      <div class="upload-video">
         <upload
+          :is-show="isShow"
           :cate-list="cateList"
           @liClick="cateClick"
           @select-file="selectCover"
@@ -10,6 +11,7 @@
           @contentInp="contentInp"
           @define="define"
           @cancel="cancel"
+          :key="addKeyIndex"
         >
           <span slot="title">名称:</span>
           <span slot="desc-name">简介:</span>
@@ -59,7 +61,8 @@ export default {
       title: '',
       desc: '',
       isShow: false,
-      keyIndex:0
+      keyIndex:0,
+      addKeyIndex:0
     };
   },
   created() {
@@ -157,6 +160,7 @@ export default {
               this.isShowPreview = false;
 
               this.keyIndex+=1;
+              this.addKeyIndex+=1;
             });
           }
         });
@@ -164,6 +168,7 @@ export default {
     },
     cancel() {
       this.isShow = false;
+      this.addKeyIndex+=1;
     }
   }
 };
@@ -181,10 +186,7 @@ export default {
   position: relative;
   border: 1px solid #e0e0e0;
   .upload-video {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: 999;
+
     .video-container {
       position: relative;
       flex: 1;

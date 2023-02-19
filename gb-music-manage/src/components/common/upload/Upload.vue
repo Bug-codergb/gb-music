@@ -146,12 +146,18 @@ export default {
     change(e) {
       if(e.target.files && e.target.files[0]){
         const {type} = e.target.files[0];
+        console.log(type)
         if(type.includes(this.fileType)){
           this.isShowPreview = !this.isShowPreview;
           this.imgUrl = URL.createObjectURL(e.target.files[0]);
+          this.$emit('select-file', e.target.files[0]);
+        }else{
+          this.$message({
+            message:"文件类型错误",
+            type:"warning"
+          })
         }
       }
-      this.$emit('select-file', e.target.files[0]);
     },
     liClick(item, index) {
       this.currentIndex = index;

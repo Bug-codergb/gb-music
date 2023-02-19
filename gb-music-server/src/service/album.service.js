@@ -160,6 +160,7 @@ class AlbumService {
         from albumcate as ac
         LEFT JOIN album as a on a.cateId=ac.id
         where ac.id=? ${keyword.length !== 0 ? ` and a.name like '%${keyword}%'` : ''}
+        order by a.createTime desc
 		limit ?,?`;
       const result = await connection.execute(sql, [id, offset, limit]);
       return result[0];

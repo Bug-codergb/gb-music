@@ -8,12 +8,14 @@
           @select-file="change"
           @define="define"
           @cancel="cancel"
-          v-show="isShow"
+          :isShow="isShow"
           :artists="artists"
           :albums="allAlbum"
           @select-artist="selectArtist"
           @select-album="selectAlbum"
           show-form="music"
+          file-type="audio/mpeg"
+          :key="addKeyIndex"
         >
           <span slot="title">名称</span>
           <span slot="desc-name">简介</span>
@@ -76,7 +78,8 @@ export default {
       song: null,
       allAlbum: [],
       keyword: '',
-      keyIndex:0
+      keyIndex:0,
+      addKeyIndex:0
     };
   },
   created() {
@@ -133,6 +136,9 @@ export default {
                 formData.append('dt', data.toString());
                 uploadSong(formData, songId).then((data) => {
                   this.keyIndex+=1;
+                  this.addKeyIndex+=1;
+                  this.arId = "";
+                  this.alId = "";
                 });
               }
             });
@@ -142,6 +148,9 @@ export default {
     },
     cancel() {
       this.isShow = false;
+      this.addKeyIndex+=1;
+      this.arId = "";
+      this.alId = ""
     }
   }
 };
