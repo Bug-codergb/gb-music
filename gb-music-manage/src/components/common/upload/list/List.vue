@@ -74,7 +74,7 @@ export default {
     transform: translate(-50%, -50%);
     background-color: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    color: #f27a7a;
+    color: #a0cfff;
     padding: 40px 30px;
     display: flex;
     flex-direction: column;
@@ -89,7 +89,7 @@ export default {
         margin: 0 0 0 15px;
         border-radius: 4px;
         &:nth-child(1) {
-          background-color: #f27a7a;
+          background-color: #a0cfff;
           color: #fff;
         }
       }

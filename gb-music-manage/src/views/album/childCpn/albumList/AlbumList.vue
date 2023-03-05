@@ -223,7 +223,7 @@ export default {
         width: 15%;
       }
       .del-btn {
-        background-color: #f27a7a;
+        background-color: #a0cfff;
         color: #fff;
         font-size: 13px;
         padding: 5px 15px;

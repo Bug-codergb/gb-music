@@ -34,7 +34,7 @@ textarea {
   align-items: center;
 }
 .title-control .define {
-  background-color: #f56c6c;
+  background-color: #a0cfff;
   color: #fff;
   border-radius: 4px;
   padding: 5px 15px;
@@ -66,13 +66,13 @@ html {
 }
 .el-slider__bar{
   height: 5px!important;
-  background-color: #f27a7a!important;
+  background-color: #a0cfff!important;
 }
 .el-slider__button{
   width: 8px!important;
   height:8px!important;
-  background-color: #f27a7a!important;
-  border-color:#f27a7a !important;
+  background-color: #a0cfff!important;
+  border-color:#a0cfff !important;
 }
 #volume-progress .el-slider__runway {
   height: 4px !important;

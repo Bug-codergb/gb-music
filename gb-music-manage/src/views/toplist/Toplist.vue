@@ -1,13 +1,15 @@
 <template>
   <div class="toplist">
     <div class="left-content">
-      <div class="add-toplist" v-if="isShow">
+      <div class="add-toplist">
         <upload
           @select-file="selectFile"
           @define="define"
           @cancel="cancel"
+          :is-show="isShow"
           @titleInp="titleInp"
           @contentInp="contentInp"
+          :key="keyIndex"
         >
           <span slot="title">名称</span>
           <span slot="desc-name">简介</span>
@@ -46,10 +48,16 @@ export default {
       isShow: false,
       title: '',
       desc: '',
-      file: null
+      file: null,
+      keyIndex:0
     };
   },
   methods: {
+    resetForm(){
+      this.title="";
+      this.desc="";
+      this.file=null
+    },
     addToplist() {
       this.isShow = true;
     },
@@ -70,12 +78,16 @@ export default {
           formData.append('cover', this.file);
           uploadCover(formData, tId).then((data) => {
             this.isShow = false;
+            this.keyIndex+=1;
+            this.resetForm();
           });
         });
       }
     },
     cancel() {
       this.isShow = false;
+      this.keyIndex+=1;
+      this.resetForm();
     },
     refreshToplist() {
       refreshRank().then((data) => {
@@ -102,15 +114,11 @@ export default {
   height: 90vh;
 }
 .left-content {
-  /*height: 645px;*/
   overflow-y: scroll;
   width: 80%;
   position: relative;
   border: 1px solid #e0e0e0;
   .add-toplist {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
   }
   &::-webkit-scrollbar {
     width: 2px;
@@ -126,7 +134,7 @@ export default {
   }
   .refresh-btn {
     margin: 30px 0 0 0;
-    background-color: #f56c6c;
+    background-color: #a0cfff;
     color: #fff;
     padding: 8px 0;
     border-radius: 4px;

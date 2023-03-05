@@ -263,7 +263,7 @@ export default {
       border-radius: 3px;
       cursor: pointer;
       &.active {
-        background-color: #f27a7a;
+        background-color: #a0cfff;
       }
     }
   }
@@ -272,7 +272,7 @@ export default {
     display: inline-block;
     padding: 5px 10px;
     border-radius: 3px;
-    background-color: #f27a7a;
+    background-color: #a0cfff;
     color: #fff;
     margin: 0 0 5px 0;
   }
@@ -285,7 +285,7 @@ export default {
       font-size: 13px;
       padding: 5px 10px;
       &:nth-child(1) {
-        background-color: #f27a7a;
+        background-color: #a0cfff;
         color: #fff;
       }
     }

@@ -107,12 +107,12 @@ export default {
       display: flex;
       align-items:flex-end;
       width: 80%;
-      padding: 0 5px 2px 10px;
+      padding: 0 5px 5px 10px;
       overflow-x: scroll;
       margin: 0 20px;
       &::-webkit-scrollbar{
-        width: 10px;
-        height: 10px;
+        width: 0;
+        height: 0;
         background-color: rgba(140, 147, 157,.3);
         border-radius: 20%;
       }
@@ -136,7 +136,7 @@ export default {
     button {
       width: 35px;
       height: 35px;
-      background-color: #ec4141;
+      background-color: #a0cfff;
       color: #fff;
     }
   }

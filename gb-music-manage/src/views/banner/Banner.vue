@@ -73,7 +73,7 @@ export default {
     padding: 0 0 0 20px;
     .add {
       margin: 0 0 0 30px;
-      background-color: #f56c6c;
+      background-color: #a0cfff;
       padding: 8px 20px;
       color: #fff;
       border-radius: 4px;

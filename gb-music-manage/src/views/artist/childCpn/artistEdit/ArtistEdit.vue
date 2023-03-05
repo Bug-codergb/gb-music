@@ -94,7 +94,7 @@ export default {
     }
     .right-content {
       .edit {
-        color: #f56c6c;
+        color: #a0cfff;
         cursor: pointer;
       }
       .artist-name {
@@ -119,7 +119,7 @@ export default {
         margin: 15px 0 0 0;
       }
       .edit {
-        color: #f56c6c;
+        color: #a0cfff;
         cursor: pointer;
         margin: 0 0 0 30px;
       }

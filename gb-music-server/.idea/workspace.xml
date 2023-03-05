@@ -4,7 +4,6 @@
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/album.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/album.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +77,9 @@
       <workItem from="1675169489088" duration="166000" />
       <workItem from="1676201973744" duration="977000" />
       <workItem from="1676706437886" duration="77000" />
-      <workItem from="1676791315914" duration="1304000" />
+      <workItem from="1676791315914" duration="1897000" />
+      <workItem from="1676898626643" duration="39000" />
+      <workItem from="1678018477223" duration="616000" />
     </task>
     <servers />
   </component>
@@ -98,10 +99,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1676706514055">
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1676898664527">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1676706514055" />
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1676898664527" />
     <state x="97" y="166" width="602" height="594" key="find.popup" timestamp="1676797962149">
       <screen x="0" y="0" width="1536" height="816" />
     </state>

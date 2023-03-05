@@ -52,7 +52,7 @@ export default {
     justify-content: flex-end;
     margin: 20px 0 0 0;
     button {
-      background-color: #f56c6c;
+      background-color: #a0cfff;
       color: #fff;
       font-size: 13px;
       padding: 5px 15px;

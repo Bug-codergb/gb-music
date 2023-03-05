@@ -147,7 +147,7 @@ export default {
       }
       i {
         font-size: 30px;
-        color: #ec4141;
+        color: #a0cfff;
       }
     }
   }
@@ -164,7 +164,7 @@ export default {
       border-radius: 4px;
       cursor: pointer;
       &.active {
-        background-color: #f27a7a;
+        background-color: #a0cfff;
       }
     }
   }
@@ -172,7 +172,7 @@ export default {
     display: flex;
     justify-content: flex-end;
     button {
-      background-color: #ec4141;
+      background-color: #a0cfff;
       color: #fff;
       padding: 5px 15px;
       font-size: 13px;

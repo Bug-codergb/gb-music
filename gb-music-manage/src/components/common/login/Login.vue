@@ -1,6 +1,6 @@
 <template>
   <div class="login-cpn">
-    <div class="title">gb-music</div>
+    <div class="title">ln-music</div>
     <div class="user-name">
       <span>用户名:</span>
       <label>
@@ -121,7 +121,7 @@ export default {
       display: inline-block;
     }
     input {
-      border: 1px solid #ec4141;
+      border: 1px solid #a0cfff;
       padding: 10px 15px;
       margin: 0 0 0 20px;
       width: 240px;
@@ -131,7 +131,7 @@ export default {
     text-align: center;
     margin: 40px 0 30px 0;
     button {
-      background-color: #ec4141;
+      background-color: #a0cfff;
       color: #fff;
       padding: 10px 160px;
       &:hover {
@@ -143,7 +143,7 @@ export default {
   .register-tip {
     text-align: right;
     span {
-      color: #ec4141;
+      color: #a0cfff;
       margin: 0 0 0 5px;
       cursor: pointer;
       &:hover {
@@ -155,7 +155,7 @@ export default {
     text-align: right;
     font-size: 13px;
     margin: 5px 0 0 0;
-    color: #ec4141;
+    color: #a0cfff;
     height: 13px;
   }
 }

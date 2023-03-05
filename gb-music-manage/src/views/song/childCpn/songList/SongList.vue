@@ -265,7 +265,7 @@ export default {
       .is-vip {
         width: 15%;
         & > select {
-          border: 1px solid #f56c6c;
+          border: 1px solid #a0cfff;
           font-size: 13px;
           padding: 4px 10px;
           border-radius: 3px;
@@ -278,12 +278,12 @@ export default {
           margin: 0 10px 0 0;
           font-size: 12px;
           padding: 5px 15px;
-          background-color: #f68885;
+          background-color: #a0cfff;
           color: #fff;
           border-radius: 4px;
         }
         .edit-delete {
-          background-color: #f68885;
+          background-color: #a0cfff;
         }
       }
     }

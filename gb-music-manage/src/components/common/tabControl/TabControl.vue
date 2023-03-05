@@ -53,7 +53,7 @@ export default {
     cursor: pointer;
     &.active {
       span {
-        border-bottom: 3px solid #ec4141;
+        border-bottom: 3px solid #a0cfff;
         font-weight: bold;
         padding: 0 0 2px 0;
       }

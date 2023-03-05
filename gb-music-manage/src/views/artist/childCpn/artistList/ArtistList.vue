@@ -250,7 +250,7 @@ export default {
     border-radius: 10px;
     &.active {
       background-color: #fdf5f5;
-      color: #ec4141;
+      color: #a0cfff;
     }
   }
 }
@@ -295,7 +295,7 @@ export default {
     align-items: center;
   }
   .types {
-    border: 1px solid #f27a7a;
+    border: 1px solid #a0cfff;
     outline: none;
     font-size: 12px;
     padding: 4px 0;
@@ -323,7 +323,7 @@ export default {
   .checkout,
   .edit {
     padding: 4px 18px;
-    background-color: #f27a7a;
+    background-color: #a0cfff;
     color: #fff;
     font-size: 12px;
     margin: 0 10px 0 0;
@@ -338,7 +338,7 @@ export default {
   display: flex;
   justify-content: space-between;
   .define {
-    background-color: #f56c6c;
+    background-color: #a0cfff;
     color: #fff;
     border-radius: 4px;
     padding: 5px 15px;

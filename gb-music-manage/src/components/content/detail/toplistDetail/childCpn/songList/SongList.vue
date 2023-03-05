@@ -98,7 +98,7 @@ export default {
       }
       .remove {
         button {
-          background-color: #ec4141;
+          background-color: #a0cfff;
           color: #fff;
           font-size: 13px;
           padding: 4px 15px;

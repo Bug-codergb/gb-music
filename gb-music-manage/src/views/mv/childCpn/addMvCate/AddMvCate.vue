@@ -66,7 +66,7 @@ export default {
       & > li {
         font-size: 12px;
         padding: 6px 16px;
-        background-color: #f27a7a;
+        background-color: #a0cfff;
         color: #fff;
         margin: 0 10px 10px 0;
         position: relative;
@@ -83,7 +83,7 @@ export default {
           top: 0;
           cursor: pointer;
           transform: translate(-50%, -50%);
-          border: 1px solid #ec4141;
+          border: 1px solid #a0cfff;
           i {
             width: 10px;
             height: 10px;
@@ -97,13 +97,13 @@ export default {
     display: flex;
     align-items: center;
     input {
-      border: 1px solid #ec4141;
+      border: 1px solid #a0cfff;
       padding: 8px 20px;
       font-size: 13px;
       border-radius: 4px;
     }
     button {
-      background-color: #ec4141;
+      background-color: #a0cfff;
       color: #fff;
       font-size: 13px;
       padding: 6px 15px;

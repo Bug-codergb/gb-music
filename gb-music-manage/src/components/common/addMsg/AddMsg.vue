@@ -19,7 +19,7 @@ export default {
     },
     bgc: {
       type: String,
-      default: '#f27a7a'
+      default: '#a0cfff'
     }
   },
   methods: {
@@ -50,7 +50,7 @@ export default {
   color: #fff;
   cursor: pointer;
   padding: 8px 20px;
-  background-color: #f27a7a;
+  background-color: #a0cfff;
   font-size: 14px;
   border-radius: 3px;
   margin: 20px 0 0 0;

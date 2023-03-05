@@ -132,7 +132,7 @@ export default {
           width: 15%;
         }
         .price{
-          color: #f56c6c;
+          color: #a0cfff;
           font-size: 14px;
           width: 15%;
         }
@@ -157,7 +157,7 @@ export default {
             background-color: #5daf34;
           }
           .active{
-            background-color: #ec4141!important;
+            background-color: #a0cfff!important;
           }
           .status{
             margin: 0 0 0 5px;
@@ -167,7 +167,7 @@ export default {
         .control-btn{
           .del{
             cursor: pointer;
-            background-color: #f56c6c;
+            background-color: #a0cfff;
             color: #fff;
             padding: 5px 15px;
             border-radius: 4px;

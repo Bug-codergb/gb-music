@@ -117,7 +117,7 @@ export default {
       &>li{
         margin: 0 5px 5px 0;
         background-color: rgba(245, 108, 108,.15);
-        color: #ec4141;
+        color: #a0cfff;
         padding: 5px 10px;
         cursor: pointer;
         border-radius: 3px;

@@ -128,13 +128,13 @@ export default {
       }
       .is-vip {
         outline: none;
-        border: 1px solid #f56c6c;
+        border: 1px solid #a0cfff;
         font-size: 13px;
         padding: 2px 5px;
         margin: 0 50px 0 0;
       }
       .del {
-        background-color: #f56c6c;
+        background-color: #a0cfff;
         color: #fff;
         font-size: 13px;
         padding: 3px 15px;

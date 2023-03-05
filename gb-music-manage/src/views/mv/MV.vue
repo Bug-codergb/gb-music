@@ -215,7 +215,7 @@ export default {
       border-radius: 5px;
       &.active {
         background-color: #fdf5f5;
-        color: #ec4141;
+        color: #a0cfff;
       }
     }
   }
@@ -269,7 +269,7 @@ export default {
       .del {
         margin: 0 15px 0 0;
         button {
-          background-color: #f27a7a;
+          background-color: #a0cfff;
           color: #fff;
           font-size: 13px;
           padding: 5px 15px;
@@ -292,7 +292,7 @@ export default {
   justify-content: space-between;
   padding: 0 30px 0 0;
   .add-cate {
-    background-color: #f56c6c;
+    background-color: #a0cfff;
     color: #fff;
     padding: 5px 15px;
     border-radius: 5px;
@@ -306,6 +306,6 @@ export default {
 .line {
   width: 100%;
   height: 1px;
-  background-color: #f56c6c;
+  background-color: #a0cfff;
 }
 </style>

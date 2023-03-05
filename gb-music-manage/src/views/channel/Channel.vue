@@ -154,7 +154,7 @@ export default {
       justify-content: flex-end;
       margin: 0 0 15px 0;
       .btn {
-        background-color: #f56c6c;
+        background-color: #a0cfff;
         color: #ffffff;
         padding: 7px 20px;
         border-radius: 15px;
@@ -163,7 +163,7 @@ export default {
         cursor: pointer;
         font-size: 13px;
         &:hover {
-          background-color: #ec4141;
+          background-color: #a0cfff;
         }
       }
     }
@@ -179,7 +179,7 @@ export default {
       .content {
         margin: 0 0 50px 0;
         .inp {
-          border: 1px solid #ec4141;
+          border: 1px solid #a0cfff;
           padding: 8px 15px;
           margin: 0 0 0 15px;
           border-radius: 3px;
@@ -203,7 +203,7 @@ export default {
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
-          color: #ec4141;
+          color: #a0cfff;
           font-size: 22px;
         }
         img {
@@ -220,7 +220,7 @@ export default {
           cursor: pointer;
           border-radius: 4px;
           &:nth-child(1) {
-            background-color: #f56c6c;
+            background-color: #a0cfff;
             color: #fff;
           }
         }
@@ -249,16 +249,16 @@ export default {
           background-color: #f9f9f9;
         }
         &.active {
-          color: #ec4141 !important;
+          color: #a0cfff !important;
           i {
-            color: #ec4141;
+            color: #a0cfff;
           }
           .name {
-            color: #ec4141;
+            color: #a0cfff;
           }
           .create-time,
           .count {
-            color: #ec4141;
+            color: #a0cfff;
           }
         }
         &:hover {
@@ -275,7 +275,7 @@ export default {
         .control-btn {
           display: flex;
           .del {
-            background-color: #f56c6c;
+            background-color: #a0cfff;
             color: #fff;
             font-size: 13px;
             padding: 5px 15px;

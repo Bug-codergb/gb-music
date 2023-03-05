@@ -3,6 +3,50 @@
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/assets/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/common/addMsg/AddMsg.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/common/addMsg/AddMsg.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/common/cate/Cate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/common/cate/Cate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/common/crumb/Crumb.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/common/crumb/Crumb.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/common/login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/common/login/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/common/tabControl/TabControl.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/common/tabControl/TabControl.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/common/toast/Toast.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/common/toast/Toast.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/common/upload/Upload.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/common/upload/Upload.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/common/upload/list/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/common/upload/list/List.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/albumDetail/DetailAlbum.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/albumDetail/DetailAlbum.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/artistDetail/childCpn/songList/SongList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/artistDetail/childCpn/songList/SongList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/channelDetail/ChannelDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/channelDetail/ChannelDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/channelDetail/childCpn/uploadContent/UploadContent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/channelDetail/childCpn/uploadContent/UploadContent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/toplistDetail/childCpn/songList/SongList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/content/detail/toplistDetail/childCpn/songList/SongList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/content/navList/NavList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/content/navList/NavList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/components/content/topBar/TopBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/components/content/topBar/TopBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/album/childCpn/addCate/AddCate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/album/childCpn/addCate/AddCate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/album/childCpn/albumList/AlbumList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/album/childCpn/albumList/AlbumList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/album/childCpn/editAlbum/EditAlbum.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/album/childCpn/editAlbum/EditAlbum.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/artist/Artist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/artist/Artist.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/artist/childCpn/artistEdit/ArtistEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/artist/childCpn/artistEdit/ArtistEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/artist/childCpn/artistList/ArtistList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/artist/childCpn/artistList/ArtistList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/artist/childCpn/cateType/CateType.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/artist/childCpn/cateType/CateType.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/banner/Banner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/banner/Banner.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/banner/childCpn/bannerList/BannerList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/banner/childCpn/bannerList/BannerList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/banner/childCpn/upload/UploadBanner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/banner/childCpn/upload/UploadBanner.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/channel/Channel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/channel/Channel.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/login/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/mv/MV.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/mv/MV.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/mv/childCpn/addMvCate/AddMvCate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/mv/childCpn/addMvCate/AddMvCate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/order/Order.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/order/Order.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/playlist/childCpn/list/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/playlist/childCpn/list/List.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/playlist/childCpn/playlistCate/PlaylistCate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/playlist/childCpn/playlistCate/PlaylistCate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/song/Song.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/song/Song.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/song/childCpn/lyric/Lyric.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/song/childCpn/lyric/Lyric.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/song/childCpn/songList/SongList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/song/childCpn/songList/SongList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/song/childCpn/uploadMV/UploadMV.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/song/childCpn/uploadMV/UploadMV.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/toplist/Toplist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/toplist/Toplist.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/toplist/childCpn/hotToplist/HotToplist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/toplist/childCpn/hotToplist/HotToplist.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/toplist/childCpn/official/official.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/toplist/childCpn/official/official.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/user/User.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/user/User.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/video/childCpn/videoCate/VideoCate.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/video/childCpn/videoCate/VideoCate.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/src/views/video/childCpn/videoList/VideoList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/src/views/video/childCpn/videoList/VideoList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,6 +75,7 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="ts.external.directory.path" value="E:\Project\gb-music\gb-music-client\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -91,6 +136,8 @@
       <workItem from="1676692238439" duration="122000" />
       <workItem from="1676782365305" duration="167000" />
       <workItem from="1676791240046" duration="884000" />
+      <workItem from="1676898601552" duration="9000" />
+      <workItem from="1678018462428" duration="1557000" />
     </task>
     <servers />
   </component>

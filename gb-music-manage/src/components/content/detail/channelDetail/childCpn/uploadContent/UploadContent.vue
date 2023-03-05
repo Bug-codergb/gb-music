@@ -82,7 +82,7 @@ export default {
     }
     i {
       font-size: 40px;
-      color: #ec4141;
+      color: #a0cfff;
     }
   }
   .control-btn {
@@ -94,7 +94,7 @@ export default {
       margin: 0 0 0 30px;
       cursor: pointer;
       &:nth-child(1) {
-        background-color: #ec4141;
+        background-color: #a0cfff;
         color: #fff;
       }
     }

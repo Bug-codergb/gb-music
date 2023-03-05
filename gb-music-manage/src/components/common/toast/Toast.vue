@@ -33,7 +33,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #f27a7a;
+  background-color: #a0cfff;
   color: #fff;
   padding: 10px 20px;
   border-radius: 10px;

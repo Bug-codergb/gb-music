@@ -115,7 +115,7 @@ export default {
         button {
           margin: 0 15px 0 0;
           cursor: pointer;
-          background-color: #f56c6c;
+          background-color: #a0cfff;
           color: #fff;
           font-size: 13px;
           padding: 5px 15px;

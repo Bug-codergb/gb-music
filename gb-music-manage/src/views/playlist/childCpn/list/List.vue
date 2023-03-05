@@ -260,14 +260,14 @@ export default {
         color: #656565;
       }
       .cate-btn {
-        background-color: #f56c6c;
+        background-color: #a0cfff;
         color: #fff;
         font-size: 12px;
         padding: 5px 15px;
         border-radius: 4px;
       }
       .del-btn {
-        background-color: #f56c6c;
+        background-color: #a0cfff;
         color: #fff;
         padding: 5px 15px;
         font-size: 12px;
@@ -297,7 +297,7 @@ export default {
       align-items: center;
       flex-wrap: wrap;
       li {
-        background-color: #ec4141;
+        background-color: #a0cfff;
         color: #fff;
         padding: 5px 15px;
         font-size: 12px;

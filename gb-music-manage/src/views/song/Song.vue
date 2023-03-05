@@ -192,7 +192,7 @@ export default {
       margin: 0 0 0 15px;
       input {
         margin: 0 20px 0 0;
-        border: 1px solid #f27a7a;
+        border: 1px solid #a0cfff;
         padding: 10px 20px;
         border-radius: 4px;
       }
@@ -203,7 +203,7 @@ export default {
         top: 49%;
         transform: translate(-100%, -50%);
         font-size: 20px;
-        color: #f27a7a;
+        color: #a0cfff;
       }
     }
   }

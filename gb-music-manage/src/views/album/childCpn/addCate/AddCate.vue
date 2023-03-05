@@ -89,7 +89,7 @@ export default {
       & > li {
         font-size: 12px;
         padding: 6px 16px;
-        background-color: #f27a7a;
+        background-color: #a0cfff;
         color: #fff;
         margin: 0 15px 15px 0;
         position: relative;
@@ -102,7 +102,7 @@ export default {
           transform: translate(50%,-50%);
           background-color:rgba(245, 108, 108,.7);
           border-radius: 50%;
-          border: 2px solid #f56c6c;
+          border: 2px solid #a0cfff;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -120,7 +120,7 @@ export default {
           top: 0;
           cursor: pointer;
           transform: translate(-50%, -50%);
-          border: 1px solid #ec4141;
+          border: 1px solid #a0cfff;
           i {
             width: 10px;
             height: 10px;
@@ -135,13 +135,13 @@ export default {
     align-items: center;
     flex-wrap: wrap;
     input {
-      border: 1px solid #f27a7a;
+      border: 1px solid #a0cfff;
       padding: 8px 20px;
       font-size: 13px;
       border-radius: 4px;
     }
     button {
-      background-color: #f27a7a;
+      background-color: #a0cfff;
       color: #fff;
       font-size: 13px;
       padding: 6px 15px;

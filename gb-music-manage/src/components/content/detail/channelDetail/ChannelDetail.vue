@@ -223,7 +223,7 @@ export default {
     button {
       font-size: 13px;
       color: #fff;
-      background-color: #ec4141;
+      background-color: #a0cfff;
       padding: 8px 15px;
       border-radius: 15px;
       cursor: pointer;
@@ -275,7 +275,7 @@ export default {
       .btn {
         width: 20%;
         button {
-          background-color: #f56c6c;
+          background-color: #a0cfff;
           color: #fff;
           font-size: 13px;
           padding: 5px 15px;

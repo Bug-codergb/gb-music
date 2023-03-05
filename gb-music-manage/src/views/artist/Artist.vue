@@ -65,7 +65,7 @@ export default {
     .avatar-outer {
       width: 80px;
       height: 80px;
-      background-color: #ec4141;
+      background-color: #a0cfff;
       margin: 5px auto 15px;
       display: flex;
       align-items: center;
@@ -79,7 +79,7 @@ export default {
     }
     .add-artist {
       padding: 8px 20px;
-      background-color: #f27a7a;
+      background-color: #a0cfff;
       color: #fff;
       font-size: 14px;
       border-radius: 3px;

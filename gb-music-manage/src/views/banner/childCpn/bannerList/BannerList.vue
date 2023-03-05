@@ -102,7 +102,7 @@ export default {
           font-size: 16px;
         }
         .cate {
-          color: #f56c6c;
+          color: #a0cfff;
           width: 20%;
         }
         .create-time {
@@ -111,7 +111,7 @@ export default {
       .control-btn {
         width: 10%;
         button {
-          background-color: #f56c6c;
+          background-color: #a0cfff;
           color: #fff;
           font-size: 13px;
           padding: 5px 15px;

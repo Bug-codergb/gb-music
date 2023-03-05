@@ -3,9 +3,10 @@
         <el-menu
           :default-active="currentNav"
           class="el-menu-vertical-demo"
-          active-text-color="#EC4141"
+          background-color="#0c2135"
+          text-color="#b7bdc3"
+          active-text-color="#0a60bd"
           :unique-opened="true"
-          text-color="#333333"
           :collapse="isFold"
         >
           <el-submenu
@@ -72,15 +73,10 @@ export default {
 
 <style scoped lang="less">
 .nav-list {
-  background-color: #fff;
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 180px;
-    min-height: 300px;
-  }
   .gb-music-icon {
     font-size: 22px;
     margin: 0 10px 0 0;
-    color: #656565;
+    color:#b7bdc3;
   }
   .icon-shujukanban {
     font-size: 21px;
@@ -88,17 +84,26 @@ export default {
   .icon-shuffling-banner {
     font-size: 28px;
   }
+  .el-menu-item.is-active {
+    color: #fff !important;
+    background-color: #a0cfff !important;
+    width: 100% !important;
+  }
+  .el-menu{
+    border-right: none;
+  }
 }
 </style>
 <style>
-.el-submenu__title {
+.el-menu-item {
+  padding-left: 50px !important;
+}
+/*.el-submenu__title {
   display: flex;
   align-items: center;
   padding: 18px 0 18px 20px !important;
 }
-.el-menu-item {
-  padding-left: 50px !important;
-}
+
 .el-submenu .el-menu-item {
   height: 50px;
   line-height: 50px;
@@ -110,5 +115,5 @@ export default {
 }
 .el-menu{
   border-right: solid 1px #fff!important;
-}
+}*/
 </style>

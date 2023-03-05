@@ -200,7 +200,7 @@ export default {
       border-radius: 4px;
     }
     .define {
-      background-color: #f56c6c;
+      background-color: #a0cfff;
       color: #fff;
     }
   }
@@ -221,7 +221,7 @@ export default {
     }
     i {
       font-size: 40px;
-      color: #f56c6c;
+      color: #a0cfff;
     }
     img {
       height: 100%;

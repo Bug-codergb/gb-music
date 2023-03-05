@@ -61,7 +61,7 @@ export default {
     border-radius: 10px;
     &.active {
       background-color: #fdf5f5;
-      color: #ec4141;
+      color: #a0cfff;
     }
   }
 }

@@ -191,7 +191,7 @@ export default {
     font-size: 13px;
     &.active {
       background-color: #fdf5f5;
-      color: #ec4141;
+      color: #a0cfff;
     }
   }
 }
@@ -236,7 +236,7 @@ export default {
 
     .del-btn {
       margin: 10px 10px 0 0;
-      background-color: #f27a7a;
+      background-color: #a0cfff;
       color: #fff;
       padding: 5px 15px;
       font-size: 12px;

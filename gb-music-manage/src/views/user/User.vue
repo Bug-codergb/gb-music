@@ -227,7 +227,7 @@ export default {
         width: 10%;
       }
       .active {
-        color: #f56c6c;
+        color: #a0cfff;
       }
       .manage {
         width: 10%;
@@ -248,7 +248,7 @@ export default {
       .control-btn {
         button {
           margin: 0 0 0 15px;
-          background: #f56c6c;
+          background: #a0cfff;
           color: #fff;
           border-radius: 4px;
           cursor: pointer;
