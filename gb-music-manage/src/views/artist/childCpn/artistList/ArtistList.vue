@@ -30,7 +30,11 @@
              v-lazy-container="{selector:'.artist-avatar',
                                 error:require('../../../../assets/img/holder/music-placeholder.png'),
                                 loading:require('../../../../assets/img/holder/music-placeholder.png')}">
-          <img class="artist-avatar" :data-src="item.avatarUrl" alt="" />
+          <el-image
+            style="width: 60px; height: 60px;border-radius: 4px"
+            :src="item.avatarUrl"
+            :preview-src-list="[item.avatarUrl]">
+          </el-image>
         </div>
         <div class="artist-state">{{ item.name }}</div>
 
@@ -241,13 +245,14 @@ export default {
 .cate-list {
   margin: 20px 0 15px 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   li {
     margin: 0 20px 5px 0;
     font-size: 13px;
     padding: 3px 10px;
     cursor: pointer;
     border-radius: 10px;
+    white-space: nowrap;
     &.active {
       background-color: #fdf5f5;
       color: #a0cfff;
@@ -313,6 +318,7 @@ export default {
     .song-count {
       color: #656565;
       margin: 0 20px 0 0;
+      white-space: nowrap;
       & > span {
         color: #9b9b9b;
         font-size: 13px;

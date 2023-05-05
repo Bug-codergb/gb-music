@@ -79,7 +79,12 @@
       <workItem from="1676706437886" duration="77000" />
       <workItem from="1676791315914" duration="1897000" />
       <workItem from="1676898626643" duration="39000" />
-      <workItem from="1678018477223" duration="616000" />
+      <workItem from="1678018477223" duration="1211000" />
+      <workItem from="1678109603148" duration="9000" />
+      <workItem from="1678457591811" duration="127000" />
+      <workItem from="1678601038179" duration="1203000" />
+      <workItem from="1679058426068" duration="605000" />
+      <workItem from="1679204765101" duration="1315000" />
     </task>
     <servers />
   </component>
@@ -99,13 +104,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1676898664527">
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1678610202400">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1676898664527" />
-    <state x="97" y="166" width="602" height="594" key="find.popup" timestamp="1676797962149">
-      <screen x="0" y="0" width="1536" height="816" />
-    </state>
-    <state x="97" y="166" width="602" height="594" key="find.popup/0.0.1536.816@0.0.1536.816" timestamp="1676797962149" />
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1678610202400" />
   </component>
 </project>

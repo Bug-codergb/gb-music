@@ -6,7 +6,7 @@
         <label>
           <input type="text" v-model="cate" placeholder="请输入语种" />
         </label>
-        <button @click="addCate">添加语种</button>
+        <button @click="addCate" class="add-label">添加语种</button>
       </div>
       <ul class="cate-list">
         <li v-for="(item, index) in cateList" :key="item.id">
@@ -23,7 +23,7 @@
         <label>
           <input type="text" v-model="type" placeholder="请输入类别" />
         </label>
-        <button @click="addType">添加类别</button>
+        <button @click="addType" class="add-label">添加类别</button>
       </div>
       <ul class="cate-list">
         <li v-for="(item, index) in typeList" :key="item.id">
@@ -143,6 +143,9 @@ export default {
   margin: 20px 0 0 0;
   .cate {
     margin: 0 0 80px 0;
+    .add-label{
+      white-space: nowrap;
+    }
     p {
       text-align: left;
       margin: 0 0 5px 0;

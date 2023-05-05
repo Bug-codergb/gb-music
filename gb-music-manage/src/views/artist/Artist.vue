@@ -51,7 +51,8 @@ export default {
     /*height: 81vh;*/
     overflow-y: scroll;
     width: 75%;
-    border: 1px solid #e0e0e0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
     &::-webkit-scrollbar {
       width: 2px;
     }
