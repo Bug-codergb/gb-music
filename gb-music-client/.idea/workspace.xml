@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/loginCpn/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/loginCpn/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/app/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/app/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +108,7 @@
       <workItem from="1678610205687" duration="739000" />
       <workItem from="1679058403413" duration="21000" />
       <workItem from="1683292327766" duration="606000" />
-      <workItem from="1724849548760" duration="1631000" />
+      <workItem from="1724849548760" duration="2395000" />
     </task>
     <servers />
   </component>
