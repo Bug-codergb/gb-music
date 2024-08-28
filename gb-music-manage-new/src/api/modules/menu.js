@@ -20,8 +20,76 @@ export function getMenuListApi(params) {
         ],
         meta: {
           title: "首页",
-          icon: "Menu"
+          icon: "HomeFilled"
         }
+      },
+      {
+        path: "artist",
+        component: "/artist/index",
+        title: "歌手信息",
+        redirect: "/artist/index",
+        meta: {
+          title: "歌手管理",
+          icon: "UserFilled"
+        },
+        children: [
+          {
+            path: "/artist/index",
+            component: "/artist/index",
+            meta: {
+              title: "歌手信息",
+              icon: "Menu"
+            }
+          },
+        ]
+      },
+      {
+        path: "album",
+        component: "/album/index",
+        title: "专辑信息",
+        redirect: "/album/index",
+        meta: {
+          title: "专辑管理",
+          icon: "List"
+        },
+        children: [
+          {
+            path: "/album/index",
+            component: "/album/index",
+            meta: {
+              title: "专辑信息",
+              icon: "Menu"
+            }
+          },
+        ]
+      },
+      {
+        path: "playlist",
+        component: "/playlist/index",
+        title: "歌单管理",
+        redirect: "/playlist/index",
+        meta: {
+          title: "歌单管理",
+          icon: "UserFilled"
+        },
+        children: [
+          {
+            path: "/playlist/index",
+            component: "/playlist/index/index",
+            meta: {
+              title: "歌单信息",
+              icon: "Menu"
+            }
+          },
+          {
+            path: "/playlist/song",
+            component: "/playlist/song/index",
+            meta: {
+              title: "歌曲信息",
+              icon: "Menu"
+            }
+          },
+        ]
       },
       {
         path: "/setting/index",

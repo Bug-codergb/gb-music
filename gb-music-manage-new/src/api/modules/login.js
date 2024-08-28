@@ -1,8 +1,4 @@
+import http from "@/api";
 export function loginApi(data) {
-  return new Promise((resolve, reject) => {
-    resolve({
-      code: 200,
-      data:"success"
-    })
-  })
+  return http.post("/login", data);
 }

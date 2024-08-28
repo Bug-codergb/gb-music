@@ -61,8 +61,12 @@ const login = formEl => {
     if (!valid) return;
     loading.value = true;
     try {
-      const ret = await loginApi();
-      userStore.token = "Authorization token";
+      const res = await loginApi({
+        userName: loginForm.username,
+        password: loginForm.password
+      });
+      userStore.token = res.token;
+      userStore.userInfo = res;
 
       await initDynamicRouter();
       router.push(HOME_URL);

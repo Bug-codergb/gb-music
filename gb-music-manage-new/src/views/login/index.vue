@@ -7,7 +7,7 @@
       <div class="login-form">
         <div class="login-logo">
           <img class="login-icon" src="@/assets/logo.svg" alt="" />
-          <h2 class="logo-text">Admin-System</h2>
+          <h2 class="logo-text">{{ appName }}</h2>
         </div>
         <LoginForm />
       </div>
@@ -20,6 +20,7 @@ import { initDynamicRouter } from "@/router/modules/dynamicRouter";
 import { useRouter } from "vue-router";
 import { HOME_URL } from "@/config/index";
 const router = useRouter();
+const appName = import.meta.env.VITE_APP_NAME;
 const login = async () => {
   await initDynamicRouter();
   router.push({

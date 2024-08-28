@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client/yarn.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/.env.production" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/account/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/account/personal/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/account/system/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/data/index.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/login/components/LoginForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/login/components/LoginForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/login/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/vendor/index.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +110,7 @@
       <workItem from="1678601038179" duration="1203000" />
       <workItem from="1679058426068" duration="605000" />
       <workItem from="1679204765101" duration="1315000" />
-      <workItem from="1724847689774" duration="3458000" />
+      <workItem from="1724847689774" duration="4338000" />
     </task>
     <servers />
   </component>

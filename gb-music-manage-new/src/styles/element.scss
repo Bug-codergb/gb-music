@@ -267,3 +267,15 @@
     padding: 15px 20px;
   }
 }
+.el-tabs{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  .el-tabs__content{
+    flex:1;
+    .el-tab-pane{
+      height: 100%;
+    }
+  }
+}
