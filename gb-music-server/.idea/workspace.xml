@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client/src/components/content/loginCpn/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/src/components/content/loginCpn/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,21 +21,33 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2A1RaQy1pIxu0R8sT90zkh4E1fZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="E:\project\gb-music\gb-music-be\node_modules\prettier" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "editorconfig.notification": "lf ",
+    "last_opened_file_path": "/Users/guobin/vscode projecy/gb-music/gb-music-server",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\project\gb-music\gb-music-be" />
@@ -85,6 +105,7 @@
       <workItem from="1678601038179" duration="1203000" />
       <workItem from="1679058426068" duration="605000" />
       <workItem from="1679204765101" duration="1315000" />
+      <workItem from="1724847689774" duration="2377000" />
     </task>
     <servers />
   </component>
@@ -101,7 +122,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1678610202400">

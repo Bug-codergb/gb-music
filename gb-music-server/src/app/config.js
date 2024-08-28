@@ -27,7 +27,7 @@ const DATABASE_HOST = 'localhost';
 const DATABASE_NAME = 'cloud-music';
 const DATABASE_USER = 'root';
 const DATABASE_PORT = '3306';
-const PASSWORD = '250520';
+const PASSWORD = 'guobin250520';
 //前端
 const WEBFONT_HOST = 'http://localhost';
 const WEBFONT_PORT = 3000;

@@ -12,7 +12,7 @@ Vue.use(less);
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import themeColor from "./assets/sass/main.scss"
+//import themeColor from "./assets/sass/main.scss"
 Vue.config.productionTip = false;
 import toast from './components/common/toast/index';
 Vue.use(VueLazyload, {
@@ -32,6 +32,6 @@ Vue.directive("format",{
 new Vue({
   router,
   store,
-  themeColor,
+  
   render: (h) => h(App)
 }).$mount('#app');
