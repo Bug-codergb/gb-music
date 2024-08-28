@@ -4,7 +4,7 @@
       <div class="aside-box" :style="{ width: isCollapse ? '65px' : '210px' }">
         <div class="logo flx-center">
           <img class="logo-img" src="../../assets/logo.svg" />
-          <span v-show="!isCollapse" class="logo-text">Admin</span>
+          <span v-show="!isCollapse" class="logo-text">{{ appName }}</span>
         </div>
         <el-scrollbar>
           <el-menu :router="false" :collapse="isCollapse" :default-active="activeMenu">
@@ -32,6 +32,8 @@ import ToolBarRight from "@/layouts/components/Header/ToolBarRight.vue";
 import useAuthStore from "@/stores/modules/auth.js";
 
 import { useGlobalStore } from "@/stores/modules/global";
+
+const appName = import.meta.env.VITE_APP_NAME;
 const authStore = useAuthStore();
 const menuList = computed(() => authStore.showMenuListGet);
 
