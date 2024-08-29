@@ -86,7 +86,7 @@ const props = defineProps({
   },
   toolButton: {
     type: Boolean,
-    default: false
+    default: true
   },
   rowKey: {
     type: String,
@@ -110,3 +110,14 @@ defineExpose({
   tableRef
 });
 </script>
+<style lang="scss" scoped>
+.header-button-ri {
+  margin: 0 0 15px !important;
+}
+.header-button-lf {
+  margin: 0 0 15px !important;
+  :deep(.el-form-item) {
+    margin-bottom: 0;
+  }
+}
+</style>

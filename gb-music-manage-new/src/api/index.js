@@ -4,6 +4,7 @@ import { ElMessage } from "element-plus";
 import router from "@/router";
 import { LOGIN_URL } from "@/config/index.js";
 import { checkStatus } from "./helper/checkStatus";
+import { useUserStore } from "@/stores/modules/user"
 const config = {
   // 默认地址请求地址，可在 .env.** 文件中修改
   baseURL: import.meta.env.VITE_API_URL,
@@ -17,6 +18,10 @@ class RequestHttp {
     this.service = axios.create(config);
     this.service.interceptors.request.use(
       config => {
+        const userStore = useUserStore();
+        if (config.headers && typeof config.headers.set === "function") {
+          config.headers.set("Authorization", userStore.token);
+        }
         return config;
       },
       err => {

@@ -1,11 +1,23 @@
 <template>
   <div class="table-box">
-    <ProTable :columns="columns" :pagination="true" />
+    <ProTable :columns="columns" :pagination="true">
+      <template #tableHeader>
+        <el-form inline>
+          <el-form-item>
+            <el-input v-model="searchParam.keyword" placeholder="请输入歌手名称" />
+          </el-form-item>
+        </el-form>
+      </template>
+      <template #toolButton>
+        <el-button type="primary">添加歌手</el-button>
+      </template>
+    </ProTable>
+    <CreateArtist />
   </div>
 </template>
 <script setup>
 import { reactive } from "vue";
-
+import CreateArtist from "./components/createArtist.vue";
 import ProTable from "@/components/ProTable/index.vue";
 const columns = reactive([
   {
@@ -39,4 +51,9 @@ const columns = reactive([
     isShow: true
   }
 ]);
+
+const searchParam = reactive({
+  keyword: ""
+});
 </script>
+import createArtistVue from "./components/createArtist.vue";

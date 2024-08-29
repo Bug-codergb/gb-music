@@ -4,6 +4,7 @@ import "@/assets/iconfont/iconfont.scss";
 import "./styles/element.scss";
 import "./styles/common.scss";
 import "@/styles/reset.scss";
+import "./assets/css/cropper.css"
 // element css
 import "element-plus/dist/index.css";
 // element dark css
