@@ -19,3 +19,13 @@ export function addArtistTypeApi(data) {
 export function deleteArtistTypeApi(data) {
   return http.post("/artist/type/delete", data);
 }
+//歌手
+export function createArtistApi(data) {
+  return http.post("/artist", data);
+}
+export function uploadArtistAvatarApi(id,formData) {
+  return http.post(`/artist/upload/avatar?arId=${id}`,formData);
+}
+export function getArtistListApi(params) {
+  return http.get("/artist/cate/detail", params);
+}

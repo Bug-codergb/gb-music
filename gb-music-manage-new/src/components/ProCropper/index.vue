@@ -48,7 +48,6 @@ const showDialog = file => {
 };
 const initCropper = file => {
   if (!file) {
-    console.log(1);
     return;
   }
   if (imgRef.value) {

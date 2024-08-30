@@ -2,8 +2,7 @@
   <!-- 分页组件 -->
   <el-pagination
     :background="true"
-    :current-page="pageable.pageNum"
-    :page-size="pageable.pageSize"
+    :page-size="pageable.limit"
     :page-sizes="[10, 25, 50, 100]"
     :total="pageable.total"
     layout="total, sizes, prev, pager, next, jumper"

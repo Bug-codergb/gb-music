@@ -1,11 +1,12 @@
 <template>
   <div class="pro-form">
-    <el-form :model="formData" label-position="top">
-      <el-row v-for="(item, index) in config" :key="index" :gutter="20">
+    <el-form :model="newFormData" label-position="top" ref="formRef">
+      <el-row v-for="(item, index) in newFormConfig" :key="index" :gutter="20">
         <el-col v-for="it in item" :span="24 / item.length">
           <el-form-item
+            :prop="it.prop"
             :label="it.label"
-            :rules="{ required: !!it.require, message: `${it.label不能为空}`, trigger: ['change', 'blur'] }"
+            :rules="{ required: !!it.required, message: `${it.label}不能为空`, trigger: ['change', 'blur'] }"
           >
             <template v-if="it.tag === 'input'">
               <el-input v-bind="it.attrs" :placeholder="it.placeholder" v-model="newFormData[it.prop]" />
@@ -16,90 +17,145 @@
               </el-select>
             </template>
             <template v-if="it.tag === 'cover'">
-              <input type="file" @change="coverChange" />
+              <div class="cover-container flx-center">
+                <template v-if="!isPrevCover">
+                  <input type="file" @change="e => coverChange(e, it.prop)" />
+                  <el-icon><Picture /></el-icon>
+                </template>
+                <template v-else>
+                  <img :src="prevCoverURL" />
+                  <div class="mask flx-center" @click="handleDelCover" title="删除文件">
+                    <el-icon><Delete /></el-icon>
+                  </div>
+                </template>
+              </div>
             </template>
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
-    <ProCropper ref="proCopperRef" />
+    <ProCropper ref="proCopperRef" @confirm="handleConfirm" :aspectRatio="aspectRatio" :realWidth="realWidth" />
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, watch, computed } from "vue";
+import cloneDeep from "lodash/cloneDeep";
 import { ElMessage } from "element-plus";
 import ProCropper from "../ProCropper/index.vue";
 const props = defineProps({
+  aspectRatio: {
+    type: Number,
+    default: 16 / 9
+  },
+  realWidth: {
+    type: Number,
+    default: 300
+  },
   config: {
     type: Array,
     default() {
-      return [
-        [
-          {
-            label: "姓名",
-            prop: "name",
-            tag: "input",
-            require: true,
-            placeholder: "请输入姓名",
-            attrs: {
-              clearable: true
-            }
-          },
-          {
-            label: "封面",
-            prop: "cover"
-          }
-        ],
-        [
-          {
-            label: "分类",
-            tag: "select",
-            prop: "cate",
-            placeholder: "请选择AA",
-            attrs: {
-              clearable: true
-            },
-            options: [
-              {
-                label: "呜呜呜",
-                value: "www"
-              },
-              {
-                label: "呜1呜呜",
-                value: "www1"
-              }
-            ]
-          }
-        ],
-        [
-          {
-            label: "封面",
-            prop: "cover",
-            tag: "cover"
-          }
-        ]
-      ];
+      return [];
     }
   },
-  formData: {
+  modelValue: {
     type: Object,
     default() {
-      return {
-        name: "dwdewd",
-        cate: "www1"
-      };
+      return {};
     }
   }
 });
-const newFormData = ref(props.formData);
+const emit = defineEmits(["update:modelValue"]);
+const newFormData = ref(cloneDeep(props.modelValue));
+watch(
+  () => newFormData.value,
+  newVal => {
+    emit("update:modelValue", newVal);
+  },
+  {
+    deep: true
+  }
+);
+const newFormConfig = computed(() => props.config);
 
 const proCopperRef = ref();
-const coverChange = e => {
+const currentCoverProp = ref("");
+const coverChange = (e, prop) => {
   const file = e.currentTarget.files[0];
   if (!file.type.includes("image")) {
     ElMessage.warning("请上传图片文件");
     return;
   }
   proCopperRef.value && proCopperRef.value.showDialog(file);
+  currentCoverProp.value = prop;
 };
+
+const isPrevCover = ref(false);
+const prevCoverURL = ref("");
+const handleConfirm = file => {
+  file && (isPrevCover.value = true);
+  file && (prevCoverURL.value = URL.createObjectURL(file));
+
+  newFormData.value[currentCoverProp.value] = file;
+  formRef.value && formRef.value.clearValidate(currentCoverProp.value);
+};
+
+const handleDelCover = () => {
+  isPrevCover.value = false;
+  prevCoverURL.value = "";
+
+  newFormData.value[currentCoverProp.value] = null;
+  currentCoverProp.value = "";
+};
+const formRef = ref();
+defineExpose({
+  formRef
+});
 </script>
+<style lang="scss" scoped>
+.pro-form {
+  .cover-container {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    background-color: #fafafa;
+    input {
+      position: absolute;
+      z-index: 999;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      opacity: 0;
+    }
+    .el-icon {
+      position: absolute;
+      z-index: 98;
+      font-size: 28px;
+      color: var(--el-color-primary);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .mask {
+      position: absolute;
+      display: none;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      background-color: rgb(0 0 0 / 45%);
+      transition: display 0.3s;
+      .el-icon {
+        font-size: 40px;
+        font-weight: bolder;
+        color: #ffffff;
+      }
+    }
+    &:hover {
+      .mask {
+        display: flex;
+      }
+    }
+  }
+}
+</style>

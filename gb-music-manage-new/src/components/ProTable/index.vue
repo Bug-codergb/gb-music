@@ -15,7 +15,7 @@
         <el-table-column
           v-if="item.type && ['selection', 'index', 'expand'].includes(item.type)"
           v-bind="item"
-          :align="item.align ?? 'center'"
+          :align="item.align ?? 'left'"
         >
           <template v-if="item.type === 'expand'" #default="scope">
             <component :is="item.render" v-bind="scope" v-if="item.render"></component>
@@ -64,7 +64,7 @@ const props = defineProps({
   },
   requestAuto: {
     type: Boolean,
-    default: false
+    default: true
   },
   dataCallback: {
     type: Function,
@@ -95,10 +95,14 @@ const props = defineProps({
   searchCol: {
     type: Number,
     default: 1
+  },
+  dataAlias: {
+    type: String,
+    default: "data"
   }
 });
 const { tableData, pageable, searchParam, searchInitParam, getTableList, search, handleSizeChange, handleCurrentChange } =
-  useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, undefined);
+  useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, undefined, props.dataAlias);
 const tableRef = ref();
 onMounted(() => {
   props.requestAuto && getTableList();

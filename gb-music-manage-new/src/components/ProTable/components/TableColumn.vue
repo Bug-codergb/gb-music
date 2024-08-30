@@ -16,7 +16,7 @@ const RenderTableColumn = item => {
   return (
     <>
       {item.isShow && (
-        <el-table-column {...item} align={item.align ?? "center"}>
+        <el-table-column {...item} align={item.align ?? "left"}>
           {{
             default: scope => {
               if (item.render) return item.render(scope);

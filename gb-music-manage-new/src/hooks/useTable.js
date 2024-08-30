@@ -1,10 +1,10 @@
 import { reactive, computed, toRefs } from "vue";
-export const useTable = (api, initParam, isPageable, dataCallback, requestError) => {
+export const useTable = (api, initParam, isPageable, dataCallback, requestError,dataAlias) => {
   const state = reactive({
     tableData: [],
     pageable: {
-      pageNum: 1,
-      pageSize: 10,
+      limit: 10,
+      offset: 0,
       total: 0
     },
     searchParam: {},
@@ -14,8 +14,8 @@ export const useTable = (api, initParam, isPageable, dataCallback, requestError)
   const pageParam = computed({
     get: () => {
       return {
-        pageNum: state.pageable.pageNum,
-        pageSize: state.pageable.pageSize
+        limit: state.pageable.limit,
+        offset: state.pageable.offset
       };
     },
     set: newVal => {
@@ -28,11 +28,12 @@ export const useTable = (api, initParam, isPageable, dataCallback, requestError)
       Object.assign(state.totalParam, initParam, isPageable ? pageParam.value : {});
       
       let res = await api({ ...state.searchInitParam, ...state.totalParam });
+      console.log(res);
       let data = res.data;
       dataCallback && (data = dataCallback(res));
-      state.tableData = isPageable ? res.rows : res.data;
+      state.tableData = isPageable ? res[dataAlias] : res[dataAlias];
       if (isPageable) {
-        state.pageable.total = res.total;
+        state.pageable.total = res.count;
       }
     } catch (e) {
       requestError && requestError(e);
@@ -42,17 +43,17 @@ export const useTable = (api, initParam, isPageable, dataCallback, requestError)
   const updateTotalParam = () => {};
 
   const search = async () => {
-    state.pageable.pageNum = 1;
+    state.pageable.offset = 0;
     await getTableList();
   };
 
   const handleSizeChange = value => {
-    state.pageable.pageSize = value;
-    state.pageable.pageNum = 1;
+    state.pageable.offset = 0;
+    state.pageable.limit = value;
     getTableList();
   };
   const handleCurrentChange = val => {
-    state.pageable.pageNum = val;
+    state.pageable.offset = (val-1)*state.pageable.limit;
     getTableList();
   };
 
