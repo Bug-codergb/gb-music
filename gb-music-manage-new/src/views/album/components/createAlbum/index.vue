@@ -1,20 +1,46 @@
 <template>
-  <ProDrawer v-model="isShow" @confirm="handleConfirm" title="添加专辑">
-    <ProForm :config="config">
-      <template #artist>
-        <el-button type="primary" @click="handleSelectArtist">选择歌手</el-button>
+  <ProDrawer
+    v-model="isShow"
+    @confirm="handleConfirm"
+    title="添加专辑"
+  >
+    <ProForm
+      :config="config"
+      ref="formRef"
+      v-model="formData"
+      :aspectRatio="1"
+    >
+      <template #arId>
+        <el-form inline>
+          <el-form-item v-if="artist">
+            {{ artist?.name }}
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="handleSelectArtist"
+              >选择歌手</el-button
+            >
+          </el-form-item>
+        </el-form>
       </template>
     </ProForm>
-    <ArtistList ref="artistListRef" />
+    <ArtistList ref="artistListRef" @confirm="handleSelectd" />
   </ProDrawer>
 </template>
 <script setup>
 import { ref, reactive } from "vue";
+import { ElMessage } from "element-plus";
 import ProDrawer from "@/components/ProDrawer/index.vue";
 import ProForm from "@/components/ProForm/index.vue";
 import ArtistList from "../artistList/index";
-import { getAlbumTypeList } from "@/api/modules/album.js";
-const isShow = ref(true);
+import {
+  getAlbumTypeListApi,
+  uploadAlbumAvatarApi,
+  addAlbumApi
+} from "@/api/modules/album.js";
+
+const emit = defineEmits(["success"]);
+
+const isShow = ref(false);
 const showDrawer = () => {
   isShow.value = true;
 };
@@ -59,7 +85,10 @@ const config = reactive([
       prop: "publishTime",
       tag: "date",
       required: true,
-      placeholder: "请选择发布时间"
+      placeholder: "请选择发布时间",
+      attrs: {
+        "value-format": "YYYY-MM-DD"
+      }
     }
   ],
   [
@@ -74,12 +103,12 @@ const config = reactive([
     {
       label: "歌手",
       tag: "slot",
-      prop: "artist",
+      prop: "arId",
       required: true
     }
   ]
 ]);
-const formData = reactive({
+const formData = ref({
   arId: "",
   cateId: "",
   description: "",
@@ -89,7 +118,7 @@ const formData = reactive({
 });
 
 const typeList = ref([]);
-getAlbumTypeList().then(res => {
+getAlbumTypeListApi().then(res => {
   typeList.value = res.map(item => {
     return {
       label: item.name,
@@ -107,8 +136,27 @@ const handleSelectArtist = () => {
   artistListRef.value && artistListRef.value.showDrawer();
 };
 
-const handleConfirm = () => {};
+const artist = ref(null);
+const handleSelectd = val => {
+  artist.value = val && val.length !== 0 ? val[0] : null;
+  console.log(artist.value);
+  formData.value.arId = artist.value.id;
+};
 
+const formRef = ref();
+const handleConfirm = () => {
+  formRef.value.formRef.validate(async e => {
+    if (e) {
+      const res = await addAlbumApi(formData.value);
+      const coverFile = new FormData();
+      coverFile.append("album_cover", formData.value.cover);
+      await uploadAlbumAvatarApi(res.id, coverFile);
+      ElMessage.success("新增成功");
+      isShow.value = false;
+      emit("success");
+    }
+  });
+};
 defineExpose({
   showDrawer
 });

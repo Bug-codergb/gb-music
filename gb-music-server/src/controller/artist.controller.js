@@ -167,18 +167,23 @@ class ArtistController {
       const { id = '' } = req.body;
       if (!isEmpty(id, '歌手ID不能为空', next)) {
         const avatarFile = await getArtistAvatarService(id);
-        const { dest, filename } = avatarFile[0];
-        const filePath = path.resolve(__dirname, '../../', `${dest}/${filename}`);
-        isExistsFile(filePath)
-          .then((data) => {
-            delFile(data).then(async (data) => {
-              const result = await delArtistService(id);
-              res.json(result);
+        const { dest, filename } = avatarFile[0]||{};
+        if(dest&& filename){
+          const filePath = path.resolve(__dirname, '../../', `${dest}/${filename}`);
+          isExistsFile(filePath)
+            .then((data) => {
+              delFile(data).then(async (data) => {
+                const result = await delArtistService(id);
+                res.json(result);
+              });
+            })
+            .catch((err) => {
+              return new Error(errorType.FILE_OPERATION_FAILED);
             });
-          })
-          .catch((err) => {
-            return new Error(errorType.FILE_OPERATION_FAILED);
-          });
+        }else{
+          const result = await delArtistService(id);
+          res.json(result);
+        }
       }
     } catch (e) {
       console.log(e);

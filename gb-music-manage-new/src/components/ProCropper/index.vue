@@ -1,6 +1,11 @@
 <template>
   <div class="pro-cropper">
-    <el-dialog title="图片裁剪" v-model="isShow" width="60%" :close-on-click-modal="false">
+    <el-dialog
+      title="图片裁剪"
+      v-model="isShow"
+      width="60%"
+      :close-on-click-modal="false"
+    >
       <div class="box">
         <div class="lf">
           <img ref="imgRef" />
@@ -12,7 +17,9 @@
       <template #footer>
         <div class="dialog-footer">
           <el-button @click="handleCanacl">取消</el-button>
-          <el-button type="primary" @click="handleConfirm"> 确定 </el-button>
+          <el-button type="primary" @click="handleConfirm">
+            确定
+          </el-button>
         </div>
       </template>
     </el-dialog>
@@ -127,7 +134,7 @@ const aspectRatio = props.aspectRatio;
     justify-content: center;
     background-color: #f5f7fa;
     .small {
-      width: 70%;
+      width: 140px;
       aspect-ratio: v-bind(aspectRatio);
       overflow: hidden;
     }

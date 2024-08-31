@@ -141,7 +141,8 @@ class AlbumController {
       const { id = '', offset = '0', limit = '70', keyword = '' } = req.query;
       const countRes = await getCateAlbumCountService(id, keyword);
       let { count } = countRes;
-      const result = await getCateAlbumDetailService(id, keyword, offset, limit);
+      let result = await getCateAlbumDetailService(id, keyword, offset, limit);
+      result = result || [];
       let albumName = '';
       const album = [];
       result.forEach((item, index) => {

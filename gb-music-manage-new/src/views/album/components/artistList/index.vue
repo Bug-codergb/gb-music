@@ -1,6 +1,11 @@
 <template>
   <div>
-    <ProDrawer v-model="isShow" width="50%">
+    <ProDrawer
+      v-model="isShow"
+      width="50%"
+      title="选择歌手"
+      @confirm="handleConfirm"
+    >
       <ProTable
         ref="tableRef"
         :columns="columns"
@@ -9,6 +14,7 @@
         :pagination="true"
         dataAlias="artists"
         :initParam="searchParams"
+        :isSingleSelect="true"
       />
     </ProDrawer>
   </div>
@@ -17,7 +23,14 @@
 import { ref, reactive, nextTick } from "vue";
 import ProDrawer from "@/components/ProDrawer/index";
 import ProTable from "@/components/ProTable/index";
-import { getArtistListApi, getArtistLangApi, getArtistTypeApi } from "@/api/modules/artist.js";
+import {
+  getArtistListApi,
+  getArtistLangApi,
+  getArtistTypeApi
+} from "@/api/modules/artist.js";
+
+const emit = defineEmits(["confirm"]);
+
 const typeList = ref([]);
 const langList = ref([]);
 getArtistLangApi().then(res => {
@@ -46,7 +59,14 @@ const columns = reactive([
     isShow: true,
     width: 130,
     render: scope => {
-      return <el-avatar shape="square" src={scope.row.avatarUrl} size={70} fit={"cover"} />;
+      return (
+        <el-avatar
+          shape="square"
+          src={scope.row.avatarUrl}
+          size={70}
+          fit={"cover"}
+        />
+      );
     }
   },
   {
@@ -59,7 +79,13 @@ const columns = reactive([
         <el-select v-model={scope.row.area} disabled={true}>
           {langList.value.length !== 0 &&
             langList.value.map(item => {
-              return <el-option label={item.name} value={item.id} key={item.id}></el-option>;
+              return (
+                <el-option
+                  label={item.name}
+                  value={item.id}
+                  key={item.id}
+                ></el-option>
+              );
             })}
         </el-select>
       );
@@ -75,7 +101,13 @@ const columns = reactive([
         <el-select v-model={scope.row.type} disabled={true}>
           {typeList.value.length !== 0 &&
             typeList.value.map(item => {
-              return <el-option label={item.name} value={item.id} key={item.id}></el-option>;
+              return (
+                <el-option
+                  label={item.name}
+                  value={item.id}
+                  key={item.id}
+                ></el-option>
+              );
             })}
         </el-select>
       );
@@ -100,7 +132,17 @@ const showDrawer = () => {
     tableRef.value && tableRef.value.search();
   });
 };
+const getSelectionRows = () => {
+  return tableRef.value && tableRef.value.getSelectionRows();
+};
+
+const handleConfirm = () => {
+  const row = getSelectionRows();
+  emit("confirm", row);
+  isShow.value = false;
+};
 defineExpose({
-  showDrawer
+  showDrawer,
+  getSelectionRows
 });
 </script>

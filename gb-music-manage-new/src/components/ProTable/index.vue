@@ -8,23 +8,42 @@
         <slot name="toolButton"> </slot>
       </div>
     </div>
-    <el-table ref="tableRef" :data="data ?? tableData" :border="border">
+    <el-table
+      ref="tableRef"
+      :data="data ?? tableData"
+      :border="border"
+      @select="handleSelect"
+      @select-all="handleSelect"
+    >
       <slot></slot>
       <template v-for="item in tableColumns" :key="item">
         <!-- 特殊列 -->
         <el-table-column
-          v-if="item.type && ['selection', 'index', 'expand'].includes(item.type)"
+          v-if="
+            item.type &&
+            ['selection', 'index', 'expand'].includes(item.type)
+          "
           v-bind="item"
           :align="item.align ?? 'left'"
         >
           <template v-if="item.type === 'expand'" #default="scope">
-            <component :is="item.render" v-bind="scope" v-if="item.render"></component>
+            <component
+              :is="item.render"
+              v-bind="scope"
+              v-if="item.render"
+            ></component>
             <slot v-else :name="item.type" v-bind="scope" />
           </template>
         </el-table-column>
 
-        <TableColumn v-if="!item.type && item.prop && item.isShow" :column="item">
-          <template v-for="slot in Object.keys($slots)" #[slot]="scope">
+        <TableColumn
+          v-if="!item.type && item.prop && item.isShow"
+          :column="item"
+        >
+          <template
+            v-for="slot in Object.keys($slots)"
+            #[slot]="scope"
+          >
             <slot :name="slot" v-bind="scope"></slot>
           </template>
         </TableColumn>
@@ -45,6 +64,8 @@ import { defineProps, ref, onMounted, defineExpose } from "vue";
 import TableColumn from "./components/TableColumn.vue";
 import Pagination from "./components/Pagination.vue";
 import { useTable } from "@/hooks/useTable.js";
+
+const emit = defineEmits(["select"]);
 const props = defineProps({
   columns: {
     type: Array,
@@ -99,19 +120,53 @@ const props = defineProps({
   dataAlias: {
     type: String,
     default: "data"
+  },
+  isSingleSelect: {
+    type: Boolean,
+    default: false
   }
 });
-const { tableData, pageable, searchParam, searchInitParam, getTableList, search, handleSizeChange, handleCurrentChange } =
-  useTable(props.requestApi, props.initParam, props.pagination, props.dataCallback, undefined, props.dataAlias);
+const {
+  tableData,
+  pageable,
+  searchParam,
+  searchInitParam,
+  getTableList,
+  search,
+  handleSizeChange,
+  handleCurrentChange
+} = useTable(
+  props.requestApi,
+  props.initParam,
+  props.pagination,
+  props.dataCallback,
+  undefined,
+  props.dataAlias
+);
 const tableRef = ref();
 onMounted(() => {
   props.requestAuto && getTableList();
 });
 
 const tableColumns = ref(props.columns);
+
+const handleSelect = e => {
+  if (props.isSingleSelect) {
+    const row = e[e.length - 1] || null;
+    tableRef.value && tableRef.value.clearSelection();
+    tableRef.value && tableRef.value.toggleRowSelection(row, true);
+    emit("select", row);
+  } else {
+    emit("select", e);
+  }
+};
+const getSelectionRows = () => {
+  return tableRef.value && tableRef.value.getSelectionRows();
+};
 defineExpose({
   search,
-  tableRef
+  tableRef,
+  getSelectionRows
 });
 </script>
 <style lang="scss" scoped>

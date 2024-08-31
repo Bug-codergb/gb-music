@@ -4,7 +4,7 @@
       :columns="columns"
       :requestAuto="false"
       ref="tableRef"
-      :requestApi="getAlbumList"
+      :requestApi="getAlbumListApi"
       :initParam="searchParams"
       dataAlias="album"
       :pagination="true"
@@ -12,27 +12,46 @@
       <template #tableHeader>
         <el-form inline>
           <el-form-item label="分类">
-            <el-select v-model="searchParams.id" style="width: 200px" @change="search">
-              <el-option v-for="item in typeList" :key="item.id" :label="item.name" :value="item.id"></el-option>
+            <el-select
+              v-model="searchParams.id"
+              style="width: 200px"
+              @change="search"
+            >
+              <el-option
+                v-for="item in typeList"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id"
+              ></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="专辑名称">
-            <el-input v-model="searchParams.keyword" clearable placeholder="请输入专辑名称" @input="handleSearch" />
+            <el-input
+              v-model="searchParams.keyword"
+              clearable
+              placeholder="请输入专辑名称"
+              @input="handleSearch"
+            />
           </el-form-item>
         </el-form>
       </template>
       <template #toolButton>
-        <el-button type="primary" @click="handleCreate">新增</el-button>
+        <el-button type="primary" @click="handleCreate"
+          >新增</el-button
+        >
       </template>
     </ProTable>
-    <CreateAlbum ref="createAlbumRef" />
+    <CreateAlbum ref="createAlbumRef" @success="search" />
   </div>
 </template>
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
 import debounce from "lodash/debounce";
 import moment from "moment";
-import { getAlbumList, getAlbumTypeList } from "@/api/modules/album.js";
+import {
+  getAlbumListApi,
+  getAlbumTypeListApi
+} from "@/api/modules/album.js";
 import ProTable from "@/components/ProTable/index.vue";
 import CreateAlbum from "../createAlbum";
 const searchParams = reactive({
@@ -45,7 +64,13 @@ const columns = reactive([
     prop: "cover",
     isShow: true,
     render: scope => {
-      return <el-image src={scope.row.coverUrl} style={{ width: "80px" }} fit="cover" />;
+      return (
+        <el-image
+          src={scope.row.coverUrl}
+          style={{ width: "80px" }}
+          fit="cover"
+        />
+      );
     }
   },
   {
@@ -68,14 +93,30 @@ const columns = reactive([
     prop: "publishTime",
     isShow: true,
     render: scope => {
-      return scope.row.publishTime ? moment(Number(scope.row.publishTime)).format("yyyy-MM-DD") : "--";
+      return scope.row.publishTime
+        ? moment(scope.row.publishTime).format("yyyy-MM-DD")
+        : "--";
+    }
+  },
+  {
+    label: "操作",
+    prop: "action",
+    isShow: true,
+    render: scope => {
+      return (
+        <el-space size="large">
+          <el-link type="primary">查看</el-link>
+          <el-link type="primary">编辑</el-link>
+          <el-link type="danger">删除</el-link>
+        </el-space>
+      );
     }
   }
 ]);
 
 const tableRef = ref();
 const typeList = ref([]);
-getAlbumTypeList().then(res => {
+getAlbumTypeListApi().then(res => {
   typeList.value = res;
   if (res.length !== 0) {
     searchParams.id = res[0].id;
