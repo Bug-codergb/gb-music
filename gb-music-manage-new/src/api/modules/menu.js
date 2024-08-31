@@ -24,7 +24,7 @@ export function getMenuListApi(params) {
         }
       },
       {
-        path: "artist",
+        path: "/artist",
         component: "/artist/index",
         title: "歌手信息",
         redirect: "/artist/index",
@@ -44,7 +44,7 @@ export function getMenuListApi(params) {
         ]
       },
       {
-        path: "album",
+        path: "/album",
         component: "/album/index",
         title: "专辑信息",
         redirect: "/album/index",
@@ -64,7 +64,7 @@ export function getMenuListApi(params) {
         ]
       },
       {
-        path: "playlist",
+        path: "/playlist",
         component: "/playlist/index",
         title: "歌单管理",
         redirect: "/playlist/index",
