@@ -29,3 +29,6 @@ export function uploadArtistAvatarApi(id,formData) {
 export function getArtistListApi(params) {
   return http.get("/artist/cate/detail", params);
 }
+export function deleteArtistApi(params) {
+  return http.post("/artist/delete", params);
+}

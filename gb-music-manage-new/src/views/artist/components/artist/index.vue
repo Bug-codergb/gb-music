@@ -24,11 +24,12 @@
 </template>
 <script setup lang="jsx">
 import { reactive, ref } from "vue";
+import { ElMessageBox, ElMessage } from "element-plus";
 import debounce from "lodash/debounce";
 import CreateArtist from "./components/createArtist.vue";
 import ProTable from "@/components/ProTable/index.vue";
 
-import { getArtistListApi, getArtistLangApi, getArtistTypeApi } from "@/api/modules/artist.js";
+import { getArtistListApi, getArtistLangApi, getArtistTypeApi, deleteArtistApi } from "@/api/modules/artist.js";
 const langList = ref([]);
 const typeList = ref([]);
 getArtistLangApi().then(res => {
@@ -104,7 +105,9 @@ const columns = reactive([
         <el-space size="large">
           <el-link type="primary">查看</el-link>
           <el-link type="primary">编辑</el-link>
-          <el-link type="danger">删除</el-link>
+          <el-link type="danger" onClick={() => handleDelete(scope.row)}>
+            删除
+          </el-link>
         </el-space>
       );
     }
@@ -131,4 +134,16 @@ const search = () => {
 const handleSearch = debounce(() => {
   search();
 }, 500);
+
+const handleDelete = item => {
+  ElMessageBox.confirm("确认删除么?", "提示", {
+    type: "warning"
+  })
+    .then(async () => {
+      const res = await deleteArtistApi({ id: item.id });
+      ElMessage.success("删除成功");
+      search();
+    })
+    .catch(e => {});
+};
 </script>

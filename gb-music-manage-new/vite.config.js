@@ -24,7 +24,8 @@ export default defineConfig(({ mode }) => {
       alias: {
         "@": resolve(root, "./src"),
         "vue-i18n": "vue-i18n/dist/vue-i18n.cjs.js"
-      }
+      },
+      extensions:[".js",".jsx",".ts",".tsx",".vue"]
     },
     define: {
       __APP_INFO__: JSON.stringify(__APP_INFO__)

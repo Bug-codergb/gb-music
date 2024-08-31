@@ -16,6 +16,15 @@
                 <el-option v-for="item in it.options" :key="item.value" :value="item.value" :label="item.label"></el-option>
               </el-select>
             </template>
+            <template v-if="it.tag === 'date'">
+              <el-date-picker
+                v-model="newFormData[it.prop]"
+                style="width: 100%"
+                v-bind="it.attrs"
+                type="date"
+                :placeholder="it.placeholder"
+              />
+            </template>
             <template v-if="it.tag === 'cover'">
               <div class="cover-container flx-center">
                 <template v-if="!isPrevCover">
@@ -29,6 +38,9 @@
                   </div>
                 </template>
               </div>
+            </template>
+            <template v-if="it.tag === 'slot'">
+              <slot :name="it.prop"></slot>
             </template>
           </el-form-item>
         </el-col>
