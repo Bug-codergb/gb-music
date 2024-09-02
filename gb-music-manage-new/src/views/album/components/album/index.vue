@@ -46,11 +46,13 @@
 </template>
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
+import { ElMessageBox, ElMessage } from "element-plus";
 import debounce from "lodash/debounce";
 import moment from "moment";
 import {
   getAlbumListApi,
-  getAlbumTypeListApi
+  getAlbumTypeListApi,
+  deleteAlbumApi
 } from "@/api/modules/album.js";
 import ProTable from "@/components/ProTable/index.vue";
 import CreateAlbum from "../createAlbum";
@@ -107,7 +109,12 @@ const columns = reactive([
         <el-space size="large">
           <el-link type="primary">查看</el-link>
           <el-link type="primary">编辑</el-link>
-          <el-link type="danger">删除</el-link>
+          <el-link
+            type="danger"
+            onClick={() => handleDeleteAlbum(scope.row)}
+          >
+            删除
+          </el-link>
         </el-space>
       );
     }
@@ -135,5 +142,15 @@ const handleSearch = debounce(() => {
 const createAlbumRef = ref();
 const handleCreate = () => {
   createAlbumRef.value && createAlbumRef.value.showDrawer();
+};
+
+const handleDeleteAlbum = item => {
+  ElMessageBox.confirm("确认删除该专辑么?", "提示", {
+    type: "warning"
+  }).then(async () => {
+    const res = await deleteAlbumApi({ id: item.id });
+    ElMessage.success("删除成功");
+    handleSearch();
+  });
 };
 </script>

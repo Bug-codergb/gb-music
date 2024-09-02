@@ -70,7 +70,7 @@ export function getMenuListApi(params) {
         redirect: "/playlist/index",
         meta: {
           title: "歌单管理",
-          icon: "UserFilled"
+          icon: "List"
         },
         children: [
           {
@@ -89,6 +89,54 @@ export function getMenuListApi(params) {
               icon: "Menu"
             }
           },
+        ]
+      },
+      {
+        path: "/video",
+        component: "/video/index",
+        title: "视频信息",
+        redirect: "/video/index",
+        meta: {
+          title: "视频信息",
+          icon:"Platform"
+        },
+        children: [
+          {
+            path: "/video/index",
+            component: "/video/index",
+            meta: {
+              title: "视频管理",
+              icon: "Menu"
+            }
+          },
+          {
+            path: "/mv/index",
+            component: "/video/components/MV/index",
+            meta: {
+              title: "MV管理",
+              icon: "Menu"
+            }
+          },
+        ]
+      },
+      {
+        path: "/toplist",
+        component: "/toplist/index",
+        title: "排行榜信息",
+        redirect: "/toplist/index",
+        meta: {
+          title: "排行榜信息",
+          icon:"TrendCharts"
+        },
+        children: [
+          {
+            path: "/toplist/index",
+            component: "/toplist/index",
+            meta: {
+              title: "排行榜管理",
+              icon: "Menu"
+            }
+          }
         ]
       },
       {
@@ -135,22 +183,6 @@ export function getMenuListApi(params) {
         ],
         meta: {
           title: "系统设置",
-          icon: "Menu"
-        }
-      },
-      {
-        path: "/data/index",
-        component: "/data/index",
-        meta: {
-          title: "数据管理",
-          icon: "Menu"
-        }
-      },
-      {
-        path: "/vendor/index",
-        component: "/vendor/index",
-        meta: {
-          title: "供应商管理",
           icon: "Menu"
         }
       },

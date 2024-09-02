@@ -132,9 +132,13 @@ class PlaylistService {
   }
   //获取所有歌单分类
   async getAllCateService(offset, limit) {
-    const sql = `select id,name from playlist_cate limit ?,?`;
-    const result = await connection.execute(sql, [offset, limit]);
-    return result[0];
+    try{
+      const sql = `select id,name from playlist_cate limit ?,?`;
+      const result = await connection.execute(sql, [offset, limit]);
+      return result[0];
+    }catch(e){
+      console.log(e)
+    }
   }
   //获取分类下歌单
   async getCateDetailService(cateId, offset, limit) {

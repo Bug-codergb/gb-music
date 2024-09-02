@@ -28,10 +28,8 @@ export const useTable = (api, initParam, isPageable, dataCallback, requestError,
       Object.assign(state.totalParam, initParam, isPageable ? pageParam.value : {});
       
       let res = await api({ ...state.searchInitParam, ...state.totalParam });
-     
-      let data = res.data;
       dataCallback && (data = dataCallback(res));
-      state.tableData = isPageable ? res[dataAlias] : res[dataAlias];
+      state.tableData = isPageable ? (dataAlias ? res[dataAlias] : res) : (dataAlias ? res[dataAlias]:res);
       if (isPageable) {
         state.pageable.total = res.count;
       }

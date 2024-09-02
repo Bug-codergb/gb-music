@@ -119,7 +119,7 @@ const props = defineProps({
   },
   dataAlias: {
     type: String,
-    default: "data"
+    default: ""
   },
   isSingleSelect: {
     type: Boolean,

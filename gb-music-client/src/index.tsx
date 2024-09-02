@@ -1,9 +1,3 @@
-/*
-@Name guo'bin
-@Description gb-music
-@author guo'bin
-@date 2021/9/17
-*/
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
