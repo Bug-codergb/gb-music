@@ -140,6 +140,58 @@ export function getMenuListApi(params) {
         ]
       },
       {
+        path: "/channel",
+        component: "/channel/index",
+        title: "电台信息",
+        redirect: "/channel/index",
+        meta: {
+          title: "电台信息",
+          icon:"VideoCameraFilled"
+        },
+        children: [
+          {
+            path: "/channel/index",
+            component: "/channel/index",
+            meta: {
+              title: "电台管理",
+              icon: "Menu"
+            }
+          },
+          {
+            path: "/channel/detail/:id",
+            component: "/channel/components/channelDetail/index",
+            meta: {
+              title: "电台内容",
+              icon: "Menu",
+              activeMenu: "/channel/index",
+              isHide:true
+            }
+          }
+        ]
+      },
+      {
+        path: "/user",
+        component: "/user/index",
+        title: "用户信息",
+        redirect: "/user/index",
+        meta: {
+          title: "用户管理",
+          icon: "UserFilled"
+        },
+        children: [
+          {
+            path: "/user",
+            component: "/user/index",
+            title: "用户信息",
+            redirect: "/user/index",
+            meta: {
+              title: "用户管理",
+              icon: "Menu"
+            },
+          }
+        ]
+      },
+      {
         path: "/setting/index",
         component: "/setting/index",
         title: "系统设置",
