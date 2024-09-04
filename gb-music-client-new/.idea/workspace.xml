@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2A2zE6tI779afNZRcKdhXu4eDvZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "editorconfig.notification": "lf ",
+    "last_opened_file_path": "/Users/guobin/vscode projecy/gb-music/gb-music-client-new",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ts.external.directory.path": "/Users/guobin/vscode projecy/gb-music/gb-music-client-new/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Project\gb-music\gb-music-client\public" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="" />
+      <created>1654222355880</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654222355880</updated>
+      <workItem from="1654222358624" duration="1829000" />
+      <workItem from="1654255140997" duration="46000" />
+      <workItem from="1654421176698" duration="101000" />
+      <workItem from="1654421655311" duration="1880000" />
+      <workItem from="1654520320962" duration="5000" />
+      <workItem from="1654520349694" duration="2545000" />
+      <workItem from="1654600046083" duration="38000" />
+      <workItem from="1654600092416" duration="12000" />
+      <workItem from="1655423806094" duration="1825000" />
+      <workItem from="1656124277735" duration="20000" />
+      <workItem from="1657349230300" duration="80000" />
+      <workItem from="1657357090730" duration="271000" />
+      <workItem from="1658149834805" duration="269000" />
+      <workItem from="1658150326682" duration="298000" />
+      <workItem from="1664973745991" duration="634000" />
+      <workItem from="1665578392771" duration="639000" />
+      <workItem from="1665661154339" duration="2440000" />
+      <workItem from="1666525120177" duration="3000" />
+      <workItem from="1666787261782" duration="14000" />
+      <workItem from="1667121555867" duration="757000" />
+      <workItem from="1667219550051" duration="25000" />
+      <workItem from="1667561087503" duration="359000" />
+      <workItem from="1667561691217" duration="1091000" />
+      <workItem from="1667628681948" duration="6000" />
+      <workItem from="1668950027304" duration="174000" />
+      <workItem from="1669122655157" duration="93000" />
+      <workItem from="1672647239312" duration="2758000" />
+      <workItem from="1673065130569" duration="18596000" />
+      <workItem from="1673158306267" duration="35000" />
+      <workItem from="1674350750838" duration="6438000" />
+      <workItem from="1674362525260" duration="5778000" />
+      <workItem from="1674370750939" duration="29000" />
+      <workItem from="1674528902300" duration="17000" />
+      <workItem from="1674730612669" duration="2496000" />
+      <workItem from="1674735030701" duration="2134000" />
+      <workItem from="1675169487492" duration="156000" />
+      <workItem from="1675170383487" duration="25000" />
+      <workItem from="1675778862695" duration="1540000" />
+      <workItem from="1676181107695" duration="11000" />
+      <workItem from="1676201953749" duration="996000" />
+      <workItem from="1676635816031" duration="18000" />
+      <workItem from="1676636234258" duration="216000" />
+      <workItem from="1676692238439" duration="122000" />
+      <workItem from="1676782365305" duration="167000" />
+      <workItem from="1676791240046" duration="884000" />
+      <workItem from="1676898601552" duration="9000" />
+      <workItem from="1678018462428" duration="2194000" />
+      <workItem from="1678109605718" duration="15000" />
+      <workItem from="1678610205687" duration="739000" />
+      <workItem from="1679058403413" duration="21000" />
+      <workItem from="1683292327766" duration="606000" />
+      <workItem from="1724849548760" duration="2395000" />
+      <workItem from="1725279878009" duration="917000" />
+      <workItem from="1725453641222" duration="6688000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1679058423192">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1679058423192" />
+  </component>
+</project>

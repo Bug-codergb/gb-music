@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/layouts/LayoutVerical/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/layouts/LayoutVerical/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/controller/toplist.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/controller/toplist.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +109,7 @@
       <workItem from="1679058403413" duration="21000" />
       <workItem from="1683292327766" duration="606000" />
       <workItem from="1724849548760" duration="2395000" />
-      <workItem from="1725279878009" duration="917000" />
+      <workItem from="1725279878009" duration="2129000" />
     </task>
     <servers />
   </component>
