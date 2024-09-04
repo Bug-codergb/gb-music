@@ -169,7 +169,11 @@ class ToplistController {
             message: '删除成功'
           });
         } catch (e) {
-          console.log(e);
+          await deleteToplistService(id);
+          res.json({
+            code: 200,
+            message: '删除成功'
+          });
         }
       } else {
         res.json({

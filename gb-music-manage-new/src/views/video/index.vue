@@ -5,7 +5,7 @@
         <VideoCpn />
       </el-tab-pane>
       <el-tab-pane label="分类" name="second">
-        <MV />
+        <VideoCate />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -13,6 +13,6 @@
 <script setup>
 import { ref } from "vue";
 import VideoCpn from "./components/video/index.vue";
-import MV from "./components/MV/index.vue";
+import VideoCate from "./components/videoCate/index.vue";
 const activeName = ref("first");
 </script>

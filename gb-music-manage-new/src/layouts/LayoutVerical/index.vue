@@ -1,13 +1,23 @@
 <template>
   <el-container class="layout">
     <el-aside>
-      <div class="aside-box" :style="{ width: isCollapse ? '65px' : '210px' }">
+      <div
+        class="aside-box"
+        :style="{ width: isCollapse ? '65px' : '210px' }"
+      >
         <div class="logo flx-center">
           <img class="logo-img" src="../../assets/images/logo.png" />
-          <span v-show="!isCollapse" class="logo-text">{{ appName }}</span>
+          <span v-show="!isCollapse" class="logo-text">{{
+            appName
+          }}</span>
         </div>
         <el-scrollbar>
-          <el-menu :router="false" :collapse="isCollapse" :default-active="activeMenu">
+          <el-menu
+            :router="false"
+            :collapse="isCollapse"
+            :unique-opened="true"
+            :default-active="activeMenu"
+          >
             <SubMenu :menu-list="menuList" />
           </el-menu>
         </el-scrollbar>
@@ -41,7 +51,9 @@ const globalStore = useGlobalStore();
 const isCollapse = computed(() => globalStore.isCollapse);
 
 const route = useRoute();
-const activeMenu = computed(() => (route.meta.activeMenu ? route.meta.activeMenu : route.path));
+const activeMenu = computed(() =>
+  route.meta.activeMenu ? route.meta.activeMenu : route.path
+);
 </script>
 <style>
 .el-menu {

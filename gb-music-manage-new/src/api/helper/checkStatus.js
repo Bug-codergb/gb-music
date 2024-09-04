@@ -1,14 +1,24 @@
 import { ElMessage } from "element-plus";
+import { LOGIN_URL } from "@/config"
+import { useUserStore } from "@/stores/modules/user"
+import router from "../../router/index"
 export const checkStatus = status => {
+  const userStore = useUserStore();
   switch (status) {
     case 400:
       ElMessage.error("请求失败！请您稍后重试");
+      
       break;
     case 401:
       ElMessage.error("登录失效！请您重新登录");
+      userStore.token=""
+      router.push(LOGIN_URL)
+      
       break;
     case 403:
       ElMessage.error("当前账号无权限访问！");
+      userStore.token=""
+      router.push(LOGIN_URL)
       break;
     case 404:
       ElMessage.error("你所访问的资源不存在！");
