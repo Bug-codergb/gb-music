@@ -1,14 +1,20 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
+import { useNavigate } from 'react-router-dom';
 import { UserInoWrapper } from './styled';
 import { useDispatch } from 'react-redux';
-import { changeUserMsg, logoutAction } from '../../../../../../../views/Login/store/actionCreators';
-interface IProps extends RouteComponentProps {
+import { changeUserMsg,  } from '../../../../../../../views/Login/store';
+import {logoutAction} from "@/views/Login/store/asyncThunk"
+interface IProps {
   onClick: () => void;
 }
 const UserInfo: FC<IProps> = memo((props): ReactElement => {
   const { onClick } = props;
-  const dispatch = useDispatch();
+  const navigate=useNavigate();
+  const dispatch = useAppDispatch();
   const logout = () => {
     dispatch(logoutAction());
     dispatch(
@@ -23,17 +29,13 @@ const UserInfo: FC<IProps> = memo((props): ReactElement => {
         auth: -1
       })
     );
-    props.history.push({
-      pathname: '/Login'
-    });
+    navigate("/Login")
   };
   const infoClick = () => {
     onClick();
   };
   const vipRouter = () => {
-    props.history.push({
-      pathname: '/Home/member'
-    });
+    navigate('/Home/member')
   };
   return (
     <UserInoWrapper>
@@ -52,4 +54,4 @@ const UserInfo: FC<IProps> = memo((props): ReactElement => {
     </UserInoWrapper>
   );
 });
-export default withRouter(UserInfo);
+export default memo(UserInfo);

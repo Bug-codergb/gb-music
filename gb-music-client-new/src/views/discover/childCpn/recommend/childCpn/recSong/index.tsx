@@ -1,8 +1,10 @@
 import React, { memo, FC, ReactElement, useEffect, useState, MouseEvent } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { Map } from 'immutable';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 import { getRecSong } from '../../../../../../network/song';
 import { Image, Spin } from 'antd';
 import { RecSongWrapper } from './style';
@@ -17,18 +19,19 @@ import { ISong } from '../../../../../../constant/song';
 import { ILogin, IUserMsg } from '../../../../../../constant/store/login';
 import placeholder from '../../../../../../assets/img/holder/music-placeholder.png';
 
-const RecSong: FC<RouteComponentProps> = (props): ReactElement => {
+const RecSong: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [recSong, setRecSong] = useState<ISong[]>([]);
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
+  const { userMsg } = useAppSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => {
+    return  state.getIn['loginReducer']
+  });
   useEffect(() => {
     getRecSong<ISong[]>(0, 8).then((data) => {
       setRecSong(data);
     });
   }, []);
   //redux-hook
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const playSong = (item: ISong) => {
     const { vip } = item;
     const { auth } = userMsg;
@@ -39,8 +42,7 @@ const RecSong: FC<RouteComponentProps> = (props): ReactElement => {
   };
   const videoRouter = (item: ISong) => {
     if (item.video) {
-      props.history.push({
-        pathname: '/Home/videoDetail',
+      navigate('/Home/videoDetail',{
         state: {
           id: item.video.id
         }
@@ -48,8 +50,7 @@ const RecSong: FC<RouteComponentProps> = (props): ReactElement => {
     }
   };
   const artistRouter = (item: IArtist) => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+   navigate('/Home/artistDetail',{
       state: {
         id: item.id
       }
@@ -97,4 +98,4 @@ const RecSong: FC<RouteComponentProps> = (props): ReactElement => {
     </Spin>
   );
 };
-export default withRouter(memo(RecSong));
+export default memo(RecSong);

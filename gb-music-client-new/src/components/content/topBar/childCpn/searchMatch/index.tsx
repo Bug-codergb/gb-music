@@ -9,13 +9,14 @@ import { IAlbum } from '../../../../../constant/album';
 import { IArtist } from '../../../../../constant/artist';
 import { IPlaylist } from '../../../../../constant/playlist';
 import { changeSongDetailAction } from '../../../playCoin/store/actionCreators';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-interface IProps extends RouteComponentProps {
+interface IProps {
   keyword: string;
 }
 const SearchMatch: FC<IProps> = (props): ReactElement => {
   const { keyword } = props;
+  const navigate = useNavigate();
   const [song, setSong] = useState<ISong[]>([]);
   const [album, setAlbum] = useState<IAlbum[]>([]);
   const [artist, setArtist] = useState<IArtist[]>([]);
@@ -39,28 +40,29 @@ const SearchMatch: FC<IProps> = (props): ReactElement => {
     dispatch(changeSongDetailAction(item.id));
   };
   const artistRouter = (item: IArtist) => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
-      state: {
+    navigate("/Home/artistDetail",{
+      state:{
         id: item.id
       }
-    });
+    })
+
   };
   const playlistRouter = (item: IPlaylist) => {
-    props.history.push({
-      pathname: '/Home/playlistDetail',
-      state: {
+
+    navigate("/Home/playlistDetail",{
+      state:{
         id: item.id
       }
-    });
+    })
+
   };
   const albumRouter = (item: IAlbum) => {
-    props.history.push({
-      pathname: '/Home/albumDetail',
-      state: {
+    navigate("/Home/albumDetail",{
+      state:{
         id: item.id
       }
-    });
+    })
+
   };
   return (
     <SearchMatchWrapper>
@@ -137,4 +139,4 @@ const SearchMatch: FC<IProps> = (props): ReactElement => {
     </SearchMatchWrapper>
   );
 };
-export default withRouter(memo(SearchMatch));
+export default memo(SearchMatch);

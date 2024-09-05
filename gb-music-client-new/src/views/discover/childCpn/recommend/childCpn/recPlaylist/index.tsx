@@ -1,5 +1,5 @@
 import React, { FC, memo, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {Spin, Image, Empty} from 'antd';
 import { RecPlaylistWrapper } from './style';
 import placeholder from '../../../../../../assets/img/holder/placeholder.png';
@@ -9,8 +9,9 @@ import MsgItem from '../../../../../../components/content/msgItem';
 import { getRecPlaylist } from '../../../../../../network/playlist';
 import { IPlaylist } from '../../../../../../constant/playlist';
 
-interface IProps extends RouteComponentProps {}
+interface IProps  {}
 const RecPlaylist: FC<IProps> = (props): ReactElement => {
+  const navigate = useNavigate()
   const [recPlaylist, setRecPlay] = useState<IPlaylist[] | []>();
   useEffect(() => {
     getRecPlaylist<IPlaylist[]>(0, 10).then((data) => {
@@ -18,8 +19,7 @@ const RecPlaylist: FC<IProps> = (props): ReactElement => {
     });
   }, []);
   const playlistRouter = (item: IPlaylist, index: number) => {
-    props.history.push({
-      pathname: '/Home/playlistDetail',
+    navigate('/Home/playlistDetail',{
       state: {
         id: item.id
       }
@@ -67,4 +67,4 @@ const RecPlaylist: FC<IProps> = (props): ReactElement => {
     </Spin>
   );
 };
-export default withRouter(memo(RecPlaylist));
+export default memo(RecPlaylist);

@@ -1,12 +1,13 @@
 import React, { memo, ReactElement, FC, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {Empty, Image} from 'antd';
 import { HotChannelWrapper } from './style';
 import { getHotChannel } from '../../../../../../../network/channel';
 import placeholder from '../../../../../../../assets/img/holder/music-placeholder.png';
 import { IChannel } from '../../../../../../../constant/channel';
 
-const HotChannel: FC<RouteComponentProps> = (props): ReactElement => {
+const HotChannel: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [channel, setChannel] = useState<IChannel[]>([]);
   useEffect(() => {
     getHotChannel<IChannel[]>().then((data) => {
@@ -14,16 +15,14 @@ const HotChannel: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, []);
   const radioRouter = (item: IChannel) => {
-    props.history.push({
-      pathname: '/Home/channelDetail',
+    navigate('/Home/channelDetail',{
       state: {
         id: item.id
       }
     });
   };
   const userRouter = (item: IChannel) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.user.userId
       }
@@ -72,4 +71,4 @@ const HotChannel: FC<RouteComponentProps> = (props): ReactElement => {
     </HotChannelWrapper>
   );
 };
-export default withRouter(memo(HotChannel));
+export default memo(HotChannel);

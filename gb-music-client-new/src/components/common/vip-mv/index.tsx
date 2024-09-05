@@ -1,13 +1,7 @@
-/*
-@Name guo'bin
-@Description gb-music
-@author guo'bin
-@date 2021/10/22
-*/
 import React, { memo, ReactElement, FC, MouseEvent } from 'react';
 import { VipMvWrapper } from './style';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-interface IProps extends RouteComponentProps {
+import { useNavigate } from 'react-router-dom';
+interface IProps {
   isShowVip: boolean;
   isShowMv: boolean;
   onClick: () => void;
@@ -35,4 +29,4 @@ const VipMv: FC<IProps> = (props): ReactElement => {
     </VipMvWrapper>
   );
 };
-export default withRouter(memo(VipMv));
+export default memo(VipMv);

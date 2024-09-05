@@ -1,19 +1,18 @@
 import React, { memo, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import { navList } from '../../../../../constant/NavList';
 import { NavBarWrapper } from './style';
 import { navListType } from '../../../../../constant/NavList';
 import {myMusic} from "../../../../../constant/myMusic";
 
-const NavBar: React.FC<RouteComponentProps> = (props) => {
+const NavBar: React.FC = (props) => {
+  const navigate = useNavigate()
   const [currentIndex, setCurrentIndex] = useState(0);
   const pathname = useLocation().pathname;
   const liClick = (item: navListType, index: number) => {
     setCurrentIndex(index);
-    props.history.push({
-      pathname: item.path
-    });
+    navigate(item.path)
   };
   return (
     <NavBarWrapper>
@@ -49,4 +48,4 @@ const NavBar: React.FC<RouteComponentProps> = (props) => {
     </NavBarWrapper>
   );
 };
-export default withRouter(memo(NavBar));
+export default memo(NavBar);

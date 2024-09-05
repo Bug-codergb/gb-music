@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {loginAsyncThunk} from "./asyncThunk"
+import {loginAsyncThunk,changeUserDetailAction,} from "./asyncThunk"
 const loginSlice = createSlice({
   name:"login",
   initialState:{
@@ -17,6 +17,7 @@ const loginSlice = createSlice({
   },
   extraReducers:(builder)=>{
     builder.addCase(loginAsyncThunk.pending,()=>{}).addCase(loginAsyncThunk.fulfilled,()=>{})
+    builder.addCase(changeUserDetailAction.pending,()=>{}).addCase(changeUserDetailAction.fulfilled,()=>{})
   }
 })
 const {changeUserMsg,changeUserDetail,changeLoginType} = loginSlice.actions

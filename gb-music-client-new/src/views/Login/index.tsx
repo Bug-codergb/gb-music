@@ -1,19 +1,23 @@
 import React, { memo, useState, useRef, ReactElement } from 'react';
-import { useDispatch } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 import { CSSTransition } from 'react-transition-group';
-import { withRouter } from 'react-router-dom';
-import { RouteComponentProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 //组件
 import LoginCpn from '../../components/content/loginCpn';
 import Verify from './childCpn/verify';
 //样式
 import { LoginWrapper } from './style';
 //action
-import { loginAction } from './store/actionCreators';
+import { loginAsyncThunk } from './store/asyncThunk';
 import Bgc from './childCpn/bgc';
 
-const Login: React.FC<RouteComponentProps> = (props) => {
-  const dispatch = useDispatch();
+const Login: React.FC = (props) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [isShow, setIsShow] = useState<boolean>(false);
   const [userName, setName] = useState<string>('');
   const [password, setPass] = useState<string>('');
@@ -21,13 +25,14 @@ const Login: React.FC<RouteComponentProps> = (props) => {
   const login = (userName: string, password: string) => {
     setName(userName);
     setPass(password);
-    setIsShow(true);
+    endClick(true)
+    //setIsShow(true);
   };
   const endClick = (isSuccess: boolean) => {
     if (isSuccess) {
       setTimeout(() => {
         try {
-          dispatch(loginAction(userName, password, props));
+          dispatch(loginAsyncThunk({userName, password, navigate}));
           setIsShow(false);
         } catch (e) {
           console.log(e);
@@ -38,9 +43,7 @@ const Login: React.FC<RouteComponentProps> = (props) => {
     }
   };
   const register = () => {
-    props.history.push({
-      pathname: '/Register'
-    });
+    navigate("/Register")
   };
   const cancel = () => {
     setIsShow(false);
@@ -70,4 +73,4 @@ const Login: React.FC<RouteComponentProps> = (props) => {
     </LoginWrapper>
   );
 };
-export default withRouter(memo(Login));
+export default memo(Login);

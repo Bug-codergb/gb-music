@@ -1,17 +1,19 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { Map } from 'immutable';
 import { MessageWrapper } from './style';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 import { changeMsgAction } from './store/actionCreators';
 import { IMsgStore } from '../../../constant/store/message';
 
 const Message: FC = memo((): ReactElement => {
-  const dispatch = useDispatch();
-  const { isShow } = useSelector<Map<string, IMsgStore>, IMsgStore>((state) => {
-    return state.getIn(['messageReducer', 'message']);
+  const dispatch = useAppDispatch();
+  const { isShow } = useAppSelector(state => {
+    return state['messageReducer'];
   });
-  const { resolve } = useSelector<Map<string, IMsgStore>, IMsgStore>((state) => {
-    return state.getIn(['messageReducer', 'message']);
+  const { resolve } = useAppSelector((state) => {
+    return state['messageReducer'];
   });
   const define = () => {
     dispatch(changeMsgAction(false));

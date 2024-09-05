@@ -1,5 +1,5 @@
 import React, { FormEvent, memo, MouseEvent, useEffect, useState, useRef } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 //样式
 import { TopBarWrapper, CenterContent } from './style';
@@ -10,7 +10,8 @@ import SearchMatch from './childCpn/searchMatch';
 import Message from './childCpn/message';
 import { getAllMsg } from '../../../network/message';
 
-const TopBar: React.FC<RouteComponentProps> = (props) => {
+const TopBar: React.FC = (props) => {
+  const navigate = useNavigate()
   const [isShow, setIsShow] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>('');
   const [count, setCount] = useState<number>(10);
@@ -24,9 +25,8 @@ const TopBar: React.FC<RouteComponentProps> = (props) => {
   }, []);
   const topRef = useRef<HTMLDivElement>(null);
   const homeRouter = () => {
-    props.history.push({
-      pathname: '/Home/discover/recommend'
-    });
+    navigate('/Home/discover/recommend')
+
   };
   const searchFocus = (): void => {
     setIsShow(true);
@@ -51,15 +51,13 @@ const TopBar: React.FC<RouteComponentProps> = (props) => {
   }, []);
   const searchRouter = (): void => {
     if (keyword.trim().length !== 0) {
-      props.history.push({
-        pathname: '/Home/searchDetail'
-      });
+      navigate('/Home/searchDetail')
+
     }
   };
   const innovateClick = () => {
-    props.history.push({
-      pathname: '/Home/innovation'
-    });
+    navigate("/Home/innovation")
+
   };
   const showMsg = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation();
@@ -129,4 +127,4 @@ const TopBar: React.FC<RouteComponentProps> = (props) => {
     </TopBarWrapper>
   );
 };
-export default withRouter(memo(TopBar));
+export default memo(TopBar);

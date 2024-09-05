@@ -1,5 +1,8 @@
 import React, { memo, FC, ReactElement, useState, useEffect } from 'react';
-import { Map } from 'immutable';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 import { CSSTransition } from 'react-transition-group';
 import { ToastWrapper } from './style';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,9 +11,9 @@ import { IToastStore } from '../../../constant/store/toastStore';
 const Toast: FC = memo((): ReactElement => {
   const [isShow, setIsShow] = useState<boolean>(false);
 
-  const dispatch = useDispatch();
-  const showMsg = useSelector<Map<string, IToastStore>, IToastStore>((state) => {
-    return state.getIn(['toastReducer', 'showMsg']);
+  const dispatch = useAppDispatch();
+  const showMsg = useAppSelector((state) => {
+    return state['toastReducer'];
   });
   const { message, dt } = showMsg;
   useEffect(() => {

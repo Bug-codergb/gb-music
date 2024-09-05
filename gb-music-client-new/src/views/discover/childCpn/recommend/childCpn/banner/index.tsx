@@ -1,5 +1,8 @@
 import React, { memo, FC, ReactElement, useEffect, useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 import { Carousel, Image } from 'antd';
 import { CarouselRef } from 'antd/lib/carousel';
 import { BannerWrapper } from './style';
@@ -7,13 +10,14 @@ import { IBanner } from '../../../../../../constant/banner';
 import { getBanner } from '../../../../../../network/banner';
 
 import { changeSongDetailAction } from '../../../../../../components/content/playCoin/store/actionCreators';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import placeholder from '../../../../../../assets/img/holder/banner-holder.png';
 
-const Banner: FC<RouteComponentProps> = (props): ReactElement => {
+const Banner: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [banner, setBanner] = useState<IBanner[]>([]);
   const [picUrl, setPicUrl] = useState<string>('');
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getBanner<IBanner[]>().then((data) => {
       setBanner(data);
@@ -37,16 +41,14 @@ const Banner: FC<RouteComponentProps> = (props): ReactElement => {
         dispatch(changeSongDetailAction(item.songId!));
         break;
       case 3:
-        props.history.push({
-          pathname: '/Home/videoDetail',
+        navigate('/Home/videoDetail',{
           state: {
             id: item.vId
           }
         });
         break;
       case 2:
-        props.history.push({
-          pathname: '/Home/albumDetail',
+        navigate('/Home/albumDetail',{
           state: {
             id: item.alId
           }
@@ -98,4 +100,4 @@ const Banner: FC<RouteComponentProps> = (props): ReactElement => {
     </BannerWrapper>
   );
 };
-export default withRouter(memo(Banner));
+export default memo(Banner);

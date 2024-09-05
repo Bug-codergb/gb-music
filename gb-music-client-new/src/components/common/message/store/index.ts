@@ -1,2 +1,2 @@
-import reducer from './reducer';
-export { reducer };
+export {reducer,changeMsgShow,changeReject,changeResolve} from './slice';
+

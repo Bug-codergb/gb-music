@@ -7,8 +7,9 @@ import Album from './childCpn/album';
 import Video from './childCpn/video';
 import Playlist from './childCpn/playlist';
 import Channel from './childCpn/channel';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-const Message: FC<RouteComponentProps> = (props): ReactElement => {
+import { useNavigate } from 'react-router-dom';
+const Message: FC = (props): ReactElement => {
+  const navigate= useNavigate()
   const [count, setCount] = useState<number>(0);
   const [msg, setMsg] = useState<IMessage>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -50,9 +51,8 @@ const Message: FC<RouteComponentProps> = (props): ReactElement => {
     }
   };
   const checkoutAllMsg = () => {
-    props.history.push({
-      pathname: '/Home/msgDetail'
-    });
+    navigate('/Home/msgDetail')
+
   };
   return (
     <MessageWrapper>
@@ -88,4 +88,4 @@ const Message: FC<RouteComponentProps> = (props): ReactElement => {
     </MessageWrapper>
   );
 };
-export default withRouter(memo(Message));
+export default memo(Message);

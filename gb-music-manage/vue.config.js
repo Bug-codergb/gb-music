@@ -5,3 +5,7 @@ module.exports={
     port:7877,
   }
 }
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";

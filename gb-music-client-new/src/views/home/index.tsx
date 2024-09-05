@@ -1,8 +1,9 @@
 import React, { memo, Suspense, useEffect, useState } from 'react';
 import { Outlet, Navigate, } from 'react-router-dom';
-
-import { useSelector } from 'react-redux';
-
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 
 import { Skeleton } from 'antd';
 import { VerticalAlignTopOutlined } from '@ant-design/icons';
@@ -17,38 +18,39 @@ import useAuth from '../../hooks/useAuth/index';
 
 import { Layout } from 'antd';
 import NavBar from "../../components/content/topBar/childCpn/navBar";
+
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home: React.FC = (props) => {
-  let { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
-  const isShow = useSelector<Map<string, boolean>>((state) => {
-    return state.getIn(['vipReducer', 'isShow']);
+  let { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const isShow = useAppSelector((state) => {
+    return state['vipReducer'];
   });
   const [isShowBack, setIsShowBack] = useState<boolean>(false);
   useEffect(() => {
     if (userMsg && userMsg.userId) {
       // @ts-ignore
-      global.constant.socket = new WebSocket(`${HOST_NAME}/line/user?userId=${userMsg.userId}`);
+      //global.constant.socket = new WebSocket(`${HOST_NAME}/line/user?userId=${userMsg.userId}`);
       // @ts-ignore
-      global.constant.socket.onopen = function (e) {
+      //global.constant.socket.onopen = function (e) {
         // @ts-ignore
-        global.constant.socket.send(userMsg.userId);
-        console.log('websocket open');
-      };
+      //   global.constant.socket.send(userMsg.userId);
+      //   console.log('websocket open');
+      // };
       // @ts-ignore
-      global.constant.socket.onmessage = function (e) {
-        console.log(e.data);
-      };
+      // global.constant.socket.onmessage = function (e) {
+      //   console.log(e.data);
+      // };
       // @ts-ignore
-      global.constant.socket.onclose = function (e) {
-        console.log('websocket close');
-      };
+      // global.constant.socket.onclose = function (e) {
+      //   console.log('websocket close');
+      // };
       // @ts-ignore
-      global.constant.socket.onerror = function (e) {
-        console.log('websocket error');
-      };
+      // global.constant.socket.onerror = function (e) {
+      //   console.log('websocket error');
+      // };
     }
   }, [userMsg]);
   const backToTop = () => {
@@ -70,6 +72,8 @@ const Home: React.FC = (props) => {
     }
   };
   if (!userMsg || !userMsg.token) {
+    console.log(userMsg)
+    console.log(userMsg.token)
     return <Navigate to={'/Login'} />;
   } else {
     return (

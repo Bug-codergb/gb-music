@@ -10,7 +10,7 @@ export function setUserFavorite(id: string) {
     },
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -24,7 +24,7 @@ export function getUserFavorite(offset: number, limit: number) {
     },
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+     // authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -38,7 +38,7 @@ export function cancelFavorite(songId: string) {
     },
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -52,7 +52,7 @@ export function getUserSub(url: string, offset: number, limit: number) {
     },
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -62,7 +62,7 @@ export function getUserDetail() {
     url: '/user/detail',
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -73,7 +73,7 @@ export function uploadAvatar(formData: FormData) {
     method: 'post',
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token,
+      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token,
       'Content-Type': 'multipart/form-data'
     },
     data: formData
@@ -89,7 +89,7 @@ export function getOtherUserDetail<T>(userId: string) {
     },
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }

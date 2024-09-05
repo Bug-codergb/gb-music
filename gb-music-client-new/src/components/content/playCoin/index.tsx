@@ -1,7 +1,10 @@
 import React, { memo, FC, ReactElement, useState, MouseEvent, useRef, useEffect, useCallback } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { Map } from 'immutable';
+import { useNavigate } from 'react-router-dom';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
+
 
 import { Slider } from 'antd';
 import { formatTime } from '../../../utils/format';
@@ -18,20 +21,21 @@ import { getFileBlob } from '../../../network/media';
 import { ILogin, IUserMsg } from '../../../constant/store/login';
 import { ISongStore } from '../../../constant/store/song';
 
-interface IProps extends RouteComponentProps {}
+interface IProps  {}
 const PlayCoin: FC<IProps> = (props): ReactElement => {
+  const navigate = useNavigate()
   const [isPlay, setIsPlay] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isDrag, setIsDrag] = useState<boolean>(false);
   const [isShow, setIsShow] = useState<boolean>(false);
   const [isShowCurLyric, setIsShowLyric] = useState<boolean>(false);
   //redux-hook
-  const dispatch = useDispatch();
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
+  const dispatch = useAppDispatch();
+  const { userMsg } = useAppSelector((state) => ({
+    userMsg: state['loginReducer']
   }));
-  const { song } = useSelector<Map<string, ISongStore>, { song: ISongStore }>((state) => ({
-    song: state.getIn(['songReducer', 'song'])
+  const { song } = useAppSelector((state) => ({
+    song: state['songReducer']
   }));
   const audioRef = useRef<HTMLAudioElement>(null);
   //react-hook
@@ -106,9 +110,7 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
     }
   }, []);
   const playCoin = () => {
-    props.history.push({
-      pathname: '/Home/playPage'
-    });
+    navigate('/Home/playPage')
   };
   //改变播放模式
   const changeMode = () => {
@@ -223,4 +225,4 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
     </PlayCoinWrapper>
   );
 };
-export default withRouter(memo(PlayCoin));
+export default memo(PlayCoin);

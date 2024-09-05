@@ -1,15 +1,16 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import store from "../store/index"
 import { HOST_NAME } from '../config';
-import store from '../store';
 import { changeUserMsg, logoutAction } from '../views/Login/store/actionCreators';
 
 function request<T>(config: AxiosRequestConfig) {
   const instance: AxiosInstance = axios.create({
-    baseURL: "/",
+    baseURL: "/api",
     timeout: 15000
   });
   instance.interceptors.request.use(
     (config) => {
+      config.headers.Authorization = store.getState().loginReducer.userMsg.token
       return config;
     },
     (err) => {

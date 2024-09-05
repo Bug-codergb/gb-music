@@ -1,5 +1,5 @@
 import React, { memo, FC, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {Empty, Image, Spin} from 'antd';
 import MsgItem from '../../../../../../components/content/msgItem';
 import placeholder from '../../../../../../assets/img/holder/placeholder.png';
@@ -7,8 +7,9 @@ import { getRecAlbum } from '../../../../../../network/album';
 import { IAlbum } from '../../../../../../constant/album';
 import { RecAlbumWrapper } from './style';
 
-interface IProps extends RouteComponentProps {}
+interface IProps {}
 const RecAlbum: FC<IProps> = (props) => {
+  const navigate = useNavigate();
   const [recAlbum, setAlbum] = useState<IAlbum[]>([]);
   useEffect(() => {
     getRecAlbum<IAlbum[]>(0, 10).then((data) => {
@@ -16,8 +17,7 @@ const RecAlbum: FC<IProps> = (props) => {
     });
   }, []);
   const albumRouter = (item: IAlbum, index: number) => {
-    props.history.push({
-      pathname: '/Home/albumDetail',
+    navigate('/Home/albumDetail',{
       state: {
         id: item.id
       }
@@ -63,4 +63,4 @@ const RecAlbum: FC<IProps> = (props) => {
     </Spin>
   );
 };
-export default withRouter(memo(RecAlbum));
+export default memo(RecAlbum);

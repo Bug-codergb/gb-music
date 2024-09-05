@@ -5,7 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/message/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/message/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/message/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/message/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/toast/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/toast/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/toast/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/toast/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/vip-mv/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/common/vip-mv/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playCoin/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playCoin/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/childCpn/message/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/childCpn/message/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/childCpn/navBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/childCpn/navBar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/childCpn/searchMatch/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/childCpn/searchMatch/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/childCpn/userMsg/childCpn/userInfo/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/childCpn/userMsg/childCpn/userInfo/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/topBar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/constant/global/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/constant/global/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/network/request.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/network/request.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/network/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/network/user/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/store/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/store/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/Login/store/asyncThunk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/Login/store/asyncThunk.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/Login/store/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/Login/store/slice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/banner/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/banner/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/recAlbum/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/recAlbum/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/recArtist/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/recArtist/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/recPlaylist/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/recPlaylist/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/recSong/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/discover/childCpn/recommend/childCpn/recSong/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/home/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/vue.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +127,7 @@
       <workItem from="1679058426068" duration="605000" />
       <workItem from="1679204765101" duration="1315000" />
       <workItem from="1724847689774" duration="8890000" />
-      <workItem from="1725173116302" duration="5834000" />
+      <workItem from="1725173116302" duration="7036000" />
     </task>
     <servers />
   </component>

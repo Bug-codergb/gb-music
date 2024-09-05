@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState, useRef, MouseEvent } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getRecArtist } from '../../../../../../network/artist';
 import {Carousel, Empty, Image} from 'antd';
 import MsgItem from '../../../../../../components/content/msgItem';
@@ -8,7 +8,8 @@ import { RecArtistWrapper } from './style';
 import { IArtist } from '../../../../../../constant/artist';
 import { CarouselRef } from 'antd/lib/carousel';
 import placeholder from '../../../../../../assets/img/holder/user-placehoder.png';
-const RecArtist: FC<RouteComponentProps> = (props): ReactElement => {
+const RecArtist: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [recArtist, setArtist] = useState<IArtist[] | []>([]);
   const carouselRef = useRef<CarouselRef>(null);
   useEffect(() => {
@@ -25,8 +26,7 @@ const RecArtist: FC<RouteComponentProps> = (props): ReactElement => {
     carouselRef.current?.next();
   };
   const artistRouter = (item: IArtist, index: number): void => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id: item.id
       }
@@ -83,4 +83,4 @@ const RecArtist: FC<RouteComponentProps> = (props): ReactElement => {
     </RecArtistWrapper>
   );
 };
-export default withRouter(memo(RecArtist));
+export default memo(RecArtist);
