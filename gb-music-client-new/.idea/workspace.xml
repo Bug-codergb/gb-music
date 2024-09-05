@@ -6,20 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/comment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/comment/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/detail/albumDetail/childCpn/subscriber/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/albumDetail/childCpn/subscriber/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/detail/albumDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/albumDetail/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/albums/childCpn/album/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/albums/childCpn/album/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/topBar/childCpn/searchMatch/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/topBar/childCpn/searchMatch/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/topBar/childCpn/searchMatch/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/topBar/childCpn/searchMatch/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/topBar/childCpn/userMsg/childCpn/profile/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/topBar/childCpn/userMsg/childCpn/profile/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/topBar/childCpn/userMsg/childCpn/userInfo/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/topBar/childCpn/userMsg/childCpn/userInfo/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/topBar/childCpn/userMsg/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/topBar/childCpn/userMsg/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/content/topBar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/topBar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/message/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/message/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/video/childCpn/video/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/video/childCpn/video/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.style.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/style.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -135,7 +124,7 @@
       <workItem from="1683292327766" duration="606000" />
       <workItem from="1724849548760" duration="2395000" />
       <workItem from="1725279878009" duration="917000" />
-      <workItem from="1725453641222" duration="15994000" />
+      <workItem from="1725453641222" duration="16222000" />
     </task>
     <servers />
   </component>
