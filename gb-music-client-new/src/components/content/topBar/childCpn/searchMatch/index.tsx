@@ -1,14 +1,17 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 import { SearchMatchWrapper } from './style';
-import { changeSearchResult } from './store/actionCreators';
+//import { changeSearchResult } from './store/actionCreators';
 
 import { getSearchMatch } from '../../../../../network/search';
 import { ISong } from '../../../../../constant/song';
 import { IAlbum } from '../../../../../constant/album';
 import { IArtist } from '../../../../../constant/artist';
 import { IPlaylist } from '../../../../../constant/playlist';
-import { changeSongDetailAction } from '../../../playCoin/store/actionCreators';
+//import { changeSongDetailAction } from '../../../playCoin/store/actionCreators';
 import { useNavigate } from 'react-router-dom';
 
 interface IProps {
@@ -21,23 +24,23 @@ const SearchMatch: FC<IProps> = (props): ReactElement => {
   const [album, setAlbum] = useState<IAlbum[]>([]);
   const [artist, setArtist] = useState<IArtist[]>([]);
   const [playlist, setPlaylist] = useState<IPlaylist[]>([]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (keyword.trim().length !== 0) {
       getSearchMatch(keyword).then((data: any) => {
         if (data) {
-          dispatch(changeSearchResult(data));
-          const { song, artist, album, playlist } = data;
-          setSong(song);
-          setAlbum(album);
-          setArtist(artist);
-          setPlaylist(playlist);
+          // dispatch(changeSearchResult(data));
+          // const { song, artist, album, playlist } = data;
+          // setSong(song);
+          // setAlbum(album);
+          // setArtist(artist);
+          // setPlaylist(playlist);
         }
       });
     }
   }, [keyword, dispatch]);
   const songClick = (item: ISong) => {
-    dispatch(changeSongDetailAction(item.id));
+    //dispatch(changeSongDetailAction(item.id));
   };
   const artistRouter = (item: IArtist) => {
     navigate("/Home/artistDetail",{

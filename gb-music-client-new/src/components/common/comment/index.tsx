@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { Pagination } from 'antd';
@@ -16,7 +16,7 @@ import { publishMessage } from '../../../network/message';
 import placeholder from "../../../assets/img/holder/user-placehoder.png";
 import { IUser } from '../../../constant/user';
 
-interface IProps extends RouteComponentProps {
+interface IProps  {
   isPage: boolean;
   total: number;
   comments: IComment[];
@@ -24,6 +24,7 @@ interface IProps extends RouteComponentProps {
   pageClick?: (count: number) => void;
 }
 const Comment: FC<IProps> = memo((props): ReactElement => {
+  const navigate = useNavigate()
   const { comments, onClick, isPage, total, pageClick } = props;
   const dispatch = useDispatch();
   const reply = (content: string, item: IComment): void => {
@@ -60,8 +61,7 @@ const Comment: FC<IProps> = memo((props): ReactElement => {
     });
   };
   const userRouter = (item: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.userId
       }
@@ -149,4 +149,4 @@ const Comment: FC<IProps> = memo((props): ReactElement => {
     </CommentWrapper>
   );
 });
-export default withRouter(Comment);
+export default memo(Comment);

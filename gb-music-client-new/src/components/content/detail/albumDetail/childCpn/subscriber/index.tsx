@@ -4,13 +4,14 @@ import { SubscriberWrapper } from './style';
 import { getAlbumSub } from '../../../../../../network/album';
 import { Empty, Pagination } from 'antd';
 import { IUser } from '../../../../../../constant/user';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-interface IProps extends RouteComponentProps {
+interface IProps  {
   id: string;
 }
 interface IAlbumSub extends IPlaylistSub {}
 const Subscriber: FC<IProps> = memo((props): ReactElement => {
+  const navigate = useNavigate()
   const { id } = props;
   const [subUser, setSubUser] = useState<IAlbumSub[]>([]);
   const [count, setCount] = useState<number>(0);
@@ -27,8 +28,7 @@ const Subscriber: FC<IProps> = memo((props): ReactElement => {
     });
   };
   const userRouter = (item: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.userId
       }
@@ -72,4 +72,4 @@ const Subscriber: FC<IProps> = memo((props): ReactElement => {
     </SubscriberWrapper>
   );
 });
-export default withRouter(Subscriber);
+export default memo(Subscriber);

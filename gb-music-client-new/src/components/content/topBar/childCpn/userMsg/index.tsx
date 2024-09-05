@@ -1,6 +1,8 @@
 import React, { memo, useEffect, useState, MouseEvent } from 'react';
-import { useSelector } from 'react-redux';
-import { Map } from 'immutable';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 import { CSSTransition } from 'react-transition-group';
 import { UserMsgWrapper } from './style';
 
@@ -11,12 +13,12 @@ import { ILogin, IUserMsg } from '../../../../../constant/store/login';
 const UserMsg: React.FC = () => {
   const [isShow, setIsShow] = useState<boolean>(false);
   const [isShowProfile, setIsShowProfile] = useState<boolean>(false);
-  const { loginType } = useSelector<Map<string, ILogin>, { loginType: number }>((state) => ({
-    loginType: state.getIn(['loginReducer', 'login', 'loginType'])
-  }));
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
+  const { loginType } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   const docClick = () => {
     setIsShow(false);
   };

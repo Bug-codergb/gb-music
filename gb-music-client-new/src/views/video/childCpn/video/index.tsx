@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import placeholder from '../../../../assets/img/holder/video-placeholder.png';
 
 import { getCateVideo, getVideoCate } from '../../../../network/video';
@@ -11,7 +11,8 @@ import MsgItem from '../../../../components/content/msgItem';
 import { holder } from '../../../../utils/holder';
 import { Empty, Image, Pagination } from 'antd';
 
-const Video: React.FC<RouteComponentProps> = (props) => {
+const Video: React.FC = (props) => {
+  const navigate = useNavigate()
   const [cate, setCate] = useState<ICategory[]>([]);
   const [video, setVideo] = useState<IVideo[]>([]);
   const [count, setCount] = useState<number>(0);
@@ -32,16 +33,14 @@ const Video: React.FC<RouteComponentProps> = (props) => {
     });
   };
   const videoRouter = (item: IVideo, index: number) => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.id
       }
     });
   };
   const userRouter = (id: string) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: id
       }
@@ -113,4 +112,4 @@ const Video: React.FC<RouteComponentProps> = (props) => {
     </VideoWrapper>
   );
 };
-export default withRouter(memo(Video));
+export default memo(Video);

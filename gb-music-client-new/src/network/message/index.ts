@@ -37,7 +37,7 @@ export function getAllMsg() {
     url: '/message',
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+     // authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -51,7 +51,7 @@ export function readMessage(ids: string[]) {
     },
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }

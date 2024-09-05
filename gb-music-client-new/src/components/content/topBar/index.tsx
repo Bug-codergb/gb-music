@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 //样式
 import { TopBarWrapper, CenterContent } from './style';
-import logo from '../../../assets/img/logo.png';
+import logo from '@/assets/img/logo.png';
+
 import NavBar from './childCpn/navBar';
 import UserMsg from './childCpn/userMsg';
 import SearchMatch from './childCpn/searchMatch';
@@ -52,12 +53,10 @@ const TopBar: React.FC = (props) => {
   const searchRouter = (): void => {
     if (keyword.trim().length !== 0) {
       navigate('/Home/searchDetail')
-
     }
   };
   const innovateClick = () => {
     navigate("/Home/innovation")
-
   };
   const showMsg = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation();

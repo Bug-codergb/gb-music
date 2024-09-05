@@ -17,18 +17,18 @@ const UserInfo: FC<IProps> = memo((props): ReactElement => {
   const dispatch = useAppDispatch();
   const logout = () => {
     dispatch(logoutAction());
-    dispatch(
-      changeUserMsg({
-        token: '',
-        userName: '',
-        userId: '',
-        avatarUrl: '',
-        createTime: '',
-        updateTime: '',
-        manage: -1,
-        auth: -1
-      })
-    );
+    // dispatch(
+    //   changeUserMsg({
+    //     token: '',
+    //     userName: '',
+    //     userId: '',
+    //     avatarUrl: '',
+    //     createTime: '',
+    //     updateTime: '',
+    //     manage: -1,
+    //     auth: -1
+    //   })
+    //);
     navigate("/Login")
   };
   const infoClick = () => {

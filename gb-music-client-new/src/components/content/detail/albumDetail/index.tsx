@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { Map } from 'immutable';
 import { CheckOutlined } from '@ant-design/icons';
 import { getAlbumDetail } from '../../../../network/album';
@@ -16,8 +16,10 @@ import { changeUserDetailAction } from '../../../../views/Login/store/actionCrea
 import HotAlbum from './childCpn/hotAlbum';
 import { ILogin, IUserDetail } from '../../../../constant/store/login';
 
-const AlbumDetail: FC<RouteComponentProps<any, any, { id: string }>> = (props): ReactElement => {
-  const { id } = props.location.state;
+const AlbumDetail: FC< { id: string }> = (props): ReactElement => {
+  const navigate = useNavigate()
+  const location = useLocation();
+  const { id } = location.state;
   const [aId, setAid] = useState<string>(id);
   const [albumDetail, setDetail] = useState<IAlbumDetail>();
 
@@ -60,8 +62,7 @@ const AlbumDetail: FC<RouteComponentProps<any, any, { id: string }>> = (props): 
   };
   const artistRouter = () => {
     if (albumDetail) {
-      props.history.push({
-        pathname: '/Home/artistDetail',
+      navigate('/Home/artistDetail',{
         state: {
           id: albumDetail.artist.id
         }
@@ -122,4 +123,4 @@ const AlbumDetail: FC<RouteComponentProps<any, any, { id: string }>> = (props): 
     </AlbumDetailWrapper>
   );
 };
-export default withRouter(memo(AlbumDetail));
+export default memo(AlbumDetail);

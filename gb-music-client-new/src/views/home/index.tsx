@@ -1,5 +1,6 @@
 import React, { memo, Suspense, useEffect, useState } from 'react';
 import { Outlet, Navigate, } from 'react-router-dom';
+import logo from '@/assets/img/logo.png';
 import {
   useAppDispatch,
   useAppSelector
@@ -98,13 +99,13 @@ const Home: React.FC = (props) => {
                     </div>
                   }
                 >
-                  <Outlet/>
+                  {/*<Outlet/>*/}
                 </Suspense>
               </div>
             </Content>
           </Layout>
           <Footer className={"gb-music-footer"}>
-            <PlayCoin />
+            {/*<PlayCoin />*/}
             {isShowBack && (
               <div className="back-to-top" onClick={(e) => backToTop()}>
                 <VerticalAlignTopOutlined />

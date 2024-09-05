@@ -1,5 +1,8 @@
 import React, { memo, FC, ReactElement, ChangeEvent, useState } from 'react';
-import { Map } from 'immutable';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 import { message } from 'antd';
 import { ProfileWrapper } from './style';
 import { useSelector } from 'react-redux';
@@ -13,9 +16,9 @@ const Profile: FC<IProps> = memo((props): ReactElement => {
   const [file, setFile] = useState<Blob | null>(null);
   const [isShowPrev, setIsShowPrev] = useState<boolean>(false);
   const [prevURL, setPrevURL] = useState<string>('');
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   const upload = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(e.currentTarget.files)
     if (e.currentTarget.files) {

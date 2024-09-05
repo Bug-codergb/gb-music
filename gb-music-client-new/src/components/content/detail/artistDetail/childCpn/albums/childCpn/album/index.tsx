@@ -1,11 +1,11 @@
 import React, { FC, memo, ReactElement } from 'react';
-import { Map } from 'immutable';
+
 import { AlbumWrapper } from './style';
 import { IAlbum } from '../../../../../../../../constant/album';
 import { ISong } from '../../../../../../../../constant/albumDetail';
 import { formatTime } from '../../../../../../../../utils/format';
 import VipMv from '../../../../../../../common/vip-mv';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelFavorite, setUserFavorite } from '../../../../../../../../network/user';
 import { changeUserDetailAction } from '../../../../../../../../views/Login/store/actionCreators';
@@ -17,12 +17,13 @@ import placeholder from "../../../../../../../../assets/img/holder/placeholder.p
 interface IAlbumItem extends IAlbum {
   songs: ISong[];
 }
-interface IProps extends RouteComponentProps {
+interface IProps {
   album: IAlbumItem;
   play: (item: ISong, index: number) => void;
 }
 const Album: FC<IProps> = (props): ReactElement => {
   const { album, play } = props;
+  const navigate = useNavigate()
   const { userDetail } = useSelector<Map<string, ILogin>, { userDetail: IUserDetail }>((state) => ({
     userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
   }));
@@ -50,8 +51,7 @@ const Album: FC<IProps> = (props): ReactElement => {
   };
   const videoRouter = (item: ISong) => {
     if (item.video) {
-      props.history.push({
-        pathname: '/Home/videoDetail',
+      navigate('/Home/videoDetail',{
         state: {
           id: item.video.id
         }
@@ -60,8 +60,7 @@ const Album: FC<IProps> = (props): ReactElement => {
   };
   const albumRouter = () => {
     if (album) {
-      props.history.push({
-        pathname: '/Home/albumDetail',
+      navigate('/Home/albumDetail',{
         state: {
           id: album.id
         }
@@ -118,4 +117,4 @@ const Album: FC<IProps> = (props): ReactElement => {
     </AlbumWrapper>
   );
 };
-export default withRouter(memo(Album));
+export default memo(Album);
