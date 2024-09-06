@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 export const LoginWrapper = styled.div`
-  height: 740px;
+  @media screen and (max-width: 1100px) {
+    .login-outer {
+      left: 50%!important;
+      transform: translate(-50%, 0)!important;
+    }
+  }
+  height: 100%;
+  width: 100%;
   position: relative;
   .login-outer {
     border-radius: 8px;
@@ -22,7 +29,7 @@ export const LoginWrapper = styled.div`
   }
   .mask {
     width: 100%;
-    height: 750px;
+    height: 100%;
     position: absolute;
     top: 0;
     z-index: 995559;
