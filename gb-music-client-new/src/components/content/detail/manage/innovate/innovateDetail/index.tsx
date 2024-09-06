@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { InnovateDetailWrapper, CenterContent, LeftContent, RightContent } from './style';
 import { addProgram, addProgramSource, getChannelDetail } from '../../../../../../network/channel';
@@ -11,8 +11,9 @@ import Subscriber from '../../../channelDetail/childCpn/subscriber';
 import Upload from './childCpn/upload';
 import { getAudioDuration } from '../../../../../../utils/videoUtils';
 
-const InnovateDetail: FC<RouteComponentProps<any, any, { id: string }>> = (props): ReactElement => {
-  const { id } = props.location.state;
+const InnovateDetail: FC<{ id: string }> = (props): ReactElement => {
+  const location = useLocation();
+  const { id } = location.state;
   const [program, setProgram] = useState<IChannel>();
   const [isShow, setIsShow] = useState<boolean>(false);
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { memo, FC, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { CheckOutlined } from '@ant-design/icons';
 import UserMsg from '../../../common/userMsg';
 import SongList from './childCpn/songList';
@@ -21,7 +21,10 @@ import { IUser } from '../../../../constant/user';
 import TabControl from '../../../common/tabControl';
 import Comment from './childCpn/comment';
 import { cancelSub, sub } from '../../../../network/subscriber';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 import { changeUserDetailAction } from '../../../../views/Login/store/actionCreators';
 import HotPlaylist from './childCpn/hotPlaylist';
 
@@ -30,16 +33,17 @@ interface IPlaylistDetail extends IPlaylist {
   songs: ISong[];
   user: IUser;
 }
-const PlaylistDetail: FC<RouteComponentProps<any, any, { id: string; userId: string }>> = memo((props) => {
-  const { id } = props.location.state;
+const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { id } =location.state;
   const [pId, setPid] = useState<string>(id);
   const [playlistDetail, setPlaylist] = useState<IPlaylistDetail>();
 
-  const dispatch = useDispatch();
-  const { userDetail } = useSelector((state) => ({
-    // @ts-ignore
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
+  const dispatch = useAppDispatch();
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   useEffect(() => {
     getPlaylistDetail<IPlaylistDetail>(pId).then((data) => {
       setPlaylist(data);
@@ -78,8 +82,7 @@ const PlaylistDetail: FC<RouteComponentProps<any, any, { id: string; userId: str
   };
   //用户详情页路由
   const userClick = (id: string) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: id,
         id: ''
@@ -87,9 +90,7 @@ const PlaylistDetail: FC<RouteComponentProps<any, any, { id: string; userId: str
     });
   };
   const playlistRouter = () => {
-    props.history.push({
-      pathname: '/Home/discover/playlist'
-    });
+    navigate('/Home/discover/playlist')
   };
   return (
     <PlaylistDetailWrapper>

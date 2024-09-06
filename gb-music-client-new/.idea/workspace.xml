@@ -6,11 +6,39 @@
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.style.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.style.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/comment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/comment/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/reply/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/reply/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/albumDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/albumDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/albums/childCpn/album/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/albums/childCpn/album/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/albums/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/albums/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/hotArtist/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/hotArtist/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/mv/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/artistDetail/childCpn/mv/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/artistDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/artistDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/channelDetail/childCpn/programs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/channelDetail/childCpn/programs/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/channelDetail/childCpn/subscriber/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/channelDetail/childCpn/subscriber/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/channelDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/channelDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/manage/innovate/innovateCon/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/manage/innovate/innovateCon/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/manage/innovate/innovateDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/manage/innovate/innovateDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/album/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/album/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/channel/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/channel/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/comment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/comment/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/playlist/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/playlist/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/video/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/msgDetail/childCpn/video/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/hotPlaylist/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/hotPlaylist/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/songList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/songList/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/subscriber/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/childCpn/subscriber/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/playlistDetail/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/album/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/album/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/artist/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/artist/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/playlist/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/playlist/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/song/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/song/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/user/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/detail/searchDetail/childCpn/user/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/channel/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/channel/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/comment/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/comment/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/message/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/message/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/playlist/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/playlist/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/thumbs/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/thumbs/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +48,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -35,6 +63,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectId" id="2A2zE6tI779afNZRcKdhXu4eDvZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -48,13 +79,14 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "editorconfig.notification": "lf ",
-    "last_opened_file_path": "/Users/guobin/vscode projecy/gb-music/gb-music-client-new",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "F:/learn project/gb-music/gb-music-client-new",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
-    "ts.external.directory.path": "/Users/guobin/vscode projecy/gb-music/gb-music-client-new/node_modules/typescript/lib",
+    "ts.external.directory.path": "F:\\learn project\\gb-music\\gb-music-client-new\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -62,6 +94,13 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Project\gb-music\gb-music-client\public" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-WS-242.20224.426" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -125,6 +164,7 @@
       <workItem from="1724849548760" duration="2395000" />
       <workItem from="1725279878009" duration="917000" />
       <workItem from="1725453641222" duration="16222000" />
+      <workItem from="1725591730823" duration="3521000" />
     </task>
     <servers />
   </component>

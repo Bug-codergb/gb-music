@@ -6,8 +6,7 @@ export function thumb(key: string, id: string) {
     url: '/thumb',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     },
     data: {
       [key]: id
@@ -20,8 +19,6 @@ export function cancelThumb(key: string, id: string) {
     url: '/thumb/cancel',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     },
     data: {
       [key]: id

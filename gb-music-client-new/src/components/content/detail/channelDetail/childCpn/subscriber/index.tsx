@@ -2,13 +2,14 @@ import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { getChannelSubUser } from '../../../../../../network/channel';
 import { IUser } from '../../../../../../constant/user';
 import { SubWrapper } from './style';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Pagination } from 'antd';
-interface IProps extends RouteComponentProps {
+interface IProps  {
   id: string;
 }
 const Subscriber: FC<IProps> = (props): ReactElement => {
   const { id } = props;
+  const navigate = useNavigate()
   const [users, setUsers] = useState<IUser[]>([]);
   const [count, setCount] = useState<number>(0);
   useEffect(() => {
@@ -18,8 +19,7 @@ const Subscriber: FC<IProps> = (props): ReactElement => {
     });
   }, [id]);
   const userRouter = (item: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.userId
       }
@@ -62,4 +62,4 @@ const Subscriber: FC<IProps> = (props): ReactElement => {
     </SubWrapper>
   );
 };
-export default withRouter(memo(Subscriber));
+export default memo(Subscriber);

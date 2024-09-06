@@ -10,8 +10,7 @@ export function publishMessage(uri: string, content: string, key: string, id: st
       [key]: id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -21,8 +20,7 @@ export function publishAlbum(arId: string, content: string, alId: string) {
     url: '/message/album',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     },
     data: {
       arId,
@@ -37,7 +35,7 @@ export function getAllMsg() {
     url: '/message',
     headers: {
       // @ts-ignore
-     // authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -50,8 +48,7 @@ export function readMessage(ids: string[]) {
       id: ids
     },
     headers: {
-      // @ts-ignore
-      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -65,8 +62,7 @@ export function getVideoMsg(offset: string, limit: string) {
       limit
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -80,8 +76,7 @@ export function getCommentMsg(offset: string, limit: string) {
       limit
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -95,8 +90,7 @@ export function getAlbumMsg<T>(offset: string, limit: string) {
       limit
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -110,8 +104,7 @@ export function getPlaylistMsg(offset: string, limit: string) {
       limit
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -125,8 +118,7 @@ export function getChannelMsg(offset: string, limit: string) {
       limit
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -139,8 +131,7 @@ export function deleteMsg(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -153,8 +144,7 @@ export function readSingleMsg(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }

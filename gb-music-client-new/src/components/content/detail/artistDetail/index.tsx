@@ -1,6 +1,9 @@
 import React, { FC, memo, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate,useLocation } from 'react-router-dom';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 
 import { CheckOutlined } from '@ant-design/icons';
 import {
@@ -22,7 +25,7 @@ import TabControl from '../../../common/tabControl';
 import MV from './childCpn/mv/index';
 import Albums from './childCpn/albums';
 
-import { changeUserDetailAction } from '../../../../views/Login/store/actionCreators';
+import { changeUserDetailAction } from '../../../../views/Login/store/asyncThunk';
 
 import Similar from './childCpn/similar';
 import Desc from './childCpn/desc';
@@ -34,17 +37,20 @@ interface IAlbums extends IAlbum {
 interface IArtistDetail extends IArtist {
   album: IAlbums[];
 }
-const ArtistDetail: FC<RouteComponentProps<any, any, { id: string }>> = memo((props): ReactElement => {
-  const { id } = props.location.state;
+const ArtistDetail: FC<{ id: string }> = memo((props): ReactElement => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { id } = location.state;
 
   const [arId, setArId] = useState<string>(id);
   const [artistDetail, setArtist] = useState<IArtistDetail>();
 
-  const dispatch = useDispatch();
-  const { userDetail } = useSelector((state) => ({
-    // @ts-ignore
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
+  const dispatch = useAppDispatch();
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   useEffect(() => {
     getArtistDetail<IArtistDetail>(arId).then((data) => {
       setArtist(data);
@@ -123,4 +129,4 @@ const ArtistDetail: FC<RouteComponentProps<any, any, { id: string }>> = memo((pr
     </ArtistDetailWrapper>
   );
 });
-export default withRouter(ArtistDetail);
+export default memo(ArtistDetail);

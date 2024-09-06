@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { MVWrapper } from './style';
 import { getArtistMV } from '../../../../../../network/artist';
 import { IVideo } from '../../../../../../constant/video';
@@ -7,13 +7,14 @@ import { IArtist } from '../../../../../../constant/artist';
 import MsgItem from '../../../../msgItem';
 import { Empty } from 'antd';
 
-interface IProps extends RouteComponentProps {
+interface IProps {
   id: string;
 }
 interface IMV extends IVideo {
   artist: IArtist;
 }
 const MV: FC<IProps> = (props): ReactElement => {
+  const navigate = useNavigate()
   const { id } = props;
   const [mv, setMV] = useState<IMV[]>([]);
   useEffect(() => {
@@ -23,8 +24,7 @@ const MV: FC<IProps> = (props): ReactElement => {
     });
   }, [id]);
   const mvRouter = (item: IMV, index: number): void => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.id
       }
@@ -59,4 +59,4 @@ const MV: FC<IProps> = (props): ReactElement => {
     </MVWrapper>
   );
 };
-export default withRouter(memo(MV));
+export default memo(MV);

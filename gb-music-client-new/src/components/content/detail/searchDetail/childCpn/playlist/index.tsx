@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-import { Map } from 'immutable';
+import { useNavigate } from 'react-router-dom';
+
 import { Empty } from 'antd';
 import { useSelector } from 'react-redux';
 import { PlaylistWrapper } from './style';
@@ -8,13 +8,13 @@ import { IPlaylist } from '../../../../../../constant/playlist';
 import { formatTime } from '../../../../../../utils/format';
 import { ISearchStore } from '../../../../../../constant/store/search';
 
-const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
-  const { playlist } = useSelector<Map<string, ISearchStore>, ISearchStore>((state) => {
+const Playlist: FC = (props): ReactElement => {
+  const navigate = useNavigate();
+  const { playlist } = useSelector((state) => {
     return state.getIn(['searchReducer', 'searchResult']);
   });
   const playlistRouter = (item: IPlaylist, index: number) => {
-    props.history.push({
-      pathname: '/Home/playlistDetail',
+    navigate('/Home/playlistDetail',{
       state: {
         id: item.id
       }

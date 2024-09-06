@@ -6,7 +6,10 @@ import { ISong } from '../../../../../../../../constant/albumDetail';
 import { formatTime } from '../../../../../../../../utils/format';
 import VipMv from '../../../../../../../common/vip-mv';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 import { cancelFavorite, setUserFavorite } from '../../../../../../../../network/user';
 import { changeUserDetailAction } from '../../../../../../../../views/Login/store/actionCreators';
 import { changeShow } from '../../../../../../../common/toast/store/actionCreators';
@@ -24,10 +27,10 @@ interface IProps {
 const Album: FC<IProps> = (props): ReactElement => {
   const { album, play } = props;
   const navigate = useNavigate()
-  const { userDetail } = useSelector<Map<string, ILogin>, { userDetail: IUserDetail }>((state) => ({
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
-  const dispatch = useDispatch();
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const dispatch = useAppDispatch();
   const playSong = (item: ISong, index: number): void => {
     play(item, index);
   };

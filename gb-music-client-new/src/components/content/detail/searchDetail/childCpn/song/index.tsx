@@ -1,7 +1,6 @@
 import React, { memo, FC, ReactElement } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
-import { Map } from 'immutable';
+import { useNavigate } from 'react-router-dom';
 import { SongWrapper } from './style';
 import { ISong } from '../../../../../../constant/song';
 import { formatTime } from '../../../../../../utils/format';
@@ -11,7 +10,8 @@ import { Empty } from 'antd';
 import VipMv from '../../../../../common/vip-mv';
 import { ISearchStore } from '../../../../../../constant/store/search';
 
-const Song: FC<RouteComponentProps> = (props): ReactElement => {
+const Song: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const { song } = useSelector<Map<string, ISearchStore>, ISearchStore>((state) => {
     return state.getIn(['searchReducer', 'searchResult']);
   });
@@ -20,24 +20,21 @@ const Song: FC<RouteComponentProps> = (props): ReactElement => {
     dispatch(changeSongDetailAction(item.id));
   };
   const artistRouter = (item: ISong, index: number) => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id: item.artist.id
       }
     });
   };
   const albumRouter = (item: ISong, index: number): void => {
-    props.history.push({
-      pathname: '/Home/albumDetail',
+    navigate('/Home/albumDetail',{
       state: {
         id: item.album.id
       }
     });
   };
   const videoRouter = (item: ISong) => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.video.id
       }

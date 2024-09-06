@@ -88,8 +88,6 @@ export function addProgram(name: string, cId: string) {
       cId
     },
     headers: {
-      //@ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -104,8 +102,6 @@ export function addProgramSource(id: string, formData: FormData) {
     data: formData,
     headers: {
       'Content-type': 'multipart/form-data',
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -118,8 +114,6 @@ export function addProgramPlayCount(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -172,8 +166,6 @@ export function getUserChannelPlaylist<T>() {
     method: 'post',
     data: {},
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }

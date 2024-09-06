@@ -3,11 +3,14 @@ import { VideoWrapper } from './style';
 import { deleteMsg, getVideoMsg, readSingleMsg } from '../../../../../../network/message';
 import { IUser } from '../../../../../../constant/user';
 import { IVideo } from '../../../../../../constant/video';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Empty, Pagination } from 'antd';
 import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
 import { changeShow } from '../../../../../common/toast/store/actionCreators';
-import { useDispatch } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 interface IMsgVideo {
   id: string;
   checkout: number;
@@ -16,10 +19,11 @@ interface IMsgVideo {
   user: IUser;
   video: IVideo;
 }
-const Video: FC<RouteComponentProps> = (props): ReactElement => {
+const Video: FC = (props): ReactElement => {
+  const navigate = useNavigate()
   const [count, setCount] = useState<number>(0);
   const [videoMsg, setVideoMsg] = useState<IMsgVideo[]>([]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getVideoMsg(`${0}`, `${5}`).then((data: any) => {
       setCount(data.count);
@@ -28,8 +32,7 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
   }, []);
   const videoRouter = (item: IMsgVideo) => {
     readSingleMsg(item.id).then((data) => {
-      props.history.push({
-        pathname: '/Home/videoDetail',
+      navigate('/Home/videoDetail',{
         state: {
           id: item.video.id
         }
@@ -57,8 +60,7 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const userRouter = (item: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.userId
       }
@@ -118,4 +120,4 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
     </VideoWrapper>
   );
 };
-export default withRouter(memo(Video));
+export default memo(Video);

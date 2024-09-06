@@ -4,17 +4,23 @@ import { ProgramWrapper } from './style';
 import { formatTime } from '../../../../../../utils/format';
 import { addProgramPlayCount } from '../../../../../../network/channel';
 import { useDispatch } from 'react-redux';
-import { changeProgramDetailAction } from './store/actionCreators';
+import { changeProgramDetailAction } from './store/asyncThunk';
+
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
+
 interface IProps {
   programs: IProgram[] | undefined;
 }
 const Programs: FC<IProps> = (props): ReactElement => {
   const { programs } = props;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   //添加播放量
   const addPlayCount = (item: IProgram) => {
     addProgramPlayCount(item.id).then((data: any) => {});
-    dispatch(changeProgramDetailAction(item.id));
+    dispatch(changeProgramDetailAction({id:item.id}));
   };
   return (
     <ProgramWrapper>

@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 
 import { CommentWrapper } from './style';
 import { deleteMsg, getCommentMsg, readSingleMsg } from '../../../../../../network/message';
@@ -9,7 +9,10 @@ import { Empty, Pagination } from 'antd';
 import { useDispatch } from 'react-redux';
 import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
 import { changeShow } from '../../../../../common/toast/store/actionCreators';
-
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 interface IMsgComment {
   id: string;
   checkout: number;
@@ -19,10 +22,11 @@ interface IMsgComment {
   comment: IComment;
   updateTime: string;
 }
-const Comment: FC<RouteComponentProps> = (props): ReactElement => {
+const Comment: FC = (props): ReactElement => {
+  const navigate = useNavigate()
   const [count, setCount] = useState<number>(0);
   const [commentMsg, setCommentMsg] = useState<IMsgComment[]>([]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getCommentMsg('0', '10').then((data: any) => {
       setCount(data.count);
@@ -59,8 +63,7 @@ const Comment: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const userRouter = (item: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.userId
       }
@@ -121,4 +124,4 @@ const Comment: FC<RouteComponentProps> = (props): ReactElement => {
     </CommentWrapper>
   );
 };
-export default withRouter(memo(Comment));
+export default memo(Comment);

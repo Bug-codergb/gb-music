@@ -1,19 +1,22 @@
 import React, { memo, FC, ReactElement } from 'react';
 import { Empty } from 'antd';
-import { useSelector } from 'react-redux';
-import { Map } from 'immutable';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
+
 import { UserWrapper } from './style';
 import { IUser } from '../../../../../../constant/user';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ISearchStore } from '../../../../../../constant/store/search';
 
-const User: FC<RouteComponentProps> = (props): ReactElement => {
-  const { user } = useSelector<Map<string, ISearchStore>, ISearchStore>((state) => {
-    return state.getIn(['searchReducer', 'searchResult']);
+const User: FC = (props): ReactElement => {
+  const navigate = useNavigate();
+  const { user } = useAppSelector((state) => {
+    return state['searchReducer']['searchResult'];
   });
   const userRouter = (item: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.userId
       }
@@ -49,4 +52,4 @@ const User: FC<RouteComponentProps> = (props): ReactElement => {
     </UserWrapper>
   );
 };
-export default withRouter(memo(User));
+export default memo(User);

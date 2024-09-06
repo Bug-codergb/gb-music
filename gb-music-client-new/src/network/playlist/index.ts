@@ -6,8 +6,6 @@ export function createPlayList(name: string, desc: string) {
     url: '/playlist',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     },
     data: {
       name,
@@ -21,8 +19,7 @@ export function uploadPlayCover(formData: FormData, pId: string) {
     url: '/playlist/cover',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     },
     params: {
       pId
@@ -116,8 +113,7 @@ export function addPlayCount(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }

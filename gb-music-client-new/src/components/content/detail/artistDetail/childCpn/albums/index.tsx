@@ -1,6 +1,9 @@
 import React, { memo, FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Map } from 'immutable';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
+
 import { changeSongDetailAction } from '../../../../playCoin/store/actionCreators';
 import Album from './childCpn/album';
 import { ISong } from '../../../../../../constant/albumDetail';
@@ -16,10 +19,10 @@ interface IProps {
   albums: IAlbums[];
 }
 const Albums: FC<IProps> = ({ albums }) => {
-  const dispatch = useDispatch();
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
+  const dispatch = useAppDispatch();
+  const { userMsg } = useAppSelector((state) =>{
+    return state['loginReducer']
+  });
   const play = (item: ISong, index: number) => {
     const { vip } = item;
     const { auth } = userMsg;

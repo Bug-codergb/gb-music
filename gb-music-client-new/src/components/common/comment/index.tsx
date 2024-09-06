@@ -1,6 +1,9 @@
 import React, { memo, FC, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 
 import { Pagination } from 'antd';
 
@@ -10,8 +13,8 @@ import { formatTime } from '../../../utils/format';
 import Reply from '../reply';
 import { deleteComment, replyComment } from '../../../network/comment';
 import { cancelThumb, thumb as thumbComment } from '../../../network/thumbs';
-import { changeUserDetailAction } from '../../../views/Login/store/actionCreators';
-import { changeMsgAction } from '../message/store/actionCreators';
+import { changeUserDetailAction } from '../../../views/Login/store/asyncThunk';
+
 import { publishMessage } from '../../../network/message';
 import placeholder from "../../../assets/img/holder/user-placehoder.png";
 import { IUser } from '../../../constant/user';
@@ -26,7 +29,7 @@ interface IProps  {
 const Comment: FC<IProps> = memo((props): ReactElement => {
   const navigate = useNavigate()
   const { comments, onClick, isPage, total, pageClick } = props;
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const reply = (content: string, item: IComment): void => {
     if (content.trim().length !== 0) {
       replyComment(item.id, content).then((data) => {
@@ -52,13 +55,13 @@ const Comment: FC<IProps> = memo((props): ReactElement => {
   };
   const deleteCom = (item: IComment) => {
     // @ts-ignore
-    dispatch(changeMsgAction(true)).then((data) => {
+   /* dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         deleteComment(item.id).then((data: any) => {
           onClick();
         });
       }
-    });
+    });*/
   };
   const userRouter = (item: IUser) => {
     navigate('/Home/userDetail',{

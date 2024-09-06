@@ -1,7 +1,10 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
-import { Map } from 'immutable';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
+import { useNavigate,useLocation } from 'react-router-dom';
+
 import { InnovateConWrapper } from './style';
 
 import { getUserChannel } from '../../../../../../network/channel';
@@ -14,13 +17,15 @@ import { ILogin, IUserMsg } from '../../../../../../constant/store/login';
 interface IPrograms extends IChannel {
   channel: ICategory;
 }
-const InnovateCon: FC<RouteComponentProps<any, any, { id: string }>> = (props): ReactElement => {
-  const { id } = props.location.state;
+const InnovateCon: FC<{ id: string }> = (props): ReactElement => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { id } = location.state;
   const [program, setProgram] = useState<IPrograms[]>([]);
   const [isShow, setIsShow] = useState<boolean>(false);
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   useEffect(() => {
     getUserChannel(userMsg.userId, id, 0, 30).then((data: any) => {
       setProgram(data);
@@ -38,8 +43,7 @@ const InnovateCon: FC<RouteComponentProps<any, any, { id: string }>> = (props): 
   };
   const innovateRouter = (item: IPrograms, index: number) => {
     console.log(item);
-    props.history.push({
-      pathname: '/innovate/detail',
+    navigate('/innovate/detail',{
       state: {
         id: item.id
       }

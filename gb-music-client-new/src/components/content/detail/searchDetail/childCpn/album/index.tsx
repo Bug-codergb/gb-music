@@ -1,7 +1,6 @@
 import React, { memo, FC, ReactElement } from 'react';
 import { useSelector } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
-import { Map } from 'immutable';
+import { useNavigate } from 'react-router-dom';
 import { AlbumWrapper } from './style';
 
 import { IAlbum } from '../../../../../../constant/album';
@@ -9,13 +8,13 @@ import { formatTime } from '../../../../../../utils/format';
 import { Empty } from 'antd';
 import { ISearchStore } from '../../../../../../constant/store/search';
 
-const Album: FC<RouteComponentProps> = (props): ReactElement => {
+const Album: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const { album } = useSelector<Map<string, ISearchStore>, ISearchStore>((state) => {
     return state.getIn(['searchReducer', 'searchResult']);
   });
   const albumRouter = (item: IAlbum, index: number): void => {
-    props.history.push({
-      pathname: '/Home/albumDetail',
+    navigate('/Home/albumDetail',{
       state: {
         id: item.id
       }

@@ -1,5 +1,5 @@
 import React, { memo, FC, useState, useEffect } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { CheckOutlined } from '@ant-design/icons';
 import { CenterContent, ChannelDetailWrapper, LeftContent, RightContent } from './style';
 import { getChannelDetail } from '../../../../network/channel';
@@ -9,17 +9,21 @@ import TabControl from '../../../common/tabControl';
 import Programs from './childCpn/programs';
 import Subscriber from './childCpn/subscriber';
 import { cancelSub, sub } from '../../../../network/subscriber';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeUserDetailAction } from '../../../../views/Login/store/actionCreators';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
+import { changeUserDetailAction } from '../../../../views/Login/store/asyncThunk';
 
-const ChannelDetail: FC<RouteComponentProps<any, any, { id: string }>> = (props) => {
-  const id = props.location.state.id;
+const ChannelDetail: FC<{ id: string }> = (props) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const id = location.state.id;
   const [program, setProgram] = useState<IChannel>();
-  const { userDetail } = useSelector((state) => ({
-    // @ts-ignore
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
-  const dispatch = useDispatch();
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getChannelDetail(id, 0, 30).then((data: any) => {
       if (data.id) {
@@ -50,9 +54,7 @@ const ChannelDetail: FC<RouteComponentProps<any, any, { id: string }>> = (props)
   };
   const userRouter = (id: string) => {
     if (id) {
-      // @ts-ignore
-      props.history.push({
-        pathname: '/Home/userDetail',
+      navigate('/Home/userDetail',{
         state: {
           userId: id
         }

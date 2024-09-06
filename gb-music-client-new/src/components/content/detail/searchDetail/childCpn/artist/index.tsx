@@ -1,19 +1,18 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Map } from 'immutable';
 import { ArtistWrapper } from './style';
 import { IArtist } from '../../../../../../constant/artist';
 import { Empty } from 'antd';
 import { ISearchStore } from '../../../../../../constant/store/search';
 
-const Artist: FC<RouteComponentProps> = (props): ReactElement => {
+const Artist: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const { artist } = useSelector<Map<string, ISearchStore>, ISearchStore>((state) => {
     return state.getIn(['searchReducer', 'searchResult']);
   });
   const artistRouter = (item: IArtist, index: number): void => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id: item.id
       }

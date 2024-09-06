@@ -2,9 +2,8 @@ import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { HotArtistWrapper } from './style';
 import { getHotArtist } from '../../../../../../network/artist';
 import { IArtist } from '../../../../../../constant/artist';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-interface IProps extends RouteComponentProps {
+interface IProps  {
   id: string;
   onClick: (id: string) => void;
 }
@@ -45,4 +44,4 @@ const HotArtist: FC<IProps> = (props): ReactElement => {
     </HotArtistWrapper>
   );
 };
-export default withRouter(memo(HotArtist));
+export default memo(HotArtist)

@@ -4,9 +4,12 @@ import { ChannelWrapper } from './style';
 import { deleteMsg, getChannelMsg, readSingleMsg } from '../../../../../../network/message';
 import { IChannel } from '../../../../../../constant/channel';
 import { IUser } from '../../../../../../constant/user';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Empty } from 'antd';
-import { useDispatch } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 import { changeShow } from '../../../../../common/toast/store/actionCreators';
 import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
 
@@ -19,10 +22,11 @@ interface IChannelMsg {
   channel: IChannel;
   user: IUser;
 }
-const Channel: FC<RouteComponentProps> = (props): ReactElement => {
+const Channel: FC = (props): ReactElement => {
+  const navigate = useNavigate()
   const [total, setTotal] = useState<number>(0);
   const [channelMsg, setChannelMsg] = useState<IChannelMsg[]>([]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getChannelMsg('0', '15').then((data: any) => {
       setTotal(data.count);
@@ -31,8 +35,7 @@ const Channel: FC<RouteComponentProps> = (props): ReactElement => {
   }, []);
   const channelRouter = (item: IChannelMsg) => {
     readSingleMsg(item.id).then((data) => {
-      props.history.push({
-        pathname: '/Home/channelDetail',
+      navigate('/Home/channelDetail',{
         state: {
           id: item.channel.id
         }
@@ -40,8 +43,7 @@ const Channel: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const userRouter = (item: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.userId
       }
@@ -104,4 +106,4 @@ const Channel: FC<RouteComponentProps> = (props): ReactElement => {
     </ChannelWrapper>
   );
 };
-export default withRouter(memo(Channel));
+export default memo(Channel);

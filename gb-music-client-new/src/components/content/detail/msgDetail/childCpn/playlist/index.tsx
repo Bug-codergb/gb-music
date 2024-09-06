@@ -3,11 +3,14 @@ import { PlaylistWrapper } from './style';
 import { IPlaylist } from '../../../../../../constant/playlist';
 import { IUser } from '../../../../../../constant/user';
 import { deleteMsg, getPlaylistMsg, readSingleMsg } from '../../../../../../network/message';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Empty } from 'antd';
 import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
 import { changeShow } from '../../../../../common/toast/store/actionCreators';
-import { useDispatch } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 interface IPlayMsg {
   id: string;
   content: string;
@@ -17,10 +20,11 @@ interface IPlayMsg {
   playlist: IPlaylist;
   user: IUser;
 }
-const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
+const Playlist: FC = (props): ReactElement => {
+  const navigate = useNavigate()
   const [total, setTotal] = useState<number>(0);
   const [playMsg, setPlayMsg] = useState<IPlayMsg[]>([]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getPlaylistMsg('0', '15').then((data: any) => {
       setTotal(data.count);
@@ -29,8 +33,7 @@ const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
   }, []);
   const playlistRouter = (item: IPlayMsg) => {
     readSingleMsg(item.id).then((data) => {
-      props.history.push({
-        pathname: '/Home/playlistDetail',
+      navigate('/Home/playlistDetail',{
         state: {
           id: item.playlist.id
         }
@@ -52,8 +55,7 @@ const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const userRouter = (item: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.userId
       }
@@ -106,4 +108,4 @@ const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
     </PlaylistWrapper>
   );
 };
-export default withRouter(memo(Playlist));
+export default memo(Playlist);

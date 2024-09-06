@@ -7,8 +7,6 @@ export function publishComment(content: string, key: string, id: string) {
     url: '/comment',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     },
     data: {
       content,
@@ -21,8 +19,7 @@ export function replyComment(id: string, content: string) {
   return request({
     url: '/comment/reply',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     },
     method: 'post',
     data: {
@@ -51,8 +48,7 @@ export function deleteComment(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }

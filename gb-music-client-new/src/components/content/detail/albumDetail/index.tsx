@@ -1,6 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
-import { Map } from 'immutable';
 import { CheckOutlined } from '@ant-design/icons';
 import { getAlbumDetail } from '../../../../network/album';
 import { formatTime } from '../../../../utils/format';
@@ -11,7 +10,12 @@ import SongList from '../../songList';
 import AlbumComment from './childCpn/comment/index';
 import { cancelSub, sub } from '../../../../network/subscriber';
 import Subscriber from './childCpn/subscriber';
-import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
+
 import { changeUserDetailAction } from '../../../../views/Login/store/actionCreators';
 import HotAlbum from './childCpn/hotAlbum';
 import { ILogin, IUserDetail } from '../../../../constant/store/login';
@@ -23,10 +27,10 @@ const AlbumDetail: FC< { id: string }> = (props): ReactElement => {
   const [aId, setAid] = useState<string>(id);
   const [albumDetail, setDetail] = useState<IAlbumDetail>();
 
-  const dispatch = useDispatch();
-  const { userDetail } = useSelector<Map<string, ILogin>, { userDetail: IUserDetail }>((state) => ({
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
+  const dispatch = useAppDispatch();
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
 
   useEffect(() => {
     getAlbumDetail(aId).then((data: any) => {

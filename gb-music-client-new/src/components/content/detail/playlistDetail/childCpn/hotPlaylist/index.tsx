@@ -44,4 +44,4 @@ const HotPlaylist: FC<IProps> = memo((props): ReactElement => {
     </HotPlaylistWrapper>
   );
 });
-export default HotPlaylist;
+export default memo(HotPlaylist);

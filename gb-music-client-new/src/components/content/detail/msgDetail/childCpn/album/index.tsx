@@ -4,11 +4,14 @@ import { AlbumWrapper } from './style';
 import { IAlbum } from '../../../../../../constant/album';
 import { IArtist } from '../../../../../../constant/artist';
 import { deleteMsg, getAlbumMsg, readSingleMsg } from '../../../../../../network/message';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Pagination } from 'antd';
 import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
 import { changeShow } from '../../../../../common/toast/store/actionCreators';
-import { useDispatch } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 interface IAlbumMsg {
   id: string;
   content: string;
@@ -18,10 +21,11 @@ interface IAlbumMsg {
   createTime: string;
   updateTime: string;
 }
-const Album: FC<RouteComponentProps> = (props): ReactElement => {
+const Album: FC = (props): ReactElement => {
+  const navigate = useNavigate()
   const [count, setCount] = useState<number>(0);
   const [albumMsg, setAlbumMsg] = useState<IAlbumMsg[]>([]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getAlbumMsg<{ count: number; message: IAlbumMsg[] }>('0', '5').then((data) => {
       setCount(data.count);
@@ -30,8 +34,7 @@ const Album: FC<RouteComponentProps> = (props): ReactElement => {
   }, []);
   const albumRouter = (item: IAlbumMsg) => {
     readSingleMsg(item.id).then((data) => {
-      props.history.push({
-        pathname: '/Home/albumDetail',
+      navigate('/Home/albumDetail',{
         state: {
           id: item.album.id
         }
@@ -59,8 +62,7 @@ const Album: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const artistRouter = (item: IArtist) => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id: item.id
       }
@@ -125,4 +127,4 @@ const Album: FC<RouteComponentProps> = (props): ReactElement => {
     </AlbumWrapper>
   );
 };
-export default withRouter(memo(Album));
+export default memo(Album);

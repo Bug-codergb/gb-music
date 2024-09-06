@@ -1,6 +1,8 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Map } from 'immutable';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 import { changeSongDetailAction } from '../../../../playCoin/store/actionCreators';
 import { ISong } from '../../../../../../constant/song';
 import { SongListWrapper } from './style';
@@ -17,10 +19,10 @@ interface IProps {
   tId?:string
 }
 const SongList: FC<IProps> = ({ songs, pId, isShowUp,tId }): ReactElement => {
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
-  const dispatch = useDispatch();
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const dispatch = useAppDispatch();
   const playSong = (item: ISong, id: string): void => {
     dispatch(changeSongDetailAction(id));
     const { vip } = item;

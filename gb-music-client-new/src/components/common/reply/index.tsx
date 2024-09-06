@@ -1,7 +1,10 @@
 import React, { memo, FC, ReactElement, useState, FormEvent } from 'react';
-import { Map } from 'immutable';
+
 import { ReplyWrapper } from './style';
-import { useSelector } from 'react-redux';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts"
 import { ILogin, IUserDetail } from '../../../constant/store/login';
 
 interface IProps {
@@ -20,9 +23,9 @@ const Reply: FC<IProps> = (props): ReactElement => {
     props;
   const [content, setContent] = useState<string>('');
   const [isShow, setIsShow] = useState<boolean>(false);
-  const { userDetail } = useSelector<Map<string, ILogin>, { userDetail: IUserDetail }>((state) => ({
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   const publish = () => {
     onClick(content);
     setContent('');
