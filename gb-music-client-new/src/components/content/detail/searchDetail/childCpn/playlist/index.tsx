@@ -2,7 +2,7 @@ import React, { memo, FC, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Empty } from 'antd';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from "@/store/hooks"
 import { PlaylistWrapper } from './style';
 import { IPlaylist } from '../../../../../../constant/playlist';
 import { formatTime } from '../../../../../../utils/format';
@@ -10,8 +10,8 @@ import { ISearchStore } from '../../../../../../constant/store/search';
 
 const Playlist: FC = (props): ReactElement => {
   const navigate = useNavigate();
-  const { playlist } = useSelector((state) => {
-    return state.getIn(['searchReducer', 'searchResult']);
+  const { playlist } = useAppSelector((state) => {
+    return state['searchReducer']['searchResult'];
   });
   const playlistRouter = (item: IPlaylist, index: number) => {
     navigate('/Home/playlistDetail',{

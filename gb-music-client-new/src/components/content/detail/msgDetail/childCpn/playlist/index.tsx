@@ -5,8 +5,7 @@ import { IUser } from '../../../../../../constant/user';
 import { deleteMsg, getPlaylistMsg, readSingleMsg } from '../../../../../../network/message';
 import { useNavigate } from 'react-router-dom';
 import { Empty } from 'antd';
-import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
-import { changeShow } from '../../../../../common/toast/store/actionCreators';
+
 import {
   useAppDispatch,
   useAppSelector
@@ -42,7 +41,7 @@ const Playlist: FC = (props): ReactElement => {
   };
   const deleteMessage = (item: IPlayMsg) => {
     // @ts-ignore
-    dispatch(changeMsgAction(true)).then((data) => {
+    /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         deleteMsg(item.id).then((data) => {
           dispatch(changeShow('删除成功', 1500));
@@ -52,7 +51,7 @@ const Playlist: FC = (props): ReactElement => {
           });
         });
       }
-    });
+    });*/
   };
   const userRouter = (item: IUser) => {
     navigate('/Home/userDetail',{

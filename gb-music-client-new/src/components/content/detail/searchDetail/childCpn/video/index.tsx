@@ -1,20 +1,20 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-import { Map } from 'immutable';
+import { useNavigate } from 'react-router-dom';
 import { VideoWrapper } from './style';
-import { useSelector } from 'react-redux';
+import {  useAppSelector} from '@/store/hooks';
 import MsgItem from '../../../../msgItem';
 import { IVideo } from '../../../../../../constant/video';
 import { holder } from '../../../../../../utils/holder';
 import { Empty } from 'antd';
 import { ISearchStore } from '../../../../../../constant/store/search';
-const Video: FC<RouteComponentProps> = (props): ReactElement => {
-  const { video } = useSelector<Map<string, ISearchStore>, ISearchStore>((state) => {
-    return state.getIn(['searchReducer', 'searchResult']);
+const Video: FC = (props): ReactElement => {
+
+  const navigate = useNavigate();
+  const { video } = useAppSelector((state) => {
+    return state['searchReducer']['searchResult'];
   });
   const videoRouter = (item: IVideo, index: number): void => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.id
       }
@@ -23,8 +23,7 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
   const userRouter = (item: IVideo) => {
     if (item.type === 0) {
       if ('userId' in item.user) {
-        props.history.push({
-          pathname: '/Home/userDetail',
+        navigate('/Home/userDetail',{
           state: {
             userId: item.user.userId
           }
@@ -32,8 +31,7 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
       }
     } else if (item.type === 1) {
       if ('id' in item.user) {
-        props.history.push({
-          pathname: '/Home/artistDetail',
+        navigate('/Home/artistDetail',{
           state: {
             id: item.user.id
           }

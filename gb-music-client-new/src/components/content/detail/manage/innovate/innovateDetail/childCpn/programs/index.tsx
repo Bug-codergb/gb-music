@@ -2,8 +2,8 @@ import React, { memo, FC, ReactElement } from 'react';
 
 import { ProgramWrapper } from './style';
 
-import { IProgram } from '../../../../../../../../constant/program';
-import { formatTime } from '../../../../../../../../utils/format';
+import { IProgram } from '@/constant/program';
+import { formatTime } from '@/utils/format';
 import { Empty } from 'antd';
 interface IProps {
   programs: IProgram[] | undefined;

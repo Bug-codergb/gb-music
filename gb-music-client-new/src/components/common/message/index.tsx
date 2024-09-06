@@ -4,7 +4,6 @@ import {
   useAppDispatch,
   useAppSelector
 } from "@/store/hooks.ts";
-import { changeMsgAction } from './store/actionCreators';
 import { IMsgStore } from '../../../constant/store/message';
 
 const Message: FC = memo((): ReactElement => {
@@ -16,12 +15,12 @@ const Message: FC = memo((): ReactElement => {
     return state['messageReducer'];
   });
   const define = () => {
-    dispatch(changeMsgAction(false));
-    resolve(true);
+    //dispatch(changeMsgAction(false));
+    resolve && resolve(true);
   };
   const cancel = () => {
-    dispatch(changeMsgAction(false));
-    resolve(false);
+    //dispatch(changeMsgAction(false));
+    resolve && resolve(false);
   };
   return (
     <MessageWrapper>

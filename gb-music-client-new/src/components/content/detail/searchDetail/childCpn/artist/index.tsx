@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from "@/store/hooks"
 import { ArtistWrapper } from './style';
 import { IArtist } from '../../../../../../constant/artist';
 import { Empty } from 'antd';
@@ -8,8 +8,8 @@ import { ISearchStore } from '../../../../../../constant/store/search';
 
 const Artist: FC = (props): ReactElement => {
   const navigate = useNavigate();
-  const { artist } = useSelector<Map<string, ISearchStore>, ISearchStore>((state) => {
-    return state.getIn(['searchReducer', 'searchResult']);
+  const { artist } = useAppSelector((state) => {
+    return state['searchReducer']['searchResult'];
   });
   const artistRouter = (item: IArtist, index: number): void => {
     navigate('/Home/artistDetail',{

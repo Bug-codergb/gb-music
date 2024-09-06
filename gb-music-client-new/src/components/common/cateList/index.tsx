@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useState } from 'react';
-import { ICategory } from '../../../constant/category';
+import { ICategory } from '@/constant/category';
 import { CateListWrapper } from './style';
 interface IProps {
   cateList: ICategory[];

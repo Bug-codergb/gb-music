@@ -1,16 +1,15 @@
 import React, { memo, FC } from 'react';
-import { Map } from 'immutable';
 import { ListItemWrapper } from './style';
-import { formatTime } from '../../../../../utils/format';
+import { formatTime } from '@/utils/format';
 import VipMv from '../../../../common/vip-mv';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { cancelFavorite, setUserFavorite } from '../../../../../network/user';
-import { changeUserDetailAction } from '../../../../../views/Login/store/actionCreators';
-import { changeShow } from '../../../../common/toast/store/actionCreators';
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { cancelFavorite, setUserFavorite } from '@/network/user';
+import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
+//import { changeShow } from '../../../../common/toast/store/actionCreators';
+import { useAppDispatch,useAppSelector } from "@/store/hooks
 import { ILogin, IUserDetail } from '../../../../../constant/store/login';
 
-interface IProps extends RouteComponentProps {
+interface IProps  {
   id: string;
   index: number;
   name: string;
@@ -24,11 +23,12 @@ interface IProps extends RouteComponentProps {
   arId: string;
 }
 const ListItem: FC<IProps> = (props) => {
+  const navigate = useNavigate();
   const { index, id, name, createName, alName, time, play, vip, video, arId } = props;
-  const { userDetail } = useSelector<Map<string, ILogin>, { userDetail: IUserDetail }>((state) => ({
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
-  const dispatch = useDispatch();
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const dispatch = useAppDispatch();
   const playClick = (id: string, name: string) => {
     play(id, name);
   };
@@ -42,7 +42,7 @@ const ListItem: FC<IProps> = (props) => {
     if (!isLove(id)) {
       setUserFavorite(id).then((data) => {
         dispatch(changeUserDetailAction());
-        dispatch(changeShow('已添加到我喜欢的音乐', 2500));
+        //dispatch(changeShow('已添加到我喜欢的音乐', 2500));
       });
     } else {
       cancelFavorite(id).then((data) => {
@@ -52,8 +52,7 @@ const ListItem: FC<IProps> = (props) => {
   };
   const videoRouter = () => {
     if (video) {
-      props.history.push({
-        pathname: '/Home/videoDetail',
+      navigate('/Home/videoDetail',{
         state: {
           id: video.id
         }
@@ -62,8 +61,7 @@ const ListItem: FC<IProps> = (props) => {
   };
   const artistRouter = () => {
     if (arId) {
-      props.history.push({
-        pathname: '/Home/artistDetail',
+      navigate('/Home/artistDetail',{
         state: {
           id: arId
         }
@@ -102,4 +100,4 @@ const ListItem: FC<IProps> = (props) => {
     </ListItemWrapper>
   );
 };
-export default withRouter(memo(ListItem));
+export default memo(ListItem);

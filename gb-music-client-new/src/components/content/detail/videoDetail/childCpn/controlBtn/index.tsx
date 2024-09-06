@@ -5,7 +5,7 @@ import { cancelSub, sub } from '../../../../../../network/subscriber';
 import { cancelThumb, thumb as thumbVideo } from '../../../../../../network/thumbs';
 import { ControlBtnWrapper } from './style';
 import { useAppSelector,useAppDispatch } from "@/store/hooks"
-import { changeUserDetailAction } from '../../../../../../views/Login/store/actionCreators';
+import { changeUserDetailAction } from '../../../../../../views/Login/store/asyncThunk';
 import { ILogin, IUserDetail } from '../../../../../../constant/store/login';
 
 interface IProps {

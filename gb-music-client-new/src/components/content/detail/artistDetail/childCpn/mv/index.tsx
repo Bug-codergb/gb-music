@@ -1,9 +1,9 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MVWrapper } from './style';
-import { getArtistMV } from '../../../../../../network/artist';
-import { IVideo } from '../../../../../../constant/video';
-import { IArtist } from '../../../../../../constant/artist';
+import { getArtistMV } from '@/network/artist';
+import { IVideo } from '@/constant/video';
+import { IArtist } from '@/constant/artist';
 import MsgItem from '../../../../msgItem';
 import { Empty } from 'antd';
 

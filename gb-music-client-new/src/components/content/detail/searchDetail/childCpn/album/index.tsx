@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from "@/store/hooks"
 import { useNavigate } from 'react-router-dom';
 import { AlbumWrapper } from './style';
 
@@ -10,8 +10,8 @@ import { ISearchStore } from '../../../../../../constant/store/search';
 
 const Album: FC = (props): ReactElement => {
   const navigate = useNavigate();
-  const { album } = useSelector<Map<string, ISearchStore>, ISearchStore>((state) => {
-    return state.getIn(['searchReducer', 'searchResult']);
+  const { album } = useAppSelector((state) => {
+    return state['searchReducer']['searchResult'];
   });
   const albumRouter = (item: IAlbum, index: number): void => {
     navigate('/Home/albumDetail',{

@@ -1,7 +1,6 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { Map } from 'immutable';
+import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { useNavigate } from 'react-router-dom';
 
 import { PlayPageWrapper, CenterContent } from './style';
 
@@ -17,32 +16,33 @@ import Comment from '../../common/comment';
 import IncludePlaylist from './childCpn/includePlaylist';
 import ListInfo from '../listInfo';
 
-import { changeUserDetailAction } from '../../../views/Login/store/actionCreators';
-import { changeIsShowAction } from '../vip/store/actionCreators';
+import { changeUserDetailAction } from '../../../views/Login/store/asyncThunk';
+import { changeIsShowAction } from '../vip/store/slice';
 
 import { ILogin, IUserDetail, IUserMsg } from '../../../constant/store/login';
 import { IComment } from '../../../constant/comment';
 import { IPlaylist } from '../../../constant/playlist';
 import { ISongStore } from '../../../constant/store/song';
 
-const PlayPage: FC<RouteComponentProps> = memo((props): ReactElement => {
+const PlayPage: FC = memo((props): ReactElement => {
+  const navigate =useNavigate();
   const [userAlbum, setAlbum] = useState<IPlaylist[]>([]);
   const [isShow, setIsShow] = useState<boolean>(false);
   const [comment, setComment] = useState<IComment[]>([]);
   const [total, setTotal] = useState<number>(0);
-  const { songDetail, lyric, currentLyricIndex } = useSelector<Map<string, ISongStore>, ISongStore>((state) => {
-    return state.getIn(['songReducer', 'song']);
+  const { songDetail, lyric, currentLyricIndex } = useAppSelector((state) => {
+    return state['songReducer'];
   });
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
-  const { userDetail } = useSelector<Map<string, ILogin>, { userDetail: IUserDetail }>((state) => ({
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
-  const playType = useSelector<Map<string, number>, number>((state) => {
-    return state.getIn(['playModeTypeReducer', 'playType']);
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
   });
-  const dispatch = useDispatch();
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const playType = useAppSelector((state) => {
+    return state['playModeTypeReducer']['playType'];
+  });
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getUserPlaylist(userMsg.userId).then((data: any) => {
       setAlbum(data.playlist);
@@ -62,15 +62,13 @@ const PlayPage: FC<RouteComponentProps> = memo((props): ReactElement => {
 
   const albumRouter = () => {
     if (playType === 0) {
-      props.history.push({
-        pathname: '/Home/albumDetail',
+      navigate('/Home/albumDetail',{
         state: {
           id: songDetail.album.id
         }
       });
     } else if (playType === 1) {
-      props.history.push({
-        pathname: '/Home/channelDetail',
+      navigate('/Home/channelDetail',{
         state: {
           id: songDetail.channel.id
         }
@@ -79,15 +77,13 @@ const PlayPage: FC<RouteComponentProps> = memo((props): ReactElement => {
   };
   const artistRouter = () => {
     if (playType === 0) {
-      props.history.push({
-        pathname: '/Home/artistDetail',
+      navigate('/Home/artistDetail',{
         state: {
           id: songDetail.artist.id
         }
       });
     } else if (playType === 1) {
-      props.history.push({
-        pathname: '/Home/userDetail',
+      navigate('/Home/userDetail',{
         state: {
           userId: songDetail.user.userId
         }
@@ -161,8 +157,7 @@ const PlayPage: FC<RouteComponentProps> = memo((props): ReactElement => {
   };
   const videoRouter = () => {
     if (songDetail && songDetail.video) {
-      props.history.push({
-        pathname: '/Home/videoDetail',
+      navigate('/Home/videoDetail',{
         state: {
           id: songDetail.video.id
         }
@@ -293,4 +288,4 @@ const PlayPage: FC<RouteComponentProps> = memo((props): ReactElement => {
     </PlayPageWrapper>
   );
 });
-export default withRouter(PlayPage);
+export default PlayPage;

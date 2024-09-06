@@ -7,8 +7,7 @@ import { IUser } from '../../../../../../constant/user';
 import { IComment } from '../../../../../../constant/comment';
 import { Empty, Pagination } from 'antd';
 import { useDispatch } from 'react-redux';
-import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
-import { changeShow } from '../../../../../common/toast/store/actionCreators';
+
 import {
   useAppDispatch,
   useAppSelector
@@ -40,21 +39,21 @@ const Comment: FC = (props): ReactElement => {
     });
   };
   const deleteMessage = (item: IMsgComment) => {
-    // @ts-ignore
-    dispatch(changeMsgAction(true)).then((data) => {
+
+    /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         deleteMsg(item.id).then((data) => {
-          dispatch(changeShow('删除成功', 1500));
+          //dispatch(changeShow('删除成功', 1500));
           getCommentMsg('0', '10').then((data: any) => {
             setCount(data.count);
             setCommentMsg(data.message);
           });
         });
       }
-    });
+    });*/
   };
   const readMsg = (item: IMsgComment) => {
-    dispatch(changeShow('消息已读', 1500));
+    //dispatch(changeShow('消息已读', 1500));
     readSingleMsg(item.id).then((data) => {
       getCommentMsg('0', '10').then((data: any) => {
         setCount(data.count);

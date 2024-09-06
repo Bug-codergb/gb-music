@@ -6,8 +6,7 @@ import { IArtist } from '../../../../../../constant/artist';
 import { deleteMsg, getAlbumMsg, readSingleMsg } from '../../../../../../network/message';
 import { useNavigate } from 'react-router-dom';
 import { Pagination } from 'antd';
-import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
-import { changeShow } from '../../../../../common/toast/store/actionCreators';
+
 import {
   useAppDispatch,
   useAppSelector
@@ -48,8 +47,7 @@ const Album: FC = (props): ReactElement => {
     });
   };
   const deleteMessage = (item: IAlbumMsg) => {
-    // @ts-ignore
-    dispatch(changeMsgAction(true)).then((data) => {
+    /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         deleteMsg(item.id).then((data) => {
           dispatch(changeShow('删除成功', 1500));
@@ -59,7 +57,7 @@ const Album: FC = (props): ReactElement => {
           });
         });
       }
-    });
+    });*/
   };
   const artistRouter = (item: IArtist) => {
     navigate('/Home/artistDetail',{

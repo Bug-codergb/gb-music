@@ -2,12 +2,13 @@ import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { IncludePlaylistWrapper } from './style';
 import { getIncludePlaylist } from '../../../../../network/playlist';
 import { IPlaylist } from '../../../../../constant/playlist';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-interface IProps extends RouteComponentProps {
+interface IProps {
   id: string;
 }
 const IncludePlaylist: FC<IProps> = memo((props): ReactElement => {
+  const navigate = useNavigate()
   const [playList, setPlayList] = useState<IPlaylist[]>([]);
   const { id } = props;
   useEffect(() => {
@@ -18,8 +19,7 @@ const IncludePlaylist: FC<IProps> = memo((props): ReactElement => {
     }
   }, [id]);
   const playlistRouter = (item: IPlaylist) => {
-    props.history.push({
-      pathname: '/Home/playlistDetail',
+    navigate('/Home/playlistDetail',{
       state: {
         id: item.id
       }
@@ -27,8 +27,7 @@ const IncludePlaylist: FC<IProps> = memo((props): ReactElement => {
   };
   const userRouter = (item: IPlaylist) => {
     if (item.user) {
-      props.history.push({
-        pathname: '/Home/userDetail',
+      navigate('/Home/userDetail',{
         state: {
           userId: item.user?.userId
         }
@@ -58,4 +57,4 @@ const IncludePlaylist: FC<IProps> = memo((props): ReactElement => {
     </IncludePlaylistWrapper>
   );
 });
-export default withRouter(IncludePlaylist);
+export default IncludePlaylist;

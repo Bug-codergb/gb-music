@@ -1,17 +1,16 @@
 import React, { memo, FC, ReactElement, useRef, useEffect, MouseEvent } from 'react';
-import { Map } from 'immutable';
 import { PlaylistWrapper } from './style';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { ISong } from '../../../../../constant/song';
 import { formatTime } from '../../../../../utils/format';
-import { changeSongDetailAction } from '../../store/actionCreators';
+import { changeSongDetailAction } from '../../store/asyncThunk';
 import { ISongStore } from '../../../../../constant/store/song';
 const Playlist: FC = (): ReactElement => {
-  const { playlist, currentIndex } = useSelector<Map<string, ISongStore>, ISongStore>((state) => {
-    return state.getIn(['songReducer', 'song']);
+  const { playlist, currentIndex } = useAppSelector((state) => {
+    return state['songReducer'];
   });
   const songList = useRef<HTMLUListElement>(null);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (songList.current && songList.current?.offsetHeight >= 450) {
       songList.current.style.height = 450 + 'px';

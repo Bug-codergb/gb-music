@@ -12,20 +12,20 @@ import {
   LeftContent,
   RightContent
 } from './style';
-import { getPlaylistDetail } from '../../../../network/playlist';
-import { formatTime } from '../../../../utils/format';
-import { IPlaylist } from '../../../../constant/playlist';
-import { ICategory } from '../../../../constant/category';
-import { ISong } from '../../../../constant/song';
-import { IUser } from '../../../../constant/user';
+import { getPlaylistDetail } from '@/network/playlist';
+import { formatTime } from '@/utils/format';
+import { IPlaylist } from '@/constant/playlist';
+import { ICategory } from '@/constant/category';
+import { ISong } from '@/constant/song';
+import { IUser } from '@/constant/user';
 import TabControl from '../../../common/tabControl';
 import Comment from './childCpn/comment';
-import { cancelSub, sub } from '../../../../network/subscriber';
+import { cancelSub, sub } from '@/network/subscriber';
 import {
   useAppDispatch,
   useAppSelector
 } from "@/store/hooks.ts"
-import { changeUserDetailAction } from '../../../../views/Login/store/actionCreators';
+import { changeUserDetailAction } from '@/views/Login/store/actionCreators';
 import HotPlaylist from './childCpn/hotPlaylist';
 
 interface IPlaylistDetail extends IPlaylist {

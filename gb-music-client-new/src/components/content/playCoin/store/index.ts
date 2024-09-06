@@ -1,2 +1,2 @@
-import reducer from './reducer';
-export { reducer };
+export {reducer,changePlaylist,changeSongURL,changeSongDetail,changeLyric,changeLyricLine} from './slice';
+

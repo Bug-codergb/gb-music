@@ -5,8 +5,6 @@ import { IUser } from '../../../../../../constant/user';
 import { IVideo } from '../../../../../../constant/video';
 import { useNavigate } from 'react-router-dom';
 import { Empty, Pagination } from 'antd';
-import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
-import { changeShow } from '../../../../../common/toast/store/actionCreators';
 import {
   useAppDispatch,
   useAppSelector
@@ -47,7 +45,7 @@ const Video: FC = (props): ReactElement => {
   };
   const deleteMessage = (item: IMsgVideo) => {
     // @ts-ignore
-    dispatch(changeMsgAction(true)).then((data) => {
+    /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         deleteMsg(item.id).then((data) => {
           dispatch(changeShow('删除成功', 1500));
@@ -57,7 +55,7 @@ const Video: FC = (props): ReactElement => {
           });
         });
       }
-    });
+    });*/
   };
   const userRouter = (item: IUser) => {
     navigate('/Home/userDetail',{

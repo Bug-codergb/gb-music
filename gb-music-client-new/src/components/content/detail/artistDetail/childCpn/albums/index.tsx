@@ -4,12 +4,12 @@ import {
   useAppSelector
 } from "@/store/hooks.ts"
 
-import { changeSongDetailAction } from '../../../../playCoin/store/actionCreators';
+import { changeSongDetailAction } from '../../../../playCoin/store/asyncThunk';
 import Album from './childCpn/album';
 import { ISong } from '../../../../../../constant/albumDetail';
 import { IAlbum } from '../../../../../../constant/album';
 import { AlbumsWrapper } from './style';
-import { changeShow } from '../../../../../common/toast/store/actionCreators';
+import { changeShow } from '../../../../../common/toast/store/index';
 import { ILogin, IUserMsg } from '../../../../../../constant/store/login';
 
 interface IAlbums extends IAlbum {
@@ -29,7 +29,7 @@ const Albums: FC<IProps> = ({ albums }) => {
     if (vip === 1 && auth * 1 === 0) {
       dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
     }
-    dispatch(changeSongDetailAction(item.id));
+    dispatch(changeSongDetailAction({id:item.id}));
   };
   return (
     <AlbumsWrapper>

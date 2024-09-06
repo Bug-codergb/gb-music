@@ -10,8 +10,7 @@ import {
   useAppDispatch,
   useAppSelector
 } from "@/store/hooks.ts"
-import { changeShow } from '../../../../../common/toast/store/actionCreators';
-import { changeMsgAction } from '../../../../../common/message/store/actionCreators';
+
 
 interface IChannelMsg {
   id: string;
@@ -50,8 +49,8 @@ const Channel: FC = (props): ReactElement => {
     });
   };
   const deleteMessage = (item: IChannelMsg) => {
-    // @ts-ignore
-    dispatch(changeMsgAction(true)).then((data) => {
+
+    /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         deleteMsg(item.id).then((data) => {
           dispatch(changeShow('删除成功', 1500));
@@ -61,7 +60,7 @@ const Channel: FC = (props): ReactElement => {
           });
         });
       }
-    });
+    });*/
   };
   return (
     <ChannelWrapper>

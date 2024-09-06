@@ -1,9 +1,9 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { CommentWrapper } from './style';
 import Reply from '../../../../../common/reply';
-import { getAllComment, publishComment } from '../../../../../../network/comment';
+import { getAllComment, publishComment } from '@/network/comment';
 import VideoComment from '../../../../../common/comment/index';
-import { IComment } from '../../../../../../constant/comment';
+import { IComment } from '@/constant/comment';
 interface IProps {
   vid: string;
 }

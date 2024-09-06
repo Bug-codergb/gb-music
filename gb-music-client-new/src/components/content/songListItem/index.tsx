@@ -1,7 +1,6 @@
 import React, { memo, FC } from 'react';
-import { Map } from 'immutable';
-import { useDispatch, useSelector } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useNavigate } from 'react-router-dom';
 
 import { SongListItemWrapper } from './style';
 import { formatTime } from '../../../utils/format';
@@ -10,11 +9,11 @@ import { changeUserDetailAction } from '../../../views/Login/store/actionCreator
 
 import VipMv from '../../common/vip-mv';
 import {ILogin, IUserDetail, IUserMsg} from '../../../constant/store/login';
-import { changeShow } from '../../common/toast/store/actionCreators';
-import {changeIsShowAction} from "../vip/store/actionCreators";
+//import { changeShow } from '../../common/toast/store/actionCreators';
+import {changeIsShowAction} from "../vip/store/slice";
 import {downloadSong} from "../../../network/song";
 
-interface IProps extends RouteComponentProps {
+interface IProps {
   id: string;
   index: number;
   state: string;
@@ -32,14 +31,15 @@ interface IProps extends RouteComponentProps {
   isShowUp: boolean;
 }
 const SongListItem: FC<IProps> = (props) => {
+  const navigate = useNavigate();
   const { index, id, state, creator, alName, dt, onClick, arId, alId, vip, video, isShowUp, diff } = props;
-  const { userDetail } = useSelector<Map<string, ILogin>, { userDetail: IUserDetail }>((state) => ({
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
-  const dispatch = useDispatch();
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const dispatch = useAppDispatch();
   const play = (id: string) => {
     onClick(id);
   };
@@ -53,7 +53,7 @@ const SongListItem: FC<IProps> = (props) => {
     if (!isLove()) {
       setUserFavorite(id).then((data) => {
         dispatch(changeUserDetailAction());
-        dispatch(changeShow('已添加到我喜欢的音乐', 2500));
+        //dispatch(changeShow('已添加到我喜欢的音乐', 2500));
       });
     } else {
       cancelFavorite(id).then((data) => {
@@ -62,24 +62,21 @@ const SongListItem: FC<IProps> = (props) => {
     }
   };
   const userRouter = () => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id: arId
       }
     });
   };
   const albumRouter = () => {
-    props.history.push({
-      pathname: '/Home/albumDetail',
+    navigate('/Home/albumDetail',{
       state: {
         id: alId
       }
     });
   };
   const videoRouter = () => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: video.id
       }
@@ -128,4 +125,4 @@ const SongListItem: FC<IProps> = (props) => {
     </SongListItemWrapper>
   );
 };
-export default withRouter(memo(SongListItem));
+export default memo(SongListItem);

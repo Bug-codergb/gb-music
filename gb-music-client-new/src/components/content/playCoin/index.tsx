@@ -11,10 +11,11 @@ import { formatTime } from '../../../utils/format';
 import { CenterContent, PlayCoinWrapper } from './style';
 import {
   changeCurrentLyricIndex,
-  changeCurrentSongAction,
+
   changeLyricLine,
   changePlayMode
-} from './store/actionCreators';
+} from './store/slice';
+import {changeCurrentSongAction} from "./store/asyncThunk"
 import Playlist from './childCpn/playlist';
 import { CSSTransition } from 'react-transition-group';
 import { getFileBlob } from '../../../network/media';

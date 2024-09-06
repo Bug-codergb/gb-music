@@ -38,29 +38,51 @@ const songSlice = createSlice({
     playMode: 0 //0 列表循环 1 随机播放 2 单曲循环
   },
   reducers:{
-    changeSongURL(){
-
+    changeSongURL(state,{payload}){
+      state.songUrl=payload
     },
-    changeSongDetail(){
-
+    changeSongDetail(state,{payload}){
+      state.songDetail=payload
     },
-    changeLyric(){
-
+    changeLyric(state,{payload}){
+      state.lyric=payload
     },
-    changeLyricLine(){
-
+    changeLyricLine(state,{payload}){
+      state.lyricLine=payload
     },
-    changeCurrentLyricIndex(){
-
+    changeCurrentLyricIndex(state,{payload}){
+      state.currentLyricIndex=payload
     },
-    changePlaylist(){
-
+    changePlaylist(state,{payload}){
+      state.playlist=payload
     },
-    changeCurrentIndex(){
-
+    changeCurrentIndex(state,{payload}){
+      state.currentIndex=payload
     },
-    changePlayMode(){
-
+    changePlayMode(state,{payload}){
+      state.playMode=payload
     }
   }
 })
+const reducer = songSlice.reducer;
+const {
+  changeSongURL,
+  changeSongDetail,
+  changeLyric,
+  changeLyricLine,
+  changeCurrentLyricIndex,
+  changePlaylist,
+  changeCurrentIndex,
+  changePlayMode
+} =songSlice.actions
+export {
+  reducer,
+  changeSongURL,
+  changeSongDetail,
+  changeLyric,
+  changeLyricLine,
+  changeCurrentLyricIndex,
+  changePlaylist,
+  changeCurrentIndex,
+  changePlayMode
+}

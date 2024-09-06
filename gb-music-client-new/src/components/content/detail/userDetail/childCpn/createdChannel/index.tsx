@@ -2,9 +2,9 @@ import React, { memo, ReactElement, FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Empty } from 'antd';
 import { CreatedChannelWrapper } from './style';
-import { getUserChannel } from '../../../../../../network/user';
-import { IChannel } from '../../../../../../constant/channel';
-import { formatTime } from '../../../../../../utils/format';
+import { getUserChannel } from '@/network/user';
+import { IChannel } from '@/constant/channel';
+import { formatTime } from '@/utils/format';
 import { Pagination } from 'antd';
 
 interface IProps {

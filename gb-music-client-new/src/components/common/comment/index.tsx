@@ -3,21 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import {
   useAppDispatch,
   useAppSelector
-} from "@/store/hooks.ts"
+} from "@/store/hooks"
 
 import { Pagination } from 'antd';
 
 import { CommentWrapper } from './style';
-import { IComment } from '../../../constant/comment';
-import { formatTime } from '../../../utils/format';
+import { IComment } from '@/constant/comment';
+import { formatTime } from '@/utils/format';
 import Reply from '../reply';
-import { deleteComment, replyComment } from '../../../network/comment';
+import { deleteComment, replyComment } from '@/network/comment';
 import { cancelThumb, thumb as thumbComment } from '../../../network/thumbs';
-import { changeUserDetailAction } from '../../../views/Login/store/asyncThunk';
+import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
 
-import { publishMessage } from '../../../network/message';
-import placeholder from "../../../assets/img/holder/user-placehoder.png";
-import { IUser } from '../../../constant/user';
+import { publishMessage } from '@/network/message';
+import placeholder from "@/assets/img/holder/user-placehoder.png";
+import { IUser } from '@/constant/user';
 
 interface IProps  {
   isPage: boolean;

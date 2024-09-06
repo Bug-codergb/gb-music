@@ -8,8 +8,6 @@ import song from '../../../assets/img/vip/song.svg';
 import download from '../../../assets/img/vip/download.svg';
 import { IVIP } from '../../../constant/vip';
 import { payMoney } from '../../../network/pay';
-import { changeMsgAction } from '../../common/message/store/actionCreators';
-import { changeShow } from '../../common/toast/store/actionCreators';
 import { ILogin, IUserMsg } from '../../../constant/store/login';
 import { Image } from 'antd';
 import placeholder from '../../../assets/img/holder/user-placehoder.png';
@@ -52,8 +50,8 @@ const Member: FC = (): ReactElement => {
     }
   };
   const deleteHistory = (item: IVIP) => {
-    // @ts-ignore
-    dispatch(changeMsgAction(true)).then((data) => {
+
+    /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         deleteVIPHistory(item.id).then((data) => {
           dispatch(changeShow('删除成功', 1500));
@@ -62,7 +60,7 @@ const Member: FC = (): ReactElement => {
           });
         });
       }
-    });
+    });*/
   };
   return (
     <MemberWrapper>

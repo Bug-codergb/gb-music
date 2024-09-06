@@ -1,8 +1,8 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { SimilarWrapper } from './style';
-import { getSimiArtist } from '../../../../../../network/artist';
-import { IArtist } from '../../../../../../constant/artist';
-import { holder } from '../../../../../../utils/holder';
+import { getSimiArtist } from '@/network/artist';
+import { IArtist } from '@/constant/artist';
+import { holder } from '@/utils/holder';
 import { Pagination } from 'antd';
 interface IProps {
   area?: string;

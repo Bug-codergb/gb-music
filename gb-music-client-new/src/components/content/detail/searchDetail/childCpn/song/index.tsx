@@ -1,21 +1,21 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector,useAppDispatch } from "@/store/hooks"
 import { useNavigate } from 'react-router-dom';
 import { SongWrapper } from './style';
 import { ISong } from '../../../../../../constant/song';
 import { formatTime } from '../../../../../../utils/format';
 
-import { changeSongDetailAction } from '../../../../playCoin/store/actionCreators';
+import { changeSongDetailAction } from '../../../../playCoin/store/asyncThunk';
 import { Empty } from 'antd';
 import VipMv from '../../../../../common/vip-mv';
 import { ISearchStore } from '../../../../../../constant/store/search';
 
 const Song: FC = (props): ReactElement => {
   const navigate = useNavigate();
-  const { song } = useSelector<Map<string, ISearchStore>, ISearchStore>((state) => {
-    return state.getIn(['searchReducer', 'searchResult']);
+  const { song } = useAppSelector((state) => {
+    return state['searchReducer']['searchResult'];
   });
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const songPlay = (item: ISong, index: number): void => {
     dispatch(changeSongDetailAction(item.id));
   };

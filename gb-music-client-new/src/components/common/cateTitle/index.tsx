@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement, useState } from 'react';
 import { CateTitleWrapper } from './style';
-import { ICategory } from '../../../constant/category';
+import { ICategory } from '@/constant/category';
 
 interface IProps {
   title: string;

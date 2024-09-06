@@ -1,7 +1,7 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { SimiVideoWrapper } from './style';
-import { getSimiVideo } from '../../../../../../network/video';
-import { IVideo } from '../../../../../../constant/video';
+import { getSimiVideo } from '@/network/video';
+import { IVideo } from '@/constant/video';
 import SimiItem from '../../../../../common/simiItem';
 import { useNavigate } from 'react-router-dom';
 interface IProps {

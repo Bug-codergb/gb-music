@@ -9,7 +9,7 @@ import { IVideoStore } from '../../../../../../constant/store/video';
 const VideoInfo: FC = (props): ReactElement => {
   const navigate = useNavigate();
   const videoDetail = useAppSelector((state) => {
-    return state['videoReducer'];
+    return state['videoReducer']['video'];
   });
   const userRouter = (id: string) => {
     if (videoDetail.type === 1 && 'id' in videoDetail.user) {

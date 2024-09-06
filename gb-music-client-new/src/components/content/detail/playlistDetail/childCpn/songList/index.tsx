@@ -3,12 +3,11 @@ import {
   useAppDispatch,
   useAppSelector
 } from "@/store/hooks.ts"
-import { changeSongDetailAction } from '../../../../playCoin/store/actionCreators';
+import { changeSongDetailAction } from '../../../../playCoin/store/asyncThunk';
 import { ISong } from '../../../../../../constant/song';
 import { SongListWrapper } from './style';
 import SongListItem from '../../../../songListItem';
 import { addPlayCount } from '../../../../../../network/playlist';
-import { changeShow } from '../../../../../common/toast/store/actionCreators';
 import { ILogin, IUserMsg } from '../../../../../../constant/store/login';
 import {addToplistPlayCount} from "../../../../../../network/toplist/toplist";
 
@@ -28,7 +27,7 @@ const SongList: FC<IProps> = ({ songs, pId, isShowUp,tId }): ReactElement => {
     const { vip } = item;
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {
-      dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
     }
     if (pId) {
       addPlayCount(pId).then(()=>{}).catch(()=>{})

@@ -2,9 +2,9 @@ import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Empty, Pagination } from 'antd';
 import { CreatedPlaylistWrapper } from './style';
-import { getUserPlaylist } from '../../../../../../network/playlist';
-import { IPlaylist } from '../../../../../../constant/playlist';
-import { holder } from '../../../../../../utils/holder';
+import { getUserPlaylist } from '@/network/playlist';
+import { IPlaylist } from '@/constant/playlist';
+import { holder } from '@/utils/holder';
 
 interface IProps {
   id: string | undefined;

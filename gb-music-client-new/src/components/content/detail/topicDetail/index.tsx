@@ -8,11 +8,11 @@ import { formatTime } from '../../../../utils/format';
 import Reply from '../../../common/reply';
 import Comment from '../../../common/comment';
 import { IComment } from '../../../../constant/comment';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/store/hooks';
 import { getAllComment, publishComment } from '../../../../network/comment';
 import { thumb as thumbMoment } from '../../../../network/thumbs';
-import { changeUserDetailAction } from '../../../../views/Login/store/actionCreators';
-import { changeSongDetailAction } from '../../playCoin/store/actionCreators';
+import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
+import { changeSongDetailAction } from '../../playCoin/store/asyncThunk';
 
 interface ITopicDetail extends ITopic {
   moments: IMoment[];
@@ -38,7 +38,7 @@ const TopicDetail: FC<{ id: string }> = (props): ReactElement => {
       setLiveIndex(-1);
     });
   }, []);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   //function handle
   const publish = (content: string, item: IMoment) => {
     publishComment(content, 'mId', item.id).then((data) => {

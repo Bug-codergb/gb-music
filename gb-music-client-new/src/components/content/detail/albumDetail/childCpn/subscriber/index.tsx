@@ -1,9 +1,9 @@
 import React, { memo, FC, ReactElement, useState, useEffect } from 'react';
-import { IPlaylistSub } from '../../../../../../constant/IPlaylistSub';
+import { IPlaylistSub } from '@/constant/IPlaylistSub';
 import { SubscriberWrapper } from './style';
-import { getAlbumSub } from '../../../../../../network/album';
+import { getAlbumSub } from '@/network/album';
 import { Empty, Pagination } from 'antd';
-import { IUser } from '../../../../../../constant/user';
+import { IUser } from '@/constant/user';
 import { useNavigate } from 'react-router-dom';
 
 interface IProps  {

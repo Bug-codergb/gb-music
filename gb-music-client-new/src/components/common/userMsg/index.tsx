@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement } from 'react';
 import { Image } from 'antd';
-import { IUser } from '../../../constant/user';
+import { IUser } from '@/constant/user';
 import { UserMsgWrapper } from './style';
 import placeholder from '../../../assets/img/holder/user-placehoder.png';
 

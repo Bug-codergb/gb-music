@@ -42,7 +42,6 @@ const InnovateCon: FC<{ id: string }> = (props): ReactElement => {
     setIsShow(false);
   };
   const innovateRouter = (item: IPrograms, index: number) => {
-    console.log(item);
     navigate('/innovate/detail',{
       state: {
         id: item.id
