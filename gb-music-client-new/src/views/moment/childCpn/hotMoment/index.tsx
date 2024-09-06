@@ -3,9 +3,10 @@ import { HotMomentWrapper } from './style';
 
 import { getHotTopic } from '../../../../network/topic';
 import { ITopic } from '../../../../constant/topic';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const HotMoment: FC<RouteComponentProps> = memo((props): ReactElement => {
+const HotMoment: FC = memo((props): ReactElement => {
+  const navigate= useNavigate();
   const [hotTopic, setHotTopic] = useState<ITopic[]>([]);
   useEffect(() => {
     /*  getHotMoment().then((data:any)=>{
@@ -17,8 +18,7 @@ const HotMoment: FC<RouteComponentProps> = memo((props): ReactElement => {
   }, []);
 
   const topicRouter = (id: string) => {
-    props.history.push({
-      pathname: '/Home/topicDetail',
+    navigate('/Home/topicDetail',{
       state: {
         id
       }
@@ -44,4 +44,4 @@ const HotMoment: FC<RouteComponentProps> = memo((props): ReactElement => {
     </HotMomentWrapper>
   );
 });
-export default withRouter(memo(HotMoment));
+export default memo(HotMoment);

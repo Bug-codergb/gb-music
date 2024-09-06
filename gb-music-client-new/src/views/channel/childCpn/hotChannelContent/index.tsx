@@ -1,23 +1,18 @@
-/*
-@Name guobin
-@Description gb-music
-@author guobin
-@date 2022/4/22
-*/
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { Image } from 'antd';
 import { HotChannelContentWrapper } from './style';
-import { getHotChannelContent } from '../../../../network/channel';
+import { getHotChannelContent } from '@/network/channel';
 import placeholder from '../../../../assets/img/holder/placeholder.png';
-import { IChannel } from '../../../../constant/channel';
+import { IChannel } from '@/constant/channel';
 
 interface ChannelContent {
   id: string;
   name: string;
   channels: IChannel[];
 }
-const HotChannelContent: FC<RouteComponentProps> = (props): ReactElement => {
+const HotChannelContent: FC = (props): ReactElement => {
+  const navigate=useNavigate();
   const [channels, setChannels] = useState<ChannelContent[]>([]);
   useEffect(() => {
     getHotChannelContent().then((data: any) => {
@@ -25,8 +20,7 @@ const HotChannelContent: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, []);
   const channelRouter = (item: IChannel) => {
-    props.history.push({
-      pathname: '/Home/channelDetail',
+    navigate('/Home/channelDetail',{
       state: {
         id: item.id
       }
@@ -72,4 +66,4 @@ const HotChannelContent: FC<RouteComponentProps> = (props): ReactElement => {
     </HotChannelContentWrapper>
   );
 };
-export default withRouter(memo(HotChannelContent));
+export default memo(HotChannelContent);

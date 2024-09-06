@@ -6,10 +6,10 @@ import {
 import { Carousel, Image } from 'antd';
 import { CarouselRef } from 'antd/lib/carousel';
 import { BannerWrapper } from './style';
-import { IBanner } from '../../../../../../constant/banner';
-import { getBanner } from '../../../../../../network/banner';
+import { IBanner } from '@/constant/banner';
+import { getBanner } from '@/network/banner';
 
-import { changeSongDetailAction } from '../../../../../../components/content/playCoin/store/actionCreators';
+import { changeSongDetailAction } from '@/components/content/playCoin/store/asyncThunk';
 import { useNavigate } from 'react-router-dom';
 import placeholder from '../../../../../../assets/img/holder/banner-holder.png';
 
@@ -38,7 +38,7 @@ const Banner: FC = (props): ReactElement => {
   const bannerClick = (item: IBanner, index: number) => {
     switch (item.type) {
       case 1:
-        dispatch(changeSongDetailAction(item.songId!));
+        dispatch(changeSongDetailAction({id:item.songId!}));
         break;
       case 3:
         navigate('/Home/videoDetail',{

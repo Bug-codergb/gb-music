@@ -3,7 +3,7 @@ import { IProgram } from '../../../../../../constant/program';
 import { ProgramWrapper } from './style';
 import { formatTime } from '../../../../../../utils/format';
 import { addProgramPlayCount } from '../../../../../../network/channel';
-import { useDispatch } from 'react-redux';
+
 import { changeProgramDetailAction } from './store/asyncThunk';
 
 import {

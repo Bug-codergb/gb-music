@@ -1,23 +1,20 @@
 import React, { memo, FC, ReactElement, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import navlist from './constant/index';
 import { NavListWrapper } from './style';
 
-const NavList: FC<RouteComponentProps> = (props): ReactElement => {
+const NavList: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [liveIndex, setLiveIndex] = useState<number>(0);
   const liClick = (item: { name: string; path: string }, i: number, index: number) => {
     setCurrentIndex(index);
     setLiveIndex(i);
-    props.history.push({
-      pathname: item.path
-    });
+    navigate(item.path);
   };
   const btnClick = () => {
-    props.history.push({
-      pathname: '/innovate/publish'
-    });
+    navigate('/innovate/publish');
   };
   return (
     <NavListWrapper>
@@ -50,4 +47,4 @@ const NavList: FC<RouteComponentProps> = (props): ReactElement => {
     </NavListWrapper>
   );
 };
-export default memo(withRouter(NavList));
+export default memo(NavList);

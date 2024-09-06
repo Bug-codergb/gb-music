@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { MVWrapper } from './style';
 import { ICategory } from '../../../../constant/category';
 import { IVideo } from '../../../../constant/video';
@@ -11,7 +11,8 @@ import { holder } from '../../../../utils/holder';
 import { Empty, Image, Pagination } from 'antd';
 import placeholder from '../../../../assets/img/holder/video-placeholder.png';
 
-const MV: FC<RouteComponentProps> = (props): ReactElement => {
+const MV: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [cate, setCate] = useState<ICategory[]>([]);
   const [video, setVideo] = useState<IVideo[]>([]);
   const [count, setCount] = useState<number>(0);
@@ -32,16 +33,14 @@ const MV: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const videoRouter = (item: IVideo, index: number): void => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.id
       }
     });
   };
   const userRouter = (id: string): void => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id
       }

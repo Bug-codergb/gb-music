@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CateList from '../../../../components/common/cateList';
 import { getAlbumCate, getCateAlbumDetail } from '../../../../network/album';
 import { ICategory } from '../../../../constant/category';
@@ -16,7 +16,8 @@ interface ICateAlbum {
   album: IAlbum[];
   count: number;
 }
-const Album: FC<RouteComponentProps> = (props): ReactElement => {
+const Album: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [cateList, setCateList] = useState<ICategory[]>([]);
   const [albumDetail, setAlbum] = useState<ICateAlbum>();
   const [count, setCount] = useState<number>(0);
@@ -37,16 +38,14 @@ const Album: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const albumRouter = (item: IAlbum, index: number) => {
-    props.history.push({
-      pathname: '/Home/albumDetail',
+    navigate('/Home/albumDetail',{
       state: {
         id: item.id
       }
     });
   };
   const artistRouter = (item: IAlbum) => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id: item.artist?.id
       }

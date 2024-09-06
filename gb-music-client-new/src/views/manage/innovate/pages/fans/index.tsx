@@ -2,7 +2,7 @@ import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { getUserFans } from '../../../../../network/manage/fans';
 import { IUser } from '../../../../../constant/user';
 import { FansWrapper } from './style';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Empty } from 'antd';
 interface IFans {
   id: string;
@@ -11,7 +11,8 @@ interface IFans {
   momentCount: number;
   videoCount: number;
 }
-const Fans: FC<RouteComponentProps> = (props): ReactElement => {
+const Fans: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [fans, setFans] = useState<IFans[]>([]);
   const [count, setCount] = useState<number>(0);
   useEffect(() => {
@@ -21,8 +22,7 @@ const Fans: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, []);
   const userRouter = (item: IFans) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.user.userId
       }
@@ -65,4 +65,4 @@ const Fans: FC<RouteComponentProps> = (props): ReactElement => {
     </FansWrapper>
   );
 };
-export default withRouter(memo(Fans));
+export default memo(Fans);

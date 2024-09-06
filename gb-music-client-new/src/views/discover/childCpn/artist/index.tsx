@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getArtistCate, getArtistType, getCateArtist } from '../../../../network/artist';
 
 import { ICategory } from '../../../../constant/category';
@@ -15,7 +15,8 @@ import { ArtistWrapper } from './style';
 import { holder } from '../../../../utils/holder';
 import TypeList from '../../../../components/common/typeList';
 
-const Artist: FC<RouteComponentProps> = (props): ReactElement => {
+const Artist: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [count, setCount] = useState<number>(0);
   const [cates, setCates] = useState<ICategory[]>([]);
   const [types, setTypes] = useState<ICategory[]>([]);
@@ -89,8 +90,7 @@ const Artist: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const playlistRouter = (item: IArtist, index: number) => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id: item.id
       }
@@ -171,4 +171,4 @@ const Artist: FC<RouteComponentProps> = (props): ReactElement => {
     </ArtistWrapper>
   );
 };
-export default withRouter(memo(Artist));
+export default memo(Artist);

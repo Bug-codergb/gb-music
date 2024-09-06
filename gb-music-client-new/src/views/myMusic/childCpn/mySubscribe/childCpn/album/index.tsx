@@ -3,10 +3,11 @@ import { Empty, Pagination } from 'antd';
 import { AlbumWrapper } from './style';
 import { IAlbum } from '../../../../../../constant/album';
 import { formatTime } from '../../../../../../utils/format';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserSub } from '../../../../../../network/user';
 
-const Album: FC<RouteComponentProps> = (props): ReactElement => {
+const Album: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [album, setAlbum] = useState<IAlbum[]>([]);
   const [count, setCount] = useState<number>(0);
   useEffect(() => {
@@ -16,8 +17,7 @@ const Album: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, []);
   const albumRouter = (item: IAlbum) => {
-    props.history.push({
-      pathname: '/Home/albumDetail',
+    navigate('/Home/albumDetail',{
       state: {
         id: item.id
       }
@@ -62,4 +62,4 @@ const Album: FC<RouteComponentProps> = (props): ReactElement => {
     </AlbumWrapper>
   );
 };
-export default withRouter(memo(Album));
+export default memo(Album);

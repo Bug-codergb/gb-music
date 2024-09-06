@@ -1,15 +1,14 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import innovation from '../../assets/img/innovate/云音乐达人.svg';
 
 import { InnovationWrapper, CenterContent } from './style';
 
-const Innovation: FC<RouteComponentProps> = (props): ReactElement => {
+const Innovation: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const innovateRouter = () => {
-    props.history.push({
-      pathname: '/innovate'
-    });
+    navigate('/innovate');
   };
   return (
     <InnovationWrapper>
@@ -25,4 +24,4 @@ const Innovation: FC<RouteComponentProps> = (props): ReactElement => {
     </InnovationWrapper>
   );
 };
-export default memo(withRouter(Innovation));
+export default memo(Innovation);

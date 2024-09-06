@@ -1,5 +1,5 @@
 import React, { memo, ReactElement, FC, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { getMvToplist } from '../../../../../../network/video/mv';
 
@@ -11,7 +11,8 @@ import CateTitle from '../../../../../../components/common/cateTitle';
 import { getVideoCate } from '../../../../../../network/video';
 import { IArtist } from '../../../../../../constant/artist';
 
-const Toplist: FC<RouteComponentProps> = (props): ReactElement => {
+const Toplist: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [mv, setMV] = useState<IVideo[]>([]);
   const [cate, setCate] = useState<ICategory[]>([]);
   useEffect(() => {
@@ -30,8 +31,7 @@ const Toplist: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const playMV = (item: IVideo, index: number) => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.id
       }
@@ -39,8 +39,7 @@ const Toplist: FC<RouteComponentProps> = (props): ReactElement => {
   };
   const artistRouter = (item: IArtist | undefined) => {
     if (item) {
-      props.history.push({
-        pathname: '/Home/artistDetail',
+      navigate('/Home/artistDetail',{
         state: {
           id: item.id
         }
@@ -79,4 +78,4 @@ const Toplist: FC<RouteComponentProps> = (props): ReactElement => {
     </ToplistWrapper>
   );
 };
-export default memo(withRouter(Toplist));
+export default memo(Toplist);

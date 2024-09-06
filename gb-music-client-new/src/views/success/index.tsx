@@ -1,7 +1,7 @@
 import React, { memo, ReactElement, FC, useEffect, useState } from 'react';
-import { Map } from 'immutable';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { CheckOutlined } from '@ant-design/icons';
 import { SuccessPageWrapper } from './style';
 import { parseURL } from '../../utils/parseURL';
@@ -9,16 +9,17 @@ import { queryOrderAlipay } from '../../network/pay';
 import { getVipMessage, joinVIP } from '../../network/vip';
 import { formatTime } from '../../utils/format';
 
-import { changeUserMsg } from '../Login/store/actionCreators';
+import { changeUserMsg } from '../Login/store/slice';
 import { ILogin, IUserMsg } from '../../constant/store/login';
 
-const SuccessPage: FC<RouteComponentProps> = (props): ReactElement => {
+const SuccessPage: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [params, setParams] = useState<any>({});
   const [tmpParams, setTmpParams] = useState<any>({});
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
-  const dispatch = useDispatch();
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const dispatch = useAppDispatch();
   useEffect(() => {
     const params = parseURL(window.location.href);
     setParams(params);
@@ -43,9 +44,7 @@ const SuccessPage: FC<RouteComponentProps> = (props): ReactElement => {
   }, [dispatch, tmpParams, userMsg.token]);
 
   const known = () => {
-    props.history.push({
-      pathname: '/Home/discover/recommend'
-    });
+    navigate('/Home/discover/recommend');
   };
   return (
     <SuccessPageWrapper>
@@ -75,4 +74,4 @@ const SuccessPage: FC<RouteComponentProps> = (props): ReactElement => {
     </SuccessPageWrapper>
   );
 };
-export default withRouter(memo(SuccessPage));
+export default memo(SuccessPage);

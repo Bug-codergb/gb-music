@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getAllCate, getCatePlaylist } from '../../../../network/playlist';
 import { ICategory } from '../../../../constant/category';
 import { PlaylistWrapper } from './style';
@@ -19,7 +19,8 @@ interface ICatePlaylist {
   playlist: playlist;
   category: ICategory;
 }
-const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
+const Playlist: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [cate, setCate] = useState<ICategory[]>([]);
   const [cateName, setCateName] = useState<string>('流行');
   const [cateId, setCateId] = useState<string>('');
@@ -48,16 +49,14 @@ const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const playlistRouter = (item: playlist, index: number) => {
-    props.history.push({
-      pathname: '/Home/playlistDetail',
+    navigate('/Home/playlistDetail',{
       state: {
         id: item.id
       }
     });
   };
   const userRouter = (user: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: user.userId
       }
@@ -123,4 +122,4 @@ const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
     </PlaylistWrapper>
   );
 };
-export default withRouter(memo(Playlist));
+export default memo(Playlist);

@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserChannelPlaylist } from '../../../../../network/channel';
 import { ChannelPlayWrapper } from './style';
 import { IChannel } from '../../../../../constant/channel';
@@ -14,7 +14,8 @@ interface IChannelPlaylist {
   dt: string;
   category: IChannel;
 }
-const ChannelPlay: FC<RouteComponentProps> = (props): ReactElement => {
+const ChannelPlay: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [channel, setChannel] = useState<IChannelPlaylist[]>([]);
   useEffect(() => {
     getUserChannelPlaylist<IChannelPlaylist[]>().then((data) => {
@@ -22,8 +23,7 @@ const ChannelPlay: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, []);
   const channelRouter = (item: IChannelPlaylist) => {
-    props.history.push({
-      pathname: '/Home/channelDetail',
+    navigate('/Home/channelDetail',{
       state: {
         id: item.category.id
       }
@@ -63,4 +63,4 @@ const ChannelPlay: FC<RouteComponentProps> = (props): ReactElement => {
     </ChannelPlayWrapper>
   );
 };
-export default withRouter(memo(ChannelPlay));
+export default memo(ChannelPlay);

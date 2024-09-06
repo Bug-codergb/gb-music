@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState, useRef } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CommentWrapper } from './style';
 import { getUserAllComment } from '../../../../../network/manage/comment';
 import { IUser } from '../../../../../constant/user';
@@ -26,7 +26,8 @@ interface IUserComment {
   vId: string;
   source: any;
 }
-const Comment: FC<RouteComponentProps> = (props): ReactElement => {
+const Comment: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [count, setCount] = useState<number>(0);
   const [userComment, setUserComment] = useState<IUserComment[]>([]);
   useEffect(() => {
@@ -58,45 +59,38 @@ const Comment: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const albumRouter = (item: IUserComment) => {
-    props.history.push({
-      pathname: '/Home/albumDetail',
+    navigate('/Home/albumDetail',{
       state: {
         id: item.source.id
       }
     });
   };
   const channelRouter = (item: IUserComment) => {
-    props.history.push({
-      pathname: '/Home/channelDetail',
+    navigate('/Home/channelDetail',{
       state: {
         id: item.source.id
       }
     });
   };
   const momentRouter = () => {
-    props.history.push({
-      pathname: '/Home/moment'
-    });
+    navigate('/Home/moment');
   };
   const playlistRouter = (item: IUserComment) => {
-    props.history.push({
-      pathname: '/Home/playlistDetail',
+    navigate('/Home/playlistDetail',{
       state: {
         id: item.pId
       }
     });
   };
   const toplistRouter = (item: IUserComment) => {
-    props.history.push({
-      pathname: '/Home/toplistDetail',
+    navigate('/Home/toplistDetail',{
       state: {
         id: item.tId
       }
     });
   };
   const videoRouter = (item: IUserComment) => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.vId
       }
@@ -252,4 +246,4 @@ const Comment: FC<RouteComponentProps> = (props): ReactElement => {
     </CommentWrapper>
   );
 };
-export default withRouter(memo(Comment));
+export default memo(Comment);

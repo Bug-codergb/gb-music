@@ -1,19 +1,17 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../../../../assets/img/logo.png';
 import { TopBarWrapper, CenterContent } from './style';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from "@/store/hooks";
 import UserMsg from '../../../../../components/common/userMsg';
 
-const Topbar: FC<RouteComponentProps> = (props): ReactElement => {
-  const { userMsg } = useSelector((state) => ({
-    // @ts-ignore
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
+const Topbar: FC = (props): ReactElement => {
+  const navigate = useNavigate();
+  const { userMsg } = useAppSelector((state) => {
+    return  state['loginReducer']
+  });
   const homeRouter = () => {
-    props.history.push({
-      pathname: '/Home/discover/recommend'
-    });
+    navigate('/Home/discover/recommend');
   };
   return (
     <TopBarWrapper>
@@ -40,4 +38,4 @@ const Topbar: FC<RouteComponentProps> = (props): ReactElement => {
     </TopBarWrapper>
   );
 };
-export default memo(withRouter(Topbar));
+export default memo(Topbar);

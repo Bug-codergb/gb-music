@@ -10,7 +10,7 @@ import { Image, Spin } from 'antd';
 import { RecSongWrapper } from './style';
 
 import ListInfo from '../../../../../../components/content/listInfo';
-import { changeSongDetailAction } from '../../../../../../components/content/playCoin/store/actionCreators';
+import { changeSongDetailAction } from '../../../../../../components/content/playCoin/store/asyncThunk';
 import VipMv from '../../../../../../components/common/vip-mv';
 
 import { changeShow } from '../../../../../../components/common/toast/store/actionCreators';
@@ -38,7 +38,7 @@ const RecSong: FC = (props): ReactElement => {
     if (vip === 1 && auth * 1 === 0) {
       dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
     }
-    dispatch(changeSongDetailAction(item.id));
+    dispatch(changeSongDetailAction({id:item.id}));
   };
   const videoRouter = (item: ISong) => {
     if (item.video) {

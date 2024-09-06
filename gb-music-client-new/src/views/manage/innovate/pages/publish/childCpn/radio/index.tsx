@@ -1,11 +1,11 @@
 import React, { memo, FC, ReactElement, useEffect, useState, ChangeEvent } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@/store/hooks';
 import radioImg from '../../../../../../../assets/img/channel/radio.png';
 import { RadioWrapper } from './style';
-import { addContent, getAllChannel, uploadContentCover } from '../../../../../../../network/channel';
-import { IChannel } from '../../../../../../../constant/channel';
-import { changeShow } from '../../../../../../../components/common/toast/store/actionCreators';
-import { publishMessage } from '../../../../../../../network/message';
+import { addContent, getAllChannel, uploadContentCover } from '@/network/channel';
+import { IChannel } from '@/constant/channel';
+
+import { publishMessage } from '@/network/message';
 
 const Radio: FC = (): ReactElement => {
   const [channel, setChannel] = useState<IChannel[]>([]);
@@ -20,7 +20,7 @@ const Radio: FC = (): ReactElement => {
   const [imgFile, setImgFile] = useState<File>();
   const [isShowPrev, setIsShowPrev] = useState<boolean>(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getAllChannel().then((data: any) => {
       setChannel(data);
@@ -50,13 +50,13 @@ const Radio: FC = (): ReactElement => {
   };
   const define = () => {
     if (name.trim().length === 0) {
-      dispatch(changeShow('名称不能为空', 1500));
+      //dispatch(changeShow('名称不能为空', 1500));
     } else if (desc.trim().length === 0) {
-      dispatch(changeShow('简介不能为空', 1500));
+      //dispatch(changeShow('简介不能为空', 1500));
     } else if (!imgFile) {
-      dispatch(changeShow('请选择文件', 1500));
+      //dispatch(changeShow('请选择文件', 1500));
     } else if (cId.trim().length === 0) {
-      dispatch(changeShow('请选择文件', 1500));
+      //dispatch(changeShow('请选择文件', 1500));
     } else {
       addContent(cId, name, desc).then((data: any) => {
         if (data) {

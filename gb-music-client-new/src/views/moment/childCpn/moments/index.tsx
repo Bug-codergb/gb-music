@@ -1,7 +1,7 @@
 import React, { memo, FC, ReactElement, useEffect, useState, MouseEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Map } from 'immutable';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+
+import { useNavigate } from 'react-router-dom';
 
 import { MomentsWrapper } from './style';
 import { delMoment, getAllMoment } from '../../../../network/moment';
@@ -12,16 +12,17 @@ import { getAllComment, publishComment } from '../../../../network/comment';
 import { cancelThumb, thumb as thumbMoment } from '../../../../network/thumbs';
 import Comment from '../../../../components/common/comment';
 
-import { changeUserDetailAction } from '../../../Login/store/actionCreators';
-import { changeSongDetailAction } from '../../../../components/content/playCoin/store/actionCreators';
-import { changeShow } from '../../../../components/common/toast/store/actionCreators';
-import { changeMsgAction } from '../../../../components/common/message/store/actionCreators';
+import { changeUserDetailAction } from '../../../Login/store/asyncThunk';
+import { changeSongDetailAction } from '../../../../components/content/playCoin/store/asyncThunk';
+//import { changeShow } from '../../../../components/common/toast/store/actionCreators';
+//import { changeMsgAction } from '../../../../components/common/message/store/actionCreators';
 import { IUser } from '../../../../constant/user';
 import { ILogin, IUserMsg } from '../../../../constant/store/login';
 import { IComment } from '../../../../constant/comment';
 import { IMoment } from '../../../../constant/moment';
 
-const Moments: FC<RouteComponentProps> = memo((props): ReactElement => {
+const Moments: FC = memo((props): ReactElement => {
+  const navigate=useNavigate();
   const [moments, setMoments] = useState<IMoment[]>([]);
   const [count, setCount] = useState<number>(0);
   const [comment, setComment] = useState<IComment[]>([]);
@@ -29,10 +30,10 @@ const Moments: FC<RouteComponentProps> = memo((props): ReactElement => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [liveIndex, setLiveIndex] = useState<number>(-1);
 
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
-  const dispatch = useDispatch();
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getAllMoment<{ moments: IMoment[]; count: number }>(0, 6).then((data) => {
       setMoments(data.moments);
@@ -88,9 +89,9 @@ const Moments: FC<RouteComponentProps> = memo((props): ReactElement => {
     const { vip } = item.song;
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {
-      dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
     }
-    dispatch(changeSongDetailAction(item.song.id));
+    dispatch(changeSongDetailAction({id:item.song.id}));
   };
   //删除动态
   const deleteMom = (item: IMoment, index: number) => {
@@ -98,7 +99,7 @@ const Moments: FC<RouteComponentProps> = memo((props): ReactElement => {
     dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         delMoment(item.id).then((data) => {
-          dispatch(changeShow('删除成功', 1500));
+          //dispatch(changeShow('删除成功', 1500));
           getAllMoment<{ moments: IMoment[]; count: number }>(0, 6).then((data) => {
             setMoments(data.moments);
             setCount(data.count)
@@ -120,8 +121,7 @@ const Moments: FC<RouteComponentProps> = memo((props): ReactElement => {
     });
   };
   const userRouter = (item: IUser) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: item.userId
       }
@@ -222,4 +222,4 @@ const Moments: FC<RouteComponentProps> = memo((props): ReactElement => {
     </MomentsWrapper>
   );
 });
-export default withRouter(Moments);
+export default Moments;

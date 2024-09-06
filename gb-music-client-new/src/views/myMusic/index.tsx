@@ -1,20 +1,17 @@
 import React, { memo, FC, ReactElement, useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { myMusic } from '../../constant/myMusic';
 import { navListType } from '../../constant/NavList';
 import { MyMusicWrapper } from './style';
-import { renderRoutes } from 'react-router-config';
 
-interface Iprops extends RouteComponentProps {
-  route: any;
+interface IProps  {
 }
-const MyMusic: FC<Iprops> = (Iprops): ReactElement => {
+const MyMusic: FC<IProps> = (props): ReactElement => {
+  const navigate = useNavigate()
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const liCLick = (item: navListType, index: number): void => {
     setCurrentIndex(index);
-    Iprops.history.push({
-      pathname: item.path
-    });
+    navigate(item.path);
   };
   return (
     <MyMusicWrapper>

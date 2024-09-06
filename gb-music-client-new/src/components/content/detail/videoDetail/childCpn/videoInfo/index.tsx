@@ -1,7 +1,7 @@
 import React, { memo, FC, ReactElement } from 'react';
 import { useAppDispatch,useAppSelector } from "@/store/hooks"
 import { VideoInfoWrapper } from './style';
-import { useSelector } from 'react-redux';
+
 import UserMsg from '../../../../../common/userMsg';
 import { formatTime } from '../../../../../../utils/format';
 import { useNavigate } from 'react-router-dom';

@@ -1,30 +1,31 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { Map } from 'immutable';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+
 import { Empty, Pagination } from 'antd';
 import { getUserFavorite } from '../../../../network/user';
 import { MyFavoriteWrapper } from './style';
 import { ISong } from '../../../../constant/song';
 import { formatTime } from '../../../../utils/format';
 
-import { changeSongDetailAction } from '../../../../components/content/playCoin/store/actionCreators';
+import { changeSongDetailAction } from '../../../../components/content/playCoin/store/asyncThunk';
 
 import VipMv from '../../../../components/common/vip-mv';
-import { changeShow } from '../../../../components/common/toast/store/actionCreators';
+//import { changeShow } from '../../../../components/common/toast/store/actionCreators';
 import { ILogin, IUserMsg } from '../../../../constant/store/login';
 
 interface IUserSong {
   createTime: string;
   song: ISong;
 }
-const MyFavorite: FC<RouteComponentProps> = (props): ReactElement => {
+const MyFavorite: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [songs, setSongs] = useState<IUserSong[]>([]);
   const [count, setCount] = useState<number>(0);
-  const dispatch = useDispatch();
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
+  const dispatch = useAppDispatch();
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   useEffect(() => {
     getUserFavorite(0, 10).then((data: any) => {
       setSongs(data.songList.songs);
@@ -36,21 +37,19 @@ const MyFavorite: FC<RouteComponentProps> = (props): ReactElement => {
     const { vip } = item.song;
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {
-      dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
     }
-    dispatch(changeSongDetailAction(item.song.id));
+    dispatch(changeSongDetailAction({id:item.song.id}));
   };
   const albumRouter = (item: IUserSong) => {
-    props.history.push({
-      pathname: '/Home/albumDetail',
+    navigate('/Home/albumDetail',{
       state: {
         id: item.song.album.id
       }
     });
   };
   const artistRouter = (item: IUserSong) => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id: item.song.artist.id
       }
@@ -58,8 +57,7 @@ const MyFavorite: FC<RouteComponentProps> = (props): ReactElement => {
   };
   const videoRouter = (item: IUserSong) => {
     if (item.song.video) {
-      props.history.push({
-        pathname: '/Home/videoDetail',
+      navigate('/Home/videoDetail',{
         state: {
           id: item.song.video.id
         }
@@ -125,4 +123,4 @@ const MyFavorite: FC<RouteComponentProps> = (props): ReactElement => {
     </MyFavoriteWrapper>
   );
 };
-export default withRouter(memo(MyFavorite));
+export default memo(MyFavorite);

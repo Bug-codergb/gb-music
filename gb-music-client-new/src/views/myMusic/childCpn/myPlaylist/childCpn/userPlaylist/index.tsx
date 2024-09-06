@@ -1,9 +1,9 @@
 //用户歌单
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { Empty } from 'antd';
-import { Map } from 'immutable';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '@/store/hooks';
 import { getUserPlaylist } from '../../../../../../network/playlist';
 
 //组件
@@ -21,12 +21,13 @@ interface IPlaylist {
   updateTime: string;
   coverUrl: string;
 }
-const UserPlaylist: FC<RouteComponentProps> = memo((props): ReactElement => {
+const UserPlaylist: FC = memo((props): ReactElement => {
+  const navigate = useNavigate()
   const [userPlaylist, setUserPlay] = useState<IPlaylist[]>([]);
   //redux-hook
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   useEffect(() => {
     getUserPlaylist(userMsg.userId, 0, 30).then((data: any) => {
       if (data && data.playlist !== 0) {
@@ -35,8 +36,7 @@ const UserPlaylist: FC<RouteComponentProps> = memo((props): ReactElement => {
     });
   }, [userMsg.userId]);
   const playlistRouter = (item: IPlaylist, index: number) => {
-    props.history.push({
-      pathname: '/Home/playlistDetail',
+    navigate('/Home/playlistDetail',{
       state: {
         id: item.id
       }
@@ -73,4 +73,4 @@ const UserPlaylist: FC<RouteComponentProps> = memo((props): ReactElement => {
     </UserPlaylistWrapper>
   );
 });
-export default withRouter(UserPlaylist);
+export default UserPlaylist;

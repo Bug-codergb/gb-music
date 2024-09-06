@@ -5,8 +5,8 @@ import {
 } from "@/store/hooks.ts";
 import { CSSTransition } from 'react-transition-group';
 import { ToastWrapper } from './style';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeShow } from './store/index';
+
+//import { changeShow } from './store/index';
 import { IToastStore } from '../../../constant/store/toastStore';
 const Toast: FC = memo((): ReactElement => {
   const [isShow, setIsShow] = useState<boolean>(false);
@@ -20,7 +20,7 @@ const Toast: FC = memo((): ReactElement => {
     setIsShow(true);
     setTimeout(() => {
       setIsShow(false);
-      dispatch(changeShow({message:'', dt:0}));
+      //dispatch(changeShow({message:'', dt:0}));
     }, dt);
   }, [dispatch, dt, message]);
   return (

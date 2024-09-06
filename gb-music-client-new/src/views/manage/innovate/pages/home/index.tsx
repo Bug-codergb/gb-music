@@ -11,7 +11,7 @@ import Channel from './channel';
 import Moment from './moment/index';
 import { IMoment } from '../../../../../constant/moment';
 import { getUserAllMoment } from '../../../../../network/user';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 interface IVioList extends IVideo {
   playCount: number;
   comment: number;
@@ -26,7 +26,8 @@ interface IData {
   playCount: number;
   comment: number;
 }
-const Home: FC<RouteComponentProps> = (props): ReactElement => {
+const Home: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const { TabPane } = Tabs;
   const [key, setKey] = useState<string>('1');
   const [vioCount, setVioCount] = useState<number>(0);
@@ -83,25 +84,21 @@ const Home: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const videoRouter = (item: IVioList) => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.id
       }
     });
   };
   const channelRouter = (item: IChannelList) => {
-    props.history.push({
-      pathname: '/Home/channelDetail',
+    navigate('/Home/channelDetail',{
       state: {
         id: item.id
       }
     });
   };
   const momentRouter = () => {
-    props.history.push({
-      pathname: '/Home/moment'
-    });
+    navigate('/Home/moment');
   };
   return (
     <HomeWrapper>
@@ -246,4 +243,4 @@ const Home: FC<RouteComponentProps> = (props): ReactElement => {
     </HomeWrapper>
   );
 };
-export default withRouter(memo(Home));
+export default memo(Home);

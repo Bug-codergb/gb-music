@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useState, useEffect } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ChannelWrapper } from './style';
 import { IChannel } from '../../../../../../constant/channel';
 import { getUserSub } from '../../../../../../network/user';
@@ -7,7 +7,8 @@ import { Empty } from 'antd';
 import MsgItem from '../../../../../../components/content/msgItem';
 import { holder } from '../../../../../../utils/holder';
 
-const Channel: FC<RouteComponentProps> = (props): ReactElement => {
+const Channel: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [channel, setChannel] = useState<IChannel[]>([]);
   useEffect(() => {
     getUserSub('channel', 0, 30).then((data: any) => {
@@ -15,16 +16,14 @@ const Channel: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, []);
   const channelRouter = (item: IChannel) => {
-    props.history.push({
-      pathname: '/Home/channelDetail',
+    navigate('/Home/channelDetail',{
       state: {
         id: item.id
       }
     });
   };
   const userRouter = (id: string) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: id
       }
@@ -65,4 +64,4 @@ const Channel: FC<RouteComponentProps> = (props): ReactElement => {
     </ChannelWrapper>
   );
 };
-export default withRouter(memo(Channel));
+export default memo(Channel);

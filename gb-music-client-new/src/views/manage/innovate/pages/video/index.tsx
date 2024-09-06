@@ -1,20 +1,20 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { VideoWrapper } from './style';
 import { getManageVio } from '../../../../../network/manage/video';
 import { formatTime } from '../../../../../utils/format';
 import MsgItem from '../../../../../components/content/msgItem';
 import { holder } from '../../../../../utils/holder';
 import { Empty, Pagination } from 'antd';
-import { useDispatch } from 'react-redux';
-import { changeMsgAction } from '../../../../../components/common/message/store/actionCreators';
+import { useAppDispatch } from '@/store/hooks';
 import { deleteVideo } from '../../../../../network/video';
 
-const Video: FC<RouteComponentProps> = (props): ReactElement => {
+const Video: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [video, setVideo] = useState<any[]>([]);
   const [count, setCount] = useState<number>(0);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getManageVio(0, 10).then((data: any) => {
       const { count } = data;
@@ -30,8 +30,8 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
     });
   };
   const deleteVio = (item: any, index: number) => {
-    // @ts-ignore
-    dispatch(changeMsgAction(true)).then((data) => {
+
+    /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         deleteVideo(item.id).then((data) => {
           getManageVio(0, 10).then((data: any) => {
@@ -42,11 +42,10 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
           });
         });
       }
-    });
+    });*/
   };
   const videoRouter = (it: any) => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: it.id
       }
@@ -109,4 +108,4 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
     </VideoWrapper>
   );
 };
-export default withRouter(memo(Video));
+export default memo(Video);

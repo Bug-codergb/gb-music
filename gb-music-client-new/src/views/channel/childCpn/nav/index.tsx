@@ -1,9 +1,3 @@
-/*
-@Name guo'bin
-@Description gb-music
-@author guo'bin
-@date 2022/1/23
-*/
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { getAllChannel } from '../../../../network/channel';
 

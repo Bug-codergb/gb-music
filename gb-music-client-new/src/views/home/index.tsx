@@ -81,7 +81,7 @@ const Home: React.FC = (props) => {
       <HomeWrapper>
         {(!userMsg || !userMsg.token) && <Navigate to={'/Login'} />}
 
-        {isShow && <VipOuter />}
+        {isShow && false && <VipOuter />}
         <Layout>
           <Header className="gb-music-header">
             <TopBar />
@@ -99,13 +99,13 @@ const Home: React.FC = (props) => {
                     </div>
                   }
                 >
-                  {/*<Outlet/>*/}
+                  <Outlet/>
                 </Suspense>
               </div>
             </Content>
           </Layout>
           <Footer className={"gb-music-footer"}>
-            {/*<PlayCoin />*/}
+            <PlayCoin />
             {isShowBack && (
               <div className="back-to-top" onClick={(e) => backToTop()}>
                 <VerticalAlignTopOutlined />

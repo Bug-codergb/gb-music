@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import RecPlaylist from './childCpn/recPlaylist';
 import RecAlbum from './childCpn/recAlbum';
@@ -9,22 +9,17 @@ import Banner from './childCpn/banner';
 import { RecommendWrapper, LeftContent, RightContent } from './style';
 import HotChannel from './childCpn/rightBar/hotChannel';
 import RecVideo from './childCpn/rightBar/recVideo';
-interface IProps extends RouteComponentProps {}
+interface IProps {}
 const Recommend: FC<IProps> = (props): ReactElement => {
+  const navigate = useNavigate()
   const playlistRouter = (): void => {
-    props.history.push({
-      pathname: '/Home/discover/playlist'
-    });
+    navigate('/Home/discover/playlist')
   };
   const albumRouter = (): void => {
-    props.history.push({
-      pathname: '/Home/discover/album'
-    });
+    navigate('/Home/discover/album');
   };
   const artistRouter = (): void => {
-    props.history.push({
-      pathname: '/Home/discover/artist'
-    });
+    navigate('/Home/discover/artist');
   };
   return (
     <RecommendWrapper>

@@ -5,10 +5,11 @@ import { IVideo } from '../../../../../../constant/video';
 import { VideoWrapper } from './style';
 import MsgItem from '../../../../../../components/content/msgItem';
 import { getUserSub } from '../../../../../../network/user';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { holder } from '../../../../../../utils/holder';
 
-const Video: FC<RouteComponentProps> = (props): ReactElement => {
+const Video: FC = (props): ReactElement => {
+  const navigate = useNavigate()
   const [video, setVideo] = useState<IVideo[]>([]);
   useEffect(() => {
     getUserSub('video', 0, 30).then((data: any) => {
@@ -16,8 +17,7 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, []);
   const videoRouter = (item: IVideo, index: number) => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.id
       }
@@ -27,8 +27,7 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
     if (type !== undefined) {
       if (type === 0) {
         if ('userId' in item.user) {
-          props.history.push({
-            pathname: '/Home/userDetail',
+          navigate('/Home/userDetail',{
             state: {
               userId: item.user.userId
             }
@@ -36,8 +35,7 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
         }
       } else {
         if ('id' in item.user) {
-          props.history.push({
-            pathname: '/Home/artistDetail',
+          navigate('/Home/artistDetail',{
             state: {
               id: item.user.id
             }
@@ -80,4 +78,4 @@ const Video: FC<RouteComponentProps> = (props): ReactElement => {
     </VideoWrapper>
   );
 };
-export default withRouter(memo(Video));
+export default memo(Video);

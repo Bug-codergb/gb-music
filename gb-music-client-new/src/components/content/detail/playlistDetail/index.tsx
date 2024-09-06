@@ -170,4 +170,4 @@ const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
     </PlaylistDetailWrapper>
   );
 });
-export default withRouter(PlaylistDetail);
+export default PlaylistDetail;

@@ -5,7 +5,7 @@ import {
 } from "@/store/hooks.ts";
 import { message } from 'antd';
 import { ProfileWrapper } from './style';
-import { useSelector } from 'react-redux';
+
 import { uploadAvatar } from '../../../../../../../network/user';
 import { ILogin, IUserMsg } from '../../../../../../../constant/store/login';
 interface IProps {

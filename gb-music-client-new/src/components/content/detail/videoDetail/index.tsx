@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement, useEffect, useState, useRef, useCallback, MouseEvent } from 'react';
-import { Map } from 'immutable';
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useNavigate,useLocation } from 'react-router-dom';
 import { CenterContent, VideoDetailWrapper, LeftContent, RightContent } from './style';
 import { getVideoURL, updatePlayCount } from '../../../../network/video';
@@ -32,11 +32,11 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [liveIndex, setLiveIndex] = useState<number>(1);
   const [isShowRate, setIsShowRate] = useState<boolean>(false);
-  const videoDetail = useSelector<Map<string, IVideoStore>, IVideoStore>((state) => {
-    return state.getIn(['videoReducer', 'video']);
+  const videoDetail = useAppSelector((state) => {
+    return state['videoReducer'];
   });
   const videoRef = useRef<HTMLVideoElement>(null);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useBackTop();
   useEffect(() => {
     dispatch(changeVideoDetailAction(vid));

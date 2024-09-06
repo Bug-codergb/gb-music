@@ -2,12 +2,12 @@ import React, { FC, memo, ReactElement, useState } from 'react';
 import { VipOuterWrapper } from './style';
 import song from '../../../assets/img/vip/song.svg';
 import download from '../../../assets/img/vip/download.svg';
-import { useDispatch } from 'react-redux';
-import { changeIsShowAction } from './store/actionCreators';
+import { useAppDispatch } from '@/store/hooks';
+import { changeIsShowAction } from './store/slice';
 import Combo from './components/combo';
 
 const VipOuter: FC = (): ReactElement => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isShow, setIsShow] = useState<boolean>(false);
   const changeShow = () => {
     dispatch(changeIsShowAction(false));

@@ -1,13 +1,14 @@
 import React, { FC, memo, ReactElement, useEffect, useState } from 'react';
 import { ArtistWrapper } from './style';
 import { IArtist } from '../../../../../../constant/artist';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserSub } from '../../../../../../network/user';
 import MsgItem from '../../../../../../components/content/msgItem';
 import { holder } from '../../../../../../utils/holder';
 import { Empty } from 'antd';
 
-const Artist: FC<RouteComponentProps> = (props): ReactElement => {
+const Artist: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [artist, setArtist] = useState<IArtist[]>([]);
   useEffect(() => {
     getUserSub('artist', 0, 30).then((data: any) => {
@@ -15,8 +16,7 @@ const Artist: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, []);
   const artistRouter = (item: IArtist) => {
-    props.history.push({
-      pathname: '/Home/artistDetail',
+    navigate('/Home/artistDetail',{
       state: {
         id: item.id
       }
@@ -53,4 +53,4 @@ const Artist: FC<RouteComponentProps> = (props): ReactElement => {
     </ArtistWrapper>
   );
 };
-export default withRouter(memo(Artist));
+export default memo(Artist);

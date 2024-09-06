@@ -1,21 +1,20 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { Empty } from 'antd';
-import { Map } from 'immutable';
+
 import { PlaylistWrapper } from './style';
 import { IPlaylist } from '../../../../../../constant/playlist';
 import MsgItem from '../../../../../../components/content/msgItem';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserSubPlaylist } from '../../../../../../network/user';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '@/store/hooks';
 import { holder } from '../../../../../../utils/holder';
 import { ILogin, IUserMsg } from '../../../../../../constant/store/login';
 
-const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
+const Playlist: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [playlist, setPlaylist] = useState<IPlaylist[]>([]);
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => {
-    return {
-      userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-    };
+  const { userMsg } = useAppSelector((state) => {
+    return  state['loginReducer']
   });
   useEffect(() => {
     getUserSubPlaylist(userMsg.userId, 0, 30).then((data: any) => {
@@ -23,8 +22,7 @@ const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, [userMsg.userId]);
   const playlistRouter = (item: IPlaylist) => {
-    props.history.push({
-      pathname: '/Home/playlistDetail',
+    navigate('/Home/playlistDetail',{
       state: {
         id: item.id
       }
@@ -62,4 +60,4 @@ const Playlist: FC<RouteComponentProps> = (props): ReactElement => {
     </PlaylistWrapper>
   );
 };
-export default withRouter(memo(Playlist));
+export default memo(Playlist);

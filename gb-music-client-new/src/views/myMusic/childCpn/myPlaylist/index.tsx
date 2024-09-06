@@ -3,8 +3,8 @@ import { MyPlayList } from './style';
 import CreatePlayList from './childCpn/createPlayList/index';
 import UserPlaylist from './childCpn/userPlaylist';
 //网络请求
-import { createPlayList, uploadPlayCover } from '../../../../network/playlist';
-import { publishMessage } from '../../../../network/message';
+import { createPlayList, uploadPlayCover } from '@/network/playlist';
+import { publishMessage } from '@/network/message';
 
 const MyPlaylist: FC = (): ReactElement => {
   const [isShow, setIsShow] = useState<boolean>(false);

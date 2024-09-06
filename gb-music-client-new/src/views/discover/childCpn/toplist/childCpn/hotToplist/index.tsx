@@ -1,11 +1,11 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { HotToplistWrapper } from './style';
-import { getHotToplist, getToplistDetail } from '../../../../../../network/toplist/toplist';
-import { IToplist } from '../../../../../../constant/toplist';
-import { ISong } from '../../../../../../constant/song';
-import { changeSongDetailAction } from '../../../../../../components/content/playCoin/store/actionCreators';
-import { useDispatch } from 'react-redux';
+import { getHotToplist, getToplistDetail } from '@/network/toplist/toplist';
+import { IToplist } from '@/constant/toplist';
+import { ISong } from '@/constant/song';
+import { changeSongDetailAction } from '@/components/content/playCoin/store/asyncThunk';
+import { useAppDispatch } from '@/store/hooks';
 import VipMv from '../../../../../../components/common/vip-mv';
 import { IArtist } from '../../../../../../constant/artist';
 import { Image, Skeleton } from 'antd';
@@ -14,10 +14,11 @@ interface IDetail extends IToplist {
   songs: ISong[];
 }
 
-const HotToplist: FC<RouteComponentProps> = (props): ReactElement => {
+const HotToplist: FC = (props): ReactElement => {
+  const navigate = useNavigate();
   const [hotToplist, setToplist] = useState<IToplist[]>([]);
   const [detail, setDetail] = useState<IDetail[]>([]);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getHotToplist().then((data: any) => {
       setToplist(data);
@@ -35,19 +36,17 @@ const HotToplist: FC<RouteComponentProps> = (props): ReactElement => {
     });
   }, [hotToplist.length]);
   const toplistRouter = (item: IToplist, index: number): void => {
-    props.history.push({
-      pathname: '/Home/toplistDetail',
+    navigate('/Home/toplistDetail',{
       state: {
         id: item.id
       }
     });
   };
   const playSong = (item: ISong) => {
-    dispatch(changeSongDetailAction(item.id));
+    dispatch(changeSongDetailAction({id:item.id}));
   };
   const videoRouter = (item: { id: string; name: string }) => {
-    props.history.push({
-      pathname: '/Home/videoDetail',
+    navigate('/Home/videoDetail',{
       state: {
         id: item.id
       }
@@ -55,8 +54,7 @@ const HotToplist: FC<RouteComponentProps> = (props): ReactElement => {
   };
   const artistRouter = (item: IArtist) => {
     if (item) {
-      props.history.push({
-        pathname: '/Home/artistDetail',
+      navigate('/Home/artistDetail',{
         state: {
           id: item.id
         }
@@ -128,4 +126,4 @@ const HotToplist: FC<RouteComponentProps> = (props): ReactElement => {
     </HotToplistWrapper>
   );
 };
-export default withRouter(memo(HotToplist));
+export default memo(HotToplist);

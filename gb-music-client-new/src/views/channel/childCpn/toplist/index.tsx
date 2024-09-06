@@ -1,11 +1,5 @@
-/*
-@Name guo'bin
-@Description gb-music
-@author guo'bin
-@date 2021/12/23
-*/
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ToplistWrapper } from './style';
 import ChannelBar from '../../../../components/content/channel';
 import { getContent } from '../../../../network/channel';
@@ -14,10 +8,11 @@ import UserMsg from '../../../../components/common/userMsg';
 import { Empty, Image } from 'antd';
 import placeholder from '../../../../assets/img/holder/placeholder.png';
 
-interface IProps extends RouteComponentProps {
+interface IProps {
   id: string;
 }
 const Toplist: FC<IProps> = (props): ReactElement => {
+  const navigate= useNavigate();
   const { id } = props;
   const [channel, setChannel] = useState<IChannel[]>([]);
   const [count, setCount] = useState<number>(0);
@@ -33,16 +28,14 @@ const Toplist: FC<IProps> = (props): ReactElement => {
   }, [id]);
   const channelRouter = (item: IChannel, index: number) => {
     //console.log(item)
-    props.history.push({
-      pathname: '/Home/channelDetail',
+    navigate('/Home/channelDetail',{
       state: {
         id: item.id
       }
     });
   };
   const userRouter = (id: string) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: id
       }
@@ -89,4 +82,4 @@ const Toplist: FC<IProps> = (props): ReactElement => {
     </ToplistWrapper>
   );
 };
-export default memo(withRouter(Toplist));
+export default memo(Toplist);

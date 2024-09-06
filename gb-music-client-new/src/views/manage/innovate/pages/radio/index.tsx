@@ -1,8 +1,7 @@
 import React, { memo, FC, ReactElement, useEffect, useState, MouseEvent } from 'react';
-import { useSelector } from 'react-redux';
-import { Map } from 'immutable';
+import { useAppSelector } from '@/store/hooks';
 import { getAllChannel, getUserChannelCount } from '../../../../../network/channel';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { RadioWrapper } from './style';
 import { ILogin, IUserMsg } from '../../../../../constant/store/login';
 
@@ -12,11 +11,12 @@ interface IUserChannel {
   count: number;
   channels: { id: string; name: string }[];
 }
-const Radio: FC<RouteComponentProps> = (props): ReactElement => {
+const Radio: FC = (props): ReactElement => {
+  const navigate = useNavigate()
   const [channel, setChannel] = useState<{ id: string; name: string; picUrl: string }[]>([]);
   const [userChannel, setUserChannel] = useState<IUserChannel[]>([]);
-  const { userMsg } = useSelector<Map<string, ILogin>, ILogin>((state) => {
-    return state.getIn(['loginReducer', 'login']);
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer'];
   });
   useEffect(() => {
     getAllChannel().then((data: any) => {
@@ -34,8 +34,7 @@ const Radio: FC<RouteComponentProps> = (props): ReactElement => {
     index: number
   ) => {
     e.stopPropagation();
-    props.history.push({
-      pathname: '/innovate/innovateCon',
+    navigate('/innovate/innovateCon',{
       state: {
         id: item.id
       }
@@ -72,4 +71,4 @@ const Radio: FC<RouteComponentProps> = (props): ReactElement => {
     </RadioWrapper>
   );
 };
-export default memo(withRouter(Radio));
+export default memo(Radio);

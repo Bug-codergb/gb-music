@@ -1,10 +1,9 @@
 import React, { memo, FC, ReactElement, useEffect, useState, ChangeEvent } from 'react';
 import { VideoWrapper } from './style';
-import { addVideo, getVideoCate, uploadCover, uploadVideo } from '../../../../../../../network/video';
-import { ICategory } from '../../../../../../../constant/category';
+import { addVideo, getVideoCate, uploadCover, uploadVideo } from '@/network/video';
+import { ICategory } from '@/constant/category';
 import { getVideoBase64, getVideoDuration } from '../../../../../../../utils/videoUtils';
-import { useDispatch } from 'react-redux';
-import { changeShow } from '../../../../../../../components/common/toast/store/actionCreators';
+import { useAppDispatch } from '@/store/hooks';
 import { publishMessage } from '../../../../../../../network/message';
 const Video: FC = (): ReactElement => {
   const [cateList, setCateList] = useState<ICategory[]>([]);
@@ -26,7 +25,7 @@ const Video: FC = (): ReactElement => {
   const [isShowImg, setIsShowImg] = useState<boolean>(false);
   const [isShowVio, setIsShowVio] = useState<boolean>(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     getVideoCate(0).then((data: any) => {
@@ -75,13 +74,13 @@ const Video: FC = (): ReactElement => {
   };
   const define = () => {
     if (name.trim().length === 0) {
-      dispatch(changeShow('名称不能为空', 1500));
+      //dispatch(changeShow('名称不能为空', 1500));
     } else if (desc.trim().length === 0) {
-      dispatch(changeShow('简介不能为空', 1500));
+      //dispatch(changeShow('简介不能为空', 1500));
     } else if (!video) {
-      dispatch(changeShow('请选择视频', 1500));
+      //dispatch(changeShow('请选择视频', 1500));
     } else if (!cover) {
-      dispatch(changeShow('请选择封面', 1500));
+      //dispatch(changeShow('请选择封面', 1500));
     } else {
       addVideo(name, desc, 0, cateId, undefined).then((data: any) => {
         const { id } = data;

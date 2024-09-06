@@ -6,7 +6,6 @@ import { deleteMsg, getCommentMsg, readSingleMsg } from '../../../../../../netwo
 import { IUser } from '../../../../../../constant/user';
 import { IComment } from '../../../../../../constant/comment';
 import { Empty, Pagination } from 'antd';
-import { useDispatch } from 'react-redux';
 
 import {
   useAppDispatch,

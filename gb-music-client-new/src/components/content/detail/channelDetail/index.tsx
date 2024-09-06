@@ -105,4 +105,4 @@ const ChannelDetail: FC<{ id: string }> = (props) => {
     </ChannelDetailWrapper>
   );
 };
-export default memo(withRouter(ChannelDetail));
+export default memo(ChannelDetail);
