@@ -14,7 +14,7 @@ import SubPlaylist from './childCpn/subPlaylist';
 import { payUser } from '../../../../network/fans';
 import { useAppDispatch,useAppSelector } from "@/store/hooks"
 
-import { changeUserDetailAction } from '../../../../views/Login/store/actionCreators';
+import { changeUserDetailAction } from '../../../../views/Login/store/asyncThunk';
 import { ILogin } from '../../../../constant/store/login';
 
 interface IUserDetail extends IUser {

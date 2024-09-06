@@ -6,7 +6,7 @@ import { IUser } from '../../../../../constant/user';
 import { formatTime } from '../../../../../utils/format';
 import { Empty, Pagination } from 'antd';
 import { holder } from '../../../../../utils/holder';
-import { changeMsgAction } from '../../../../../components/common/message/store/actionCreators';
+//import { changeMsgAction } from '../../../../../components/common/message/store/asyncThunk';
 import { useDispatch } from 'react-redux';
 import { deleteComment } from '../../../../../network/comment';
 
@@ -98,16 +98,16 @@ const Comment: FC = (props): ReactElement => {
   };
   const deleteCom = (item: IUserComment) => {
     // @ts-ignore
-    dispatch(changeMsgAction(true)).then((data) => {
-      if (data) {
-        deleteComment(item.id).then((data) => {
-          getUserAllComment(0, 5).then((data: any) => {
-            setCount(data.count);
-            setUserComment(data.comment);
-          });
-        });
-      }
-    });
+    // dispatch(changeMsgAction(true)).then((data) => {
+    //   if (data) {
+    //     deleteComment(item.id).then((data) => {
+    //       getUserAllComment(0, 5).then((data: any) => {
+    //         setCount(data.count);
+    //         setUserComment(data.comment);
+    //       });
+    //     });
+    //   }
+    // });
   };
   return (
     <CommentWrapper ref={topRef}>

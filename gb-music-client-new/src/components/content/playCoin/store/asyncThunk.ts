@@ -1,25 +1,29 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { addSongPlayCount, getLyric, getSongDetail, getSongURL } from '../../../../network/song';
-import { ISong } from '../../../../constant/song';
+
 import { getRandom } from '../../../../utils/getRandom';
-import { changePlayType } from '../../../../store/playType/actionCreators';
+
 import { getFormatLyric } from '../../../../utils/formatLyric';
 import { verifyURL } from '../../../../utils/verify';
 import { ISongStore } from '../../../../constant/store/song';
-import { changePlaylist, changeCurrentIndex, changeSongDetail, changeSongURL, changeLyric } from './slice';
+import { changeCurrentIndex, changeSongDetail, changeSongURL, changeLyric, changePlaylist } from './slice';
+import { ISong } from '@/constant/song';
+import { changePlayType } from '@/store/playType/slice';
 
 
-export const changeSongDetailAction = createAsyncThunk("songDetailAction",async (extraInfo:any,{dispatch,getState})=>{
+export const changeSongDetailAction = createAsyncThunk("song/changeSongDetailAction",async (extraInfo:any,{dispatch,getState})=>{
   const {id} = extraInfo
-  const state:any = getState();
-  const { playlist } = state['songReducer'];
+   const state:any = getState();
+   const { playlist } = state['songReducer'];
   let flag = playlist.findIndex((item: ISong, index: number) => {
     return item.id === id;
   });
+
   dispatch(changePlayType(0));
   //播放列表中不存在
+
   if (flag === -1) {
-    getSongDetail(id).then((data: any) => {
+    const data:any = await getSongDetail(id)
       dispatch(changeSongDetail(data));
       dispatch(changeSongURLAction(id));
       dispatch(changeSongLyric(id));
@@ -27,20 +31,24 @@ export const changeSongDetailAction = createAsyncThunk("songDetailAction",async 
       newPlaylist.push(data);
       dispatch(changePlaylist(newPlaylist));
       dispatch(changeCurrentIndex(newPlaylist.length - 1));
-    });
-    addSongPlayCount(id);
+
+    const ret = await addSongPlayCount('id');
+    return ret
   }
   //播放列表中存在
   if (flag !== -1) {
     dispatch(changeCurrentIndex(flag));
     dispatch(changeSongDetail(playlist[flag]));
     dispatch(changeSongURLAction(id));
-    dispatch(changeSongLyric(id));
-    await addSongPlayCount(id);
+    dispatch(changeSongLyric(id));id
+    const ret = await addSongPlayCount('id');
+    return ret;
   }
 })
+
 export const changeCurrentSongAction = createAsyncThunk("currentSongAction",(extraInfo:any,{dispatch,getState})=>{
   const state:any = getState()
+  console.log(state)
   const {tag} =extraInfo
   const { playMode }: ISongStore = state['songReducer'];
   const { playlist }: ISongStore = state['songReducer'];

@@ -7,7 +7,7 @@ import { getVideoURL, updatePlayCount } from '../../../../network/video';
 import { Slider, Spin } from 'antd';
 
 import { formatTime } from '../../../../utils/format';
-import { changeVideoDetailAction } from './store/actionCreators';
+import { changeVideoDetailAction } from './store/asyncThunk';
 
 import Comment from './childCpn/comment';
 import ControlBtn from './childCpn/controlBtn';

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { SongListItemWrapper } from './style';
 import { formatTime } from '../../../utils/format';
 import { cancelFavorite, setUserFavorite } from '../../../network/user';
-import { changeUserDetailAction } from '../../../views/Login/store/actionCreators';
+import { changeUserDetailAction } from '../../../views/Login/store/asyncThunk';
 
 import VipMv from '../../common/vip-mv';
 import {ILogin, IUserDetail, IUserMsg} from '../../../constant/store/login';

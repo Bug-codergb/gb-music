@@ -11,8 +11,8 @@ import {
   useAppSelector
 } from "@/store/hooks.ts"
 import { cancelFavorite, setUserFavorite } from '../../../../../../../../network/user';
-import { changeUserDetailAction } from '../../../../../../../../views/Login/store/actionCreators';
-import { changeShow } from '../../../../../../../common/toast/store/actionCreators';
+import { changeUserDetailAction } from '../../../../../../../../views/Login/store/asyncThunk';
+//import { changeShow } from '../../../../../../../common/toast/store/actionCreators';
 import { ILogin, IUserDetail } from '../../../../../../../../constant/store/login';
 import {Image} from "antd";
 import placeholder from "../../../../../../../../assets/img/holder/placeholder.png";
@@ -44,7 +44,7 @@ const Album: FC<IProps> = (props): ReactElement => {
     if (!isLove(id)) {
       setUserFavorite(id).then((data) => {
         dispatch(changeUserDetailAction());
-        dispatch(changeShow('已添加到我喜欢的音乐', 2500));
+        //dispatch(changeShow('已添加到我喜欢的音乐', 2500));
       });
     } else {
       cancelFavorite(id).then((data) => {

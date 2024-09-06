@@ -1,8 +1,8 @@
 import { message } from 'antd';
 import { login } from '../../../network/login';
-import { RouteComponentProps } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUserDetail, updateUserExpire } from '../../../network/user';
-import { changeShow } from '../../../components/common/toast/store/actionCreators';
+//import { changeShow } from '../../../components/common/toast/store/actionCreators';
 import { ILoginUserAction } from './type';
 import { IUserDetail, IUserMsg } from '../../../constant/store/login';
 

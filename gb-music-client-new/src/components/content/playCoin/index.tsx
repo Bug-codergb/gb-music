@@ -3,15 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import {
   useAppDispatch,
   useAppSelector
-} from "@/store/hooks.ts";
-
+} from "@/store/hooks";
 
 import { Slider } from 'antd';
 import { formatTime } from '../../../utils/format';
 import { CenterContent, PlayCoinWrapper } from './style';
 import {
   changeCurrentLyricIndex,
-
   changeLyricLine,
   changePlayMode
 } from './store/slice';
@@ -19,8 +17,7 @@ import {changeCurrentSongAction} from "./store/asyncThunk"
 import Playlist from './childCpn/playlist';
 import { CSSTransition } from 'react-transition-group';
 import { getFileBlob } from '../../../network/media';
-import { ILogin, IUserMsg } from '../../../constant/store/login';
-import { ISongStore } from '../../../constant/store/song';
+
 
 interface IProps  {}
 const PlayCoin: FC<IProps> = (props): ReactElement => {
@@ -30,16 +27,18 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
   const [isDrag, setIsDrag] = useState<boolean>(false);
   const [isShow, setIsShow] = useState<boolean>(false);
   const [isShowCurLyric, setIsShowLyric] = useState<boolean>(false);
-  //redux-hook
+
   const dispatch = useAppDispatch();
-  const { userMsg } = useAppSelector((state) => ({
-    userMsg: state['loginReducer']
-  }));
-  const { song } = useAppSelector((state) => ({
-    song: state['songReducer']
-  }));
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const song = useAppSelector((state) => {
+    return  state['songReducer']
+  });
+
+
   const audioRef = useRef<HTMLAudioElement>(null);
-  //react-hook
+
   useEffect(() => {
     setIsPlay(false);
     getFileBlob(song.songUrl).then((data) => {
@@ -93,7 +92,7 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
   };
   //切歌
   const changeSong = (tag: number) => {
-    dispatch(changeCurrentSongAction(tag));
+   //dispatch(changeCurrentSongAction({tag}));
   };
   const endHandle = () => {
     if (song.playMode === 2 && audioRef.current) {
@@ -119,7 +118,7 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
     if (tempMode > 2) {
       tempMode = 0;
     }
-    dispatch(changePlayMode(tempMode));
+   dispatch(changePlayMode(tempMode));
   };
   //切换播放列表
   const playlistClick = (e: MouseEvent<HTMLDivElement>) => {

@@ -13,7 +13,7 @@ import ListInfo from '../../../../../../components/content/listInfo';
 import { changeSongDetailAction } from '../../../../../../components/content/playCoin/store/asyncThunk';
 import VipMv from '../../../../../../components/common/vip-mv';
 
-import { changeShow } from '../../../../../../components/common/toast/store/actionCreators';
+//import { changeShow } from '../../../../../../components/common/toast/store/actionCreators';
 import { IArtist } from '../../../../../../constant/artist';
 import { ISong } from '../../../../../../constant/song';
 import { ILogin, IUserMsg } from '../../../../../../constant/store/login';
@@ -22,8 +22,8 @@ import placeholder from '../../../../../../assets/img/holder/music-placeholder.p
 const RecSong: FC = (props): ReactElement => {
   const navigate = useNavigate();
   const [recSong, setRecSong] = useState<ISong[]>([]);
-  const { userMsg } = useAppSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => {
-    return  state.getIn['loginReducer']
+  const { userMsg } = useAppSelector((state) => {
+    return  state['loginReducer']
   });
   useEffect(() => {
     getRecSong<ISong[]>(0, 8).then((data) => {
@@ -36,7 +36,7 @@ const RecSong: FC = (props): ReactElement => {
     const { vip } = item;
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {
-      dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
     }
     dispatch(changeSongDetailAction({id:item.id}));
   };

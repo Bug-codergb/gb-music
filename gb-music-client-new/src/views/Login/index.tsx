@@ -5,7 +5,6 @@ import {
 } from "@/store/hooks.ts";
 import { CSSTransition } from 'react-transition-group';
 import { useNavigate } from 'react-router-dom';
-
 //组件
 import LoginCpn from '../../components/content/loginCpn';
 import Verify from './childCpn/verify';
@@ -27,6 +26,7 @@ const Login: React.FC = (props) => {
     setPass(password);
     endClick(true)
     //setIsShow(true);
+
   };
   const endClick = (isSuccess: boolean) => {
     if (isSuccess) {

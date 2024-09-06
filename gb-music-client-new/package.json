@@ -49,6 +49,7 @@
     "node": ">=21.7.3"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4"
   }

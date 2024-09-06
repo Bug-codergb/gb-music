@@ -25,7 +25,7 @@ import {
   useAppDispatch,
   useAppSelector
 } from "@/store/hooks.ts"
-import { changeUserDetailAction } from '@/views/Login/store/actionCreators';
+import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
 import HotPlaylist from './childCpn/hotPlaylist';
 
 interface IPlaylistDetail extends IPlaylist {

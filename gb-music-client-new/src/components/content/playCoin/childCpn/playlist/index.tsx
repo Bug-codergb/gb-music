@@ -19,7 +19,7 @@ const Playlist: FC = (): ReactElement => {
   }, [songList.current?.offsetHeight]);
   const playSong = (e: MouseEvent<HTMLDivElement>, item: ISong, index: number) => {
     e.stopPropagation();
-    dispatch(changeSongDetailAction(item.id));
+    dispatch(changeSongDetailAction({id:item.id}));
   };
   return (
     <PlaylistWrapper>

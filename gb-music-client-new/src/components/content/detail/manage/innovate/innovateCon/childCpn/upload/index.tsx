@@ -2,7 +2,7 @@ import React, { memo, FC, ReactElement, useState, ChangeEvent } from 'react';
 import { UploadWrapper } from './style';
 import UploadCpn from '../../../../../../../common/upload';
 //import { useDispatch } from 'react-redux';
-import { changeShow } from '../../../../../../../common/toast/store/actionCreators';
+//import { changeShow } from '../../../../../../../common/toast/store/actionCreators';
 import { addContent, uploadContentCover } from '../../../../../../../../network/channel';
 interface IProps {
   id: string;

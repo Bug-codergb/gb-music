@@ -16,8 +16,8 @@ const loginSlice = createSlice({
     changeUserDetail(){}
   },
   extraReducers:(builder)=>{
-    builder.addCase(loginAsyncThunk.pending,()=>{}).addCase(loginAsyncThunk.fulfilled,()=>{})
-    builder.addCase(changeUserDetailAction.pending,()=>{}).addCase(changeUserDetailAction.fulfilled,()=>{})
+    //builder.addCase(loginAsyncThunk.pending,()=>{}).addCase(loginAsyncThunk.fulfilled,()=>{})
+    //builder.addCase(changeUserDetailAction.pending,()=>{}).addCase(changeUserDetailAction.fulfilled,()=>{})
   }
 })
 const {changeUserMsg,changeUserDetail,changeLoginType} = loginSlice.actions

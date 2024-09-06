@@ -1,12 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { HOST_NAME } from '../../../../config';
-import {
-  changeCurrentLyricIndex,
-  changeLyric,
-  changeLyricLine, changePlayMode,
-  changeSongDetail,
-  changeSongURL
-} from './actionCreators';
+import { changeSongDetailAction } from "./asyncThunk"
 const songSlice = createSlice({
   name:"song",
   initialState:{
@@ -62,6 +56,9 @@ const songSlice = createSlice({
     changePlayMode(state,{payload}){
       state.playMode=payload
     }
+  },
+  extraReducers:(builder)=>{
+
   }
 })
 const reducer = songSlice.reducer;

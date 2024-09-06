@@ -16,7 +16,7 @@ import {
   useAppSelector
 } from "@/store/hooks.ts"
 
-import { changeUserDetailAction } from '../../../../views/Login/store/actionCreators';
+import { changeUserDetailAction } from '../../../../views/Login/store/asyncThunk';
 import HotAlbum from './childCpn/hotAlbum';
 import { ILogin, IUserDetail } from '../../../../constant/store/login';
 
