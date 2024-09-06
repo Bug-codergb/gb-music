@@ -11,9 +11,15 @@ const loginSlice = createSlice({
         : JSON.parse(window.localStorage.getItem('userDetail') as string)
   },
   reducers:{
-    changeUserMsg(){},
-    changeLoginType(){},
-    changeUserDetail(){}
+    changeUserMsg(state,{payload}){
+      state.userMsg=payload;
+    },
+    changeLoginType(state,{payload}){
+      state.loginType=payload
+    },
+    changeUserDetail(state,{payload}){
+      state.userDetail=payload
+    }
   },
   extraReducers:(builder)=>{
     //builder.addCase(loginAsyncThunk.pending,()=>{}).addCase(loginAsyncThunk.fulfilled,()=>{})

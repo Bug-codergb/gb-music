@@ -1,29 +1,34 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {changeUserDetail,changeUserMsg,changeLoginType} from "./slice"
-import { login } from '../../../network/login';
+import { login } from '@/network/login';
 
 import { getUserDetail, updateUserExpire } from '../../../network/user';
 //import { changeShow } from '../../../components/common/toast/store/actionCreators';
 import { ILoginUserAction } from './type';
 import { IUserDetail, IUserMsg } from '../../../constant/store/login';
 
-export const loginAsyncThunk = createAsyncThunk("loginAsyncThunk",async (extraInfo,{dispatch,getState})=>{
-  const {userName,password,navigate} = extraInfo as any;
-  const data: any = await login(userName, password);
-  if (data) {
-    const { token } = data;
-    const res: any = await updateUserExpire(token);
-    if (res.code * 1 === 200) {
-     // dispatch(changeShow('您的VIP已经过期，开通VIP后畅想', 3500));
-      data.auth = 0;
-      delete data.vip;
+export const loginAsyncThunk = createAsyncThunk("loginAsyncThunk",async (extraInfo:any,{dispatch,getState})=>{
+
+  try{
+    const {userName,password,navigate} = extraInfo;
+    const data: any = await login(userName, password);
+    if (data) {
+      const { token } = data;
+      const res: any = await updateUserExpire(token);
+      if (res.code * 1 === 200) {
+        // dispatch(changeShow('您的VIP已经过期，开通VIP后畅想', 3500));
+        data.auth = 0;
+        delete data.vip;
+      }
+      await dispatch(changeUserMsg(data));
+      await dispatch(changeLoginType(1));
+      window.localStorage.setItem('userMsg', JSON.stringify(data));
+      window.localStorage.setItem('loginType', '1');
+      await dispatch(changeUserDetailAction());
+      navigate("/Home");
     }
-    await dispatch(changeUserMsg(data));
-    await dispatch(changeLoginType(1));
-    window.localStorage.setItem('userMsg', JSON.stringify(data));
-    window.localStorage.setItem('loginType', '1');
-    await dispatch(changeUserDetailAction());
-    navigate("/Home");
+  }catch (e){
+    console.log(e)
   }
 })
 export const changeUserDetailAction = createAsyncThunk("changeUserDetailAction",async (extraInfo,{dispatch})=>{

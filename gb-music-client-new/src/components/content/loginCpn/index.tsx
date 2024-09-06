@@ -32,7 +32,6 @@ const LoginCpn: React.FC<LoginType> = (props) => {
     }
   };
   const login = () => {
-    console.log(1)
     if (userName.trim().length === 0) {
       setIsNameCheck(true);
     } else if (password.trim().length === 0) {

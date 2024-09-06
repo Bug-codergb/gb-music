@@ -10,7 +10,10 @@ function request<T>(config: AxiosRequestConfig) {
   });
   instance.interceptors.request.use(
     (config) => {
-      config.headers.Authorization = store.getState().loginReducer.userMsg.token
+      const userMsg  =store.getState().loginReducer.userMsg
+      if(userMsg){
+        config.headers.Authorization =  userMsg.token
+      }
       return config;
     },
     (err) => {

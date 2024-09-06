@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Login/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/loginCpn/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/loginCpn/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/request.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/request.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/user/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login/store/asyncThunk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login/store/asyncThunk.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login/store/slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login/store/slice.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -56,6 +61,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "ts.external.directory.path": "/Users/guobin/vscode projecy/gb-music/gb-music-client-new/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }

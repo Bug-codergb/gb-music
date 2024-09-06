@@ -22,22 +22,14 @@ const Login: React.FC = (props) => {
   const [password, setPass] = useState<string>('');
   const verifyRef = useRef<any>();
   const login = (userName: string, password: string) => {
-    setName(userName);
-    setPass(password);
-    endClick(true)
+    endClick(userName,password,true)
     //setIsShow(true);
 
   };
-  const endClick = (isSuccess: boolean) => {
+  const endClick = (userName:string,password:string,isSuccess: boolean) => {
     if (isSuccess) {
-      setTimeout(() => {
-        try {
-          dispatch(loginAsyncThunk({userName, password, navigate}));
-          setIsShow(false);
-        } catch (e) {
-          console.log(e);
-        }
-      }, 400);
+      dispatch(loginAsyncThunk({userName, password, navigate}));
+      setIsShow(false);
     } else {
       verifyRef.current?.reload();
     }
@@ -60,16 +52,6 @@ const Login: React.FC = (props) => {
           regClick={(e: any) => register()}
         />
       </div>
-      {
-        <CSSTransition in={isShow} classNames="verify" unmountOnExit={true} timeout={1000}>
-          <Verify
-            onClick={() => cancel()}
-            endClick={(isSuccess) => endClick(isSuccess)}
-            // @ts-ignore
-            ref={verifyRef}
-          />
-        </CSSTransition>
-      }
     </LoginWrapper>
   );
 };
