@@ -1,26 +1,25 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { Map } from 'immutable';
+import { useAppDispatch,useAppSelector } from "@/store/hooks"
 import { VideoInfoWrapper } from './style';
 import { useSelector } from 'react-redux';
 import UserMsg from '../../../../../common/userMsg';
 import { formatTime } from '../../../../../../utils/format';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { IVideoStore } from '../../../../../../constant/store/video';
-const VideoInfo: FC<RouteComponentProps> = (props): ReactElement => {
-  const videoDetail = useSelector<Map<string, IVideoStore>, IVideoStore>((state) => {
-    return state.getIn(['videoReducer', 'video']);
+const VideoInfo: FC = (props): ReactElement => {
+  const navigate = useNavigate();
+  const videoDetail = useAppSelector((state) => {
+    return state['videoReducer'];
   });
   const userRouter = (id: string) => {
     if (videoDetail.type === 1 && 'id' in videoDetail.user) {
-      props.history.push({
-        pathname: '/Home/artistDetail',
+      navigate('/Home/artistDetail',{
         state: {
           id: videoDetail.user.id
         }
       });
     } else if (videoDetail.type === 0) {
-      props.history.push({
-        pathname: '/Home/userDetail',
+      navigate('/Home/userDetail',{
         state: {
           userId: id
         }
@@ -52,4 +51,4 @@ const VideoInfo: FC<RouteComponentProps> = (props): ReactElement => {
     </VideoInfoWrapper>
   );
 };
-export default withRouter(memo(VideoInfo));
+export default memo(VideoInfo);

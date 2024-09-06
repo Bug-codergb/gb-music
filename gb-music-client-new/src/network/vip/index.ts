@@ -6,8 +6,6 @@ export function getAllCombo() {
     url: '/combo/all',
     method: 'get',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -22,8 +20,6 @@ export function joinVIP(cId: string, name: string, orderId: string) {
       orderId
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -32,8 +28,6 @@ export function getVipMessage() {
   return request({
     url: '/vip',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -43,8 +37,7 @@ export function getVipHistory() {
     url: '/vip/history',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -57,8 +50,7 @@ export function deleteVIPHistory(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }

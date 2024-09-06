@@ -10,8 +10,6 @@ export function createTopic(name: string, description: string) {
       description
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -25,8 +23,6 @@ export function uploadCover(id: string, formData: FormData) {
     },
     data: formData,
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token,
       'Content-Type': 'multipart/from-data'
     }
   });

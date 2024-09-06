@@ -6,8 +6,6 @@ export function payUser(upId: string) {
     url: '/fans',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     },
     data: {
       upId

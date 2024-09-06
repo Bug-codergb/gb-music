@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement, useEffect, useState, MouseEvent } from 'react';
 import { TopicDetailWrapper, CenterContent } from './style';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { getTopicDetail } from '../../../../network/topic';
 import { ITopic } from '../../../../constant/topic';
 import { IMoment } from '../../../../constant/moment';
@@ -18,8 +18,10 @@ interface ITopicDetail extends ITopic {
   moments: IMoment[];
 }
 
-const TopicDetail: FC<RouteComponentProps<any, any, { id: string }>> = (props): ReactElement => {
-  const { id } = props.location.state;
+const TopicDetail: FC<{ id: string }> = (props): ReactElement => {
+  const location = useLocation();
+  const navigate = useNavigate()
+  const { id } = location.state;
   const [comment, setComment] = useState<IComment[]>([]);
   const [total, setTotal] = useState<number>(0);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -131,4 +133,4 @@ const TopicDetail: FC<RouteComponentProps<any, any, { id: string }>> = (props): 
     </TopicDetailWrapper>
   );
 };
-export default withRouter(memo(TopicDetail));
+export default memo(TopicDetail);

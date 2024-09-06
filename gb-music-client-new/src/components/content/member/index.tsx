@@ -1,6 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Map } from 'immutable';
+import { useAppSelector,useAppDispatch } from "@/store/hooks"
 import { MemberWrapper, CenterContent } from './style';
 
 import { formatTime } from '../../../utils/format';
@@ -24,10 +23,10 @@ const Member: FC = (): ReactElement => {
   const [vipHistory, setHistory] = useState<IVIP[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [cate, setCate] = useState<IVip>();
-  const { userMsg } = useSelector<Map<string, ILogin>, { userMsg: IUserMsg }>((state) => ({
-    userMsg: state.getIn(['loginReducer', 'login', 'userMsg'])
-  }));
-  const dispatch = useDispatch();
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const dispatch = useAppDispatch();
   useEffect(() => {
     getAllCombo().then((data: any) => {
       setCombo(data);

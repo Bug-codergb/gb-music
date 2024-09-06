@@ -1,5 +1,5 @@
 import React, { memo, ReactElement, FC, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Empty } from 'antd';
 import { CreatedChannelWrapper } from './style';
 import { getUserChannel } from '../../../../../../network/user';
@@ -7,10 +7,11 @@ import { IChannel } from '../../../../../../constant/channel';
 import { formatTime } from '../../../../../../utils/format';
 import { Pagination } from 'antd';
 
-interface IProps extends RouteComponentProps {
+interface IProps {
   id: string | undefined;
 }
 const CreatedChannel: FC<IProps> = (props): ReactElement => {
+  const navigate = useNavigate();
   const { id } = props;
   const [channel, setChannel] = useState<IChannel[]>([]);
   const [count, setCount] = useState<number>(0);
@@ -31,8 +32,7 @@ const CreatedChannel: FC<IProps> = (props): ReactElement => {
     }
   };
   const channelRouter = (item: IChannel) => {
-    props.history.push({
-      pathname: '/Home/channelDetail',
+    navigate('/Home/channelDetail',{
       state: {
         id: item.id
       }
@@ -71,4 +71,4 @@ const CreatedChannel: FC<IProps> = (props): ReactElement => {
     </CreatedChannelWrapper>
   );
 };
-export default withRouter(memo(CreatedChannel));
+export default memo(CreatedChannel);

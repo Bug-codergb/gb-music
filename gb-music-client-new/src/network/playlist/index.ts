@@ -58,8 +58,6 @@ export function addSongToPlay(pId: string, songId: string) {
       songId
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }

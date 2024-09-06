@@ -6,8 +6,6 @@ export function sub(id: string, key: string) {
     url: '/sub',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     },
     data: {
       [key]: id
@@ -20,8 +18,6 @@ export function cancelSub(id: string, key: string) {
     url: '/sub/cancel',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     },
     data: {
       [key]: id

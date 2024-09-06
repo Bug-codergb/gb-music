@@ -3,13 +3,14 @@ import { SimiVideoWrapper } from './style';
 import { getSimiVideo } from '../../../../../../network/video';
 import { IVideo } from '../../../../../../constant/video';
 import SimiItem from '../../../../../common/simiItem';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-interface IProps extends RouteComponentProps {
+import { useNavigate } from 'react-router-dom';
+interface IProps {
   vid: string;
   id: string; //分类ID
   onClick: (item: IVideo) => void;
 }
 const SimiVideo: FC<IProps> = memo((props): ReactElement => {
+  const navigate = useNavigate();
   const { id, vid, onClick } = props;
   const [simiVideo, setSimiVideo] = useState<IVideo[]>([]);
   useEffect(() => {
@@ -25,8 +26,7 @@ const SimiVideo: FC<IProps> = memo((props): ReactElement => {
     if (item.type !== undefined) {
       if (item.type === 0) {
         if ('userId' in item.user) {
-          props.history.push({
-            pathname: '/Home/userDetail',
+          navigate('/Home/userDetail',{
             state: {
               userId: item.user.userId
             }
@@ -34,8 +34,7 @@ const SimiVideo: FC<IProps> = memo((props): ReactElement => {
         }
       } else {
         if ('id' in item.user) {
-          props.history.push({
-            pathname: '/Home/artistDetail',
+          navigate('/Home/artistDetail',{
             state: {
               id: item.user.id
             }
@@ -73,4 +72,4 @@ const SimiVideo: FC<IProps> = memo((props): ReactElement => {
     </SimiVideoWrapper>
   );
 });
-export default withRouter(SimiVideo);
+export default SimiVideo;

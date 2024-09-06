@@ -6,8 +6,7 @@ export function getVioData() {
     url: '/user/data/video',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -17,8 +16,7 @@ export function getUserVioList(offset: number, limit: number) {
     url: '/user/video/list',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     },
     params: {
       offset,
@@ -32,8 +30,7 @@ export function getManageVio(offset: number, limit: number) {
     url: '/user/manage/video',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     },
     params: {
       offset,

@@ -39,8 +39,7 @@ export function addContent(cId: string, name: string, description: string) {
       description
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -52,8 +51,6 @@ export function uploadContentCover(formData: FormData) {
     method: 'post',
     headers: {
       'Content-type': 'multipart/form-data',
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }

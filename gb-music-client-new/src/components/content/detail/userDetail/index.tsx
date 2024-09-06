@@ -1,6 +1,5 @@
 import React, { memo, ReactElement, FC, useEffect, useState } from 'react';
-import { Map } from 'immutable';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { getOtherUserDetail, getSimpleUserInfo } from '../../../../network/user';
 
 import { UserDetailWrapper, LeftContentWrapper, RightContentWrapper, CenterContentWrapper } from './style';
@@ -13,7 +12,7 @@ import CreatedPlaylist from './childCpn/createdPlaylist';
 import CreatedChannel from './childCpn/createdChannel';
 import SubPlaylist from './childCpn/subPlaylist';
 import { payUser } from '../../../../network/fans';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch,useAppSelector } from "@/store/hooks"
 
 import { changeUserDetailAction } from '../../../../views/Login/store/actionCreators';
 import { ILogin } from '../../../../constant/store/login';
@@ -36,16 +35,18 @@ interface IUserSimple {
   fans: number;
 }
 
-const UserDetail: FC<RouteComponentProps<any, any, { userId: string }>> = (props): ReactElement => {
-  const { userId } = props.location.state;
+const UserDetail: FC<{ userId: string }> = (props): ReactElement => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { userId } = location.state;
   const [usrDetail, setUserDetail] = useState<IUserDetail>();
   const [isPay, setIsPay] = useState<boolean>(false);
   const [simpleInfo, setSimpleInfo] = useState<IUserSimple>();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const { userDetail } = useSelector<Map<string, ILogin>, { userDetail: IUserDetail }>((state) => ({
-    userDetail: state.getIn(['loginReducer', 'login', 'userDetail'])
-  }));
+  const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   useEffect(() => {
     getOtherUserDetail<IUserDetail>(userId).then((data) => {
       setUserDetail(data);
@@ -126,4 +127,4 @@ const UserDetail: FC<RouteComponentProps<any, any, { userId: string }>> = (props
     </UserDetailWrapper>
   );
 };
-export default memo(withRouter(UserDetail));
+export default memo(UserDetail);

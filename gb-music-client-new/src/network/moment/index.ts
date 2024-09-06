@@ -20,8 +20,7 @@ export function addMoment(content: string, songId: string, tId: string) {
       tId
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -35,8 +34,6 @@ export function uploadMomentPic(id: string, formData: FormData) {
     },
     data: formData,
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token,
       'Content-Type': 'multipart/from-data'
     }
   });
@@ -60,8 +57,6 @@ export function delMoment(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }

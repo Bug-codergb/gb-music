@@ -10,8 +10,6 @@ export function getUserAllComment(offset: number, limit: number) {
       limit
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }

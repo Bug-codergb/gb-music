@@ -1,19 +1,18 @@
-import { Map } from 'immutable';
-import { RouteComponentProps } from 'react-router-dom';
-
-import { useSelector } from 'react-redux';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useAppSelector } from "@/store/hooks"
 import { ILogin, IUserMsg } from '../../constant/store/login';
-import { Redirect } from 'react-router';
 
-const useAuth = (props: RouteComponentProps) => {
-  const userMsg = useSelector<Map<string, ILogin>, IUserMsg>((state) => {
-    return state.getIn(['loginReducer', 'login', 'userMsg']);
+const useAuth = (props:any) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {userMsg} = useAppSelector((state) => {
+    return state['loginReducer'];
   });
-  if (props.location.pathname !== '/Login') {
+  if (location.pathname !== '/Login') {
     if (!userMsg || !userMsg.token) {
-      return <Redirect to={'/Login'} />;
+      return <Navigate to={'/Login'} />;
     } else {
-      return <Redirect to={props.location.pathname} />;
+      return <Navigate to={props.location.pathname} />;
     }
   }
 };

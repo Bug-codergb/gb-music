@@ -5,8 +5,7 @@ export function getUserFans(offset: number, limit: number) {
     url: '/user/fans',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     },
     params: {
       offset,

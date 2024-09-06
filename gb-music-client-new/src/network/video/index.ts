@@ -57,8 +57,7 @@ export function updatePlayCount(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -75,8 +74,6 @@ export function addVideo(name: string, desc: string, type: number, cateId: strin
       songId
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -90,8 +87,6 @@ export function uploadVideo(formData: FormData, vid: string) {
       vid
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token,
       'Content-type': 'multipart/form-data'
     }
   });
@@ -106,8 +101,6 @@ export function uploadCover(formData: FormData, vid: string) {
       id: vid
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token,
       'Content-type': 'multipart/form-data'
     }
   });
@@ -121,8 +114,6 @@ export function deleteVideo(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -131,8 +122,6 @@ export function recommendVideo<T>() {
   return request<T>({
     url: '/video/recommend',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }

@@ -9,8 +9,7 @@ export function setUserFavorite(id: string) {
       id
     },
     headers: {
-      // @ts-ignore
-      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }
@@ -23,8 +22,6 @@ export function getUserFavorite(offset: number, limit: number) {
       limit
     },
     headers: {
-      // @ts-ignore
-     // authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -37,8 +34,6 @@ export function cancelFavorite(songId: string) {
       songId: songId
     },
     headers: {
-      // @ts-ignore
-      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -51,8 +46,6 @@ export function getUserSub(url: string, offset: number, limit: number) {
       limit
     },
     headers: {
-      // @ts-ignore
-      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -61,8 +54,6 @@ export function getUserDetail() {
   return request({
     url: '/user/detail',
     headers: {
-      // @ts-ignore
-      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -72,8 +63,6 @@ export function uploadAvatar(formData: FormData) {
     url: '/user/upload/avatar',
     method: 'post',
     headers: {
-      // @ts-ignore
-      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token,
       'Content-Type': 'multipart/form-data'
     },
     data: formData
@@ -88,8 +77,6 @@ export function getOtherUserDetail<T>(userId: string) {
       userId
     },
     headers: {
-      // @ts-ignore
-      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -105,8 +92,6 @@ export function getUserChannel(userId: string, offset: number, limit: number) {
       limit
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -142,8 +127,6 @@ export function getUserMomentData() {
     url: '/user/data/moment',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -157,8 +140,6 @@ export function getUserAllMoment(offset: string, limit: string) {
       limit
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -170,8 +151,7 @@ export function getSimpleUserInfo<T>(userId: string) {
       userId
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     }
   });
 }

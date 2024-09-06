@@ -1,7 +1,7 @@
 import React, { memo, FC, ReactElement, useEffect, useState, useRef, useCallback, MouseEvent } from 'react';
 import { Map } from 'immutable';
 import { useDispatch, useSelector } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { CenterContent, VideoDetailWrapper, LeftContent, RightContent } from './style';
 import { getVideoURL, updatePlayCount } from '../../../../network/video';
 import { Slider, Spin } from 'antd';
@@ -22,8 +22,9 @@ import { IVideoStore } from '../../../../constant/store/video';
 import { Dispatch } from 'redux';
 import { IVideoDetailAction } from './store/type';
 
-const VideoDetail: FC<RouteComponentProps<any, any, { id: string }>> = memo((props): ReactElement => {
-  const { id } = props.location.state;
+const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
+  const location = useLocation();
+  const { id } = location.state;
   const [vid, setVid] = useState<string>(id);
   const [url, setURL] = useState<string>('');
   const [isPlay, setIsPlay] = useState<boolean>(false);
@@ -232,4 +233,4 @@ const VideoDetail: FC<RouteComponentProps<any, any, { id: string }>> = memo((pro
     </VideoDetailWrapper>
   );
 });
-export default withRouter(VideoDetail);
+export default VideoDetail;

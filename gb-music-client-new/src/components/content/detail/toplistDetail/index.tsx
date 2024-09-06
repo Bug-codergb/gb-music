@@ -1,5 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { CenterContentWrapper, ToplistDetailWrapper, RightContent, LeftContent } from './style';
 import { getToplistDetail } from '../../../../network/toplist/toplist';
 import { IToplist } from '../../../../constant/toplist';
@@ -14,10 +14,12 @@ import SimiToplist from './childCpn/simiToplist';
 interface IDetail extends IToplist {
   songs: ISong[];
 }
-const ToplistDetail: FC<RouteComponentProps<any, any, { id: string; name: string; userId: string }>> = (
+const ToplistDetail: FC<{ id: string; name: string; userId: string }> = (
   props
 ): ReactElement => {
-  const { id, name } = props.location.state;
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { id, name } = location.state;
   const [detail, setDetail] = useState<IDetail>();
   const [tid, setTId] = useState<string>(id);
   const [tName,setTname]=useState<string>(name);
@@ -27,8 +29,7 @@ const ToplistDetail: FC<RouteComponentProps<any, any, { id: string; name: string
     });
   }, [tid]);
   const userRouter = (id: string) => {
-    props.history.push({
-      pathname: '/Home/userDetail',
+    navigate('/Home/userDetail',{
       state: {
         userId: id,
         id: '',
@@ -99,4 +100,4 @@ const ToplistDetail: FC<RouteComponentProps<any, any, { id: string; name: string
     </ToplistDetailWrapper>
   );
 };
-export default withRouter(memo(ToplistDetail));
+export default memo(ToplistDetail);

@@ -10,8 +10,6 @@ export function payMoney(price: number, name: string, comboId: string) {
       cId: comboId
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -24,8 +22,6 @@ export function queryOrderAlipay(orderId: string) {
       orderId
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }
@@ -38,8 +34,6 @@ export function closeOrderAlipay(orderId: string) {
       orderId
     },
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
     }
   });
 }

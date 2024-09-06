@@ -1,15 +1,17 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Empty, Pagination } from 'antd';
 import { CreatedPlaylistWrapper } from './style';
 import { getUserPlaylist } from '../../../../../../network/playlist';
 import { IPlaylist } from '../../../../../../constant/playlist';
 import { holder } from '../../../../../../utils/holder';
 
-interface IProps extends RouteComponentProps {
+interface IProps {
   id: string | undefined;
 }
 const CreatedPlaylist: FC<IProps> = (props): ReactElement => {
+  const navigate = useNavigate();
+
   const { id } = props;
   const [playlist, setPlaylist] = useState<IPlaylist[]>([]);
   const [count, setCount] = useState<number>(0);
@@ -30,8 +32,7 @@ const CreatedPlaylist: FC<IProps> = (props): ReactElement => {
     }
   };
   const playlistRouter = (item: IPlaylist) => {
-    props.history.push({
-      pathname: '/Home/playlistDetail',
+    navigate('/Home/playlistDetail',{
       state: {
         id: item.id
       }
@@ -77,4 +78,4 @@ const CreatedPlaylist: FC<IProps> = (props): ReactElement => {
     </CreatedPlaylistWrapper>
   );
 };
-export default withRouter(memo(CreatedPlaylist));
+export default memo(CreatedPlaylist);

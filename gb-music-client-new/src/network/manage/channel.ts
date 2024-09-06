@@ -5,8 +5,7 @@ export function getProgramList(offset: number, limit: number) {
     url: '/user/program/list',
     method: 'post',
     headers: {
-      // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token
+
     },
     params: {
       offset,
