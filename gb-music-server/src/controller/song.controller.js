@@ -165,7 +165,7 @@ class SongController {
     const { id } = req.body;
     if (!isEmpty(id, '歌曲id不能为空', next)) {
       const count = await getSongPlayCount(id);
-      const { playCount } = count[0];
+      const { playCount } = count[0]||{playCount:0};
       const data = await addPlayCountService(id, parseInt(playCount) + 1);
       const currentTime = formatTime(new Date().getTime(), 'yyyy-MM-dd');
       const time = await client.get(`${currentTime}`);

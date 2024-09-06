@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { cancelFavorite, setUserFavorite } from '@/network/user';
 import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
 //import { changeShow } from '../../../../common/toast/store/actionCreators';
-import { useAppDispatch,useAppSelector } from "@/store/hooks
+import { useAppDispatch,useAppSelector } from "@/store/hooks"
 import { ILogin, IUserDetail } from '../../../../../constant/store/login';
 
 interface IProps  {
