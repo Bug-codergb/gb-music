@@ -8,7 +8,7 @@ export const DiscoverWrapper = styled.div`
   .list-outer {
     background-color: #ffffff;
     height: 50px;
-    padding: 10px;
+    padding: 10px 20px;
     margin: 0 0 3px 0;
   }
   .discover-list {
@@ -19,18 +19,21 @@ export const DiscoverWrapper = styled.div`
       cursor: pointer;
       height: 100%;
       margin: 0 25px 0 0;
+      
       span {
         font-size: 16px;
         padding: 0;
         display: flex;
         align-items: center;
         height: 100%;
-        color: #333333;
+        color: #646464;
+        border-bottom: 3px solid transparent;
       }
       &.active {
         span {
-          font-weight: bold;
-          border-bottom: 3px solid #7293fe;
+          color:#333;
+          font-weight:bold;
+          border-bottom: 3px solid #da4f49;
         }
       }
     }
