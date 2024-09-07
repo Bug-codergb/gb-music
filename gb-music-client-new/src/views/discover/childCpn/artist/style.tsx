@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import coverall from '../../../../assets/img/coverall.png';
 export const ArtistWrapper = styled.div`
-  margin: 0 auto;
-  padding: 20px 15px;
+  padding: 20px;
   .filter {
     & > li {
       margin: 0 0 10px 0;
@@ -15,10 +14,25 @@ export const ArtistWrapper = styled.div`
       }
     }
   }
+  @media screen and (max-width: 1300px){
+    .cate-artist{
+      grid-template-columns: repeat(7,120px)!important;
+    }
+  }
+  @media screen and (max-width: 1170px){
+    .cate-artist{
+      grid-template-columns: repeat(6,120px)!important;
+    }
+  }
+  @media screen and (max-width: 1036px){
+    .cate-artist{
+      grid-template-columns: repeat(5,120px)!important;
+    }
+  }
   .cate-artist {
-    display: flex;
+    display: grid;
     justify-content: space-between;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(8,120px);
     & > li {
       width: 120px;
       margin: 0 0 15px 0;

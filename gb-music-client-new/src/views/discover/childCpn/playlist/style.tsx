@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 export const PlaylistWrapper = styled.div`
-  padding: 20px 15px;
+  padding: 20px;
+  width: 100%;
   .header {
     display: flex;
     justify-content: space-between;
@@ -12,19 +13,42 @@ export const PlaylistWrapper = styled.div`
       border-radius: 15px;
     }
   }
+  @media screen and (max-width: 1415px){
+    .cate-play-list{
+      &>ul{
+        grid-template-columns: repeat(6,150px)!important;
+      }
+    }
+  }
+  @media screen and (max-width: 1215px){
+    .cate-play-list{
+      &>ul{
+        grid-template-columns: repeat(5,150px)!important;
+      }
+    }
+  }
+  @media screen and (max-width: 1060px){
+    .cate-play-list{
+      &>ul{
+        grid-template-columns: repeat(4,150px)!important;
+      }
+    }
+  }
   .cate-play-list {
     margin: 20px 0 0 0;
     & > ul {
-      display: flex;
+      display: grid;
       justify-content: space-between;
-      flex-wrap: wrap;
+      grid-template-columns: repeat(7,150px);
       & > li {
-        width: 150px;
+        width: 100%;
         position: relative;
+        margin: 0 0 20px 0;
         .user-msg {
           position: absolute;
           left: 0;
-          top: 65%;
+          top: 100%;
+          transform: translate(0,-239%);
           width: 100%;
           display: flex;
           align-items: center;

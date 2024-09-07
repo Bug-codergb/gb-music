@@ -3,6 +3,7 @@ export const HotToplistWrapper = styled.div`
   .title {
     font-size: 16px;
     font-weight: bolder;
+    margin: 0 0 15px 0;
   }
   .hot-toplist {
     display: flex;

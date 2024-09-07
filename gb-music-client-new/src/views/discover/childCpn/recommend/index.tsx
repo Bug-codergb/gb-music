@@ -1,6 +1,5 @@
 import React, { memo, FC, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import RecPlaylist from './childCpn/recPlaylist';
 import RecAlbum from './childCpn/recAlbum';
 import RecArtist from './childCpn/recArtist';

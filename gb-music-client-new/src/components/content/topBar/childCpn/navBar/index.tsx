@@ -1,10 +1,14 @@
 import React, { memo, useState } from 'react';
+import {
+ BarsOutlined
+} from "@ant-design/icons"
+
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router';
-import { navList } from '../../../../../constant/NavList';
+import { navList } from '@/constant/NavList';
 import { NavBarWrapper } from './style';
-import { navListType } from '../../../../../constant/NavList';
-import {myMusic} from "../../../../../constant/myMusic";
+import { navListType } from '@/constant/NavList';
+import {myMusic} from '@/constant/myMusic';
 
 const NavBar: React.FC = (props) => {
   const navigate = useNavigate()
@@ -24,7 +28,9 @@ const NavBar: React.FC = (props) => {
               onClick={(e) => liClick(item, index)}
               className={currentIndex === index ? 'active' : ''}
             >
-              <i className={'nav-icon '+item.icon}> </i>
+              <div className="nav-icon">
+                {item.icon}
+              </div>
               <span className="nav-name">{item.name}</span>
             </li>
           );
@@ -39,11 +45,27 @@ const NavBar: React.FC = (props) => {
               onClick={(e) => liClick(item, index+navList.length)}
               className={currentIndex === index+navList.length ? 'active' : ''}
             >
-              <i className={'nav-icon '+item.icon+` ${item.name==='我的收藏'?'icon-sub':''}`}> </i>
+              <div className={"nav-icon"}>
+                {item.icon}
+              </div>
               <span className="nav-name">{item.name}</span>
             </li>
           );
         })}
+        <p className="nav-label">收藏的歌单</p>
+      </ul>
+      <ul className="nav-list">
+        {
+          [1,2].map((item,index)=>{
+            return <li key={item} onClick={(e) => liClick(item, index+myMusic.length+navList.length)}
+                       className={currentIndex === index+myMusic.length+navList.length ? 'active' : ''}>
+              <div className={"nav-icon"}>
+                <BarsOutlined />
+              </div>
+              <span className="nav-name">{item}</span>
+            </li>
+          })
+        }
       </ul>
     </NavBarWrapper>
   );

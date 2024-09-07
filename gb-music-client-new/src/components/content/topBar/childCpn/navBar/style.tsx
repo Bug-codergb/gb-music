@@ -4,24 +4,34 @@ export const NavBarWrapper = styled.div`
     background-color: #fff;
     margin: auto 0;
     li {
-      padding: 12px 20px;
+      padding: 9px 20px;
       font-size: 15px;
       cursor: pointer;
       display: flex;
       align-items: center;
       &.active {
-        color: #7293fe;
-        font-weight: bolder;
-        font-size: 16px;
+        color:#da4f49;
+        font-weight: normal;
+        font-size: 15px;
         background-color: #f6f6f7;
         .nav-icon{
-          color: #7293fe;
+          color: #da4f49;
         }
+        .nav-name{
+          color: #da4f49;
+        }
+      }
+      .nav-name{
+        font-size: 15px;
+        color: #5e5e5e;
       }
       .nav-icon{
         font-size: 20px;
         margin: 0 10px 0 0;
-        color: #5c5c5c;
+        color: #5e5e5e;
+        svg{
+          font-size: 17px;
+        }
       }
       .icon-sub{
         font-weight: 600;

@@ -7,7 +7,7 @@ import { getCateVideo, getVideoCate } from '../../../../network/video';
 import CateTitle from '../../../../components/common/cateTitle';
 import MsgItem from '../../../../components/content/msgItem';
 import Toplist from './childCpn/toplist';
-import { holder } from '../../../../utils/holder';
+import { holder } from '@/utils/holder';
 import { Empty, Image, Pagination } from 'antd';
 import placeholder from '../../../../assets/img/holder/video-placeholder.png';
 

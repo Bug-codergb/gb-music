@@ -73,6 +73,7 @@ const Banner: FC = (props): ReactElement => {
           beforeChange={(from: number, to: number) => change(from, to)}
           effect="fade"
           ref={bannerRef}
+          style={{height:"240px"}}
         >
           {banner &&
             banner.length !== 0 &&

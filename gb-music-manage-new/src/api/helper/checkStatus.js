@@ -6,24 +6,28 @@ export const checkStatus = status => {
   const userStore = useUserStore();
   switch (status) {
     case 400:
+      ElMessage.closeAll();
       ElMessage.error("请求失败！请您稍后重试");
-      
       break;
     case 401:
+      ElMessage.closeAll();
       ElMessage.error("登录失效！请您重新登录");
       userStore.token=""
       router.push(LOGIN_URL)
       
       break;
     case 403:
+      ElMessage.closeAll();
       ElMessage.error("当前账号无权限访问！");
       userStore.token=""
       router.push(LOGIN_URL)
       break;
     case 404:
+      ElMessage.closeAll();
       ElMessage.error("你所访问的资源不存在！");
       break;
     case 405:
+      ElMessage.closeAll();
       ElMessage.error("请求方式错误！请您稍后重试");
       break;
     case 408:

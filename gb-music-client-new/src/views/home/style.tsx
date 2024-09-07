@@ -3,9 +3,15 @@ export const HomeWrapper = styled.div`
   height: 100%;
   width:100%;
   position: relative;
+  .ant-layout{
+    height: 100%;  
+  }
   .content-body {
     width: 100%;
-    margin: 0 auto;
+    height: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
     .router-loading {
       width: 1220px;
       margin: 0 auto;
@@ -19,11 +25,12 @@ export const HomeWrapper = styled.div`
     border-bottom: 1px solid #d3d3d3;
   }
   .gb-music-sider{
-    height: 78vh;
+    height: 100%;
     background-color: white;
     margin: 2px 0 0 0;
-    min-width: 180px!important;
-    max-width: 180px!important;
+    min-width: 190px!important;
+    max-width: 190px!important;
+    width: 190px!important;
     border-right: 1px solid #d3d3d3;
   }
   .gb-music-footer{
@@ -33,8 +40,8 @@ export const HomeWrapper = styled.div`
     overflow: hidden;
   }
   .gb-music-content{
-    height: 78vh;
-    overflow-y: scroll;
+    height: 100%;
+    
     background-color: white;
   }
   .back-to-top {

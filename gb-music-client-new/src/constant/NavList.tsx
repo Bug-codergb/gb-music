@@ -1,33 +1,35 @@
+import {FlagOutlined,PlaySquareOutlined,FundOutlined,ContactsOutlined} from '@ant-design/icons';
+import { ReactElement } from 'react';
 interface navListType {
   path: string;
   name: string;
   tag:number,
-  icon:string
+  icon:ReactElement
 }
 const navList: navListType[] = [
   {
     path: '/Home/discover',
     name: '发现音乐',
     tag:1,
-    icon:'iconfont icon-faxian'
+    icon:<FlagOutlined/>
   },
   {
     path: '/Home/video',
     name: '视频',
     tag:1,
-    icon:"iconfont icon-shipin"
+    icon:<PlaySquareOutlined />
   },
   {
     path: '/Home/channel',
     name: '播客',
     tag:1,
-    icon:"iconfont icon-ios-radio"
+    icon:<FundOutlined />
   },
   {
     path: '/Home/moment',
     name: '动态',
     tag:1,
-    icon:"iconfont icon-airudiantubiaohuizhi-zhuanqu_zixundongtai"
+    icon:<ContactsOutlined />
   },
   /*{
     path: '/Home/myMusic',

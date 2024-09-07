@@ -30,7 +30,7 @@ const Discover = () => {
             })}
         </ul>
       </div>
-      <div>
+      <div className={'discover-content'}>
         <Outlet/>
       </div>
     </DiscoverWrapper>

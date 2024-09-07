@@ -35,9 +35,9 @@ const App: FC = () => {
             <RouteElement/>
           </Suspense>
         </HashRouter>
-        <Toast />
-        <Message />
-        <Footer />
+        {/*<Toast />*/}
+        {/*<Message />*/}
+        {/*<Footer />*/}
       </Provider>
     </AppWrapper>
   );

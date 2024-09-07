@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const TopBarWrapper = styled.div`
-  height: 63px;
+  height: 100%;
   background-color: #fff;
   z-index: 99999999;
   width: 100%;
@@ -8,18 +8,19 @@ export const TopBarWrapper = styled.div`
 export const CenterContent = styled.div`
   height: 100%;
   width: 100%;
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   .left-content {
     display: flex;
     align-items: center;
+    height: 100%;
   }
   .right-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
     .innovation {
       border: 1px solid #00aeec;
       height: 40px;
@@ -58,6 +59,8 @@ export const CenterContent = styled.div`
     }
   }
   .logo {
+    display: flex;
+    align-items: center;
     img {
       width: 45px;
       border-radius: 5px;

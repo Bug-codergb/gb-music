@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 export const ToplistWrapper = styled.div`
-  margin: 0px auto;
-  padding: 20px 15px;
+  padding: 20px;
   .toplist {
     display: flex;
     width: 100%;

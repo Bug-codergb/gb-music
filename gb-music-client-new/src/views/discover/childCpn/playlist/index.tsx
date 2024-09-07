@@ -6,8 +6,8 @@ import { PlaylistWrapper } from './style';
 import CateList from '../../../../components/common/cateList';
 import MsgItem from '../../../../components/content/msgItem';
 
-import { IPlaylist } from '../../../../constant/playlist';
-import { IUser } from '../../../../constant/user';
+import { IPlaylist } from '@/constant/playlist';
+import { IUser } from '@/constant/user';
 import { holder } from '../../../../utils/holder';
 import { Image, Pagination } from 'antd';
 import placeholder from '../../../../assets/img/holder/placeholder.png';
@@ -100,10 +100,6 @@ const Playlist: FC = (props): ReactElement => {
                   </div>
                 </li>
               );
-            })}
-          {catePlay &&
-            holder(catePlay!.length, 7).map((item: number) => {
-              return <li key={item}> </li>;
             })}
         </ul>
       </div>

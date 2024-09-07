@@ -87,7 +87,7 @@ const Home: React.FC = (props) => {
             <TopBar />
           </Header>
           <Layout>
-            <Sider className={"gb-music-sider"}>
+            <Sider className={"gb-music-sider"} style={{width:"190px"}}>
               <NavBar/>
             </Sider>
             <Content className="gb-music-content">
@@ -104,15 +104,15 @@ const Home: React.FC = (props) => {
               </div>
             </Content>
           </Layout>
-          <Footer className={"gb-music-footer"}>
-            <PlayCoin />
-            {isShowBack && (
-              <div className="back-to-top" onClick={(e) => backToTop()}>
-                <VerticalAlignTopOutlined />
-                top
-              </div>
-            )}
-          </Footer>
+          {/*<Footer className={"gb-music-footer"}>*/}
+          {/*  <PlayCoin />*/}
+          {/*  {isShowBack && (*/}
+          {/*    <div className="back-to-top" onClick={(e) => backToTop()}>*/}
+          {/*      <VerticalAlignTopOutlined />*/}
+          {/*      top*/}
+          {/*    </div>*/}
+          {/*  )}*/}
+          {/*</Footer>*/}
         </Layout>
       </HomeWrapper>
     );

@@ -58,7 +58,7 @@ const Album: FC = (props): ReactElement => {
     });
   };
   return (
-    <AlbumWrapper className="center-content">
+    <AlbumWrapper>
       <div className="album-header">
         <CateList cateList={cateList} cateClick={(item: ICategory, index: number) => cateClick(item, index)} />
       </div>
@@ -96,11 +96,6 @@ const Album: FC = (props): ReactElement => {
                   </p>
                 </li>
               );
-            })}
-          {albumDetail &&
-            albumDetail.album &&
-            holder(albumDetail!.album.length, 7).map((item: number) => {
-              return <li key={item}> </li>;
             })}
         </ul>
         {count > 28 && (

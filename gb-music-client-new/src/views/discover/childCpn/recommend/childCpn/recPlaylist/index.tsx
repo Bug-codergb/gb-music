@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {Spin, Image, Empty} from 'antd';
 import { RecPlaylistWrapper } from './style';
 import placeholder from '../../../../../../assets/img/holder/placeholder.png';
+import { holder } from '@/utils/holder';
 //组件
 import MsgItem from '../../../../../../components/content/msgItem';
 

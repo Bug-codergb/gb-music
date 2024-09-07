@@ -1,16 +1,40 @@
 import styled from 'styled-components';
 import coverall from '../../../../assets/img/coverall.png';
 export const AlbumWrapper = styled.div`
-  margin: 0 auto;
-  padding: 20px 15px;
+  padding: 20px;
+  width: 100%;
+  .album-header{
+    margin: 0 0 15px 0;
+  }
+  @media screen and (max-width:1410px ){
+    .cate-album-detail{
+      &>ul{
+        grid-template-columns: repeat(6,150px)!important;
+      }
+    }
+  }
+  @media screen and (max-width:1270px ){
+    .cate-album-detail{
+      &>ul{
+        grid-template-columns: repeat(5,150px)!important;
+      }
+    }
+  }
+  @media screen and (max-width:1080px ){
+    .cate-album-detail{
+      &>ul{
+        grid-template-columns: repeat(4,150px)!important;
+      }
+    }
+  }
   .cate-album-detail {
     & > ul {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(7,150px);
       justify-content: space-between;
       & > li {
-        margin: 0 14px 15px 0;
-        width: 150px;
+        margin: 0 0 15px 0;
+        width: 100%;
         img {
           width: 130px;
           left: 0;

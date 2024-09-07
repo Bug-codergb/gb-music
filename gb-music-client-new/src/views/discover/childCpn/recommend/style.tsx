@@ -6,9 +6,9 @@ export const RecommendWrapper = styled.div`
     font-size: 16px;
   }
   .rec-content {
-    width: 1220px;
+    
     margin: 0 auto;
-    padding: 0 0 20px 15px;
+    padding: 0 15px 20px;
     background-color: #fff;
 
     display: flex;

@@ -102,7 +102,7 @@ const Artist: FC = (props): ReactElement => {
     });
   };
   return (
-    <ArtistWrapper className="center-content">
+    <ArtistWrapper>
       <ul className="filter">
         <li>
           <span className="filter-name">语种: </span>

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 export const BannerWrapper: any = styled.div`
   overflow: hidden;
   position: relative;
+  width: 100%;
+  height: 240px;
   .bgc {
     position: absolute;
     width: 100%;
@@ -13,12 +15,33 @@ export const BannerWrapper: any = styled.div`
     filter: blur(30px);
   }
   .banner-outer {
-    width: 1220px;
+    width: 70%;
     margin: 0 auto;
+    height: 100%;
+    .ant-carousel{
+      height: 100%;
+      .slick-slider{
+        height: 100%;
+        .slick-list{
+        height: 100%;
+          .slick-track{
+            height: 100%;
+            overflow-y: hidden;
+          }
+      }
+      }
+    }
     .img-container {
-      width: 1160px;
+      width: 100%;
+      height: 240px;
+      .ant-image{
+        width: 100%!important;
+        height: 100%!important;
+      }
       img {
         width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
     }
     .prev,

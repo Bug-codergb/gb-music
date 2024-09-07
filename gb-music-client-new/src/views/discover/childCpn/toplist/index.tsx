@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '@/store/hooks';
 import { Skeleton, Image, Spin } from 'antd';
 import { ToplistWrapper } from './style';
-import {addToplistPlayCount, getOfficial, getToplistDetail} from '../../../../network/toplist/toplist';
-import { IToplist } from '../../../../constant/toplist';
+import {addToplistPlayCount, getOfficial, getToplistDetail} from '@/network/toplist/toplist';
+import { IToplist } from '@/constant/toplist';
 import { ISong } from '../../../../constant/song';
 import HotToplist from './childCpn/hotToplist';
 import { changeSongDetailAction } from '../../../../components/content/playCoin/store/asyncThunk';
@@ -66,7 +66,7 @@ const Toplist: FC = (props): ReactElement => {
     }
   };
   return (
-    <ToplistWrapper className="center-content">
+    <ToplistWrapper>
       <ul className="toplist">
         {official &&
           official.length !== 0 &&
