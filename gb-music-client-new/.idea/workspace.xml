@@ -6,20 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/request.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/request.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/user/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/user/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/artist.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/artist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/song.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/song.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProForm/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProForm/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProTable/components/Pagination.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProTable/components/Pagination.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProTable/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProTable/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/hooks/useTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/hooks/useTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/album/components/album/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/album/components/album/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/artist/components/artist/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/artist/components/artist/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/app/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/app/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -13,6 +13,7 @@
         <el-form>
           <el-form-item>
             <el-input
+              clearable
               v-model="searchParams.keyword"
               placeholder="请输入歌曲名称"
               @input="handleSearch"
