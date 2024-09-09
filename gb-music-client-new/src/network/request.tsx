@@ -12,7 +12,9 @@ function request<T>(config: AxiosRequestConfig) {
     (config) => {
       const userMsg  =store.getState().loginReducer.userMsg
       if(userMsg){
-        config.headers.Authorization =  userMsg.token
+        const headers = config.headers;
+        const isOriginalAuth = headers.originalAuth === "true";
+        (!isOriginalAuth) && (config.headers.Authorization =  userMsg.token)
       }
       return config;
     },

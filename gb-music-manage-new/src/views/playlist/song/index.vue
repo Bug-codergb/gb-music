@@ -7,6 +7,7 @@
       dataAlias="songs"
       :initParam="searchParams"
       :pagination="true"
+      ref="tableRef"
     >
       <template #tableHeader>
         <el-form>
@@ -14,20 +15,24 @@
             <el-input
               v-model="searchParams.keyword"
               placeholder="请输入歌曲名称"
+              @input="handleSearch"
             />
           </el-form-item>
         </el-form>
       </template>
       <template #toolButton>
-        <el-button type="primary">添加歌曲</el-button>
+        <el-button type="primary" @click="handleCreate">添加歌曲</el-button>
       </template>
     </ProTable>
+    <CreateSong ref="createSongRef" @success="search"/>
   </div>
 </template>
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
+import debounce from "lodash/debounce"
 import { getSongListApi } from "@/api/modules/song.js";
 import ProTable from "@/components/ProTable/index";
+import CreateSong from "./components/createSong.vue"
 const columns = reactive([
   {
     label: "歌曲名称",
@@ -63,4 +68,15 @@ const columns = reactive([
 const searchParams = reactive({
   keyword: ""
 });
+const createSongRef = ref()
+const handleCreate=()=>{
+  createSongRef.value && createSongRef.value.showDrawer();
+}
+const tableRef = ref()
+const search=()=>{
+  tableRef.value && tableRef.value.search();
+}
+const handleSearch=debounce(()=>{
+  search();
+},500)
 </script>

@@ -39,6 +39,9 @@
                 </template>
               </div>
             </template>
+            <template v-if="it.tag==='file'">
+              <FormFile v-model="newFormData[it.prop]" v-bind="it.attrs"/>
+            </template>
             <template v-if="it.tag === 'slot'">
               <slot :name="it.prop"></slot>
             </template>
@@ -54,6 +57,7 @@ import { ref, watch, computed } from "vue";
 import cloneDeep from "lodash/cloneDeep";
 import { ElMessage } from "element-plus";
 import ProCropper from "../ProCropper/index.vue";
+import FormFile from "./components/FormFile.vue"
 const props = defineProps({
   aspectRatio: {
     type: Number,

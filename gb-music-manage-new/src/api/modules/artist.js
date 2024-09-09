@@ -32,3 +32,10 @@ export function getArtistListApi(params) {
 export function deleteArtistApi(params) {
   return http.post("/artist/delete", params);
 }
+//type
+export function setArtistLangApi(data){
+  return http.post("/artist/cate/set",data);
+}
+export function setArtistTypeApi(data){
+  return http.post("/artist/type/set",data);
+}

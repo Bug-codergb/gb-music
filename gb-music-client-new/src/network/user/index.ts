@@ -117,7 +117,8 @@ export function updateUserExpire(token: string) {
     method: 'post',
     headers: {
       // @ts-ignore
-      Authorization: token
+      Authorization: token,
+      originalAuth:true
     }
   });
 }

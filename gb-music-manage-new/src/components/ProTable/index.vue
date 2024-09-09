@@ -21,7 +21,7 @@
         <el-table-column
           v-if="
             item.type &&
-            ['selection', 'index', 'expand'].includes(item.type)
+            ['selection', 'index', 'expand'].includes(item.type) && item.isShow
           "
           v-bind="item"
           :align="item.align ?? 'left'"
@@ -166,7 +166,8 @@ const getSelectionRows = () => {
 defineExpose({
   search,
   tableRef,
-  getSelectionRows
+  getSelectionRows,
+  getTableList
 });
 </script>
 <style lang="scss" scoped>

@@ -1,6 +1,7 @@
 const express = require('express');
 //const http2Express = require('http2-express-bridge');
 //const compression = require('compression');
+const {whiteList} = require("../constants/whiteList")
 const http2 = require('http2');
 const jwt = require('jsonwebtoken');
 const { readFileSync } = require('fs');
@@ -23,19 +24,24 @@ app.use(async (req, res, next) => {
   res.set('Access-Control-Allow-Origin', '*');
   res.set('Access-Control-Allow-Headers', 'POST,Origin,Content-Type,Accept,authorization');
   const authorization = req.get('authorization');
-  if (authorization) {
-    const token = authorization.replace('Bearer ', '');
-    try {
-      jwt.verify(token, PUBLIC_KEY, {
-        algorithms: ['RS256']
-      });
-      next();
-    } catch (e) {
-      next(new Error(errorType.PLEASE_SIGN_IN));
+  if(whiteList.includes(req.url)){
+    return next();
+  }else{
+    if (authorization) {
+      const token = authorization.replace('Bearer ', '');
+      try {
+        jwt.verify(token, PUBLIC_KEY, {
+          algorithms: ['RS256']
+        });
+        next();
+      } catch (e) {
+        next(new Error(errorType.PLEASE_SIGN_IN));
+      }
+    } else {
+      await next();
     }
-  } else {
-    await next();
   }
+
 });
 //注册
 const registerRouter = require('../router/register.router');

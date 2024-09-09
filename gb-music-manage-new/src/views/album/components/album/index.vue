@@ -8,6 +8,7 @@
       :initParam="searchParams"
       dataAlias="album"
       :pagination="true"
+      :isSingleSelect="isSongPage"
     >
       <template #tableHeader>
         <el-form inline>
@@ -35,7 +36,7 @@
           </el-form-item>
         </el-form>
       </template>
-      <template #toolButton>
+      <template #toolButton v-if="!isSongPage">
         <el-button type="primary" @click="handleCreate"
           >新增</el-button
         >
@@ -56,11 +57,23 @@ import {
 } from "@/api/modules/album.js";
 import ProTable from "@/components/ProTable/index.vue";
 import CreateAlbum from "../createAlbum";
+
+const props = defineProps({
+  isSongPage:{
+    type:Boolean,
+    default:false
+  }
+})
+
 const searchParams = reactive({
   id: "",
   keyword: ""
 });
 const columns = reactive([
+  {
+    type:"selection",
+    isShow: props.isSongPage
+  },
   {
     label: "封面",
     prop: "cover",
@@ -153,4 +166,7 @@ const handleDeleteAlbum = item => {
     handleSearch();
   });
 };
+defineExpose({
+  tableRef:tableRef
+})
 </script>

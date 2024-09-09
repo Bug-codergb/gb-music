@@ -3,6 +3,7 @@
   <el-pagination
     :background="true"
     :page-size="pageable.limit"
+    :current-page="pageable.pageNum"
     :page-sizes="[10, 25, 50, 100]"
     :total="pageable.total"
     layout="total, sizes, prev, pager, next, jumper"

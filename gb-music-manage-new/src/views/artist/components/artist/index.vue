@@ -29,14 +29,15 @@ import debounce from "lodash/debounce";
 import CreateArtist from "./components/createArtist.vue";
 import ProTable from "@/components/ProTable/index.vue";
 
-import { getArtistListApi, getArtistLangApi, getArtistTypeApi, deleteArtistApi } from "@/api/modules/artist.js";
+import { getArtistListApi, getArtistLangApi,
+  getArtistTypeApi, deleteArtistApi,setArtistLangApi,setArtistTypeApi } from "@/api/modules/artist.js";
 const langList = ref([]);
 const typeList = ref([]);
 getArtistLangApi().then(res => {
-  langList.value = res;
+  langList.value = res.filter(item=>item.name!=='全部');
 });
 getArtistTypeApi().then(res => {
-  typeList.value = res;
+  typeList.value = res.filter((item)=>item.name!=='全部');
 });
 const columns = reactive([
   {
@@ -60,7 +61,7 @@ const columns = reactive([
     width: 200,
     render: scope => {
       return (
-        <el-select v-model={scope.row.area}>
+        <el-select v-model={scope.row.area} onChange={()=>handleArtistLangChange(scope.row)}>
           {langList.value.length !== 0 &&
             langList.value.map(item => {
               return <el-option label={item.name} value={item.id} key={item.id}></el-option>;
@@ -76,7 +77,7 @@ const columns = reactive([
     width: 200,
     render: scope => {
       return (
-        <el-select v-model={scope.row.type}>
+        <el-select v-model={scope.row.type} onChange={()=>handleArtistTypeChange(scope.row)}>
           {typeList.value.length !== 0 &&
             typeList.value.map(item => {
               return <el-option label={item.name} value={item.id} key={item.id}></el-option>;
@@ -146,4 +147,21 @@ const handleDelete = item => {
     })
     .catch(e => {});
 };
+
+const handleArtistLangChange=async (item)=>{
+  const res = await setArtistLangApi({
+    arId:item.id,
+    cateId:item.area
+  })
+  ElMessage.success("歌手语种更新成功");
+  tableRef.value && tableRef.value.getTableList();
+}
+const handleArtistTypeChange=async (item)=>{
+  const res = await setArtistTypeApi({
+    arId:item.id,
+    type:item.type
+  })
+  ElMessage.success("歌手分类更新成功");
+  tableRef.value && tableRef.value.getTableList();
+}
 </script>
