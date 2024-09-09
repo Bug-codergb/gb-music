@@ -26,7 +26,7 @@ app.use(async (req, res, next) => {
   const authorization = req.get('authorization');
   if(whiteList.includes(req.url)){
     return next();
-  }else{
+  }else{ 
     if (authorization) {
       const token = authorization.replace('Bearer ', '');
       try {
