@@ -1,8 +1,12 @@
 <script setup>
 import { useAttrs,ref,computed } from 'vue'
 import {ElMessage} from "element-plus"
-import {Document,Delete} from "@element-plus/icons-vue"
+import {Document,Delete,VideoCamera,VideoPlay} from "@element-plus/icons-vue"
 const props = defineProps({
+  fileType:{
+    type:String,
+    default:""
+  },
   modelValue:{
     type:Object,
     default(){
@@ -14,6 +18,8 @@ const emit = defineEmits(["update:modelValue"])
 const attrs = useAttrs()
 const isShowPrev=ref(false);
 const uploadFile = ref(null);
+
+const videoURL = ref("")
 const handleFileChange=(e)=>{
   if(e.currentTarget.files){
     const file = e.currentTarget.files[0];
@@ -24,6 +30,9 @@ const handleFileChange=(e)=>{
     }
     isShowPrev.value = true;
     uploadFile.value = file;
+    if(props.fileType==="video"){
+      videoURL.value = URL.createObjectURL(file);
+    }
     emit("update:modelValue",file);
   }
 }
@@ -32,17 +41,45 @@ const handleDelete=()=>{
   uploadFile.value = null
   emit("update:modelValue",null);
 }
+const videoRef = ref();
+const isPlay = ref(false);
+const handlePlay=()=>{
+  isPlay.value = true;
+}
+const handlePause=()=>{
+  isPlay.value = false;
+}
+const handleVideoAction=(action)=>{
+  switch(action){
+    case "play":videoRef.value.play();break;
+    case "pause":videoRef.value.pause();break;
+    default:
+      return;
+  }
+}
 </script>
 
 <template>
   <div class="form-file-container">
     <template v-if="!isShowPrev">
-      <el-icon><Document /></el-icon>
+      <el-icon class="upload-icon">
+        <VideoCamera v-if="fileType==='video'" />
+        <Document v-else/>
+      </el-icon>
       <input type="file" @change="handleFileChange"/>
     </template>
     <template v-if="isShowPrev">
-      <span class="label">{{uploadFile.name}}</span>
+      <div class="video-container" v-if="fileType==='video'">
+        <video :controls="false" :src="videoURL" ref="videoRef" @play="handlePlay" @pause="handlePause"/>
+      </div>
+      <span class="label" v-else>{{uploadFile.name}}</span>
       <div class="mask" @click="handleDelete" title="删除文件">
+        <template v-if="fileType ==='video'">
+          <el-icon v-if="isPlay" style="margin:0 15px 0 0" @click.stop="handleVideoAction('pause')"><VideoPause /></el-icon>
+          <el-icon v-if="!isPlay" style="margin:0 15px 0 0" @click.stop="handleVideoAction('play')">
+            <VideoPlay />
+          </el-icon>
+        </template>
         <el-icon><Delete /></el-icon>
       </div>
     </template>
@@ -68,7 +105,7 @@ const handleDelete=()=>{
     position: absolute;
     z-index:10
   }
-  .el-icon{
+  .upload-icon.el-icon{
     font-size: 28px;
     position: absolute;
     left: 50%;
@@ -88,6 +125,12 @@ const handleDelete=()=>{
     cursor:pointer;
     display: none;
     transition: all 0.3s;
+
+    align-items: center;
+    justify-content: center;
+    .el-icon{
+      font-size: 28px;
+    }
   }
   .label{
     color:var(--el-color-primary);
@@ -97,7 +140,16 @@ const handleDelete=()=>{
   }
   &:hover{
     .mask{
-      display: block;
+      display: flex;
+    }
+  }
+  .video-container{
+    width: 100%;
+    height: 100%;
+    video{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
   }
 }

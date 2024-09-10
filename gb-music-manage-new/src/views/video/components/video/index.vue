@@ -22,6 +22,7 @@
             <el-select
               v-model="searchParams.cateId"
               style="width: 200px"
+              @change="search"
             >
               <el-option
                 v-for="item in cateList"
@@ -39,6 +40,7 @@
         >
       </template>
     </ProTable>
+    <CreateVideo ref="createVideoRef" @success="search"/>
   </div>
 </template>
 <script setup lang="jsx">
@@ -47,6 +49,7 @@ import { formatTime } from "@/utils/time.js";
 import moment from "moment";
 import debounce from "lodash/debounce";
 import ProTable from "@/components/ProTable/index";
+import CreateVideo from "../createVideo/index.vue"
 import {
   getVideoListApi,
   getVideoCateApi
@@ -129,6 +132,8 @@ const search = () => {
 const handleSearch = debounce(() => {
   search();
 }, 500);
-
-const handleCreate = () => {};
+const createVideoRef = ref()
+const handleCreate = () => {
+  createVideoRef.value && createVideoRef.value.showDrawer()
+};
 </script>

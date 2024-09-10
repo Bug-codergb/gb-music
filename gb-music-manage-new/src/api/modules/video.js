@@ -7,3 +7,19 @@ export function getVideoListApi(data) {
 export function getVideoCateApi(data) {
   return http.get("/video/cate/all", data);
 }
+export function createVideoCateApi(data){
+  return http.post("/video/cate",data);
+}
+export function deleteVideoCateApi(data){
+  return http.post("/video/cate/delete",data);
+}
+
+export function createVideoApi(data){
+  return http.post("/video",data);
+}
+export function updateVideoSourceApi(id,data){
+  return http.post(`/video/upload?vid=${id}`,data)
+}
+export function updateVideoCoverApi(id,data){
+  return http.post(`/video/cover/upload?id=${id}`,data)
+}

@@ -42,6 +42,9 @@
             <template v-if="it.tag==='file'">
               <FormFile v-model="newFormData[it.prop]" v-bind="it.attrs"/>
             </template>
+            <template v-if="it.tag==='video'">
+              <FormFile v-model="newFormData[it.prop]" v-bind="it.attrs" file-type="video"/>
+            </template>
             <template v-if="it.tag === 'slot'">
               <slot :name="it.prop"></slot>
             </template>
