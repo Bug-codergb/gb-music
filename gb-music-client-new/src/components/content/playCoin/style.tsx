@@ -2,15 +2,22 @@ import styled from 'styled-components';
 import coverall from '../../../assets/img/coverall.png';
 export const PlayCoinWrapper = styled.div`
   background-color: #fff;
-  height:70px;
-  padding: 10px 0;
+  height: 90px;
+
   border-top: 1px solid #e0e0e0;
   width: 100%;
+  position: fixed;
+  left: 0;
+  top: 100%;
+  transform: translate(0, -100%);
+  z-index: 9999099909;
+
+  display: flex;
+  justify-content: center;
 `;
 export const CenterContent = styled.div`
   position: relative;
   width: 1380px;
-  margin: 0 auto;
   height: 100%;
   display: flex;
   align-items: center;
@@ -81,7 +88,7 @@ export const CenterContent = styled.div`
       display: flex;
       width: 550px;
       justify-content: space-evenly;
-      margin: 12px auto 0;
+      margin: 0 auto 5px;
       align-items: center;
       .lyric {
         cursor: pointer;
@@ -129,15 +136,15 @@ export const CenterContent = styled.div`
       justify-content: space-between;
       .progress-bar {
         width: 90%;
-        .ant-slider{
-          margin: 0!important 6px;
+        .ant-slider {
+          margin: 0 6px !important;
         }
       }
-      .ant-slider-handle {
+      /*.ant-slider-handle {
         width: 12px;
         height: 12px;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 10%;
+        transform: 0;
         border-color: #ec4141;
       }
       .ant-slider-track {
@@ -145,7 +152,7 @@ export const CenterContent = styled.div`
       }
       .ant-slider-rail {
         background-color: #ececec;
-      }
+      }*/
       .current-time,
       .dt {
         color: #99999b;
@@ -170,16 +177,15 @@ export const CenterContent = styled.div`
       }
       .volume-bar {
         width: 100px;
-        .ant-slider-handle {
+        /*.ant-slider-handle {
           width: 11px;
           height: 11px;
-          top: 50%;
-          transform: translateY(-50%);
+
           border-color: #ec4141;
         }
         .ant-slider-track {
           background-color: #ec4141;
-        }
+        }*/
       }
     }
     .playlist {

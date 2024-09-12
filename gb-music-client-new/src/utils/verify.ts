@@ -1,5 +1,6 @@
-import jwt from 'jsonwebtoken';
+//import jwt from 'jsonwebtoken';
 function verifyURL(url: string) {
+  return url
 //   const publicKey: string = `-----BEGIN PUBLIC KEY-----
 // MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDVngqLlcT4xs9q18KCEWGaNYIa
 // EMwSIus02VG3XVt8IGwT5Ws8Z1qCULz7jxERDKgSyfUM0EMOQ2KH/Z/ZhhZAld1r

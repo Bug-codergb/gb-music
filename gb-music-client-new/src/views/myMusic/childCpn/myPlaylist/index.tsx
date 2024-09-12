@@ -1,6 +1,6 @@
-import React, { memo, FC, ReactElement, useState, MouseEvent } from 'react';
+import React, { memo, FC, ReactElement, useState, MouseEvent, useRef } from 'react';
 import { MyPlayList } from './style';
-import CreatePlayList from './childCpn/createPlayList/index';
+import CreatePlayList from './childCpn/createPlayListNew/index';
 import UserPlaylist from './childCpn/userPlaylist';
 //网络请求
 import { createPlayList, uploadPlayCover } from '@/network/playlist';
@@ -24,9 +24,11 @@ const MyPlaylist: FC = (): ReactElement => {
   const cancel = (): void => {
     setIsShow(false);
   };
+
+  const creayePlaylistRef = useRef();
   //创建歌单
   const createPlaylist = () => {
-    setIsShow(true);
+    creayePlaylistRef.current && creayePlaylistRef.current.showModal();
   };
   return (
     <MyPlayList>
@@ -34,12 +36,7 @@ const MyPlaylist: FC = (): ReactElement => {
         <span>新建歌单</span>
         <i className="iconfont icon-jia1"> </i>
       </div>
-      {isShow && (
-        <CreatePlayList
-          onClick={(name: string, desc: string, f: File) => define(name, desc, f)}
-          cancelClick={(e: MouseEvent) => cancel()}
-        />
-      )}
+      <CreatePlayList ref={creayePlaylistRef} />
       {/*用户歌单列表*/}
       <UserPlaylist key={keyId} />
     </MyPlayList>

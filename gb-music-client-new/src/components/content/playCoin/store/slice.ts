@@ -50,7 +50,7 @@ const songSlice = createSlice({
     changePlaylist(state,{payload}){
       state.playlist=payload
     },
-    changeCurrentIndex(state,{payload}){
+    changeCurrentIndex(state, { payload }) {
       state.currentIndex=payload
     },
     changePlayMode(state,{payload}){

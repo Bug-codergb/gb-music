@@ -202,9 +202,6 @@ export const PlayPageWrapper = styled.div`
   }
 `;
 export const CenterContent = styled.div`
-  width: 1190px;
-  margin: 0 auto;
-  border-left: 1px solid #d3d3d3;
-  border-right: 1px solid #d3d3d3;
+  padding: 0 20px;
   background-color: #fff;
 `;

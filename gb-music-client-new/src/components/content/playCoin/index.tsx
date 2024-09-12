@@ -1,27 +1,19 @@
 import React, { memo, FC, ReactElement, useState, MouseEvent, useRef, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  useAppDispatch,
-  useAppSelector
-} from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 import { Slider } from 'antd';
 import { formatTime } from '../../../utils/format';
 import { CenterContent, PlayCoinWrapper } from './style';
-import {
-  changeCurrentLyricIndex,
-  changeLyricLine,
-  changePlayMode
-} from './store/slice';
-import {changeCurrentSongAction} from "./store/asyncThunk"
+import { changeCurrentLyricIndex, changeLyricLine, changePlayMode } from './store/slice';
+import { changeCurrentSongAction } from './store/asyncThunk';
 import Playlist from './childCpn/playlist';
 import { CSSTransition } from 'react-transition-group';
 import { getFileBlob } from '../../../network/media';
 
-
-interface IProps  {}
+interface IProps {}
 const PlayCoin: FC<IProps> = (props): ReactElement => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [isPlay, setIsPlay] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
   const [isDrag, setIsDrag] = useState<boolean>(false);
@@ -30,12 +22,11 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
 
   const dispatch = useAppDispatch();
   const { userMsg } = useAppSelector((state) => {
-    return state['loginReducer']
+    return state['loginReducer'];
   });
   const song = useAppSelector((state) => {
-    return  state['songReducer']
+    return state['songReducer'];
   });
-
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -43,6 +34,7 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
     setIsPlay(false);
     getFileBlob(song.songUrl).then((data) => {
       if (audioRef.current) {
+        console.log(song.songUrl);
         audioRef.current.src = song.songUrl;
         audioRef.current.volume = 0.2;
         audioRef.current.play();
@@ -92,7 +84,7 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
   };
   //切歌
   const changeSong = (tag: number) => {
-   //dispatch(changeCurrentSongAction({tag}));
+    dispatch(changeCurrentSongAction({ tag }));
   };
   const endHandle = () => {
     if (song.playMode === 2 && audioRef.current) {
@@ -110,7 +102,7 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
     }
   }, []);
   const playCoin = () => {
-    navigate('/Home/playPage')
+    navigate('/Home/playPage');
   };
   //改变播放模式
   const changeMode = () => {
@@ -118,7 +110,7 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
     if (tempMode > 2) {
       tempMode = 0;
     }
-   dispatch(changePlayMode(tempMode));
+    dispatch(changePlayMode(tempMode));
   };
   //切换播放列表
   const playlistClick = (e: MouseEvent<HTMLDivElement>) => {
@@ -193,9 +185,9 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
               <Slider
                 defaultValue={0}
                 onChange={(val: number) => changeProgress(val)}
-                onAfterChange={(val: number) => changeEnd(val)}
+                onChangeComplete={(val: number) => changeEnd(val)}
                 value={(currentTime / song.songDetail.duration) * 100}
-                tooltipVisible={false}
+                tooltip={{ open: false }}
               />
             </div>
             <div className="dt">{formatTime(parseInt(song.songDetail.duration.toString()), 'mm:ss')}</div>

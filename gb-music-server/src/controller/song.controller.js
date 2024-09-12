@@ -104,13 +104,13 @@ class SongController {
       const result = await getSongURL(id);
       const { mp3Url } = result[0];
       try {
-        const tokenUrl = jwt.sign({ mp3Url }, MEDIA_PRIVATE_KEY, {
+        /*const tokenUrl = jwt.sign({ mp3Url }, MEDIA_PRIVATE_KEY, {
           expiresIn: 60 * 60 * 24 * 7,
           algorithm: 'RS256'
-        });
+        });*/
         res.json({
           ...result[0],
-          mp3Url: tokenUrl
+          mp3Url: mp3Url
         });
       } catch (e) {
         console.log(e);

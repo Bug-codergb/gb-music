@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 export const HomeWrapper = styled.div`
   height: 100%;
-  width:100%;
+  width: 100%;
   position: relative;
-  .ant-layout{
-    height: 100%;  
+  padding-bottom: 90px;
+  .ant-layout {
+    height: 100%;
   }
   .content-body {
     width: 100%;
@@ -18,30 +19,29 @@ export const HomeWrapper = styled.div`
       padding: 30px 0;
     }
   }
-  .gb-music-header{
-    background-color:#fff;
-    padding: 0 20px!important;
-    box-shadow: 0 15px 20px rgba(0,0,0,.7);
+  .gb-music-header {
+    background-color: #fff;
+    padding: 0 20px !important;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
     border-bottom: 1px solid #d3d3d3;
   }
-  .gb-music-sider{
+  .gb-music-sider {
     height: 100%;
     background-color: white;
     margin: 2px 0 0 0;
-    min-width: 190px!important;
-    max-width: 190px!important;
-    width: 190px!important;
+    min-width: 190px !important;
+    max-width: 190px !important;
+    width: 190px !important;
     border-right: 1px solid #d3d3d3;
+
+    overflow-y: auto;
   }
-  .gb-music-footer{
-    padding: 0 20px;
+  .gb-music-footer {
     background-color: #fff;
-    height: 12vh;
-    overflow: hidden;
+    height: 90px;
   }
-  .gb-music-content{
+  .gb-music-content {
     height: 100%;
-    
     background-color: white;
   }
   .back-to-top {

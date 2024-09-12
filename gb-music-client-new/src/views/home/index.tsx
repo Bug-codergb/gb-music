@@ -1,10 +1,7 @@
 import React, { memo, Suspense, useEffect, useState } from 'react';
-import { Outlet, Navigate, } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 import logo from '@/assets/img/logo.png';
-import {
-  useAppDispatch,
-  useAppSelector
-} from "@/store/hooks.ts";
+import { useAppDispatch, useAppSelector } from '@/store/hooks.ts';
 
 import { Skeleton } from 'antd';
 import { VerticalAlignTopOutlined } from '@ant-design/icons';
@@ -18,13 +15,13 @@ import { ILogin, IUserMsg } from '../../constant/store/login';
 import useAuth from '../../hooks/useAuth/index';
 
 import { Layout } from 'antd';
-import NavBar from "../../components/content/topBar/childCpn/navBar";
+import NavBar from '../../components/content/topBar/childCpn/navBar';
 
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home: React.FC = (props) => {
   let { userMsg } = useAppSelector((state) => {
-    return state['loginReducer']
+    return state['loginReducer'];
   });
   const isShow = useAppSelector((state) => {
     return state['vipReducer'];
@@ -36,7 +33,7 @@ const Home: React.FC = (props) => {
       //global.constant.socket = new WebSocket(`${HOST_NAME}/line/user?userId=${userMsg.userId}`);
       // @ts-ignore
       //global.constant.socket.onopen = function (e) {
-        // @ts-ignore
+      // @ts-ignore
       //   global.constant.socket.send(userMsg.userId);
       //   console.log('websocket open');
       // };
@@ -73,8 +70,8 @@ const Home: React.FC = (props) => {
     }
   };
   if (!userMsg || !userMsg.token) {
-    console.log(userMsg)
-    console.log(userMsg.token)
+    console.log(userMsg);
+    console.log(userMsg.token);
     return <Navigate to={'/Login'} />;
   } else {
     return (
@@ -87,8 +84,8 @@ const Home: React.FC = (props) => {
             <TopBar />
           </Header>
           <Layout>
-            <Sider className={"gb-music-sider"} style={{width:"190px"}}>
-              <NavBar/>
+            <Sider className={'gb-music-sider'} style={{ width: '190px' }}>
+              <NavBar />
             </Sider>
             <Content className="gb-music-content">
               <div className="content-body">
@@ -99,13 +96,13 @@ const Home: React.FC = (props) => {
                     </div>
                   }
                 >
-                  <Outlet/>
+                  <Outlet />
                 </Suspense>
               </div>
             </Content>
           </Layout>
           {/*<Footer className={"gb-music-footer"}>*/}
-          {/*  <PlayCoin />*/}
+          <PlayCoin />
           {/*  {isShowBack && (*/}
           {/*    <div className="back-to-top" onClick={(e) => backToTop()}>*/}
           {/*      <VerticalAlignTopOutlined />*/}
@@ -114,6 +111,7 @@ const Home: React.FC = (props) => {
           {/*  )}*/}
           {/*</Footer>*/}
         </Layout>
+        {/* <Footer className={'gb-music-footer'} /> */}
       </HomeWrapper>
     );
   }

@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement, useRef, useEffect, MouseEvent } from 'react';
 import { PlaylistWrapper } from './style';
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { ISong } from '../../../../../constant/song';
 import { formatTime } from '../../../../../utils/format';
 import { changeSongDetailAction } from '../../store/asyncThunk';
@@ -19,12 +19,12 @@ const Playlist: FC = (): ReactElement => {
   }, [songList.current?.offsetHeight]);
   const playSong = (e: MouseEvent<HTMLDivElement>, item: ISong, index: number) => {
     e.stopPropagation();
-    dispatch(changeSongDetailAction({id:item.id}));
+    dispatch(changeSongDetailAction({ id: item.id }));
   };
   return (
     <PlaylistWrapper>
       <p className="title">当前播放</p>
-      <div className="control">
+      <div className="g-control">
         <div className="total">总{playlist.length}首</div>
         <div className="sub-all">
           <i className="iconfont icon-jiarushoucang"> </i>

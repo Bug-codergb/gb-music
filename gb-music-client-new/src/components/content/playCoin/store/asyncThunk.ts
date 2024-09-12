@@ -25,8 +25,8 @@ export const changeSongDetailAction = createAsyncThunk("song/changeSongDetailAct
   if (flag === -1) {
     const data:any = await getSongDetail(id)
       dispatch(changeSongDetail(data));
-      dispatch(changeSongURLAction(id));
-      dispatch(changeSongLyric(id));
+      dispatch(changeSongURLAction({ id }));
+      dispatch(changeSongLyric({ id }));
       const newPlaylist = [...playlist];
       newPlaylist.push(data);
       dispatch(changePlaylist(newPlaylist));
@@ -39,8 +39,8 @@ export const changeSongDetailAction = createAsyncThunk("song/changeSongDetailAct
   if (flag !== -1) {
     dispatch(changeCurrentIndex(flag));
     dispatch(changeSongDetail(playlist[flag]));
-    dispatch(changeSongURLAction(id));
-    dispatch(changeSongLyric(id));id
+    dispatch(changeSongURLAction({ id }));
+    dispatch(changeSongLyric({ id }));
     const ret = await addSongPlayCount('id');
     return ret;
   }
@@ -72,7 +72,7 @@ export const changeCurrentSongAction = createAsyncThunk("currentSongAction",(ext
   }
   dispatch(changeCurrentIndex(currentIndex));
   dispatch(changeSongDetail(playlist[currentIndex]));
-  dispatch(changeSongURLAction(playlist[currentIndex].id));
+  dispatch(changeSongURLAction({id: playlist[currentIndex].id }));
 })
 export const changeSongURLAction = createAsyncThunk("songUrlAction",(extraInfo:any,{dispatch,getState})=>{
   const {id} = extraInfo;

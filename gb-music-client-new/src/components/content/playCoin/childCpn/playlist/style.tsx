@@ -14,7 +14,7 @@ export const PlaylistWrapper = styled.div`
     font-weight: bolder;
     margin: 0 0 0 15px;
   }
-  .control {
+  .g-control {
     display: flex;
     align-items: center;
     justify-content: space-between;

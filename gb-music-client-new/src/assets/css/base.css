@@ -78,3 +78,33 @@ html {
   width: 2px;
 }
 
+.create-playlist-img-container{
+  width: 100%;
+  height: 120px;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  position: relative;
+}
+.create-playlist-img-container input{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 99;
+  opacity: 0;
+}
+.create-playlist-img-container .g-pic-prev{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 30px;
+}
+.create-playlist-img-container .g-pic-prev svg{
+  font-size: 30px;
+  color: #e3807d;
+}
+.create-playlist-img-container img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

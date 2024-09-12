@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/helper/checkStatus.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/helper/checkStatus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/video.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProForm/components/FormFile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProForm/components/FormFile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProForm/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProForm/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/video/components/video/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/video/components/video/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/video/components/videoCate/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/video/components/videoCate/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +138,7 @@
       <workItem from="1725453641222" duration="16222000" />
       <workItem from="1725591730823" duration="6629000" />
       <workItem from="1725612435772" duration="4059000" />
-      <workItem from="1725880358907" duration="1696000" />
+      <workItem from="1725880358907" duration="1698000" />
     </task>
     <servers />
   </component>
