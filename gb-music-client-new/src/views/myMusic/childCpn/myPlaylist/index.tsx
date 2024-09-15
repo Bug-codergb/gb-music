@@ -9,7 +9,7 @@ import { publishMessage } from '@/network/message';
 const MyPlaylist: FC = (): ReactElement => {
   const [isShow, setIsShow] = useState<boolean>(false);
   const [keyId, setKeyId] = useState<number>(0);
-  const define = (name: string, desc: string, file: File): void => {
+  const define = (name: string, desc: string, file: File | null): void => {
     createPlayList(name, desc).then((data: any) => {
       const { id } = data;
       let formData = new FormData();
@@ -36,7 +36,10 @@ const MyPlaylist: FC = (): ReactElement => {
         <span>新建歌单</span>
         <i className="iconfont icon-jia1"> </i>
       </div>
-      <CreatePlayList ref={creayePlaylistRef} />
+      <CreatePlayList
+        ref={creayePlaylistRef}
+        onClick={(name: string, desc: string, file: File | null) => define(name, desc, file)}
+      />
       {/*用户歌单列表*/}
       <UserPlaylist key={keyId} />
     </MyPlayList>

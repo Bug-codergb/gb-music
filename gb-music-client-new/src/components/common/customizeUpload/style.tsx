@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import '../../assets/css/cropper.css';
+import '../../../assets/css/cropper.css';
 export const CustomizeUploadWrapper: any = styled.div`
   display: flex;
   align-items: center;
-  height: ${400 / 40}rem;
+  height: 100%;
   overflow: hidden;
   .container {
     height: 100%;

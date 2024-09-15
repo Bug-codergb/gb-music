@@ -24,9 +24,9 @@ const CustomizeUpload: FC<IProps> = forwardRef((props, propsRef): ReactElement =
   const [imgURL, setImgURL] = useState<string>('');
   const [cropper, setCropper] = useState<Cropper>();
   useEffect(() => {
+    console.log(file);
     if (file) {
       if (imgRef && imgRef.current) {
-        console.log(cropper);
         const url = URL.createObjectURL(file);
         const cropperContainer = new Cropper(imgRef.current, {
           ready: function () {
