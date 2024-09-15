@@ -1,5 +1,5 @@
-import { Navigate ,type RouteObject} from 'react-router-dom';
-import { lazy,Suspense } from 'react';
+import { Navigate, type RouteObject } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import myMusicRoutes from './myMusic/index';
 import {
   playPageRouter,
@@ -17,7 +17,6 @@ import {
   msgRouter
 } from './detail/index';
 import discoverRoutes from './discover';
-
 
 //创作者中心页面
 import innovateChild from './manage/index';
@@ -39,49 +38,80 @@ const MvRouter = lazy(() => import('../views/video/childCpn/mv/index'));
 //创作者中心详情
 const InnovateRouter = lazy(() => import('../views/manage/innovate/index'));
 
+const SubPlaylist = lazy(() => import('../views/playlist/index'));
 const routes: RouteObject[] = [
   {
     path: '/',
-    element:<Navigate to="/Login" />
+    element: <Navigate to="/Login" />
   },
   {
     path: '/Login',
-    element: <Suspense><Login /></Suspense>
+    element: (
+      <Suspense>
+        <Login />
+      </Suspense>
+    )
   },
   {
     path: '/Register',
-    element: <Suspense>
-      <Register/>
-    </Suspense>
+    element: (
+      <Suspense>
+        <Register />
+      </Suspense>
+    )
   },
   {
     path: '/Home',
-    element: <Home/>,
+    element: <Home />,
     children: [
       {
+        path: '/Home/playlist/:id',
+        element: (
+          <Suspense>
+            <SubPlaylist />
+          </Suspense>
+        )
+      },
+      {
         path: '/Home',
-        element:<Navigate to="/Home/discover" />
+        element: <Navigate to="/Home/discover" />
       },
       {
         path: '/Home/discover',
-        element: <Suspense><Discover/></Suspense>,
+        element: (
+          <Suspense>
+            <Discover />
+          </Suspense>
+        ),
         children: discoverRoutes
       },
       {
         path: '/Home/video',
-        element: <Suspense><Video/></Suspense>,
+        element: (
+          <Suspense>
+            <Video />
+          </Suspense>
+        ),
         children: [
           {
             path: '/Home/video',
-            element:<Navigate to="/Home/video/vision" />
+            element: <Navigate to="/Home/video/vision" />
           },
           {
             path: '/Home/video/vision',
-            element: <Suspense><VisionRouter/></Suspense>
+            element: (
+              <Suspense>
+                <VisionRouter />
+              </Suspense>
+            )
           },
           {
             path: '/Home/video/mv',
-            element: <Suspense><MvRouter/></Suspense>
+            element: (
+              <Suspense>
+                <MvRouter />
+              </Suspense>
+            )
           }
         ]
       },
@@ -92,15 +122,27 @@ const routes: RouteObject[] = [
       }*/
       {
         path: '/Home/moment',
-        element: <Suspense><Moment/></Suspense>
+        element: (
+          <Suspense>
+            <Moment />
+          </Suspense>
+        )
       },
       {
         path: '/Home/innovation',
-        element: <Suspense><Innovation/></Suspense>
+        element: (
+          <Suspense>
+            <Innovation />
+          </Suspense>
+        )
       },
       {
         path: '/Home/channel',
-        element: <Suspense><Channel/></Suspense>
+        element: (
+          <Suspense>
+            <Channel />
+          </Suspense>
+        )
       },
       ...myMusicRoutes,
       albumRouter,
@@ -120,7 +162,7 @@ const routes: RouteObject[] = [
   },
   {
     path: '/innovate',
-    element: <InnovateRouter/>,
+    element: <InnovateRouter />,
     children: innovateChild
   }
 ];

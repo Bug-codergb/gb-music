@@ -30,6 +30,7 @@ const NavBar: React.FC = (props) => {
   }, [userMsg]);
   const playlistClick = (item: IPlaylist, index: number) => {
     setCurrentIndex(index);
+    navigate(`/Home/playlist/${item.id}`);
   };
   return (
     <NavBarWrapper>
