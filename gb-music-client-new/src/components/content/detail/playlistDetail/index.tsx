@@ -1,5 +1,5 @@
 import React, { memo, FC, useEffect, useState } from 'react';
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { CheckOutlined } from '@ant-design/icons';
 import UserMsg from '../../../common/userMsg';
 import SongList from './childCpn/songList';
@@ -21,10 +21,7 @@ import { IUser } from '@/constant/user';
 import TabControl from '../../../common/tabControl';
 import Comment from './childCpn/comment';
 import { cancelSub, sub } from '@/network/subscriber';
-import {
-  useAppDispatch,
-  useAppSelector
-} from "@/store/hooks.ts"
+import { useAppDispatch, useAppSelector } from '@/store/hooks.ts';
 import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
 import HotPlaylist from './childCpn/hotPlaylist';
 
@@ -36,13 +33,14 @@ interface IPlaylistDetail extends IPlaylist {
 const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { id } =location.state;
+  const { id } = location.state;
+  console.log(id);
   const [pId, setPid] = useState<string>(id);
   const [playlistDetail, setPlaylist] = useState<IPlaylistDetail>();
 
   const dispatch = useAppDispatch();
   const { userDetail } = useAppSelector((state) => {
-    return state['loginReducer']
+    return state['loginReducer'];
   });
   useEffect(() => {
     getPlaylistDetail<IPlaylistDetail>(pId).then((data) => {
@@ -82,7 +80,7 @@ const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
   };
   //用户详情页路由
   const userClick = (id: string) => {
-    navigate('/Home/userDetail',{
+    navigate('/Home/userDetail', {
       state: {
         userId: id,
         id: ''
@@ -90,7 +88,7 @@ const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
     });
   };
   const playlistRouter = () => {
-    navigate('/Home/discover/playlist')
+    navigate('/Home/discover/playlist');
   };
   return (
     <PlaylistDetailWrapper>

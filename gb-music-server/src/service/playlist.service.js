@@ -106,7 +106,8 @@ class PlaylistService {
   }
   //获取歌单详情
   async getPlayDetailService(id) {
-    const sql = `
+    try{
+      const sql = `
         select p.id,p.name,p.description,playCount,p.createTime,p.updateTime,p.coverUrl,
         JSON_ARRAYAGG(JSON_OBJECT('id',pc.cateId,'name',playlist_cate.name)) AS category,
         (select JSON_OBJECT('userId',p.userId,'userName',user.userName,'avatarUrl',avatarUrl)
@@ -124,11 +125,14 @@ class PlaylistService {
           where ps.pId=p.id) as songs
           from playlist as p
           LEFT JOIN playlist_category as pc on pc.pId=p.id
-          INNER JOIN playlist_cate on playlist_cate.id=pc.cateId
+          left JOIN playlist_cate on playlist_cate.id=pc.cateId
           GROUP BY p.id
           HAVING p.id=?`;
-    const result = await connection.execute(sql, [id]);
-    return result[0];
+      const result = await connection.execute(sql, [id]);
+      return result[0];
+    }catch (e) {
+      console.log(e)
+    }
   }
   //获取所有歌单分类
   async getAllCateService(offset, limit) {

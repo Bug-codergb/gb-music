@@ -22,11 +22,11 @@ interface IPlaylist {
   coverUrl: string;
 }
 const UserPlaylist: FC = memo((props): ReactElement => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [userPlaylist, setUserPlay] = useState<IPlaylist[]>([]);
   //redux-hook
   const { userMsg } = useAppSelector((state) => {
-    return state['loginReducer']
+    return state['loginReducer'];
   });
   useEffect(() => {
     getUserPlaylist(userMsg.userId, 0, 30).then((data: any) => {
@@ -36,7 +36,7 @@ const UserPlaylist: FC = memo((props): ReactElement => {
     });
   }, [userMsg.userId]);
   const playlistRouter = (item: IPlaylist, index: number) => {
-    navigate('/Home/playlistDetail',{
+    navigate('/Home/playlistDetail', {
       state: {
         id: item.id
       }
@@ -59,10 +59,6 @@ const UserPlaylist: FC = memo((props): ReactElement => {
                 />
               </li>
             );
-          })}
-        {userPlaylist &&
-          holder(userPlaylist.length, 7).map((item: number) => {
-            return <li key={item}> </li>;
           })}
       </ul>
       {userPlaylist.length === 0 && (

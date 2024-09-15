@@ -10,34 +10,40 @@ export const NavBarWrapper = styled.div`
       display: flex;
       align-items: center;
       &.active {
-        color:#da4f49;
+        color: #da4f49;
         font-weight: normal;
         font-size: 15px;
         background-color: #f6f6f7;
-        .nav-icon{
+        .nav-icon {
           color: #da4f49;
         }
-        .nav-name{
+        .nav-name {
           color: #da4f49;
         }
       }
-      .nav-name{
+      .nav-name {
         font-size: 15px;
         color: #5e5e5e;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: left;
+        flex: 1;
       }
-      .nav-icon{
+      .nav-icon {
         font-size: 20px;
         margin: 0 10px 0 0;
         color: #5e5e5e;
-        svg{
+
+        svg {
           font-size: 17px;
         }
       }
-      .icon-sub{
+      .icon-sub {
         font-weight: 600;
       }
     }
-    .nav-label{
+    .nav-label {
       padding: 6px 20px;
       color: #9f9f9f;
       font-size: 12px;

@@ -3,8 +3,6 @@ export const PlaylistDetailWrapper = styled.div`
   background-color: #fff;
 `;
 export const CenterContentWrapper = styled.div`
-  width: 1220px;
-  margin: 0 auto;
   background-color: #fff;
   display: flex;
   flex-wrap: nowrap;
@@ -21,7 +19,7 @@ export const RightContent = styled.div`
 `;
 
 export const DetailHeader = styled.div`
-  padding: 30px;
+  padding: 20px;
   display: flex;
   .img-container {
     width: 170px;

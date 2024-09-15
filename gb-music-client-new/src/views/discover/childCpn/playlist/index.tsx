@@ -28,7 +28,7 @@ const Playlist: FC = (props): ReactElement => {
   const [count, setCount] = useState<number>(0);
   useEffect(() => {
     getAllCate<ICategory[]>(0, 10).then((data) => {
-      if(data.length!==0){
+      if (data.length !== 0) {
         setCate(data);
         cateClick(data[0], 0);
       }
@@ -38,7 +38,8 @@ const Playlist: FC = (props): ReactElement => {
     setCateName(item.name);
     setCateId(item.id);
     getCatePlaylist<{ playlists: ICatePlaylist[]; count: number }>(item.id, 0, 28).then((data) => {
-      setCatePlay(data.playlists);
+      data.playlists = data.playlists.filter((item) => item.playlist);
+      setCatePlay(data.playlists || []);
       setCount(data.count);
     });
   };
@@ -49,14 +50,14 @@ const Playlist: FC = (props): ReactElement => {
     });
   };
   const playlistRouter = (item: playlist, index: number) => {
-    navigate('/Home/playlistDetail',{
+    navigate('/Home/playlistDetail', {
       state: {
         id: item.id
       }
     });
   };
   const userRouter = (user: IUser) => {
-    navigate('/Home/userDetail',{
+    navigate('/Home/userDetail', {
       state: {
         userId: user.userId
       }
