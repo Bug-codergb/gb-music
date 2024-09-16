@@ -5,9 +5,10 @@ export const SimiItemWrapper: any = styled.div`
   .img-container {
     position: relative;
     width: ${(props) => (props as any).itemWidth};
-    height: ${(props) => parseInt((props as any).itemWidth) * 0.56 + 'px'};
+    height: ${(props) => parseInt((props as any).itemWidth) * 0.5625 + 'px'};
     overflow: hidden;
     border-radius: 5px;
+
     img {
       width: 100%;
     }
@@ -34,7 +35,7 @@ export const SimiItemWrapper: any = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 55%;
+    width: calc(100% - ${(props) => (props as any).itemWidth});
     .simi-state {
       width: 100%;
     }

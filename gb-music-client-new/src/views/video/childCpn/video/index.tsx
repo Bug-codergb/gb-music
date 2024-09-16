@@ -12,14 +12,14 @@ import { holder } from '../../../../utils/holder';
 import { Empty, Image, Pagination } from 'antd';
 
 const Video: React.FC = (props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [cate, setCate] = useState<ICategory[]>([]);
   const [video, setVideo] = useState<IVideo[]>([]);
   const [count, setCount] = useState<number>(0);
   const [cateId, setCateId] = useState<string>('');
   useEffect(() => {
     getVideoCate<ICategory[]>(0).then((data) => {
-      if(data.length!==0){
+      if (data.length !== 0) {
         setCate(data);
         cateClick(data[0], 0);
       }
@@ -33,14 +33,14 @@ const Video: React.FC = (props) => {
     });
   };
   const videoRouter = (item: IVideo, index: number) => {
-    navigate('/Home/videoDetail',{
+    navigate('/Home/videoDetail', {
       state: {
         id: item.id
       }
     });
   };
   const userRouter = (id: string) => {
-    navigate('/Home/userDetail',{
+    navigate('/Home/userDetail', {
       state: {
         userId: id
       }
@@ -65,31 +65,26 @@ const Video: React.FC = (props) => {
                   <MsgItem
                     playCount={item.playCount}
                     isShowPlayCount={true}
-                    itemWidth="180px"
+                    itemWidth="200px"
                     img={
                       <Image
-                        width={180}
-                        height={95}
+                        width={200}
+                        height={112}
                         src={item.coverUrl}
                         preview={false}
                         fallback={placeholder}
-                        placeholder={<Image preview={false} src={placeholder} width={180} height={95} />}
+                        placeholder={<Image preview={false} src={placeholder} width={200} height={112} />}
                         onClick={(e) => videoRouter(item, index)}
                       />
                     }
                     state={<span>{item.name}</span>}
-                    scale={0.53}
+                    scale={0.5625}
                     dt={item.dt}
                     userName={'userName' in item.user ? item.user.userName : item.user.name}
                     onClick={() => userRouter('userId' in item.user ? item.user.userId : item.user.id)}
                   />
                 </li>
               );
-            })}
-          {video &&
-            video.length !== 0 &&
-            holder(video.length,6).map((item: number) => {
-              return <li key={item}> </li>;
             })}
         </ul>
       </div>

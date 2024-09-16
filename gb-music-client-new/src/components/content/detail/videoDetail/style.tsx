@@ -1,42 +1,45 @@
 import styled from 'styled-components';
 export const VideoDetailWrapper = styled.div`
   background-color: #fff;
+  width: 100%;
 `;
 export const CenterContent = styled.div`
-  width: 1220px;
-  margin: 0 auto;
   background-color: #fff;
   display: flex;
   flex-wrap: nowrap;
+  width: 100%;
 `;
 export const LeftContent = styled.div`
   border-right: 1px solid #e0e0e0;
-  width: 820px;
+  width: 69%;
   .video-header {
-    margin: 30px 0;
+    background-color: #fff;
+    padding: 20px 20px 0 20px;
     .video-container {
-      height: 400px;
-      width: 90%;
+      height: 500px;
+      width: 100%;
       background-color: #000;
-      margin: 0 auto;
       text-align: center;
-      padding: 0 20px 10px 20px;
+      padding: 0 0 10px 0px;
       border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-sizing: border-box;
       video {
-        height: 83%;
+        height: 430px;
+        width: 100%;
+        object-fit: contain;
+        margin: 0 0 15px 0;
       }
       .control {
-        margin: 15px 0 0 0;
+        padding: 0 20px;
         .progress {
+          .ant-slider-rail {
+            background-color: #bdbdbd;
+          }
           .ant-slider {
-            padding: 0 !important;
-            margin: 0 !important;
-          }
-          .ant-slider-track {
-            background-color: #ec4141 !important;
-          }
-          .ant-slider-handle {
-            border: 2px solid #ec4141;
+            margin: 0 0 3px 0 !important;
           }
         }
         .control-btn {
@@ -130,12 +133,6 @@ export const LeftContent = styled.div`
             }
             .volume-progress {
               width: 100px;
-              .ant-slider-track {
-                background-color: #ec4141 !important;
-              }
-              .ant-slider-handle {
-                border: 2px solid #ec4141;
-              }
             }
           }
           .full-screen {
@@ -152,6 +149,5 @@ export const LeftContent = styled.div`
   }
 `;
 export const RightContent = styled.div`
-  flex: 1;
-  width: 27%;
+  width: 29%;
 `;

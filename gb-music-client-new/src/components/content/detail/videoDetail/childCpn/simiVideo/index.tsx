@@ -26,7 +26,7 @@ const SimiVideo: FC<IProps> = memo((props): ReactElement => {
     if (item.type !== undefined) {
       if (item.type === 0) {
         if ('userId' in item.user) {
-          navigate('/Home/userDetail',{
+          navigate('/Home/userDetail', {
             state: {
               userId: item.user.userId
             }
@@ -34,7 +34,7 @@ const SimiVideo: FC<IProps> = memo((props): ReactElement => {
         }
       } else {
         if ('id' in item.user) {
-          navigate('/Home/artistDetail',{
+          navigate('/Home/artistDetail', {
             state: {
               id: item.user.id
             }

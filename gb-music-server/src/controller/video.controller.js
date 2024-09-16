@@ -144,13 +144,13 @@ class VideoController {
       const result = await getVideoURLService(vid);
       const { url, dt, name } = result[0];
       try {
-        const tokenURL = jwt.sign({ url, vid }, MEDIA_PRIVATE_KEY, {
+        /*const tokenURL = jwt.sign({ url, vid }, MEDIA_PRIVATE_KEY, {
           expiresIn: 60 * 60 * 24 * 7,
           algorithm: 'RS256'
-        });
+        });*/
         res.json({
           ...result[0],
-          url: tokenURL
+          url: url
         });
       } catch (e) {
         console.log(e);

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 export const VideoWrapper = styled.div`
   background-color: #ffffff;
+  width: 100%;
   .video-content {
-    width: 1220px;
-    margin: 0 auto;
     padding: 20px;
     background-color: #ffffff;
   }

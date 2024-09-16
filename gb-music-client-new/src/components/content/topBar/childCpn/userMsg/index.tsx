@@ -1,19 +1,16 @@
-import React, { memo, useEffect, useState, MouseEvent } from 'react';
+import React, { memo, useEffect, useState, MouseEvent, useRef } from 'react';
 import { Dropdown, Space } from 'antd';
 import type { MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import {logoutAction} from "@/views/Login/store/asyncThunk"
-import { PoweroffOutlined, PoundCircleOutlined,UserOutlined } from '@ant-design/icons';
+import { logoutAction } from '@/views/Login/store/asyncThunk';
+import { PoweroffOutlined, PoundCircleOutlined, UserOutlined } from '@ant-design/icons';
 
-import {
-  useAppDispatch,
-  useAppSelector
-} from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { CSSTransition } from 'react-transition-group';
 import { UserMsgWrapper } from './style';
 
 import UserInfo from './childCpn/userInfo';
-import Profile from './childCpn/profile';
+import Profile from './childCpn/newProfile/index';
 import { ILogin, IUserMsg } from '../../../../../constant/store/login';
 
 const UserMsg: React.FC = () => {
@@ -21,10 +18,10 @@ const UserMsg: React.FC = () => {
   const [isShow, setIsShow] = useState<boolean>(false);
   const [isShowProfile, setIsShowProfile] = useState<boolean>(false);
   const { loginType } = useAppSelector((state) => {
-    return state['loginReducer']
+    return state['loginReducer'];
   });
   const { userMsg } = useAppSelector((state) => {
-    return state['loginReducer']
+    return state['loginReducer'];
   });
   const docClick = () => {
     setIsShow(false);
@@ -47,42 +44,38 @@ const UserMsg: React.FC = () => {
   const exit = (): void => {
     setIsShowProfile(false);
   };
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  const profileRef = useRef();
   const items: MenuProps['items'] = [
     {
       key: 'user',
-      label: <div>
-        用户信息
-      </div>,
-      icon:<UserOutlined />
+      label: <div>用户信息</div>,
+      icon: <UserOutlined />
     },
     {
       key: 'vip',
-      label: <div>
-        vip信息
-      </div>,
-    icon:<PoundCircleOutlined />
+      label: <div>vip信息</div>,
+      icon: <PoundCircleOutlined />
     },
     {
-      type: 'divider',
+      type: 'divider'
     },
     {
       key: 'exit',
-      label: <div>
-        退出登录
-      </div>,
-      icon:<PoweroffOutlined />
-    },
-  ]
+      label: <div>退出登录</div>,
+      icon: <PoweroffOutlined />
+    }
+  ];
   const onClick: MenuProps['onClick'] = ({ key }) => {
-    console.log(key)
-    switch(key){
-      case "user":
-        infoClick();break;
-      case "vip":
-        navigate('/Home/member')
+    switch (key) {
+      case 'user':
+        console.log(profileRef.current);
+        profileRef.current && profileRef.current.showModal();
         break;
-      case "exit":
+      case 'vip':
+        navigate('/Home/member');
+        break;
+      case 'exit':
         dispatch(logoutAction());
         // dispatch(
         //   changeUserMsg({
@@ -96,13 +89,13 @@ const UserMsg: React.FC = () => {
         //     auth: -1
         //   })
         //);
-        navigate("/Login")
+        navigate('/Login');
         break;
     }
   };
   return (
     <UserMsgWrapper>
-      <Dropdown menu={{items,onClick}} placement={"topCenter"} trigger={["click"]} arrow={true}>
+      <Dropdown menu={{ items, onClick }} placement={'topCenter'} trigger={['click']} arrow={true}>
         <div className="avatar" onClick={(e) => changeShow(e)}>
           {loginType === 0 ? (
             <i className="iconfont icon-user1"> </i>
@@ -123,6 +116,7 @@ const UserMsg: React.FC = () => {
       <CSSTransition timeout={1000} in={isShowProfile} unmountOnExit={true} classNames="profile">
         <Profile onClick={exit} />
       </CSSTransition>
+      <Profile ref={profileRef} />
     </UserMsgWrapper>
   );
 };

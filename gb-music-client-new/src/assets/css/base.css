@@ -129,3 +129,8 @@ html {
 .create-playlist-img-container:hover .mask{
   display: flex;
 }
+.user-avatar-container{
+  width: 100%!important;
+  aspect-ratio: 1!important;
+  height: unset!important;
+}

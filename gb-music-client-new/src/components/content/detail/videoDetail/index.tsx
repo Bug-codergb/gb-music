@@ -1,7 +1,7 @@
 import React, { memo, FC, ReactElement, useEffect, useState, useRef, useCallback, MouseEvent } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { CenterContent, VideoDetailWrapper, LeftContent, RightContent } from './style';
 import { getVideoURL, updatePlayCount } from '../../../../network/video';
 import { Slider, Spin } from 'antd';
@@ -25,6 +25,7 @@ import { IVideoDetailAction } from './store/type';
 const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
   const location = useLocation();
   const { id } = location.state;
+
   const [vid, setVid] = useState<string>(id);
   const [url, setURL] = useState<string>('');
   const [isPlay, setIsPlay] = useState<boolean>(false);
@@ -33,13 +34,13 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
   const [liveIndex, setLiveIndex] = useState<number>(1);
   const [isShowRate, setIsShowRate] = useState<boolean>(false);
   const videoDetail = useAppSelector((state) => {
-    return state['videoReducer'];
+    return state['videoReducer']['video'];
   });
   const videoRef = useRef<HTMLVideoElement>(null);
   const dispatch = useAppDispatch();
   useBackTop();
   useEffect(() => {
-    dispatch(changeVideoDetailAction(vid));
+    dispatch(changeVideoDetailAction({ id: vid }));
     getVideoURL(vid).then((data: any) => {
       getFileBlob(verifyURL(data.url)).then(() => {
         //const url = URL.createObjectURL(data);
@@ -100,7 +101,7 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
   //播放相关视频
   const playSimiVideo = (item: IVideo) => {
     //console.log(item);
-    setURL("");
+    setURL('');
     dispatch(changeVideoDetailAction(item.id));
     getVideoURL(item.id).then((data: any) => {
       setURL(data.url);
@@ -218,7 +219,7 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
             </Spin>
           )}
           {/*视频信息*/}
-          {videoDetail && videoDetail.id&&<VideoInfo />}
+          {videoDetail && videoDetail.id && <VideoInfo />}
           <ControlBtn vid={vid} />
           <div className="video-comment">
             <Comment vid={vid} />

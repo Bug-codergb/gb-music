@@ -4,7 +4,7 @@ import { IVideoStore } from '@/constant/store/video';
 
 import {changeVideoDetail} from "./slice"
 export const changeVideoDetailAction=createAsyncThunk("videoDetailAction",(extraInfo:any,{dispatch,getState})=>{
-  const { id } = extraInfo
+  const { id } = extraInfo;
   getVideoDetail<IVideoStore>(id).then((data: IVideoStore) => {
     dispatch(changeVideoDetail(data));
   });
