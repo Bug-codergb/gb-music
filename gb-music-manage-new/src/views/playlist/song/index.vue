@@ -26,6 +26,7 @@
       </template>
     </ProTable>
     <CreateSong ref="createSongRef" @success="search"/>
+    <CreateMV ref="createMVRef"/>
   </div>
 </template>
 <script setup lang="jsx">
@@ -34,6 +35,7 @@ import debounce from "lodash/debounce"
 import { getSongListApi } from "@/api/modules/song.js";
 import ProTable from "@/components/ProTable/index";
 import CreateSong from "./components/createSong.vue"
+import CreateMV from "./components/createMV.vue";
 const columns = reactive([
   {
     label: "歌曲名称",
@@ -57,7 +59,7 @@ const columns = reactive([
     render: scope => {
       return (
         <el-space size="large">
-          <el-link type="primary">添加mv</el-link>
+          <el-link type="primary" onClick={()=>handleCreateMV(scope.row)}>添加mv</el-link>
           <el-link type="success">上传歌词</el-link>
           <el-link type="warning">编辑</el-link>
           <el-link type="danger">删除</el-link>
@@ -80,4 +82,9 @@ const search=()=>{
 const handleSearch=debounce(()=>{
   search();
 },500)
+
+const createMVRef = ref();
+const handleCreateMV=(item)=>{
+  createMVRef.value && createMVRef.value.showDrawer(item);
+}
 </script>

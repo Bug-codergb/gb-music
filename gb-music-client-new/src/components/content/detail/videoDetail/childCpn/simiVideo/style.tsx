@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 export const SimiVideoWrapper = styled.ul`
-  padding: 10px 15px 0 15px;
+  padding: 20px 15px 0 15px;
   width: 100%;
   & > li {
     width: 100%;

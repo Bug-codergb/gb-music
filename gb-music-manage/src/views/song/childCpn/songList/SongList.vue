@@ -156,7 +156,7 @@ export default {
       this.isShowLyric = true;
       this.songId = item.id;
     },
-    define(mv, cover, dt, cateId) {
+      define(mv, cover, dt, cateId) {
       if (this.songName && mv && cover && dt) {
         addVideo(this.songName, this.song.name, 1, cateId, this.songId).then((data) => {
           const { id } = data;

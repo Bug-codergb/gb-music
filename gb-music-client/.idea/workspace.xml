@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/videoDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/videoDetail/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/videoDetail/store/asyncThunk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/videoDetail/store/asyncThunk.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/video/childCpn/video/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/video/childCpn/video/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/video/childCpn/video/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/video/childCpn/video/style.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/video/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/video/style.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/controller/video.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/controller/video.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +112,7 @@
       <workItem from="1725279878009" duration="2129000" />
       <workItem from="1725539388939" duration="1301000" />
       <workItem from="1725880397250" duration="1198000" />
-      <workItem from="1726141339178" duration="5060000" />
+      <workItem from="1726141339178" duration="5717000" />
     </task>
     <servers />
   </component>
