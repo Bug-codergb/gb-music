@@ -63,6 +63,7 @@ const columns = reactive([
       return (
         <el-image
           src={scope.row.coverUrl}
+          preview-src-list={[scope.row.coverUrl]} preview-teleported={true}
           style={{ width: "150px" }}
         />
       );

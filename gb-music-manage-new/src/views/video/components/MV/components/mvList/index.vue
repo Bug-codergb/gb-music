@@ -10,7 +10,7 @@ const columns = reactive( [
     prop:"coverUrl",
     isShow:true,
     render:(scope)=>{
-      return <el-image src={scope.row.coverUrl}/>
+      return <el-image src={scope.row.coverUrl} preview-src-list={[scope.row.coverUrl]} preview-teleported={true}/>
     }
   },
   {
