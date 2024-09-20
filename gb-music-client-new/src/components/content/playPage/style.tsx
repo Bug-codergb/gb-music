@@ -164,11 +164,7 @@ export const PlayPageWrapper = styled.div`
           color: #ec4141;
           padding: 300px 0 0 0;
         }
-        &::-webkit-scrollbar {
-          width: 2px;
-          height: 10px;
-          background-color: #dddcdb;
-        }
+
         li {
           padding: 3px 0 3px 10px;
           text-align: center;

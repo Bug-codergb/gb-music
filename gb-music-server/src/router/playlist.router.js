@@ -20,7 +20,8 @@ const {
   getHotPlaylist,
   updatePlaylist,
   getPlaylistData,
-  delPlaylistCate
+  delPlaylistCate,
+  setPlaylistBatchCate
 } = require('../controller/playlist.controller');
 const { loginAuth } = require('../middleware/auth.middleware');
 const { paramCheck } = require('../middleware/playlist.middleware');
@@ -65,4 +66,5 @@ router.get('/data', loginAuth, getPlaylistData);
 router.post('/update', loginAuth, updatePlaylist);
 //删除歌单分类
 router.post('/cate/delete', loginAuth, delPlaylistCate);
+router.post("/cate/set/batch",loginAuth,setPlaylistBatchCate);
 module.exports = router;

@@ -2,7 +2,7 @@
   <div>
     <ProDrawer
       v-model="isShow"
-      width="50%"
+      width="60%"
       title="选择歌手"
       @confirm="handleConfirm"
     >
@@ -46,7 +46,9 @@ const searchParams = reactive({
 });
 const columns = reactive([
   {
-    type: "selection"
+    isShow:true,
+    type: "selection",
+    width:80
   },
   {
     label: "名称",

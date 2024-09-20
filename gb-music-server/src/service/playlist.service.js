@@ -309,5 +309,31 @@ class PlaylistService {
       console.log(e);
     }
   }
+  async batchDeletePlaylistCateService(pid){
+    try{
+      const sql=`delete from playlist_category where pId=?`;
+      const result = await connection.execute(sql,[pid]);
+      return result[0]
+    }catch (e) {
+      console.log(e);
+    }
+  }
+  async setPlaylistBatchCateService(pId,cateIds){
+    try{
+      let s = "";
+      let execArr=[];
+      for(let item of cateIds){
+        s+="(?,?),"
+        execArr.push(pId,item);
+      }
+      s=s.substring(0,s.length-1);
+      console.log(s);
+      const sql=`insert into playlist_category (pId,cateId) values ${s}`;
+      const result = await connection.execute(sql,execArr);
+      return result[0];
+    }catch (e) {
+      console.log(e)
+    }
+  }
 }
 module.exports = new PlaylistService();

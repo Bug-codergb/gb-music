@@ -3,14 +3,11 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 14px;
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
 }
 body {
   font-family: 'Arial,Helvetica,sans-serif' !important;
   overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
+
 }
 #root{
   width: 100%;
@@ -70,13 +67,7 @@ textarea {
   font-size: 18px;
   margin: 0 10px 0 0;
 }
-html {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-}
-::-webkit-scrollbar {
-  width: 2px;
-}
+
 
 .create-playlist-img-container{
   width: 100%;

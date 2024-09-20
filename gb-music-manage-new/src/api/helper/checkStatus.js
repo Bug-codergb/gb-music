@@ -2,19 +2,19 @@ import { ElMessage } from "element-plus";
 import { LOGIN_URL } from "@/config"
 import { useUserStore } from "@/stores/modules/user"
 import router from "../../router/index"
-export const checkStatus = async status => {
+export const checkStatus = async (status,response) => {
   const userStore = useUserStore();
   switch (status) {
     case 400:
+    case 409:
       ElMessage.closeAll();
-      ElMessage.error("请求失败！请您稍后重试");
+      ElMessage.error(response.data.message);
       break;
     case 401:
       ElMessage.closeAll();
       ElMessage.error("登录失效！请您重新登录");
       userStore.token=""
       await router.push(LOGIN_URL)
-
       break;
     case 403:
       ElMessage.closeAll();

@@ -54,8 +54,5 @@ export const MessageWrapper = styled.div`
     width: 380px;
     overflow-x: hidden;
     overflow-y: scroll;
-    &::-webkit-scrollbar {
-      width: 2px;
-    }
   }
 `;

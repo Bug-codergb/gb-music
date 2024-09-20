@@ -1,20 +1,22 @@
 import styled from 'styled-components';
 export const AlbumDetailWrapper = styled.div`
   background-color: #ffffff;
+  height: 100%;
 `;
 export const CenterContentWrapper = styled.div`
-  width: 1220px;
-  margin: 0 auto;
   background-color: #fff;
   display: flex;
   flex-wrap: nowrap;
+  height: 100%;
 `;
 export const LeftContent = styled.div`
   border-right: 1px solid #e0e0e0;
   width: 70%;
+  padding: 20px 20px 20px 20px;
+  height: 100%;
   .header {
-    padding: 30px 0 30px 30px;
     display: flex;
+    margin: 0 0 20px 0;
     .img-container {
       width: 170px;
       height: 170px;
@@ -83,10 +85,9 @@ export const LeftContent = styled.div`
     }
   }
   .body-content {
-    padding: 0 20px 0 30px;
   }
 `;
 export const RightContent = styled.div`
   width: 28%;
-  padding: 30px 15px 0 15px;
+  padding: 20px 15px 0 15px;
 `;

@@ -96,7 +96,7 @@ class UserController {
     }
     let user = null;
     const result = await getUserFavoriteService(userId, offset, limit);
-    if (result.songs && result.songs.length !== 0) {
+    if (result && result.songs && result.songs.length !== 0) {
       user = result.songs.user;
       result.songs.forEach((item, index) => {
         return delete item.user;
@@ -104,7 +104,7 @@ class UserController {
     }
     res.json({
       user,
-      songList: result
+      songList: result||[]
     });
   }
   //用户取消喜欢

@@ -110,7 +110,7 @@ class ToplistController {
         });
       } else {
         const result = await getToplistDetailService(id);
-        res.json(result[0]);
+        res.json(result ? result[0] : {});
       }
     }
   }

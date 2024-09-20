@@ -30,7 +30,9 @@ const {
   getHotPlaylistService,
   getPlaylistDataService,
   updatePlaylistService,
-  delPlaylistCateService
+  delPlaylistCateService,
+  setPlaylistBatchCateService,
+  batchDeletePlaylistCateService
 } = require('../service/playlist.service');
 const { paramsCheckHandle } = require('../utils/paramsCheckHandle');
 class PlaylistController {
@@ -149,8 +151,7 @@ class PlaylistController {
     console.log(id,"歌单id")
     if (!isEmpty(id, '歌单id不能为空', next)) {
       const result = await getPlayDetailService(id);
-      console.log(result[0])
-      res.json(result[0]);
+      res.json(result ? result[0]:{});
     }
   }
   //获取所有歌单分类
@@ -270,6 +271,17 @@ class PlaylistController {
     const { id } = req.body;
     if (!isEmpty(id, '分类id不能为空', next)) {
       const result = await delPlaylistCateService(id);
+      res.json(result);
+    }
+  }
+  async setPlaylistBatchCate(req,res,next){
+    const {pId,cateIds} = req.body;
+    if(!isEmpty(pId,"歌单id不能为空",next) && !isEmpty(cateIds,"歌单分类不能为空",next)){
+      if(cateIds.length>3){
+        return next(new Error(errorType.PLAYLIST_CATEGORIES_CANNOT_EXCEED_3));
+      }
+      await batchDeletePlaylistCateService(pId);
+      const result = await setPlaylistBatchCateService(pId,cateIds);
       res.json(result);
     }
   }
