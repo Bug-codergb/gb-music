@@ -1,55 +1,51 @@
 <script setup lang="jsx">
-import {ref,reactive} from "vue"
-import {ElMessage,ElMessageBox} from "element-plus";
+import { reactive,ref } from "vue";
+import { ElMessage,ElMessageBox } from "element-plus"
+import { getPlaylistCateApi,deletePlaylistCateApi} from "@/api/modules/playlist"
 import ProTable from "@/components/ProTable/index.vue"
-import CreateMVCate from "../createMVCate/index.vue"
-import {deleteVideoCateApi, getMVListApi} from "@/api/modules/video"
-
-const tableRef = ref();
+import CreatePlaylistCate from "../createPlaylistCate/index.vue"
 const columns = reactive([
   {
-    label:"分类名称",
+    label:"名称",
+    isShow:true,
     prop:"name",
-    isShow:true
   },
   {
     label:"操作",
-    prop:"action",
     isShow:true,
+    prop:"action",
     render:(scope)=>{
       return <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
     }
   }
 ])
+const tableRef = ref();
 const search=()=>{
   tableRef.value && tableRef.value.search();
 }
 const handleDelete=(item)=>{
-  ElMessageBox.confirm("确认删除么?","提示",{
+  ElMessageBox.confirm("确认删除么？","提示",{
     type:"warning"
   }).then(async ()=>{
-    const res = await deleteVideoCateApi({id:item.id});
-    search();
+    const res = await deletePlaylistCateApi({id:item.id});
     ElMessage.success("删除成功")
+    search();
   })
 }
-const createMVCateRef = ref();
+const createPlaylistCateRef=ref();
 const handleCreate=()=>{
-  createMVCateRef.value && createMVCateRef.value.showDrawer();
+  createPlaylistCateRef.value && createPlaylistCateRef.value.showDrawer();
 }
-const searchParams = reactive({
-  type:1
-})
 </script>
 
 <template>
   <div class="table-box">
-    <ProTable :init-param="searchParams" ref="tableRef" :columns="columns" :request-api="getMVListApi" :request-auto="true" :pagination="false">
+    <ProTable :columns="columns" ref="tableRef" :request-api="getPlaylistCateApi" :request-auto="true" :pagination="false">
       <template #toolButton>
         <el-button type="primary" @click="handleCreate">新增分类</el-button>
       </template>
     </ProTable>
-    <CreateMVCate ref="createMVCateRef" @success="search"/>
+    <CreatePlaylistCate ref="createPlaylistCateRef" @success="search"/>
   </div>
 </template>
 

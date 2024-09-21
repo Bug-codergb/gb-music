@@ -126,7 +126,7 @@ export function getMenuListApi(params) {
         redirect: "/toplist/index",
         meta: {
           title: "排行榜信息",
-          icon:"TrendCharts"
+          icon:"Histogram"
         },
         children: [
           {
@@ -190,6 +190,15 @@ export function getMenuListApi(params) {
             },
           }
         ]
+      },
+      {
+        path:"/dashboard/index",
+        component:"/dashboard/index",
+        title:"看板",
+        meta:{
+          title:"看板",
+          icon:"TrendCharts"
+        }
       },
       {
         path: "/setting/index",

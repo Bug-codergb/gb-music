@@ -116,4 +116,3 @@ const handleDelete = item => {
   });
 };
 </script>
-i

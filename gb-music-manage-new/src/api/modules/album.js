@@ -24,3 +24,6 @@ export function uploadAlbumAvatarApi(id,params) {
 export function deleteAlbumApi(data) {
   return http.post("/album/delete", data);
 }
+export function getAlbumDataApi() {
+  return http.get('/album/data');
+}

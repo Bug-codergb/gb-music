@@ -39,3 +39,6 @@ export function setArtistLangApi(data){
 export function setArtistTypeApi(data){
   return http.post("/artist/type/set",data);
 }
+export function getArtistDataApi() {
+  return http.get('/artist/data');
+}

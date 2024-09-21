@@ -21,3 +21,7 @@ export function uploadChannelDetailApi(data) {
 export function deleteChanneDetail(data) {
   return http.post("/channel/content/delete",data)
 }
+
+export function getChannelDataApi() {
+  return http.get('/channel/data',);
+}

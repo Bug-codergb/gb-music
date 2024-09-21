@@ -31,3 +31,9 @@ export function getMVListApi(params){
 export function addSongMVApi(data){
   return http.post("/video",data);
 }
+export function getMVDataApi() {
+  return http.get('/video/mv/data')
+}
+export function getVideoDataApi() {
+  return http.get('/video/data');
+}
