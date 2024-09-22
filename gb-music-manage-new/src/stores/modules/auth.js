@@ -12,7 +12,6 @@ const useAuthStore = defineStore({
   },
   getters: {
     authMenuListGet: state => state.authMenuList,
-    showMenuListGet: state => state.authMenuList,
     flatMenuListGet: state => getFlatMenuList(state.authMenuList),
     showMenuListGet: state => getShowMenuList(state.authMenuList),
 

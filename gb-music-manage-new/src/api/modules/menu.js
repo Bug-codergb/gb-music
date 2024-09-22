@@ -39,7 +39,19 @@ export function getMenuListApi(params) {
             meta: {
               title: "歌手信息",
               icon: "Menu"
-            }
+            },
+            children: [
+              {
+                path:"/artist/:id",
+                component:"/detail/artist-detail/index",///Users/guobin/vscode projecy/gb-music/gb-music-manage-new/src/views/detail/artist-detail/index.vue
+                meta:{
+                  title:"歌手详情",
+                  icon:"Menu",
+                  isHide:true,
+                  activeMenu:"/artist/index"
+                }
+              }
+            ]
           },
         ]
       },
@@ -59,7 +71,19 @@ export function getMenuListApi(params) {
             meta: {
               title: "专辑信息",
               icon: "Menu"
-            }
+            },
+            children: [
+              {
+                path:"/album/:id",
+                component:"/detail/album-detail/index",
+                meta:{
+                  isHide: true,
+                  title:"专辑详情",
+                  icon:"Menu",
+                  activeMenu: "/album/index"
+                }
+              }
+            ]
           },
         ]
       },

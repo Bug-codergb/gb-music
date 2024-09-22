@@ -28,11 +28,12 @@ import { ElMessageBox, ElMessage } from "element-plus";
 import debounce from "lodash/debounce";
 import CreateArtist from "./components/createArtist.vue";
 import ProTable from "@/components/ProTable/index.vue";
-
+import { useRouter } from "vue-router";
 import { getArtistListApi, getArtistLangApi,
   getArtistTypeApi, deleteArtistApi,setArtistLangApi,setArtistTypeApi } from "@/api/modules/artist.js";
 const langList = ref([]);
 const typeList = ref([]);
+const router = useRouter();
 getArtistLangApi().then(res => {
   langList.value = res.filter(item=>item.name!=='全部');
 });
@@ -104,7 +105,7 @@ const columns = reactive([
     render: scope => {
       return (
         <el-space size="large">
-          <el-link type="primary">查看</el-link>
+          <el-link type="primary" onClick={()=>handleCheck(scope.row)}>查看</el-link>
           <el-link type="primary">编辑</el-link>
           <el-link type="danger" onClick={() => handleDelete(scope.row)}>
             删除
@@ -147,7 +148,11 @@ const handleDelete = item => {
     })
     .catch(e => {});
 };
-
+const handleCheck=(item)=>{
+  router.push({
+    path:`/artist/${item.id}`
+  })
+}
 const handleArtistLangChange=async (item)=>{
   const res = await setArtistLangApi({
     arId:item.id,

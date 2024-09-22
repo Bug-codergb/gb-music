@@ -8,3 +8,7 @@ export function createSongApi(data){
 export function uploadSongApi(id,data){
   return http.post(`/song/upload?songId=${id}`,data);
 }
+//获取歌手歌曲
+export function getArtistSongApi(params){
+  return http.get("/artist/song",params)
+}

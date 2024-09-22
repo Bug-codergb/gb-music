@@ -1,5 +1,6 @@
 import router from "@/router/index";
 const modules = import.meta.glob("@/views/**/*.vue");
+
 import useAuthStore from "../../stores/modules/auth";
 
 export const initDynamicRouter = async () => {

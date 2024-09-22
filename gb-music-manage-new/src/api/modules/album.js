@@ -27,3 +27,10 @@ export function deleteAlbumApi(data) {
 export function getAlbumDataApi() {
   return http.get('/album/data');
 }
+export function getArtistAlbumApi(params){
+  return http.get("/artist/album",params)
+}
+
+export function getAlbumDetailApi(data){
+  return http.get("/album/detail",data);
+}

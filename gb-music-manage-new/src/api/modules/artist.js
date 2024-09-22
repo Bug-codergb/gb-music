@@ -42,3 +42,6 @@ export function setArtistTypeApi(data){
 export function getArtistDataApi() {
   return http.get('/artist/data');
 }
+export function getArtistDetailApi(data){
+  return http.get("/artist/detail",data)
+}

@@ -47,6 +47,7 @@
 </template>
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router"
 import { ElMessageBox, ElMessage } from "element-plus";
 import debounce from "lodash/debounce";
 import moment from "moment";
@@ -58,6 +59,7 @@ import {
 import ProTable from "@/components/ProTable/index.vue";
 import CreateAlbum from "../createAlbum";
 
+const router = useRouter();
 const props = defineProps({
   isSongPage:{
     type:Boolean,
@@ -120,7 +122,7 @@ const columns = reactive([
     render: scope => {
       return (
         <el-space size="large">
-          <el-link type="primary">查看</el-link>
+          <el-link type="primary" onClick={()=>handleCheck(scope.row)}>查看</el-link>
           <el-link type="primary">编辑</el-link>
           <el-link
             type="danger"
@@ -166,6 +168,11 @@ const handleDeleteAlbum = item => {
     handleSearch();
   });
 };
+const handleCheck=(item)=>{
+  router.push({
+    path:`/album/${item.id}`
+  })
+}
 defineExpose({
   tableRef:tableRef
 })
