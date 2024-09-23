@@ -5,16 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/album.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/album.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/artist.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/artist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/song.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/song.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/router/modules/dynamicRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/router/modules/dynamicRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/stores/modules/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/stores/modules/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProDrawer/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProDrawer/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProForm/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/components/ProForm/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/album/components/album/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/album/components/album/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/album/components/createAlbum/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/album/components/createAlbum/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/artist/components/artist/components/createArtist.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/artist/components/artist/components/createArtist.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/artist/components/artist/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/artist/components/artist/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/components/createSong.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/components/createSong.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/album.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/album.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +121,7 @@
       <workItem from="1724847689774" duration="8890000" />
       <workItem from="1725173116302" duration="8254000" />
       <workItem from="1725880410327" duration="2700000" />
-      <workItem from="1726141258798" duration="11149000" />
+      <workItem from="1726141258798" duration="12477000" />
     </task>
     <servers />
   </component>

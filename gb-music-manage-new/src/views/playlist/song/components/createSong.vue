@@ -14,18 +14,38 @@
   </div>
 </template>
 <script setup>
-import { ref,reactive } from "vue"
+import { ref,computed } from "vue"
 import {ElMessage} from "element-plus"
 import {getAudioDuration} from "@/utils/songUtils"
 import ProDrawer from "@/components/ProDrawer/index.vue"
 import ProForm from "@/components/ProForm/index.vue"
 import AlbumList from "./albumList.vue"
-import { createSongApi,uploadSongApi } from "@/api/modules/song"
+import { createSongApi,uploadSongApi ,updateSongApi} from "@/api/modules/song"
 const emit = defineEmits(['success'])
 const isShow = ref(false);
-const title = ref("添加歌曲")
-const showDrawer=()=>{
+
+const isUpdate = ref(false);
+const title = ref("上传歌曲")
+const showDrawer=(data)=>{
+  isUpdate.value = Boolean(data);
+  title.value = isUpdate.value ? "编辑歌曲":"上传歌曲"
   isShow.value = true;
+  initFormData(isUpdate.value,data);
+}
+const initFormData=(isUpdate,data)=>{
+  formData.value = {
+    name:isUpdate ? data.name :"",
+    alId:"",
+    alia:isUpdate ? data.alia : "",
+    arId:"",
+    publishTime:isUpdate ? data.publishTime : '',
+    source:null,
+    album:null,
+    artist:"",
+    lyric:isUpdate ? data.lyric:"",
+    vip:isUpdate ? data.vip:0,
+    id:isUpdate ? data.id : undefined
+  }
 }
 const formData =ref({
   name:"",
@@ -41,7 +61,7 @@ const handleSelectAlbum=(val)=>{
   formData.value.album = val;
   formData.value.artist=val.artist.name;
 }
-const config=ref([
+const config=computed(()=>[
   [
     {
       label:"名称",
@@ -82,6 +102,24 @@ const config=ref([
   ],
   [
     {
+      label:"是否为vip",
+      prop:"vip",
+      tag:"radio",
+      isShow:isUpdate.value,
+      options:[
+        {
+          label:"会员",
+          value:0
+        },
+        {
+          label:"非会员",
+          value:1
+        }
+      ]
+    }
+  ],
+  [
+    {
       label:"歌曲源文件",
       prop:"source",
       tag:"file",
@@ -90,7 +128,8 @@ const config=ref([
       attrs:{
         clearable:true,
         accept:["mp3"]
-      }
+      },
+      isShow:!isUpdate.value
     }
   ],
   [
@@ -98,7 +137,8 @@ const config=ref([
       label:"专辑",
       prop:"album",
       tag:"slot",
-      required:true
+      required:true,
+      isShow:!isUpdate.value
     }
   ],
   [
@@ -110,6 +150,23 @@ const config=ref([
       placeholder:"请先选择专辑",
       attrs:{
         readonly:true
+      },
+      isShow:!isUpdate.value
+    }
+  ],
+  [
+    {
+      label:"歌词",
+      prop:"lyric",
+      tag:"input",
+      isShow: isUpdate.value,
+      required:false,
+      placeholder: "请输入歌词",
+      attrs:{
+        type:'textarea',
+        autosize:{
+          "minRows":8
+        }
       }
     }
   ]
@@ -123,20 +180,26 @@ const formRef = ref();
 const handleConfirm=()=>{
   formRef.value && formRef.value.formRef.validate(async (e)=>{
     if(e){
-      let params = {
-        alId:formData.value.album.id,
-        alia:formData.value.alia,
-        arId:formData.value.album.artist.id,
-        name:formData.value.name,
-        publishTime:formData.value.publishTime
+      if(!isUpdate.value){
+        let params = {
+          alId:formData.value.album.id,
+          alia:formData.value.alia,
+          arId:formData.value.album.artist.id,
+          name:formData.value.name,
+          publishTime:formData.value.publishTime
+        }
+        const res = await createSongApi(params);
+        const dt = await getAudioDuration(formData.value.source);
+        const f = new FormData();
+        f.append("song",formData.value.source);
+        f.append("dt",dt);
+        await uploadSongApi(res.songId,f);
+      }else{
+        await updateSongApi({
+          ...formData.value,
+        })
       }
-      const res = await createSongApi(params);
-      const dt = await getAudioDuration(formData.value.source);
-      const f = new FormData();
-      f.append("song",formData.value.source);
-      f.append("dt",dt);
-      await uploadSongApi(res.songId,f);
-      ElMessage.success("歌曲添加成功")
+      ElMessage.success(`歌曲${isUpdate ? "更新":'添加'}成功`)
       isShow.value = false;
       emit("success")
     }

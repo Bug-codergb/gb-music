@@ -45,3 +45,6 @@ export function getArtistDataApi() {
 export function getArtistDetailApi(data){
   return http.get("/artist/detail",data)
 }
+export function updateArtistApi(data){
+  return http.post("/artist/update",data);
+}

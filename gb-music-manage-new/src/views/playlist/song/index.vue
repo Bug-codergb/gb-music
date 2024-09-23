@@ -31,8 +31,10 @@
 </template>
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
+import moment from "moment";
+import { ElMessage } from "element-plus";
 import debounce from "lodash/debounce"
-import { getSongListApi } from "@/api/modules/song.js";
+import { getSongListApi,updateSongVipApi } from "@/api/modules/song.js";
 import ProTable from "@/components/ProTable/index";
 import CreateSong from "./components/createSong.vue"
 import CreateMV from "./components/createMV.vue";
@@ -53,15 +55,36 @@ const columns = reactive([
     isShow: true
   },
   {
+    label:"是否为vip",
+    prop:"vip",
+    isShow:true,
+    render:(scope)=>{
+      return <el-select v-model={scope.row.vip} style={{width:"120px"}} onChange={()=>handleVIPChange(scope.row)}>
+        <el-option label="非会员" value={0}></el-option>
+        <el-option label="会员" value={1}></el-option>
+      </el-select>
+    }
+  },
+  {
+    label:"发布时间",
+    prop:"publishTime",
+    isShow:true,
+    render:(scope)=>{
+      return moment(scope.row.publishTime).format("yyyy-MM-DD")
+    }
+  },
+  {
     label: "操作",
     prop: "action",
     isShow: true,
+    width:250,
+    fixed:'right',
     render: scope => {
       return (
         <el-space size="large">
           <el-link type="primary" onClick={()=>handleCreateMV(scope.row)}>添加mv</el-link>
           <el-link type="success">上传歌词</el-link>
-          <el-link type="warning">编辑</el-link>
+          <el-link type="warning" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
           <el-link type="danger">删除</el-link>
         </el-space>
       );
@@ -75,6 +98,9 @@ const createSongRef = ref()
 const handleCreate=()=>{
   createSongRef.value && createSongRef.value.showDrawer();
 }
+const handleEdit=(item)=>{
+  createSongRef.value && createSongRef.value.showDrawer(item);
+}
 const tableRef = ref()
 const search=()=>{
   tableRef.value && tableRef.value.search();
@@ -86,5 +112,13 @@ const handleSearch=debounce(()=>{
 const createMVRef = ref();
 const handleCreateMV=(item)=>{
   createMVRef.value && createMVRef.value.showDrawer(item);
+}
+const handleVIPChange=async (item)=>{
+  await updateSongVipApi({
+    id:item.id,
+    vip:item.vip
+  })
+  ElMessage.success("vip更新成功");
+  handleSearch();
 }
 </script>

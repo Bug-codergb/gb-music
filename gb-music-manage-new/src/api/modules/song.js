@@ -12,3 +12,9 @@ export function uploadSongApi(id,data){
 export function getArtistSongApi(params){
   return http.get("/artist/song",params)
 }
+export function updateSongVipApi(data){
+  return http.post("/song/vip/update",data);
+}
+export function updateSongApi(data){
+  return http.post("/song/update",data)
+}

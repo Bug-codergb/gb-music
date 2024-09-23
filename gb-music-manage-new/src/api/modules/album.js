@@ -34,3 +34,6 @@ export function getArtistAlbumApi(params){
 export function getAlbumDetailApi(data){
   return http.get("/album/detail",data);
 }
+export function updateAlbumApi(data){
+  return http.post("/album/update",data);
+}

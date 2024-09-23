@@ -6,6 +6,7 @@
     :direction="direction"
     :close-on-click-modal="false"
     :modal="true"
+    :destroy-on-close="true"
   >
     <template #footer>
       <el-button @click="handleCancel">取消</el-button>

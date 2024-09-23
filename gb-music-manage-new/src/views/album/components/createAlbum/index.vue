@@ -2,7 +2,7 @@
   <ProDrawer
     v-model="isShow"
     @confirm="handleConfirm"
-    title="添加专辑"
+    :title="title"
   >
     <ProForm
       :config="config"
@@ -27,7 +27,7 @@
   </ProDrawer>
 </template>
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive,toValue ,computed} from "vue";
 import { ElMessage } from "element-plus";
 import ProDrawer from "@/components/ProDrawer/index.vue";
 import ProForm from "@/components/ProForm/index.vue";
@@ -35,16 +35,32 @@ import ArtistList from "../artistList/index";
 import {
   getAlbumTypeListApi,
   uploadAlbumAvatarApi,
-  addAlbumApi
+  addAlbumApi,
+  updateAlbumApi
 } from "@/api/modules/album.js";
 
 const emit = defineEmits(["success"]);
-
+const title = ref("添加专辑")
+const isUpdate = ref(false);
 const isShow = ref(false);
-const showDrawer = () => {
+const showDrawer = (data) => {
   isShow.value = true;
+  isUpdate.value = Boolean(data);
+  initFormDate(data,isUpdate)
 };
-const config = reactive([
+const initFormDate=(data,isUpdate)=>{
+  isUpdate = toValue(isUpdate);
+  formData.value={
+    arId:  "",
+    cateId: "",
+    description:isUpdate ? data.description: "",
+    name: isUpdate ? data.name : "",
+    publishTime: isUpdate ? data.publishTime : "",
+    cover: null,
+    id:isUpdate ? data.id : undefined
+  };
+}
+const config = computed(()=>[
   [
     {
       label: "名称",
@@ -76,7 +92,8 @@ const config = reactive([
       options: [],
       attrs: {
         clearable: true
-      }
+      },
+      isShow:!isUpdate.value
     }
   ],
   [
@@ -96,7 +113,8 @@ const config = reactive([
       label: "专辑封面",
       tag: "cover",
       required: true,
-      prop: "cover"
+      prop: "cover",
+      isShow:!isUpdate.value
     }
   ],
   [
@@ -104,7 +122,8 @@ const config = reactive([
       label: "歌手",
       tag: "slot",
       prop: "arId",
-      required: true
+      required: true,
+      isShow:!isUpdate.value
     }
   ]
 ]);
@@ -147,10 +166,14 @@ const formRef = ref();
 const handleConfirm = () => {
   formRef.value.formRef.validate(async e => {
     if (e) {
-      const res = await addAlbumApi(formData.value);
-      const coverFile = new FormData();
-      coverFile.append("album_cover", formData.value.cover);
-      await uploadAlbumAvatarApi(res.id, coverFile);
+      if(!isUpdate.value){
+        const res = await addAlbumApi(formData.value);
+        const coverFile = new FormData();
+        coverFile.append("album_cover", formData.value.cover);
+        await uploadAlbumAvatarApi(res.id, coverFile);
+      }else{
+        await updateAlbumApi({...formData.value,alId:formData.value.id,desc:formData.value.description});
+      }
       ElMessage.success("新增成功");
       isShow.value = false;
       emit("success");

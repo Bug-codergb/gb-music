@@ -106,7 +106,7 @@ const columns = reactive([
       return (
         <el-space size="large">
           <el-link type="primary" onClick={()=>handleCheck(scope.row)}>查看</el-link>
-          <el-link type="primary">编辑</el-link>
+          <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
           <el-link type="danger" onClick={() => handleDelete(scope.row)}>
             删除
           </el-link>
@@ -148,6 +148,9 @@ const handleDelete = item => {
     })
     .catch(e => {});
 };
+const handleEdit=(item)=>{
+  createArtistRef.value && createArtistRef.value.showDrawer(item);
+}
 const handleCheck=(item)=>{
   router.push({
     path:`/artist/${item.id}`

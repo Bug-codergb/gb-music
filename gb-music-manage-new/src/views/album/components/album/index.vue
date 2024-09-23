@@ -123,7 +123,7 @@ const columns = reactive([
       return (
         <el-space size="large">
           <el-link type="primary" onClick={()=>handleCheck(scope.row)}>查看</el-link>
-          <el-link type="primary">编辑</el-link>
+          <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
           <el-link
             type="danger"
             onClick={() => handleDeleteAlbum(scope.row)}
@@ -172,6 +172,9 @@ const handleCheck=(item)=>{
   router.push({
     path:`/album/${item.id}`
   })
+}
+const handleEdit=(item)=>{
+  createAlbumRef.value && createAlbumRef.value.showDrawer(item);
 }
 defineExpose({
   tableRef:tableRef

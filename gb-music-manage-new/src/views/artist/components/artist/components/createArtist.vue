@@ -1,29 +1,44 @@
 <template>
   <div class="create-artist">
-    <ProDrawer v-model="isShow" title="添加歌手" width="35%" @confirm="handleConfirm">
-      <ProForm v-model="formData" :config="config" :formData="formData" ref="proFormRef" :aspectRatio="1" :realWidth="200" />
+    <ProDrawer v-model="isShow" :title="title" width="35%" @confirm="handleConfirm">
+      <ProForm v-model="formData" :config="config"  ref="proFormRef" :aspectRatio="1" :realWidth="200" />
     </ProDrawer>
   </div>
 </template>
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, computed,toValue } from "vue";
 import { ElMessage } from "element-plus";
-import { getArtistLangApi, createArtistApi, uploadArtistAvatarApi } from "@/api/modules/artist.js";
+import { getArtistLangApi,updateArtistApi, createArtistApi, uploadArtistAvatarApi } from "@/api/modules/artist.js";
 import ProDrawer from "@/components/ProDrawer/index.vue";
 import ProForm from "@/components/ProForm/index.vue";
 
 const emit = defineEmits(["success"]);
 const isShow = ref(false);
-const showDrawer = () => {
+const title = ref("添加歌手");
+const isUpdate = ref(false);
+const showDrawer = (data) => {
   isShow.value = true;
+  isUpdate.value = Boolean(data);
+  title.value= isUpdate.value ? '编辑歌手':'添加歌手'
+  initFormData(data,isUpdate);
 };
+const initFormData=(data,isUpdate)=>{
+  isUpdate = toValue(isUpdate);
+  formData.value={
+    name:isUpdate ? data.name : "",
+    desc:isUpdate ? data.description : "",
+    area:"",
+    cover:null,
+    id:isUpdate ? data.id : undefined
+  }
+}
 const formData = ref({
   name: "",
   desc: "",
   area: "",
   cover: null
 });
-const config = ref([
+const config = computed(()=>[
   [
     {
       label: "姓名",
@@ -51,7 +66,8 @@ const config = ref([
       prop: "area",
       required: true,
       tag: "select",
-      options: []
+      options: [],
+      isShow:!isUpdate.value
     }
   ],
   [
@@ -59,7 +75,8 @@ const config = ref([
       label: "歌手头像",
       prop: "cover",
       tag: "cover",
-      required: true
+      required: true,
+      isShow:!isUpdate.value
     }
   ]
 ]);
@@ -80,12 +97,16 @@ const proFormRef = ref();
 const handleConfirm = () => {
   proFormRef.value.formRef.validate(async e => {
     if (e) {
-      const res = await createArtistApi(formData.value);
-      const cover = new FormData();
-      cover.append("artist_avatar", formData.value.cover);
-      await uploadArtistAvatarApi(res.id, cover);
+      if(!isUpdate.value){
+        const res = await createArtistApi(formData.value);
+        const cover = new FormData();
+        cover.append("artist_avatar", formData.value.cover);
+        await uploadArtistAvatarApi(res.id, cover);
+      }else{
+        await updateArtistApi({...formData.value,arId:formData.value.id});
+      }
       isShow.value = false;
-      ElMessage.success("添加成功");
+      ElMessage.success(isUpdate?'编辑成功':"添加成功");
       emit("success");
     }
   });

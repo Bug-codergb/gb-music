@@ -300,6 +300,7 @@ class AlbumService {
                                       ${publishTime.length === 0 ? '' : 'publishTime=?'}
                  where id=?`;
       let result = {};
+
       if (name.length === 0 && desc.length !== 0 && publishTime.length !== 0) {
         result = await connection.execute(sql, [desc, publishTime, alId]);
       } else if (name.length !== 0 && desc === 0 && publishTime !== 0) {

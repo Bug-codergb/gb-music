@@ -6,6 +6,7 @@
           <el-form-item
             :prop="it.prop"
             :label="it.label"
+            v-if="it.isShow"
             :rules="{ required: !!it.required, message: `${it.label}不能为空`, trigger: ['change', 'blur'] }"
           >
             <template v-if="it.tag === 'input'">
@@ -15,6 +16,11 @@
               <el-select v-bind="it.attrs" :placeholder="it.placeholder" v-model="newFormData[it.prop]">
                 <el-option v-for="item in it.options" :key="item.value" :value="item.value" :label="item.label"></el-option>
               </el-select>
+            </template>
+            <template v-if="it.tag==='radio'">
+              <el-radio-group v-bind="it.attrs" v-model="newFormData[it.prop]">
+                <el-radio v-for="row in it.options" :value="row.value">{{row.label}}</el-radio>
+              </el-radio-group>
             </template>
             <template v-if="it.tag === 'date'">
               <el-date-picker
@@ -85,6 +91,8 @@ const props = defineProps({
 });
 const emit = defineEmits(["update:modelValue"]);
 const newFormData = ref(cloneDeep(props.modelValue));
+
+
 watch(
   () => newFormData.value,
   newVal => {
@@ -94,7 +102,15 @@ watch(
     deep: true
   }
 );
-const newFormConfig = computed(() => props.config);
+const newFormConfig = computed(() =>{
+  for(let item of props.config){
+    for(let it of item){
+      it.isShow = it.isShow===null || it.isShow===undefined ? true :it.isShow
+
+    }
+  }
+  return props.config
+});
 
 const proCopperRef = ref();
 const currentCoverProp = ref("");
