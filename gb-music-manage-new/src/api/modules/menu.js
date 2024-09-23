@@ -3,27 +3,6 @@ export function getMenuListApi(params) {
   return new Promise((resolve, reject) => {
     resolve([
       {
-        path: "/home/index",
-        component: "/home/index",
-        title: "首页",
-        children: [
-          {
-            path: "/user/index",
-            component: "/user/index",
-            title: "用户详情",
-            meta: {
-              title: "用户详情",
-              isHide: true,
-              activeMenu:"/home/index"
-            }
-          }
-        ],
-        meta: {
-          title: "首页",
-          icon: "HomeFilled"
-        }
-      },
-      {
         path: "/artist",
         component: "/artist/index",
         title: "歌手信息",
@@ -204,10 +183,9 @@ export function getMenuListApi(params) {
         },
         children: [
           {
-            path: "/user",
+            path: "/user/index",
             component: "/user/index",
             title: "用户信息",
-            redirect: "/user/index",
             meta: {
               title: "用户管理",
               icon: "Menu"
