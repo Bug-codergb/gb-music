@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="table-box">
     <ProTable
       :columns="columns"
@@ -103,7 +103,7 @@ const columns = reactive([
       return (
         <el-space size="large">
           <el-link type="primary">查看</el-link>
-          <el-link type="primary">编辑</el-link>
+          <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
           <el-link type="danger">删除</el-link>
         </el-space>
       );
@@ -137,4 +137,7 @@ const createVideoRef = ref()
 const handleCreate = () => {
   createVideoRef.value && createVideoRef.value.showDrawer()
 };
+const handleEdit=(item)=>{
+  createVideoRef.value && createVideoRef.value.showDrawer(item)
+}
 </script>

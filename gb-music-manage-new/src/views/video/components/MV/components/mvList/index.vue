@@ -1,9 +1,11 @@
 <script setup lang="tsx">
 import { ref,reactive } from "vue";
+import debounce from "lodash/debounce"
 import moment from "moment";
 import { formatTime } from "@/utils/time"
 import {getVideoCateApi, getVideoListApi} from "@/api/modules/video"
 import ProTable from "@/components/ProTable/index.vue"
+import CreateMV from "@/views/playlist/song/components/createMV"
 const columns = reactive( [
   {
     label:"封面",
@@ -46,7 +48,7 @@ const columns = reactive( [
     render:(scope)=>{
       return <el-space size="large">
         <el-link type="primary">查看</el-link>
-        <el-link type="primary">编辑</el-link>
+        <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
         <el-link type="danger">删除</el-link>
       </el-space>
     }
@@ -69,11 +71,41 @@ getVideoCateApi({ type: 1 }).then(res => {
   searchParams.cateId = res[0].id;
   tableRef.value && tableRef.value.search();
 });
+
+const createMVRef = ref();
+const handleEdit=(item)=>{
+  let data={
+    ...item,
+    isUpdate:true
+  }
+  createMVRef.value && createMVRef.value.showDrawer(data);
+}
+const search=()=>{
+  tableRef.value && tableRef.value.search();
+}
+const handleSearch=debounce(()=>{
+  search();
+},500)
 </script>
 
 <template>
   <div class="table-box">
-    <ProTable ref="tableRef" data-alias="videos" :init-param="searchParams" :columns="columns" :request-auto="false" :pagination="true" :request-api="getVideoListApi"/>
+    <ProTable ref="tableRef" data-alias="videos" :init-param="searchParams" :columns="columns" :request-auto="false" :pagination="true" :request-api="getVideoListApi">
+      <template #tableHeader>
+        <el-form inline>
+          <el-form-item>
+            <el-input clearable v-model="searchParams.keyword" placeholder="请输入mv名称" @input="handleSearch"/>
+          </el-form-item>
+          <el-form-item>
+            <el-select style="width:160px" v-model="searchParams.cateId" @change="search">
+              <el-option v-for="item in cateList" :label="item.label" :key="item.value" :value="item.value"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+
+      </template>
+    </ProTable>
+    <CreateMV ref="createMVRef" @success="search"/>
   </div>
 </template>
 

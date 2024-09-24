@@ -37,3 +37,6 @@ export function getMVDataApi() {
 export function getVideoDataApi() {
   return http.get('/video/data');
 }
+export function updateVideoApi(data){
+  return http.post("/video/update",data)
+}
