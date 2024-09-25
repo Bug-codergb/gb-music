@@ -242,6 +242,14 @@ export function getMenuListApi(params) {
                 }
               }
             ]
+          },
+          {
+            path:"/banner",
+            component:"/banner/index",
+            meta:{
+              title:"banner图",
+              icon: "Menu"
+            }
           }
         ],
         meta: {
