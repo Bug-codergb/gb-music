@@ -15,31 +15,30 @@ export const BannerWrapper: any = styled.div`
     filter: blur(30px);
   }
   .banner-outer {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     height: 100%;
-    .ant-carousel{
+    .ant-carousel {
       height: 100%;
-      .slick-slider{
+      .slick-slider {
         height: 100%;
-        .slick-list{
-        height: 100%;
-          .slick-track{
+        .slick-list {
+          height: 100%;
+          .slick-track {
             height: 100%;
             overflow-y: hidden;
           }
-      }
+        }
       }
     }
     .img-container {
       width: 100%;
       height: 240px;
-      .ant-image{
-        width: 100%!important;
-        height: 100%!important;
+      .ant-image {
+        width: 100% !important;
+        height: 100% !important;
       }
       img {
-        width: 100%;
         height: 100%;
         object-fit: contain;
       }

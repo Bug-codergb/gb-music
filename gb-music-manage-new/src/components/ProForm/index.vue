@@ -31,6 +31,9 @@
                 :placeholder="it.placeholder"
               />
             </template>
+            <template v-if="it.tag==='autocomplete'">
+              <el-autocomplete v-model="newFormData[it.prop]" :placeholder="it.placeholder" v-bind="it.attrs" v-on="it.events||{}"/>
+            </template>
             <template v-if="it.tag === 'cover'">
               <div class="cover-container flx-center">
                 <template v-if="!isPrevCover">

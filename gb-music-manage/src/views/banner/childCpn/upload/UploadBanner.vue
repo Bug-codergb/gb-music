@@ -71,35 +71,31 @@ export default {
       getSearchMatch(queryString)
         .then((data) => {
           if (data) {
-            console.log(data);
             if (this.keyword === 'video') {
-              this.list = data.video.map((item, index) => {
+              const res= data.video.map((item, index) => {
                 return {
                   value: item.name,
                   id: item.id
                 };
               });
-              const res = this.list;
               const results = queryString ? res.filter(this.createFilter(queryString)) : res;
               cb(results);
             } else if (this.keyword === 'album') {
-              this.list = data.album.map((item, index) => {
+              const res = data.album.map((item, index) => {
                 return {
                   value: item.name,
                   id: item.id
                 };
               });
-              const res = this.list;
               const results = queryString ? res.filter(this.createFilter(queryString)) : res;
               cb(results);
             } else if (this.keyword === 'song') {
-              this.list = data.song.map((item, index) => {
+              const res = data.song.map((item, index) => {
                 return {
                   value: item.name,
                   id: item.id
                 };
               });
-              const res = this.list;
               const results = queryString ? res.filter(this.createFilter(queryString)) : res;
               cb(results);
             } else {

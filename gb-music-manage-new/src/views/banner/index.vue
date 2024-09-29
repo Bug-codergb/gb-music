@@ -1,6 +1,7 @@
 <script setup lang="jsx">
-import { reactive } from "vue"
+import { reactive,ref } from "vue"
 import ProTable from "@/components/ProTable/index.vue"
+import CreateBanner from "./components/CreateBanner.vue"
 import {getBannerListApi} from "@/api/modules/banner"
 const columns = reactive([
   {
@@ -48,11 +49,24 @@ const columns = reactive([
     }
   }
 ])
+const createBanner = ref();
+const handleCreateBanner=()=>{
+  createBanner.value && createBanner.value.showDrawer()
+}
+const tableRef = ref();
+const search=()=>{
+  tableRef.value && tableRef.value.search();
+}
 </script>
 
 <template>
   <div class="table-box">
-    <ProTable :request-api="getBannerListApi" :columns="columns"></ProTable>
+    <ProTable :request-api="getBannerListApi" ref="tableRef" :columns="columns">
+      <template #toolButton>
+        <el-button type="primary" @click="handleCreateBanner">添加banner</el-button>
+      </template>
+    </ProTable>
+    <CreateBanner ref="createBanner" @success="search"/>
   </div>
 </template>
 

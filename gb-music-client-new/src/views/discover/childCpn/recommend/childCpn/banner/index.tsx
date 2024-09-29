@@ -1,8 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState, useRef } from 'react';
-import {
-  useAppDispatch,
-  useAppSelector
-} from "@/store/hooks.ts";
+import { useAppDispatch, useAppSelector } from '@/store/hooks.ts';
 import { Carousel, Image } from 'antd';
 import { CarouselRef } from 'antd/lib/carousel';
 import { BannerWrapper } from './style';
@@ -25,7 +22,7 @@ const Banner: FC = (props): ReactElement => {
   }, []);
   const bannerRef = useRef<CarouselRef>(null);
   const change = (from: number, to: number): void => {
-    if(banner && banner[to]){
+    if (banner && banner[to]) {
       setPicUrl(banner[to].picUrl);
     }
   };
@@ -38,17 +35,17 @@ const Banner: FC = (props): ReactElement => {
   const bannerClick = (item: IBanner, index: number) => {
     switch (item.type) {
       case 1:
-        dispatch(changeSongDetailAction({id:item.songId!}));
+        dispatch(changeSongDetailAction({ id: item.songId! }));
         break;
       case 3:
-        navigate('/Home/videoDetail',{
+        navigate('/Home/videoDetail', {
           state: {
             id: item.vId
           }
         });
         break;
       case 2:
-        navigate('/Home/albumDetail',{
+        navigate('/Home/albumDetail', {
           state: {
             id: item.alId
           }
@@ -73,7 +70,7 @@ const Banner: FC = (props): ReactElement => {
           beforeChange={(from: number, to: number) => change(from, to)}
           effect="fade"
           ref={bannerRef}
-          style={{height:"240px"}}
+          style={{ height: '240px' }}
         >
           {banner &&
             banner.length !== 0 &&
@@ -81,11 +78,9 @@ const Banner: FC = (props): ReactElement => {
               return (
                 <div key={item.id} className="img-container">
                   <Image
-                    width={1220}
-                    height={300}
                     src={item.picUrl}
                     preview={false}
-                    placeholder={<Image preview={false} src={placeholder} width={1220} height={300} />}
+                    placeholder={<Image preview={false} src={placeholder} />}
                     onClick={(e) => bannerClick(item, index)}
                   />
                 </div>

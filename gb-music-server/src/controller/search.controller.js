@@ -7,7 +7,7 @@ class SearchController {
       const result = await getSearchMatchService(keyword);
       res.json(result);
     } else {
-      next(new Error(errorType.PARAMETER_ERROR));
+      res.json([])
     }
   }
 }
