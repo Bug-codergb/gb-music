@@ -25,3 +25,12 @@ export function deleteChanneDetail(data) {
 export function getChannelDataApi() {
   return http.get('/channel/data',);
 }
+export function updateChannelApi(data){
+  return http.post("/channel/content/update",data);
+}
+export function createProgramApi(data){
+  return http.post("/channel/program",data);
+}
+export function uploadProgramApi(id,data){
+  return http.post(`/channel/program/source?id=${id}`,data);
+}

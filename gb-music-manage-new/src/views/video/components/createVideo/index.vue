@@ -159,7 +159,7 @@ const handleConfirm=()=>{
           cate:formData.value.cateId,
         })
       }
-      ElMessage.success("视频上传成功");
+      ElMessage.success(isUpdate.value?'视频更新成功':"视频上传成功");
       isShow.value=false;
       emit("success")
     }

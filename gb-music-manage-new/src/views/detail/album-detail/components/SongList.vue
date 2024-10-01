@@ -24,7 +24,8 @@ const columns = reactive([
   {
     label:"歌曲名称",
     prop:"name",
-    isShow:true
+    isShow:true,
+    width: 260,
   },
   {
     label:"简介",
@@ -52,6 +53,7 @@ const columns = reactive([
     label:"操作",
     prop:"action",
     isShow:true,
+    width:100,
     render:(scope)=>{
       return <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
     }

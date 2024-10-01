@@ -6,6 +6,7 @@
       :columns="columns"
       dataAlias="channel"
       ref="formRef"
+      :pagination="true"
     >
       <template #toolButton>
         <el-button @click="handleCreate" type="primary"
@@ -17,6 +18,7 @@
       ref="createChannelContentRef"
       @success="search"
     />
+    <CreateProgram ref="createProgramRef"/>
   </div>
 </template>
 <script setup lang="jsx">
@@ -24,6 +26,7 @@ import { ref, reactive } from "vue";
 import moment from "moment";
 import { ElMessage, ElMessageBox } from "element-plus";
 import CreateChannelContent from "../createChannelContent/index";
+import CreateProgram from "../createProgram/index.vue"
 import { useRoute } from "vue-router";
 import ProTable from "@/components/ProTable/index";
 import {
@@ -59,7 +62,7 @@ const columns = reactive([
     prop: "createTime",
     isShow: true,
     render: scope => {
-      return moment(scope.row).format("yyyy-MM-DD HH:mm");
+      return moment(scope.row.createTime).format("yyyy-MM-DD HH:mm");
     }
   },
   {
@@ -84,7 +87,8 @@ const columns = reactive([
     render: scope => {
       return (
         <el-space size="large">
-          <el-link type="primary">编辑</el-link>
+          <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
+          <el-link type="success" onClick={()=>handleCreateChannel(scope.row)}>添加声音</el-link>
           <el-link
             type="danger"
             onClick={() => handleDelete(scope.row)}
@@ -101,6 +105,10 @@ const handleCreate = () => {
   createChannelContentRef.value &&
     createChannelContentRef.value.showDrawer();
 };
+const handleEdit=(item)=>{
+  createChannelContentRef.value &&
+  createChannelContentRef.value.showDrawer(item);
+}
 const formRef = ref();
 const search = () => {
   formRef.value && formRef.value.search();
@@ -115,4 +123,8 @@ const handleDelete = item => {
     ElMessage.success("删除成功");
   });
 };
+const createProgramRef = ref()
+const handleCreateChannel=()=>{
+  createProgramRef.value && createProgramRef.value.showDrawer()
+}
 </script>
