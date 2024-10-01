@@ -154,7 +154,12 @@ class ArtistController {
       const { id = '' } = req.query;
       if (!isEmpty(id, '歌手ID不能为空', next)) {
         const result = await getArtistDetailService(id);
-        res.json(result[0]);
+        if(result){
+          res.json(result[0]);
+        }else{
+          res.json({})
+        }
+
       }
     } catch (e) {
       console.log(e);

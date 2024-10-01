@@ -37,3 +37,6 @@ export function getAlbumDetailApi(data){
 export function updateAlbumApi(data){
   return http.post("/album/update",data);
 }
+export function deleteAlbumSongApi(data){
+  return http.post("/album/song/delete",data);
+}

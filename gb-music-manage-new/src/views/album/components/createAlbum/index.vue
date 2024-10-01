@@ -144,7 +144,7 @@ getAlbumTypeListApi().then(res => {
       value: item.id
     };
   });
-  for (let item of config) {
+  for (let item of config.value) {
     if (item[0].prop === "cateId") {
       item[0].options = typeList.value;
     }

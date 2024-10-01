@@ -102,14 +102,14 @@ watch(
     emit("update:modelValue", newVal);
   },
   {
-    deep: true
+    deep: true,
+    immediate:true
   }
 );
 const newFormConfig = computed(() =>{
   for(let item of props.config){
     for(let it of item){
       it.isShow = it.isShow===null || it.isShow===undefined ? true :it.isShow
-
     }
   }
   return props.config

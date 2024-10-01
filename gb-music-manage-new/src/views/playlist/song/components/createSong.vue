@@ -21,18 +21,25 @@ import ProDrawer from "@/components/ProDrawer/index.vue"
 import ProForm from "@/components/ProForm/index.vue"
 import AlbumList from "./albumList.vue"
 import { createSongApi,uploadSongApi ,updateSongApi} from "@/api/modules/song"
+
+const props = defineProps({
+  isAlbumDetail:{
+    type:Boolean,
+    default:false
+  }
+})
 const emit = defineEmits(['success'])
 const isShow = ref(false);
 
 const isUpdate = ref(false);
 const title = ref("上传歌曲")
-const showDrawer=(data)=>{
+const showDrawer=(data,info=null)=>{
   isUpdate.value = Boolean(data);
   title.value = isUpdate.value ? "编辑歌曲":"上传歌曲"
   isShow.value = true;
-  initFormData(isUpdate.value,data);
+  initFormData(isUpdate.value,data,info);
 }
-const initFormData=(isUpdate,data)=>{
+const initFormData=(isUpdate,data,info=null)=>{
   formData.value = {
     name:isUpdate ? data.name :"",
     alId:"",
@@ -40,8 +47,8 @@ const initFormData=(isUpdate,data)=>{
     arId:"",
     publishTime:isUpdate ? data.publishTime : '',
     source:null,
-    album:null,
-    artist:"",
+    album:info ? info.album : null,
+    artist:  "",
     lyric:isUpdate ? data.lyric:"",
     vip:isUpdate ? data.vip:0,
     id:isUpdate ? data.id : undefined
@@ -138,7 +145,7 @@ const config=computed(()=>[
       prop:"album",
       tag:"slot",
       required:true,
-      isShow:!isUpdate.value
+      isShow:!isUpdate.value && !props.isAlbumDetail
     }
   ],
   [
@@ -151,7 +158,7 @@ const config=computed(()=>[
       attrs:{
         readonly:true
       },
-      isShow:!isUpdate.value
+      isShow:!isUpdate.value && !props.isAlbumDetail
     }
   ],
   [
@@ -199,7 +206,7 @@ const handleConfirm=()=>{
           ...formData.value,
         })
       }
-      ElMessage.success(`歌曲${isUpdate ? "更新":'添加'}成功`)
+      ElMessage.success(`歌曲${isUpdate.value ? "更新":'添加'}成功`)
       isShow.value = false;
       emit("success")
     }

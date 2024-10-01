@@ -14,3 +14,6 @@ export function uploadBannerApi(formData,key,id){
     }
   })
 }
+export function deleteBannerApi(data){
+  return http.post("/banner/delete",data);
+}

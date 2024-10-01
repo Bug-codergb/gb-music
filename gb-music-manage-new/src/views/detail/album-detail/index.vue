@@ -1,16 +1,31 @@
 <script setup>
 import { ref,reactive } from "vue";
+import CreateSong from "@/views/playlist/song/components/createSong.vue";
+import SongList from "./components/SongList.vue"
 import { useRoute } from "vue-router"
 import {getAlbumDetailApi} from "@/api/modules/album";
+
 import moment from "moment";
+
 const route = useRoute();
 const searchParams = reactive({
   albumId:route.params.id
 })
 const albumDetail = ref({});
-getAlbumDetailApi(searchParams).then((res)=>{
-  albumDetail.value = res;
-})
+
+const createSongRef = ref();
+const handleUploadSong=()=>{
+  createSongRef.value && createSongRef.value.showDrawer(undefined,{
+    album:albumDetail.value,
+  })
+}
+const activeName = ref("name");
+const search=()=>{
+  getAlbumDetailApi(searchParams).then((res)=>{
+    albumDetail.value = res;
+  })
+}
+search();
 </script>
 
 <template>
@@ -32,7 +47,7 @@ getAlbumDetailApi(searchParams).then((res)=>{
                   </el-space>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="primary">上传歌曲</el-button>
+                  <el-button type="primary" @click="handleUploadSong">上传歌曲</el-button>
                 </el-form-item>
               </el-col>
               <el-col :span="12">
@@ -48,8 +63,18 @@ getAlbumDetailApi(searchParams).then((res)=>{
           </el-form>
         </el-col>
       </el-row>
+      <CreateSong ref="createSongRef" @success="search" :is-album-detail="true"/>
     </div>
-    <div class="card table-box"></div>
+    <div class="card table-box">
+      <el-tabs v-model="activeName">
+        <el-tab-pane label="歌曲列表" name="name">
+          <SongList v-if="albumDetail && albumDetail.songs"
+                    :album="albumDetail"
+                    :songs="albumDetail.songs || []"
+                    @success="search"/>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
   </div>
 </template>
 

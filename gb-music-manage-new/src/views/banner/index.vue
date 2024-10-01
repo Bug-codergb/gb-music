@@ -1,8 +1,9 @@
 <script setup lang="jsx">
 import { reactive,ref } from "vue"
+import {ElMessageBox,ElMessage} from "element-plus"
 import ProTable from "@/components/ProTable/index.vue"
 import CreateBanner from "./components/CreateBanner.vue"
-import {getBannerListApi} from "@/api/modules/banner"
+import {getBannerListApi,deleteBannerApi} from "@/api/modules/banner"
 const columns = reactive([
   {
     label:"封面",
@@ -47,6 +48,14 @@ const columns = reactive([
         }
       </el-tag>
     }
+  },
+  {
+    label:"操作",
+    prop:"action",
+    isShow:true,
+    render:(scope)=>{
+      return <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
+    }
   }
 ])
 const createBanner = ref();
@@ -56,6 +65,21 @@ const handleCreateBanner=()=>{
 const tableRef = ref();
 const search=()=>{
   tableRef.value && tableRef.value.search();
+}
+const handleDelete=async (item)=>{
+  try{
+    ElMessageBox.confirm("确认删除么?","提示",{
+      type:"warning"
+    }).then(async()=>{
+      const res = await deleteBannerApi({id:item.id});
+      ElMessage.success("删除成功");
+      search();
+    }).catch(()=>{
+
+    })
+  }catch (e) {
+
+  }
 }
 </script>
 
