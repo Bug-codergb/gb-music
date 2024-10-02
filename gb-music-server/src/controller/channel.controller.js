@@ -185,14 +185,18 @@ class ChannelController {
   }
   //上传program
   async addProgram(req, res, next) {
-    const { name, cId } = req.body;
-    const { userId } = req.user;
-    if (name.trim().length !== 0 && cId.trim().length !== 0) {
-      const result = await addProgramService(name, userId, cId);
-      res.json({
-        id: result
-      });
-    } else {
+    try{
+      const { name, cId } = req.body;
+      const { userId } = req.user;
+      if (name.trim().length !== 0 && cId.trim().length !== 0) {
+        const result = await addProgramService(name, userId, cId);
+        res.json({
+          id: result
+        });
+      } else {
+        next(new Error(errorType.PARAMETER_ERROR));
+      }
+    }catch (e) {
       next(new Error(errorType.PARAMETER_ERROR));
     }
   }

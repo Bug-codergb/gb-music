@@ -1,8 +1,13 @@
 <script setup>
 import { ref,computed } from "vue"
+import { useRoute } from "vue-router"
+import {ElMessage} from "element-plus";
 import ProDrawer from "@/components/ProDrawer/index.vue"
 import ProForm from "@/components/ProForm/index.vue";
-
+import { createProgramApi,uploadProgramApi } from "@/api/modules/channel"
+import {getAudioDuration} from "@/utils/songUtils"
+const route = useRoute();
+const emit = defineEmits(['success']);
 const isShow = ref(false);
 const formData = ref({
   cId:"",
@@ -34,13 +39,29 @@ const config=computed(()=>[
     }
   ]
 ])
-const showDrawer=()=>{
-  isShow.value = true
+const showDrawer=(data)=>{
+  isShow.value = true;
+  formData.value.cId = data.id;
+  formData.value.name = "";
+  formData.value.file= null;
 }
 const formRef = ref();
 const handleConfirm=()=>{
-  formRef.value && formRef.value.formRef.validate((e)=>{
-
+  formRef.value && formRef.value.formRef.validate(async (e)=>{
+    if(e){
+      const res = await createProgramApi({
+        cId:formData.value.cId,
+        name:formData.value.name
+      })
+      const f= new FormData();
+      f.append("program",formData.value.file);
+      const dt = await getAudioDuration(formData.value.file);
+      f.append("dt",dt);
+      await uploadProgramApi(res.id,f);
+      ElMessage.success("添加成功");
+      emit("success")
+      isShow.value = false;
+    }
   })
 }
 defineExpose({

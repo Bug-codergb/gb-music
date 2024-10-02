@@ -168,8 +168,21 @@ export function getMenuListApi(params) {
               icon: "Menu",
               activeMenu: "/channel/index",
               isHide:true
-            }
-          }
+            },
+            children: [
+              {
+                path:"/program/:id",
+                component: "/detail/program-detail/index",
+                meta:{
+                  title:"声音",
+                  icon:"Menu",
+                  activeMenu: "/channel/index",
+                  isHide: true
+                }
+              }
+            ]
+          },
+
         ]
       },
       {

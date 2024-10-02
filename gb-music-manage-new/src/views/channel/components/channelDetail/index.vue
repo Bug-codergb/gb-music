@@ -18,11 +18,12 @@
       ref="createChannelContentRef"
       @success="search"
     />
-    <CreateProgram ref="createProgramRef"/>
+    <CreateProgram ref="createProgramRef" @success="search"/>
   </div>
 </template>
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router"
 import moment from "moment";
 import { ElMessage, ElMessageBox } from "element-plus";
 import CreateChannelContent from "../createChannelContent/index";
@@ -84,11 +85,13 @@ const columns = reactive([
     label: "操作",
     prop: "action",
     isShow: true,
+    width:260,
     render: scope => {
       return (
         <el-space size="large">
           <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
           <el-link type="success" onClick={()=>handleCreateChannel(scope.row)}>添加声音</el-link>
+          <el-link type="warning" onClick={()=>handleDetail(scope.row)}>查看</el-link>
           <el-link
             type="danger"
             onClick={() => handleDelete(scope.row)}
@@ -109,6 +112,10 @@ const handleEdit=(item)=>{
   createChannelContentRef.value &&
   createChannelContentRef.value.showDrawer(item);
 }
+const router = useRouter();
+const handleDetail=(item)=>{
+  router.push(`/program/${item.id}`)
+}
 const formRef = ref();
 const search = () => {
   formRef.value && formRef.value.search();
@@ -124,7 +131,7 @@ const handleDelete = item => {
   });
 };
 const createProgramRef = ref()
-const handleCreateChannel=()=>{
-  createProgramRef.value && createProgramRef.value.showDrawer()
+const handleCreateChannel=(item)=>{
+  createProgramRef.value && createProgramRef.value.showDrawer(item)
 }
 </script>

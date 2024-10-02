@@ -34,3 +34,6 @@ export function createProgramApi(data){
 export function uploadProgramApi(id,data){
   return http.post(`/channel/program/source?id=${id}`,data);
 }
+export function getChannelDetailApi(data){
+  return http.get("/channel/detail",data)
+}
