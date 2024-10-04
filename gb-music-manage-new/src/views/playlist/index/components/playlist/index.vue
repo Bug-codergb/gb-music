@@ -13,8 +13,12 @@
           </el-form-item>
         </el-form>
       </template>
+      <template #toolButton>
+        <el-button type="primary" @click="handleCreate">添加歌单</el-button>
+      </template>
     </ProTable>
     <SetPlaylistCate ref="setPlaylistCateRef" @success="handleSearch"/>
+    <CreatePlaylist ref="createPlaylistRef" @success="handleSearch"/>
   </div>
 </template>
 <script setup lang="jsx">
@@ -24,6 +28,9 @@ import {getAllPlaylistApi} from "@/api/modules/playlist"
 import ProTable from "@/components/ProTable/index.vue"
 import SetPlaylistCate from "../setPlaylistCate/index.vue"
 import { reactive,ref } from "vue";
+import { ElMessage,ElMessageBox } from "element-plus"
+import {deletePlaylistApi} from "@/api/modules/playlist"
+import CreatePlaylist from "../createPlaylist/index.vue"
 const columns = reactive([
   {
     label:"封面",
@@ -77,8 +84,8 @@ const columns = reactive([
     render:(scope)=>{
       return <el-space size="large">
         <el-link type="success" onClick={()=>handleSetPlaylistCate(scope.row)}>分类</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="danger">删除</el-link>
+        <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
+        <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
       </el-space>
     }
   }
@@ -95,5 +102,21 @@ const handleSearch=debounce(()=>{
 const setPlaylistCateRef = ref();
 const handleSetPlaylistCate=(item)=>{
   setPlaylistCateRef.value && setPlaylistCateRef.value.showDrawer(item);
+}
+const handleDelete=(item)=>{
+  ElMessageBox.confirm("确认删除歌单么?","提示",{
+    type:"warning"
+  }).then(async ()=>{
+    const res = await deletePlaylistApi({id:item.id});
+    await handleSearch();
+    ElMessage.success("删除成功");
+  }).catch(()=>{})
+}
+const createPlaylistRef=ref();
+const handleCreate=()=>{
+  createPlaylistRef.value && createPlaylistRef.value.showDrawer()
+}
+const handleEdit=(item)=>{
+  createPlaylistRef.value && createPlaylistRef.value.showDrawer(item)
 }
 </script>

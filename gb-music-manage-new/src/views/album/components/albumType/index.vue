@@ -6,6 +6,11 @@
       :requestAuto="true"
       ref="tableRef"
     >
+      <template #tableHeader>
+        <div style="font-size:14px;color:#919398">
+          注意，删除分类会关联删除分类下专辑
+        </div>
+      </template>
       <template #toolButton>
         <el-button type="primary" @click="handleCreateAlbumType"
           >新增</el-button

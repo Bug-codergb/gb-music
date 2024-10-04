@@ -17,3 +17,16 @@ export function createPlaylistCateApi(data){
 export function getPlaylistDataApi() {
   return http.get('/playlist/data');
 }
+export function deletePlaylistApi(data){
+  return http.post("/playlist/delete",data);
+}
+
+export function createPlaylistApi(data){
+  return http.post("/playlist",data);
+}
+export function uploadPlaylistCoverApi(id,data){
+  return http.post(`/playlist/cover?pId=${id}`,data);
+}
+export function updatePlaylistApi(data){
+  return http.post("/playlist/update",data);
+}

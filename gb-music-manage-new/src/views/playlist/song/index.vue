@@ -32,12 +32,13 @@
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
 import moment from "moment";
-import { ElMessage } from "element-plus";
+import { ElMessage,ElMessageBox } from "element-plus";
 import debounce from "lodash/debounce"
 import { getSongListApi,updateSongVipApi } from "@/api/modules/song.js";
 import ProTable from "@/components/ProTable/index";
 import CreateSong from "./components/createSong.vue"
 import CreateMV from "./components/createMV.vue";
+import { deleteSongApi } from "@/api/modules/song"
 const columns = reactive([
   {
     label: "歌曲名称",
@@ -85,7 +86,7 @@ const columns = reactive([
           <el-link type="primary" onClick={()=>handleCreateMV(scope.row)}>添加mv</el-link>
           <el-link type="success">上传歌词</el-link>
           <el-link type="warning" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
-          <el-link type="danger">删除</el-link>
+          <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
         </el-space>
       );
     }
@@ -120,5 +121,14 @@ const handleVIPChange=async (item)=>{
   })
   ElMessage.success("vip更新成功");
   handleSearch();
+}
+const handleDelete=(row)=>{
+  ElMessageBox.confirm("确认删除吗?",'提示',{
+    type:"warning"
+  }).then(async ()=>{
+    const res = await deleteSongApi({id:row.id});
+    await handleSearch();
+    ElMessage.success("添加成功");
+  })
 }
 </script>

@@ -156,6 +156,7 @@ class PlaylistService {
        LEFT JOIN playlist_category as pcy on pcy.cateId=pc.id
        LEFT JOIN playlist as p on p.id=pcy.pId
        where pc.id=?
+       order by p.createTime desc  
        limit ?,?`;
     const result = await connection.execute(sql, [cateId, offset, limit]);
     const countSQL = `select count(pc.id) as count
@@ -187,6 +188,7 @@ class PlaylistService {
         LEFT JOIN playlist_cate as pct on pct.id=pc.cateId
         ${keyword.length !== 0 ? `where p.name like '%${keyword}%'` : ''}
         GROUP BY p.id
+        order by p.createTime desc
         limit ?,?`;
     const result = await connection.execute(sql, [offset, limit]);
     return result[0];
@@ -288,12 +290,14 @@ class PlaylistService {
       const sql = `update playlist set name=?,description=? where id=?`;
       const result = await connection.execute(sql, [name, desc, id]);
 
-      const cateDelSQL = `delete from playlist_category as pc where pc.pId=?`;
-      await connection.execute(cateDelSQL, [id]);
+      if(cate.length!==0){
+        const cateDelSQL = `delete from playlist_category as pc where pc.pId=?`;
+        await connection.execute(cateDelSQL, [id]);
 
-      for (let item of cate) {
-        const insertSQL = `insert into playlist_category (pId,cateId) values(?,?)`;
-        await connection.execute(insertSQL, [id, item]);
+        for (let item of cate) {
+          const insertSQL = `insert into playlist_category (pId,cateId) values(?,?)`;
+          await connection.execute(insertSQL, [id, item]);
+        }
       }
       return result[0];
     } catch (e) {

@@ -3,6 +3,8 @@ import {reactive} from "vue"
 import moment from "moment"
 import { formatTime } from "@/utils/time"
 import ProTable from "@/components/ProTable/index.vue"
+import { ElMessage,ElMessageBox } from "element-plus"
+const emit = defineEmits(['success']);
 const props = defineProps({
   program:{
     type:Array,
@@ -43,10 +45,19 @@ const columns = reactive([
     prop:"action",
     isShow:true,
     render:(scope)=>{
-      return <el-link type="danger">删除</el-link>
+      return <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
     }
   }
 ])
+const handleDelete=(item)=>{
+  ElMessageBox.confirm("确认删除么?","提示",{
+    type:"warning"
+  }).then(()=>{
+
+  }).catch(()=>{
+
+  })
+}
 </script>
 
 <template>

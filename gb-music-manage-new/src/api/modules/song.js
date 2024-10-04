@@ -18,3 +18,6 @@ export function updateSongVipApi(data){
 export function updateSongApi(data){
   return http.post("/song/update",data)
 }
+export function deleteSongApi(data){
+  return http.post("/song/delete",data);
+}

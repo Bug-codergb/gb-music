@@ -59,6 +59,7 @@ const initFormDate=(data,isUpdate)=>{
     cover: null,
     id:isUpdate ? data.id : undefined
   };
+  artist.value = null;
 }
 const config = computed(()=>[
   [
@@ -158,7 +159,6 @@ const handleSelectArtist = () => {
 const artist = ref(null);
 const handleSelectd = val => {
   artist.value = val && val.length !== 0 ? val[0] : null;
-  console.log(artist.value);
   formData.value.arId = artist.value.id;
 };
 

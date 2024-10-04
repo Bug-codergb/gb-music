@@ -43,6 +43,7 @@ const formData = ref({
 });
 const showDrawer = () => {
   isShow.value = true;
+  formData.value.name = ""
 };
 const formRef = ref();
 const handleConfirm = () => {

@@ -253,15 +253,17 @@ class PlaylistController {
   }
   //更新歌单信息
   async updatePlaylist(req, res, next) {
-    const { name = '', desc = '', cate = [], id = '' } = req.body;
+    let { name = '', desc = '', cate = [], id = '' } = req.body;
     if (
       name.trim().length === 0 ||
       desc.trim().length === 0 ||
-      cate.length === 0 ||
       id.trim().length === 0
     ) {
       next(new Error(errorType.PARAMETER_ERROR));
     } else {
+      if(!Array.isArray(cate)){
+        cate = []
+      }
       const result = await updatePlaylistService(id, name, desc, cate);
       res.json(result);
     }
