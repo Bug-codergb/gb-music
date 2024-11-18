@@ -14,12 +14,17 @@ const connection = mysql.createPool({
   password: PASSWORD
 });
 connection.getConnection((err, connect) => {
-  connect.connect((err) => {
-    if (err) {
-      console.log('MySQL 连接失败');
-    } else {
-      console.log('MySQL 连接成功');
-    }
-  });
+  if(!err){
+    connect.connect((err) => {
+      if (err) {
+        console.log('MySQL 连接失败');
+      } else {
+        console.log('MySQL 连接成功');
+      }
+    });
+  }else{
+    console.log(err);
+  }
+
 });
 module.exports = connection.promise();
