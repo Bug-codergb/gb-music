@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="" />
+    <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/login/components/LoginForm.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/login/components/LoginForm.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/album.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/album.service.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,31 +32,31 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2A1RaQy1pIxu0R8sT90zkh4E1fZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "editorconfig.notification": "lf ",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/guobin/Visual Studio Code Project/gb-music/gb-music-server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;editorconfig.notification&quot;: &quot;lf &quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/guobin/Visual Studio Code Project/gb-music/gb-music-server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\project\gb-music\gb-music-be" />
@@ -122,7 +128,8 @@
       <workItem from="1727762622796" duration="635000" />
       <workItem from="1727765150950" duration="83000" />
       <workItem from="1727765427236" duration="6021000" />
-      <workItem from="1731931039156" duration="2651000" />
+      <workItem from="1731931039156" duration="4291000" />
+      <workItem from="1732345416076" duration="2451000" />
     </task>
     <servers />
   </component>

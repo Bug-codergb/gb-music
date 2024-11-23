@@ -65,6 +65,7 @@ const login = formEl => {
         userName: loginForm.username,
         password: loginForm.password
       });
+      
       userStore.token = res.token;
       userStore.userInfo = res;
 

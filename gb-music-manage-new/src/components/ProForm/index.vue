@@ -37,7 +37,7 @@
             <template v-if="it.tag === 'cover'">
               <div class="cover-container flx-center">
                 <template v-if="!isPrevCover">
-                  <input type="file" @change="e => coverChange(e, it.prop)" />
+                  <input type="file" :key="coverKey" @change="e => coverChange(e, it.prop)" />
                   <el-icon><Picture /></el-icon>
                 </template>
                 <template v-else>
@@ -117,12 +117,15 @@ const newFormConfig = computed(() =>{
 
 const proCopperRef = ref();
 const currentCoverProp = ref("");
+
+const coverKey = ref(0);
 const coverChange = (e, prop) => {
   const file = e.currentTarget.files[0];
   if (!file.type.includes("image")) {
     ElMessage.warning("请上传图片文件");
     return;
   }
+  coverKey.value+=1;
   proCopperRef.value && proCopperRef.value.showDialog(file);
   currentCoverProp.value = prop;
 };

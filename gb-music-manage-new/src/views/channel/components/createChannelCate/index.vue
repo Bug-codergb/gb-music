@@ -9,7 +9,7 @@
       :config="config"
       v-model="formData"
       ref="formRef"
-      aspectRatio="1"
+      aspectRatio="2"
       :realWidth="140"
     ></ProForm>
   </ProDrawer>
@@ -47,6 +47,8 @@ const formData = ref({
   cover: ""
 });
 const showDrawer = () => {
+  formData.value.name = ""
+  formData.value.cover=""
   isShow.value = true;
 };
 const formRef = ref();

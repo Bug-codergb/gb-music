@@ -25,6 +25,7 @@ router.beforeEach(async (to, from, next) => {
     return next();
   }
 
+  console.log(userStore.token);
   if (!userStore.token) {
     return next({path:LOGIN_URL,replace:true})
   }

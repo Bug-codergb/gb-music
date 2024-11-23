@@ -141,8 +141,9 @@ class AlbumService {
       const sql = `select count(a.id) as count
                    from albumcate as ac
                    LEFT JOIN album as a on a.cateId=ac.id
-                   where ac.id=? ${keyword.length !== 0 ? ` and a.name like '%${keyword}%'` : ''}`;
+                   where ${id!==undefined && id!==null ? `ac.id=?`:''} ${keyword.length !== 0 ? ` and a.name like '%${keyword}%'` : ''}`;
       const result = await connection.execute(sql, [id]);
+
       return result[0][0];
     } catch (e) {
       console.log(e);

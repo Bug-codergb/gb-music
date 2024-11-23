@@ -24,6 +24,7 @@ const config = reactive([
   ]
 ])
 const showDrawer=()=>{
+  formData.value.name = ""
   isShow.value = true;
 }
 const formRef = ref()
@@ -48,7 +49,7 @@ defineExpose({
 
 <template>
   <div class="create-video-cate">
-    <ProDrawer v-model="isShow" @confirm="handleConfirm">
+    <ProDrawer v-model="isShow" @confirm="handleConfirm" title="新增视频分类">
       <ProForm :config="config" v-model="formData" ref="formRef"></ProForm>
     </ProDrawer>
   </div>
