@@ -48,7 +48,12 @@ const columns = reactive([
   {
     label:"简介",
     prop:"description",
-    isShow:true
+    isShow:true,
+    render:(scope)=>{
+      return <el-tooltip show-after={500} placement={'top'} content={scope.row.description}>
+        <span class="mle">{scope.row.description}</span>
+      </el-tooltip>
+    }
   },
   {
     label:"分类",

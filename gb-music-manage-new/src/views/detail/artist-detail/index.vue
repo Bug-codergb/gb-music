@@ -23,7 +23,13 @@ const activeName = ref("song");
           <el-form class="artist-base-info">
             <el-form-item label="名称">{{artistDetail.name}}</el-form-item>
             <el-form-item label="分类">{{artistDetail.category?.name}}</el-form-item>
-            <el-form-item label="简介">{{artistDetail.description}}</el-form-item>
+            <el-form-item label="简介">
+              <el-tooltip :content="artistDetail.description" placement="top" :show-after="500">
+                <span class="mle">
+                {{artistDetail.description}}
+              </span>
+              </el-tooltip>
+            </el-form-item>
           </el-form>
         </el-col>
       </el-row>
