@@ -30,3 +30,7 @@ export function uploadPlaylistCoverApi(id,data){
 export function updatePlaylistApi(data){
   return http.post("/playlist/update",data);
 }
+//获取歌单详情
+export function getPlaylistDetailApi(data){
+  return http.get("/playlist/detail",data);
+}

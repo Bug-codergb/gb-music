@@ -30,7 +30,12 @@ const columns = reactive([
   {
     label:"简介",
     prop:"alia",
-    isShow:true
+    isShow:true,
+    render:(scope)=>{
+      return <el-tooltip placement="top" content={scope.row.alia} show-after={500}>
+        <span class="mle">{scope.row.alia}</span>
+      </el-tooltip>
+    }
   },
   {
     label:"时长",

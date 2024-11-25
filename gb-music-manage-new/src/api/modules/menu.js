@@ -92,6 +92,16 @@ export function getMenuListApi(params) {
               icon: "Menu"
             }
           },
+          {
+            path:"/playlist/detail/:id",
+            component:"/detail/playlist-detail/index",
+            meta:{
+              title:"歌单详情",
+              icon:"Menu",
+              activeMenu:"/playlist/index",
+              isHide: true,
+            }
+          }
         ]
       },
       {

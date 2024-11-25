@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +58,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
     "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "/Users/guobin/vscode projecy/gb-music/gb-music-client-new/node_modules/typescript/lib",
+    "ts.external.directory.path": "/Users/guobin/Visual Studio Code Project/gb-music/gb-music-client-new/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -140,7 +142,8 @@
       <workItem from="1725591730823" duration="6629000" />
       <workItem from="1725612435772" duration="4059000" />
       <workItem from="1725880358907" duration="1698000" />
-      <workItem from="1732348083041" duration="3386000" />
+      <workItem from="1732348083041" duration="3878000" />
+      <workItem from="1732534140017" duration="1897000" />
     </task>
     <servers />
   </component>

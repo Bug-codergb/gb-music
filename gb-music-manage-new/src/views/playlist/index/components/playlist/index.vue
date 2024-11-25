@@ -28,9 +28,13 @@ import {getAllPlaylistApi} from "@/api/modules/playlist"
 import ProTable from "@/components/ProTable/index.vue"
 import SetPlaylistCate from "../setPlaylistCate/index.vue"
 import { reactive,ref } from "vue";
+import { useRouter } from "vue-router"
 import { ElMessage,ElMessageBox } from "element-plus"
 import {deletePlaylistApi} from "@/api/modules/playlist"
 import CreatePlaylist from "../createPlaylist/index.vue"
+
+
+const router = useRouter();
 const columns = reactive([
   {
     label:"封面",
@@ -43,7 +47,14 @@ const columns = reactive([
   {
     label:"名称",
     prop:"name",
-    isShow:true
+    isShow:true,
+    render:(scope)=>{
+      return <el-tooltip content={scope.row.name} show-after={500} placement="top">
+          <el-link type="primary" onClick={()=>handleDetail(scope.row)}>
+            <span class="mle">{scope.row.name}</span>
+          </el-link>
+        </el-tooltip> 
+    }
   },
   {
     label:"简介",
@@ -123,5 +134,11 @@ const handleCreate=()=>{
 }
 const handleEdit=(item)=>{
   createPlaylistRef.value && createPlaylistRef.value.showDrawer(item)
+}
+
+const handleDetail=(row)=>{
+  router.push({
+    path:"/playlist/detail/"+row.id
+  })
 }
 </script>

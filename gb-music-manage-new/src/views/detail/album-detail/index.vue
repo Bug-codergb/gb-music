@@ -55,7 +55,11 @@ search();
                   {{ moment(albumDetail.publishTime).format("yyyy-MM-DD") }}
                 </el-form-item>
                 <el-form-item label="简介:">
-                  {{albumDetail.description}}
+                  <el-tooltip placement="top" :content="albumDetail.description" :show-after="500">
+                    <span class="mle">
+                      {{albumDetail.description}}
+                    </span>
+                  </el-tooltip>
                 </el-form-item>
               </el-col>
             </el-row>

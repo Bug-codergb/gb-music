@@ -48,3 +48,6 @@ export function getArtistDetailApi(data){
 export function updateArtistApi(data){
   return http.post("/artist/update",data);
 }
+export function getArtistMVApi(data){
+  return http.get("/artist/mv",data);
+}
