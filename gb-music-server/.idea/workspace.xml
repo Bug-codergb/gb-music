@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../gb-music-client-new/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/.env.production" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +131,8 @@
       <workItem from="1727765427236" duration="6021000" />
       <workItem from="1731931039156" duration="4291000" />
       <workItem from="1732345416076" duration="7180000" />
-      <workItem from="1732534151703" duration="923000" />
+      <workItem from="1732534151703" duration="1524000" />
+      <workItem from="1732543608817" duration="3936000" />
     </task>
     <servers />
   </component>

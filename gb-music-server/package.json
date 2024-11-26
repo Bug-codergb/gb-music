@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./src/main.js",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "build":"webpack",
+    "serve":"./dist/bundle.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +25,9 @@
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2",
     "redis": "^3.1.2",
-    "webp-converter": "^2.3.3"
+    "webp-converter": "^2.3.3",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
     "alipay-sdk": "^3.2.0"

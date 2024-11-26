@@ -14,19 +14,21 @@ const errorType = require('../constants/errorType');
 const app =express();
 const wsApp = express();
 expressWS(wsApp);
-
-const errorHandle = require('./errorHandle');
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const errorHandle = require('./errorHandle');
+
+
 
 app.use(async (req, res, next) => {
-  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Origin', 'http://localhost:8888');
+  res.set('Access-Control-Allow-Credentials', true);
   res.set('Access-Control-Allow-Headers', 'POST,Origin,Content-Type,Accept,authorization');
   const authorization = req.get('authorization');
   if(whiteList.includes(req.url)){
+    console.log(22)
     return next();
-  }else{ 
+  }else{
     if (authorization) {
       const token = authorization.replace('Bearer ', '');
       try {
@@ -43,6 +45,7 @@ app.use(async (req, res, next) => {
   }
 
 });
+
 //注册
 const registerRouter = require('../router/register.router');
 //登录
