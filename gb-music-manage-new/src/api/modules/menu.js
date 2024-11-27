@@ -130,6 +130,16 @@ export function getMenuListApi(params) {
               icon: "Menu"
             }
           },
+          {
+            path: "/video/:id",
+            component: "/detail/video-detail/index",
+            meta: {
+              title: "视频详情",
+              icon: "Menu",
+              isHide: true,
+              activeMenu: "/video/index"
+            }
+          },
         ]
       },
       {

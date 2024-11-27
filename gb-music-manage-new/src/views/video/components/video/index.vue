@@ -45,6 +45,7 @@
 </template>
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
 import { formatTime } from "@/utils/time.js";
 import moment from "moment";
 import debounce from "lodash/debounce";
@@ -52,8 +53,11 @@ import ProTable from "@/components/ProTable/index";
 import CreateVideo from "../createVideo/index.vue"
 import {
   getVideoListApi,
-  getVideoCateApi
+  getVideoCateApi, deleteVideoApi
 } from "@/api/modules/video.js";
+import {ElMessageBox,ElMessage} from "element-plus";
+
+const router = useRouter();
 const columns = reactive([
   {
     label: "封面",
@@ -72,7 +76,16 @@ const columns = reactive([
   {
     label: "名称",
     prop: "name",
-    isShow: true
+    isShow: true,
+    render:(scope)=>{
+      return <el-tooltip content={scope.row.name} show-after={500} placement="top">
+        <el-link type="primary" onClick={()=>handleVideo(scope.row)}>
+          <span class="mle">
+            {scope.row.name}
+          </span>
+        </el-link>
+      </el-tooltip>
+    }
   },
   {
     label: "时长",
@@ -102,9 +115,9 @@ const columns = reactive([
     render: scope => {
       return (
         <el-space size="large">
-          <el-link type="primary">查看</el-link>
+          <el-link type="primary" onClick={()=>handleVideo(scope.row)}>查看</el-link>
           <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
-          <el-link type="danger">删除</el-link>
+          <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
         </el-space>
       );
     }
@@ -139,5 +152,17 @@ const handleCreate = () => {
 };
 const handleEdit=(item)=>{
   createVideoRef.value && createVideoRef.value.showDrawer(item)
+}
+const handleVideo=(item)=>{
+  router.push(`/video/${item.id}`);
+}
+const handleDelete=async (item)=>{
+  ElMessageBox.confirm("确认删除吗?","提示",{
+    type:"warning"
+  }).then(async ()=>{
+    const res = await deleteVideoApi({id:item.id});
+    ElMessage.success("删除成功");
+    search();
+  }).catch(()=>{})
 }
 </script>

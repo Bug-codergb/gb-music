@@ -40,3 +40,12 @@ export function getVideoDataApi() {
 export function updateVideoApi(data){
   return http.post("/video/update",data)
 }
+export function getVideoDetailApi(data){
+  return http.get("/video/detail",data);
+}
+export function getVideoUrlApi(data){
+  return http.get("/video/url",data);
+}
+export function deleteVideoApi(data){
+  return http.post("/video/delete",data);
+}

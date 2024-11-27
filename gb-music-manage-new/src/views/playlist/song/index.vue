@@ -27,6 +27,7 @@
     </ProTable>
     <CreateSong ref="createSongRef" @success="search"/>
     <CreateMV ref="createMVRef"/>
+    <PlayContainer ref="playContainerRef" />
   </div>
 </template>
 <script setup lang="jsx">
@@ -38,12 +39,16 @@ import { getSongListApi,updateSongVipApi } from "@/api/modules/song.js";
 import ProTable from "@/components/ProTable/index";
 import CreateSong from "./components/createSong.vue"
 import CreateMV from "./components/createMV.vue";
+import PlayContainer from "@/components/PlayContainer/index.vue"
 import { deleteSongApi } from "@/api/modules/song"
 const columns = reactive([
   {
     label: "歌曲名称",
     prop: "name",
-    isShow: true
+    isShow: true,
+    render:(scope)=>{
+      return <el-link type="primary" onClick={()=>handlePlay(scope.row)}>{scope.row.name}</el-link>
+    }
   },
   {
     label: "专辑",
@@ -101,6 +106,11 @@ const handleCreate=()=>{
 }
 const handleEdit=(item)=>{
   createSongRef.value && createSongRef.value.showDrawer(item);
+}
+
+const playContainerRef = ref();
+const handlePlay=(row)=>{
+  playContainerRef.value && playContainerRef.value.showDialog(row.id);
 }
 const tableRef = ref()
 const search=()=>{

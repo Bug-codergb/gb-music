@@ -21,3 +21,9 @@ export function updateSongApi(data){
 export function deleteSongApi(data){
   return http.post("/song/delete",data);
 }
+export function getSongDetailApi(data){
+  return http.get("/song/detail",data);
+}
+export function getSongUrlApi(data){
+  return http.get("/song/url",data);
+}
