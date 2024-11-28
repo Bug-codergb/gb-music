@@ -12,6 +12,9 @@
             <template v-if="it.tag === 'input'">
               <el-input v-bind="it.attrs" :placeholder="it.placeholder" v-model="newFormData[it.prop]" />
             </template>
+            <template v-if="it.tag === 'input-number'">
+              <el-input-number v-bind="it.attrs" :placeholder="it.placeholder" v-model="newFormData[it.prop]" />
+            </template>
             <template v-if="it.tag === 'select'">
               <el-select v-bind="it.attrs" :placeholder="it.placeholder" v-model="newFormData[it.prop]">
                 <el-option v-for="item in it.options" :key="item.value" :value="item.value" :label="item.label"></el-option>

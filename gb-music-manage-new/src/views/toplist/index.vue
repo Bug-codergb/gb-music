@@ -1,7 +1,10 @@
 <template>
   <div class="table-box">
     <div class="table-box">
-      <h4>官方榜单</h4>
+      <div class="header flx-justify-between">
+        <h4>官方榜单</h4>
+        <el-link type="success" @click="handleUpdate">更新</el-link>
+      </div>
       <ProTable
         key="hot"
         :columns="hotColumns"
@@ -25,15 +28,19 @@
 </template>
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router";
 import moment from "moment";
 import { ElMessageBox, ElMessage } from "element-plus";
 import {
   getHotToplistApi,
   getOfficialToplistApi,
-  deleteToplistApi
+  deleteToplistApi,
+  updateToplistApi
 } from "@/api/modules/toplist.js";
 import ProTable from "@/components/ProTable/index";
 import CreateToplist from "./components/createToplist/index.vue";
+
+const router = useRouter();
 const hotColumns = reactive([
   {
     label: "封面",
@@ -73,7 +80,7 @@ const hotColumns = reactive([
     render: scope => {
       return (
         <el-space size="large">
-          <el-link type="primary">查看</el-link>
+          <el-link type="primary" onClick={()=>handleCheck(scope.row)}>查看</el-link>
           <el-link
             type="danger"
             onClick={() => handleDelete(scope.row)}
@@ -90,6 +97,11 @@ const handleCreate = () => {
   createToplistRef.value && createToplistRef.value.showDrawer();
 };
 
+const handleUpdate=async ()=>{
+  const res = await updateToplistApi();
+  ElMessage.success("榜单更新成功")
+}
+
 const tableRef = ref();
 const search = () => {
   tableRef.value && tableRef.value.search();
@@ -104,6 +116,11 @@ const handleDelete = item => {
     search();
   });
 };
+const handleCheck=(row)=>{
+  router.push({
+    path:"/toplist/"+row.id
+  })
+}
 </script>
 <style lang="scss" scoped>
 .hot {

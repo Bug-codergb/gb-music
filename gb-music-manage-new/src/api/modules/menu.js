@@ -159,6 +159,16 @@ export function getMenuListApi(params) {
               title: "排行榜管理",
               icon: "Menu"
             }
+          },
+          {
+            path:"/toplist/:id",
+            component:"/detail/toplist-detail/index",
+            meta:{
+              icon:"Menu",
+              title:"排行榜详情",
+              activeMenu: "/toplist/index",
+              isHide: true
+            }
           }
         ]
       },
@@ -220,6 +230,15 @@ export function getMenuListApi(params) {
               title: "用户管理",
               icon: "Menu"
             },
+          },
+          {
+            path: "/order/index",
+            component: "/order/index",
+            title: "订单信息",
+            meta: {
+              title: "订单管理",
+              icon: "Menu"
+            },
           }
         ]
       },
@@ -247,31 +266,12 @@ export function getMenuListApi(params) {
             }
           },
           {
-            path: "/account/index",
-            component: "/account/index",
-            meta: {
-              title: "账户管理",
-              icon: "Menu"
-            },
-            redirect:"/personal/index",
-            children:[
-              {
-                path:"/personal/index",
-                component:"/account/personal/index",
-                meta:{
-                  title:"个人账户",
-                  icon:"House"
-                }
-              },
-              {
-                path:"/system/index",
-                component:"/account/system/index",
-                meta:{
-                  title:"系统账户",
-                  icon:"House"
-                }
-              }
-            ]
+            path:"/combo/index",
+            component: "/combo/index",
+            meta:{
+              title:"套餐管理",
+              icon:"Menu"
+            }
           },
           {
             path:"/banner",
@@ -284,7 +284,7 @@ export function getMenuListApi(params) {
         ],
         meta: {
           title: "系统设置",
-          icon: "Menu"
+          icon: "Setting"
         }
       },
       {

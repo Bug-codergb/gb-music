@@ -16,3 +16,9 @@ export function uploadToplistCoverApi(id,data) {
 export function deleteToplistApi(data) {
   return http.post("/toplist/delete", data);
 }
+export function updateToplistApi(data) {
+  return http.post("/toplist/export", data);
+}
+export function getToplistDetailApi(data){
+  return http.get("/toplist/detail", data);
+}

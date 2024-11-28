@@ -1,26 +1,10 @@
 <template>
   <div class="table-box">
     <ProTable :columns="columns" :border="true" :requestApi="getMenuListApi" :pagination="false" :initParam="{}" ref="tableRef">
-      <template #tableHeader>
-        <el-form inline>
-          <el-form-item label="图标">
-            <div>
-              <el-select v-model="icon" placeholder="请输入">
-                <el-option v-for="item in iconList" :key="item" :label="item" :value="item"></el-option>
-              </el-select>
-            </div>
-          </el-form-item>
-          <el-form-item label="图标">
-            <el-input />
-          </el-form-item>
-          <el-form-item label="图标">
-            <el-date-picker v-model="icon" type="date" placeholder="Pick a date" style="width: 100%" />
-          </el-form-item>
-        </el-form>
-      </template>
       <template #icon="scope">
-        <el-icon>
-          <component :is="scope.row.icon" />
+
+        <el-icon v-if="scope.row.meta && scope.row.meta.icon">
+          <component :is="scope.row.meta.icon" />
         </el-icon>
       </template>
     </ProTable>
@@ -41,6 +25,16 @@ const globalStore = useGlobalStore();
 const { iconList } = globalStore;
 const columns = ref([
   {
+    label: "路由名称",
+    prop: "title",
+    isShow: true
+  },
+  {
+    label: "图标",
+    prop: "icon",
+    isShow: true,
+  },
+  {
     label: "页面url",
     prop: "path",
     isShow: true
@@ -50,15 +44,9 @@ const columns = ref([
     prop: "component",
     isShow: true
   },
-  {
-    label: "路由名称",
-    prop: "name",
-    isShow: true
-  },
-  {
-    label: "图标",
-    prop: "icon",
-    isShow: true
-  }
+
 ]);
+getMenuListApi().then(res=>{
+  console.log(res);
+})
 </script>
