@@ -26,12 +26,13 @@
       </template>
     </ProTable>
     <CreateSong ref="createSongRef" @success="search"/>
-    <CreateMV ref="createMVRef"/>
+    <CreateMV ref="createMVRef" @success="search" />
     <PlayContainer ref="playContainerRef" />
   </div>
 </template>
 <script setup lang="jsx">
 import { ref, reactive } from "vue";
+import { useRouter } from "vue-router"
 import moment from "moment";
 import { ElMessage,ElMessageBox } from "element-plus";
 import debounce from "lodash/debounce"
@@ -41,13 +42,25 @@ import CreateSong from "./components/createSong.vue"
 import CreateMV from "./components/createMV.vue";
 import PlayContainer from "@/components/PlayContainer/index.vue"
 import { deleteSongApi } from "@/api/modules/song"
+const router = useRouter();
 const columns = reactive([
   {
     label: "歌曲名称",
     prop: "name",
     isShow: true,
     render:(scope)=>{
-      return <el-link type="primary" onClick={()=>handlePlay(scope.row)}>{scope.row.name}</el-link>
+      return <el-space>
+        <el-tooltip placement="top" content={scope.row.name} show-after={500}>
+          <el-link type="primary" onClick={() => handlePlay(scope.row)}>
+          <span className="mle playlist-song-name">
+            {scope.row.name}
+          </span>
+          </el-link>
+        </el-tooltip>
+        {
+          scope.row.vid && <div className="g-mv-container" onClick={()=>handleRouterVideo(scope.row)}>MV</div>
+        }
+      </el-space>
     }
   },
   {
@@ -61,9 +74,9 @@ const columns = reactive([
     isShow: true
   },
   {
-    label:"是否为vip",
-    prop:"vip",
-    isShow:true,
+    label: "是否为vip",
+    prop: "vip",
+    isShow: true,
     render:(scope)=>{
       return <el-select v-model={scope.row.vip} style={{width:"120px"}} onChange={()=>handleVIPChange(scope.row)}>
         <el-option label="非会员" value={0}></el-option>
@@ -141,4 +154,30 @@ const handleDelete=(row)=>{
     ElMessage.success("添加成功");
   })
 }
+const handleRouterVideo=(item)=>{
+  router.push({
+    path:"/video/"+item.vid,
+  })
+}
 </script>
+<style lang="scss">
+
+.playlist-song-name{
+  word-break: break-all;
+}
+
+</style>
+<style lang="scss">
+.g-mv-container{
+  border: 2px solid #ec4141!important;
+  color:#ec4141;
+  line-height:12px;
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-weight: bolder;
+  margin: 0 0 0 4px;
+  transform: scale(0.85);
+  cursor:pointer;
+}
+</style>

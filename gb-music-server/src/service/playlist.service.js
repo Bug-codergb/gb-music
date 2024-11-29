@@ -156,7 +156,7 @@ class PlaylistService {
        LEFT JOIN playlist_category as pcy on pcy.cateId=pc.id
        LEFT JOIN playlist as p on p.id=pcy.pId
        where pc.id=?
-       order by p.createTime desc  
+       order by p.createTime desc
        limit ?,?`;
     const result = await connection.execute(sql, [cateId, offset, limit]);
     const countSQL = `select count(pc.id) as count

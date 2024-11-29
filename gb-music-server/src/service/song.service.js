@@ -111,10 +111,11 @@ class SongService {
 			 JSON_OBJECT('id',al.id,'name',al.name,'coverUrl',al.coverUrl,'publishTime',al.publishTime,
 			 'description',al.description) as album,
 			 (select JSON_ARRAYAGG(JSON_OBJECT('id',ps.pId,'name',p.name))
-			  from playlist_song as ps LEFT JOIN playlist as p on p.id=ps.pId where ps.songId=s.id) as playlist
+			  from playlist_song as ps LEFT JOIN playlist as p on p.id=ps.pId where ps.songId=s.id) as playlist,v.vid
        from song as s
        LEFT JOIN artist as ar on ar.id=s.arId
        left JOIN album as al on al.id=s.alId
+       left join video as v on v.songId = s.id
        where s.name like '%${keyword}%'
        limit ?,?`;
       const result = await connection.execute(sql, [offset, limit]);

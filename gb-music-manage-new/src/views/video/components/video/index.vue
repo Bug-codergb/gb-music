@@ -7,6 +7,7 @@
       ref="tableRef"
       :initParam="searchParams"
       dataAlias="videos"
+      :pagination="true"
     >
       <template #tableHeader>
         <el-form inline>
