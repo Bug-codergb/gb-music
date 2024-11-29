@@ -10,10 +10,12 @@
     </div>
     <el-table
       ref="tableRef"
+      :row-key="rowKey"
       :data="data ?? tableData"
       :border="border"
       @select="handleSelect"
       @select-all="handleSelect"
+      v-bind="$attrs"
     >
       <slot></slot>
       <template v-for="item in tableColumns" :key="item">
