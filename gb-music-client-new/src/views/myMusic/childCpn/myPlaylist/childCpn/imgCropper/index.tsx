@@ -3,9 +3,10 @@ import React, { memo, useState, useImperativeHandle, forwardRef, useRef, FC } fr
 import CustomizeUpload from '@/components/common/customizeUpload';
 interface IProps {
   getCropperFile: (file: File | null) => void;
+  title?:string
 }
 const ImgCropper: FC<IProps> = forwardRef((props, ref) => {
-  const { getCropperFile } = props;
+  const { getCropperFile,title } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const showModal = (file: File | null) => {
@@ -30,7 +31,7 @@ const ImgCropper: FC<IProps> = forwardRef((props, ref) => {
     };
   });
   return (
-    <Modal title="上传歌单封面" width={'45%'} open={isOpen} onOk={handleOk} onCancel={handleCancel}>
+    <Modal title={title || "上传歌单封面"} width={'45%'} open={isOpen} onOk={handleOk} onCancel={handleCancel}>
       <div style={{ height: '200px' }}>
         <CustomizeUpload
           ref={customizeUploadRef}

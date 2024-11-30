@@ -21,8 +21,11 @@ getVideoUrlApi({vid:route.params.id}).then((res)=>{
 
       <el-col :span="24">
         <el-descriptions :column="3" border class="video-detail-description">
-          <el-descriptions-item label="源文件" :span="3">
+          <el-descriptions-item label="源文件" :span="2">
             <video class="video-source" controls :src="url"/>
+          </el-descriptions-item>
+          <el-descriptions-item label="视频ID">
+            {{videoDetail.id}}
           </el-descriptions-item>
           <el-descriptions-item label="名称" :span="3">{{videoDetail.name}}</el-descriptions-item>
           <el-descriptions-item label="创建人" :span="3">

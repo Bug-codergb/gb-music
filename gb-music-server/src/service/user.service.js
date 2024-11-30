@@ -35,6 +35,15 @@ class UserService {
       console.log(e);
     }
   }
+  async deleteUserAvatarService(userId) {
+    try {
+      const sql=`delete from avatar where userId=?`;
+      const result = await connection.execute(sql, [userId]);;
+      return result[0];
+    } catch (e) {
+
+    }
+  }
   //用户喜欢歌曲
   async setUserFavoriteService(id, userId) {
     try {
@@ -601,6 +610,15 @@ class UserService {
        GROUP BY m.userId`;
     const result = await connection.execute(sql, [userId]);
     return result[0];
+  }
+  async updateUserPasswordService(userId,userName,password,){
+    try{
+      const sql=`update user set userName = ? ,password=? where userId = ?`;
+      const result = await connection.execute(sql, [userName,password,userId]);
+      return result[0];
+    }catch (e) {
+
+    }
   }
 }
 module.exports = new UserService();

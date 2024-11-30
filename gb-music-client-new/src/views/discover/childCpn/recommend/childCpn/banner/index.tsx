@@ -88,7 +88,7 @@ const Banner: FC = (props): ReactElement => {
             })}
           {banner && banner.length < 1 && (
             <div>
-              <Image width={1190} height={370} src={placeholder} preview={false} />
+              <Image style={{width:"100%",aspectRatio:5.3333}} src={placeholder} preview={false} />
             </div>
           )}
         </Carousel>

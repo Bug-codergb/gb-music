@@ -31,12 +31,16 @@ const {
   getSystemDataService,
   getUserFileService,
   deleteUserService,
-  getSimpleInfoService
+  getSimpleInfoService,
+  updateUserPasswordService
 } = require('../service/user.service');
 class UserController {
   //头像上传
   async create(req, res, next) {
     const { userId, userName } = req.user;
+    if(!req.file || Object.keys(req.file).length===0){
+      return next(new Error(errorType.FILE_OPERATION_FAILED));
+    }
     const { originalname, mimetype, destination, filename, size } = req.file;
     if (!isEmpty(mimetype, 'mimetype不能为空', next)) {
       const result = await createService(
@@ -432,6 +436,14 @@ class UserController {
     const { userId } = req.query;
     if (!isEmpty(userId, '用户id不能为空', next)) {
       const result = await getSimpleInfoService(userId);
+      res.json(result[0]);
+    }
+  }
+  async updateUserPassword(req,res,next){
+    const { userId } = req.user;
+    const { userName,password } = req.body;
+    if(!isEmpty(userId,"用户id不能为空",next) && !isEmpty(password,"密码不能为空",next)){
+      const result = await updateUserPasswordService(userId,userName,password);
       res.json(result[0]);
     }
   }

@@ -25,7 +25,8 @@ const {
   getUserMoment,
   getSystemData,
   deleteUser,
-  getSimpleInfo
+  getSimpleInfo,
+  updateUserPassword
 } = require('../controller/user.controller');
 const { loginAuth } = require('../middleware/auth.middleware');
 //头像上传
@@ -70,4 +71,5 @@ router.post('/system/data', loginAuth, getSystemData);
 router.post('/delete', loginAuth, deleteUser);
 //获取用户简略信息 (关注，粉丝，动态)
 router.get('/simple', loginAuth, getSimpleInfo);
+router.post("/update/password",loginAuth, updateUserPassword);
 module.exports = router;

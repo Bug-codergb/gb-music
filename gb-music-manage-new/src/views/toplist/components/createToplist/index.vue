@@ -31,7 +31,8 @@ const isShow = ref(false);
 const formData = ref({
   name: "",
   desc: "",
-  cover: null
+  cover: null,
+  type:0
 });
 const config = reactive([
   [
@@ -70,7 +71,11 @@ const config = reactive([
     }
   ]
 ]);
-const showDrawer = () => {
+const showDrawer = (type) => {
+  formData.value.name = "";
+  formData.value.desc = "";
+  formData.value.cover = null;
+  formData.value.type =type;
   isShow.value = true;
 };
 const formRef = ref();
@@ -80,7 +85,8 @@ const handleConfirm = () => {
       if (e) {
         const ret = await createToplistApi({
           name: formData.value.name,
-          desc: formData.value.desc
+          desc: formData.value.desc,
+          type:formData.value.type
         });
         const f = new FormData();
         f.append("cover", formData.value.cover);

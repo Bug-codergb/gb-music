@@ -3,12 +3,12 @@ const client = require('../app/redis');
 const { formatTime } = require('../utils/formatTime');
 const { APP_PORT, APP_HOST } = require('../app/config');
 class ToplistService {
-  async createToplistService(name, desc) {
+  async createToplistService(name, desc,type) {
     try {
       const id = new Date().getTime();
       const url = `${APP_HOST}:${APP_PORT}/toplist/cover?tId=${id}`;
-      const sql = `insert into toplist(id,name,description,coverUrl) values(?,?,?,?)`;
-      const result = await connection.execute(sql, [id, name, desc, url]);
+      const sql = `insert into toplist(id,name,description,coverUrl,type) values(?,?,?,?,?)`;
+      const result = await connection.execute(sql, [id, name, desc, url,type]);
       return id;
     } catch (e) {
       console.log(e);

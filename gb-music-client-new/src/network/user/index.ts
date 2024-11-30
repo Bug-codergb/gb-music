@@ -1,5 +1,6 @@
 import request from '../request';
 import store from '../../store/index';
+
 //用户喜欢歌曲
 export function setUserFavorite(id: string) {
   return request({
@@ -155,4 +156,14 @@ export function getSimpleUserInfo<T>(userId: string) {
 
     }
   });
+}
+export function updateUserPassword<T>(userName:string,password:string){
+  return request<T>({
+    url:"/user/update/password",
+    method:"post",
+    data:{
+      userName,
+      password
+    }
+  })
 }

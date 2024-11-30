@@ -29,7 +29,7 @@ export const AlbumWrapper = styled.div`
       color: #373737;
       margin: 0 0 10px 0;
     }
-    margin: 0 0 0 100px;
+    margin: 0 0 0 70px;
     & > li {
       width: 500px;
       display: flex;

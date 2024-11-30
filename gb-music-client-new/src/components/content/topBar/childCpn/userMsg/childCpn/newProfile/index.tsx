@@ -1,6 +1,6 @@
 import { Modal } from 'antd';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import React, { memo, useRef, useState, useImperativeHandle, forwardRef, FormEvent, useEffect } from 'react';
+import React, { memo, useRef, useState, useImperativeHandle, forwardRef,FC, FormEvent, useEffect } from 'react';
 import { PictureOutlined, DeleteOutlined } from '@ant-design/icons';
 import ImgCropper from '@/views/myMusic/childCpn/myPlaylist/childCpn/imgCropper';
 import type { FormProps } from 'antd';
@@ -15,7 +15,7 @@ interface IProps {
   onClick: (name: string, password: string, file: File | null) => void;
 }
 
-const Profile = forwardRef((props, ref) => {
+const Profile:FC<IProps> = forwardRef((props, ref) => {
   const { onClick } = props;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,7 +31,7 @@ const Profile = forwardRef((props, ref) => {
     userMsg && form.setFieldValue('username', userMsg.userName);
     if (userMsg && userMsg.avatarUrl) {
       form.setFieldValue('cover', userMsg.avatarUrl);
-      setPrevUrl(userMsg.url);
+      setPrevUrl(userMsg.avatarUrl);
       setIsPrev(true);
     }
   }, [userMsg]);
@@ -48,7 +48,8 @@ const Profile = forwardRef((props, ref) => {
   };
 
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-    onClick(values.name, values.password, values.cover);
+    console.log(props)
+    onClick(values.username, values.password, values.cover);
     setIsOpen(false);
   };
 
@@ -75,6 +76,7 @@ const Profile = forwardRef((props, ref) => {
       const url = URL.createObjectURL(file);
       setPrevUrl(url);
     }
+    console.log(file)
     setIsPrev(true);
   };
   const handleDeleteFile = () => {
@@ -122,7 +124,7 @@ const Profile = forwardRef((props, ref) => {
           </Col>
         </Row>
       </Form>
-      <ImgCropper ref={imgCropperRef} getCropperFile={(file) => handleCropperImg(file)} />
+      <ImgCropper ref={imgCropperRef} title='上传头像' getCropperFile={(file) => handleCropperImg(file)} />
     </Modal>
   );
 });

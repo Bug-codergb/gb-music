@@ -3,8 +3,6 @@ export const ToplistDetailWrapper = styled.div`
   background-color: #ffffff;
 `;
 export const CenterContentWrapper = styled.div`
-  width: 1220px;
-  margin: 0 auto;
   background-color: #fff;
   display: flex;
   align-items: flex-start;
@@ -13,7 +11,7 @@ export const LeftContent = styled.div`
   width: 920px;
   border-right: 1px solid #e0e0e0;
   .toplist-detail-header {
-    padding: 30px 20px 30px 30px;
+    padding: 20px;
     display: flex;
     .img-container {
       width: 170px;
@@ -62,7 +60,7 @@ export const LeftContent = styled.div`
     }
   }
   .body-content {
-    padding: 0 0 0 30px;
+    padding: 0 0 0 20px;
   }
 `;
 export const RightContent = styled.div`

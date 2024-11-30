@@ -3,8 +3,6 @@ export const ArtistDetailWrapper = styled.div`
   background-color: #fff;
 `;
 export const CenterContent = styled.div`
-  width: 1220px;
-  margin: 0 auto;
   background-color: #fff;
   display: flex;
   flex-wrap: nowrap;
@@ -18,7 +16,7 @@ export const RightContent = styled.div`
 `;
 export const ArtistHeader = styled.div`
   display: flex;
-  padding: 30px 0 20px 30px;
+  padding: 20px 0 20px 20px;
   .img-container {
     width: 170px;
     height: 170px;
@@ -60,5 +58,5 @@ export const ArtistHeader = styled.div`
   }
 `;
 export const AlbumDetailContent = styled.div`
-  padding: 10px 20px 0 30px;
+  padding: 10px 20px 0 20px;
 `;

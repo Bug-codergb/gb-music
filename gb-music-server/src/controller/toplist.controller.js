@@ -24,9 +24,9 @@ const {
 } = require('../service/toplist.service');
 class ToplistController {
   async createToplist(req, res, next) {
-    const { name, desc } = req.body;
+    const { name, desc,type=0 } = req.body;
     if (!isEmpty(name, '榜单名称不能为空', next) && !isEmpty(desc, '榜单简介不能为空', next)) {
-      const result = await createToplistService(name, desc);
+      const result = await createToplistService(name, desc,type);
       res.json({ tId: result });
     }
   }

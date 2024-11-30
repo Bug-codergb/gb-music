@@ -61,6 +61,12 @@ import {ElMessageBox,ElMessage} from "element-plus";
 const router = useRouter();
 const columns = reactive([
   {
+    label:"视频ID",
+    prop:"id",
+    isShow: true,
+    width:130
+  },
+  {
     label: "封面",
     prop: "cover",
     isShow: true,
@@ -78,6 +84,7 @@ const columns = reactive([
     label: "名称",
     prop: "name",
     isShow: true,
+    'min-width':100,
     render:(scope)=>{
       return <el-tooltip content={scope.row.name} show-after={500} placement="top">
         <el-link type="primary" onClick={()=>handleVideo(scope.row)}>

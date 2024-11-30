@@ -12,6 +12,7 @@ import { UserMsgWrapper } from './style';
 import UserInfo from './childCpn/userInfo';
 import Profile from './childCpn/newProfile/index';
 import { ILogin, IUserMsg } from '../../../../../constant/store/login';
+import {uploadAvatar,updateUserPassword} from "@/network/user/index"
 
 const UserMsg: React.FC = () => {
   const navigate = useNavigate();
@@ -41,7 +42,13 @@ const UserMsg: React.FC = () => {
   const infoClick = (): void => {
     setIsShowProfile(true);
   };
-  const exit = (): void => {
+  const exit = async (name:string,password:string,cover:File|null): void => {
+    if(cover && typeof cover !=="string"){
+      let f = new FormData();
+      cover && f.append("avatar",cover);
+      const res = await uploadAvatar(f);
+    }
+    await updateUserPassword(name,password);
     setIsShowProfile(false);
   };
   const dispatch = useAppDispatch();
@@ -113,10 +120,10 @@ const UserMsg: React.FC = () => {
       {/*<CSSTransition in={isShow} timeout={1000} unmountOnExit={true} classNames="userInfo">*/}
       {/*  <UserInfo onClick={() => infoClick()} />*/}
       {/*</CSSTransition>*/}
-      <CSSTransition timeout={1000} in={isShowProfile} unmountOnExit={true} classNames="profile">
-        <Profile onClick={exit} />
-      </CSSTransition>
-      <Profile ref={profileRef} />
+      {/* <CSSTransition timeout={1000} in={isShowProfile} unmountOnExit={true} classNames="profile">
+        <Profile onClick={()=>exit()} />
+      </CSSTransition> */}
+      <Profile ref={profileRef} onClick={(name:string,password:string,cover:File|null)=>exit(name,password,cover)}/>
     </UserMsgWrapper>
   );
 };

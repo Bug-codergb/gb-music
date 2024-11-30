@@ -101,7 +101,9 @@ const columns = reactive([
     render: scope => {
       return (
         <el-space size="large">
-          <el-link type="primary" onClick={()=>handleCreateMV(scope.row)}>添加mv</el-link>
+          {
+            <el-link type="primary" disabled={scope.row.vid} onClick={() => handleCreateMV(scope.row)}>添加mv</el-link>
+          }
           <el-link type="success">上传歌词</el-link>
           <el-link type="warning" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
           <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>

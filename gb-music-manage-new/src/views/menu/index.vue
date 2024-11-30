@@ -6,7 +6,7 @@
               :pagination="false"
               :initParam="{}"
               rowKey="path"
-              :default-expand-all="true"
+              :default-expand-all="false"
               ref="tableRef">
       <template #icon="scope">
 

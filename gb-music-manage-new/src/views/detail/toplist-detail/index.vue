@@ -13,9 +13,22 @@ getToplistDetailApi({id:id.value}).then((res)=>{
 })
 const columns = reactive([
   {
+    label:"序号",
+    type:"index",
+    isShow: true,
+    width: 80,
+  },
+  {
     label: "名称",
     prop: "name",
-    isShow: true
+    isShow: true,
+    render:(scope)=>{
+      return <el-tooltbip content={scope.row.name} show-after={500}>
+        <el-link type="primary">
+          <span class="mle">{scope.row.name}</span>
+        </el-link>
+      </el-tooltbip>
+    }
   },
   {
     label: "歌手",

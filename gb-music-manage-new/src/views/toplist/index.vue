@@ -3,10 +3,14 @@
     <div class="table-box">
       <div class="header flx-justify-between">
         <h4>官方榜单</h4>
-        <el-link type="success" @click="handleUpdate">更新</el-link>
+        <el-space>
+          <el-link type="primary" @click="handleCreate(1)">新增</el-link>
+          <el-link type="success" @click="handleUpdate">更新</el-link>
+        </el-space>
       </div>
       <ProTable
         key="hot"
+        ref="hotTableRef"
         :columns="hotColumns"
         :requestApi="getOfficialToplistApi"
       />
@@ -14,7 +18,7 @@
     <div class="table-box hot">
       <div class="header flx-justify-between">
         <h4>热门榜单</h4>
-        <el-link type="primary" @click="handleCreate">新增</el-link>
+        <el-link type="primary" @click="handleCreate(0)">新增</el-link>
       </div>
       <ProTable
         ref="tableRef"
@@ -93,8 +97,8 @@ const hotColumns = reactive([
   }
 ]);
 const createToplistRef = ref();
-const handleCreate = () => {
-  createToplistRef.value && createToplistRef.value.showDrawer();
+const handleCreate = (type) => {
+  createToplistRef.value && createToplistRef.value.showDrawer(type);
 };
 
 const handleUpdate=async ()=>{
@@ -103,8 +107,10 @@ const handleUpdate=async ()=>{
 }
 
 const tableRef = ref();
+const hotTableRef = ref();
 const search = () => {
   tableRef.value && tableRef.value.search();
+  hotTableRef.value && hotTableRef.value.search();
 };
 
 const handleDelete = item => {
