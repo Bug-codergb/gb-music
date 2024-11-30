@@ -3,7 +3,6 @@ export const UserDetailWrapper = styled.div`
   background-color: #FFFF;
 `;
 export const CenterContentWrapper = styled.div`
-  width: 1220px;
   display: flex;
   margin: 0 auto;
   background-color: #ffffff;
