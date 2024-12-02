@@ -1,5 +1,6 @@
 import React, { memo, FC, ReactElement, useEffect, useState, useRef, useCallback, MouseEvent } from 'react';
-
+import Player from 'xgplayer';
+import 'xgplayer/dist/index.min.css';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { CenterContent, VideoDetailWrapper, LeftContent, RightContent } from './style';
@@ -45,6 +46,14 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
       getFileBlob(verifyURL(data.url)).then(() => {
         //const url = URL.createObjectURL(data);
         setURL(verifyURL(data.url));
+        const player = new Player({
+          id: 'vs',
+          url: data.url,
+          height: '100%',
+          width: '100%',
+          autoplay:true,
+          marginControls:false
+      })
       });
     });
     setIsPlay(true);
@@ -147,7 +156,8 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
                 style={{ height: url === undefined || url.trim().length === 0 ? '400px' : 'auto' }}
               >
                 <div className="video-container">
-                  <video
+                  <div id="vs"></div>
+                  {/* <video
                     src={url}
                     autoPlay
                     id="vio"
@@ -157,8 +167,8 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
                     onContextMenu={(e) => rightClick(e)}
                   >
                     {' '}
-                  </video>
-                  <div className="control">
+                  </video> */}
+                  {/* <div className="control">
                     <div className="progress">
                       <Slider
                         value={(currentTime / videoDetail.dt) * 100}
@@ -213,7 +223,7 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </Spin>

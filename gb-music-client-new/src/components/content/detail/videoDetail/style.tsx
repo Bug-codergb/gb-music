@@ -26,12 +26,7 @@ export const LeftContent = styled.div`
       flex-direction: column;
       overflow: hidden;
       box-sizing: border-box;
-      video {
-        height: 430px;
-        width: 100%;
-        object-fit: contain;
-        margin: 0 0 15px 0;
-      }
+     
       .control {
         padding: 0 20px;
         .progress {
