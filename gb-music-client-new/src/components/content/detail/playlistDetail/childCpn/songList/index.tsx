@@ -23,7 +23,8 @@ const SongList: FC<IProps> = ({ songs, pId, isShowUp,tId }): ReactElement => {
   });
   const dispatch = useAppDispatch();
   const playSong = (item: ISong, id: string): void => {
-    dispatch(changeSongDetailAction(id));
+    console.log(item,id)
+    dispatch(changeSongDetailAction({id}));
     const { vip } = item;
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {

@@ -1,6 +1,6 @@
 <script setup lang="jsx">
 import { ref,reactive } from "vue"
-import {useRoute} from "vue-router"
+import {useRoute,useRouter} from "vue-router"
 import moment from "moment"
 import { getArtistAlbumApi } from "@/api/modules/album"
 import ProTable from "@/components/ProTable/index.vue"
@@ -46,8 +46,22 @@ const columns = reactive([
         <span class="mle">{scope.row.description}</span>
       </el-tooltip>
     }
+  },
+  {
+    label:"操作",
+    prop:"action",
+    isShow:true,
+    render:(scope)=>{
+      return <el-link  type="primary" onClick={()=>handleCheck(scope.row)}>查看</el-link>
+    }
   }
 ])
+const router = useRouter();
+const handleCheck=(item)=>{
+  router.push({
+    path:`/album/${item.id}`
+  })
+}
 </script>
 
 <template>

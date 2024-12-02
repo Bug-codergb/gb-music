@@ -59,6 +59,7 @@ export const DetailHeader = styled.div`
       justify-content: center;
       border-radius: 15px;
       cursor: pointer;
+      color:#d8d8d8;
       .already {
         margin: 0 5px 0 0;
         padding: 6px 0;

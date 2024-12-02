@@ -1,6 +1,6 @@
 import React, { memo, FC, useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { CheckOutlined } from '@ant-design/icons';
+import { CheckOutlined,FolderAddOutlined  } from '@ant-design/icons';
 import UserMsg from '../../../common/userMsg';
 import SongList from './childCpn/songList';
 import Subscriber from './childCpn/subscriber';
@@ -115,7 +115,7 @@ const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
                   </div>
                 </div>
                 <div className={`sub ${isSub() ? 'active' : ''}`} onClick={(e) => subPlayList()}>
-                  {!isSub() && <i className="iconfont icon-xinjianshoucangjia"> </i>}
+                  {!isSub() && <FolderAddOutlined className="already"/>}
                   {isSub() && <CheckOutlined className="already" />}
                   {!isSub() && <span>收藏</span>}
                   {isSub() && <span>已收藏</span>}

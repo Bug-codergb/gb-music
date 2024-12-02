@@ -37,15 +37,15 @@ const MV: FC<IProps> = (props): ReactElement => {
           mv.length !== 0 &&
           mv.map((item, index) => {
             return (
-              <li key={item.id}>
+              <li key={item.id} style={{margin:'0 0 10px 0'}}>
                 <MsgItem
                   isShowPlayCount={true}
                   playCount={item.playCount}
                   img={<img src={item.coverUrl} alt="" onClick={(e) => mvRouter(item, index)} />}
                   state={<span>{item.name}</span>}
                   dt={item.dt}
-                  itemWidth="180px"
-                  scale={0.6}
+                  itemWidth="190px"
+                  scale={0.56}
                 />
               </li>
             );

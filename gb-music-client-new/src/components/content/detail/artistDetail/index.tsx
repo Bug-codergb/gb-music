@@ -5,7 +5,7 @@ import {
   useAppSelector
 } from "@/store/hooks.ts"
 
-import { CheckOutlined } from '@ant-design/icons';
+import { CheckOutlined ,FolderAddOutlined} from '@ant-design/icons';
 import {
   ArtistDetailWrapper,
   ArtistHeader,
@@ -95,7 +95,7 @@ const ArtistDetail: FC<{ id: string }> = memo((props): ReactElement => {
               <div className="msg">
                 <div className="artist-name">{artistDetail.name}</div>
                 <div className={`sub ${isSub() ? 'active' : ''}`} onClick={(e) => subArtist()}>
-                  {!isSub() && <i className="iconfont icon-xinjianshoucangjia"> </i>}
+                  {!isSub() && <FolderAddOutlined className="already"></FolderAddOutlined>}
                   {isSub() && <CheckOutlined className="already" />}
                   {!isSub() && <span>收藏</span>}
                   {isSub() && <span>已收藏</span>}

@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
-import { CheckOutlined } from '@ant-design/icons';
+import { CheckOutlined ,FolderAddOutlined} from '@ant-design/icons';
 import { getAlbumDetail } from '../../../../network/album';
 import { formatTime } from '../../../../utils/format';
 import { AlbumDetailWrapper, LeftContent, RightContent, CenterContentWrapper } from './style';
@@ -93,7 +93,7 @@ const AlbumDetail: FC< { id: string }> = (props): ReactElement => {
                 </div>
                 {/*收藏*/}
                 <div className={`sub ${isSub() ? 'active' : ''}`} onClick={(e) => subAlbum()}>
-                  {!isSub() && <i className="iconfont icon-xinjianshoucangjia"> </i>}
+                  {!isSub() && <FolderAddOutlined className="already"></FolderAddOutlined>}
                   {isSub() && <CheckOutlined className="already" />}
                   {!isSub() && <span>收藏</span>}
                   {isSub() && <span>已收藏</span>}

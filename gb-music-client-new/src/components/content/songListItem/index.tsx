@@ -41,6 +41,7 @@ const SongListItem: FC<IProps> = (props) => {
   });
   const dispatch = useAppDispatch();
   const play = (id: string) => {
+    console.log(id)
     onClick(id);
   };
   const isLove = () => {
@@ -112,7 +113,7 @@ const SongListItem: FC<IProps> = (props) => {
         </div>
       )}
       <div className="name text-nowrap" onClick={(e) => play(id)}>
-        <span>{state}</span>
+        <span className="song-name">{state}</span>
         <VipMv isShowVip={vip === 1} isShowMv={video} onClick={() => videoRouter()} />
       </div>
       <div className="creator text-nowrap" onClick={(e) => userRouter()}>
