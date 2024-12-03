@@ -63,11 +63,11 @@ const MV: FC = (props): ReactElement => {
               <li key={item.id}>
                 <MsgItem
                   playCount={item.playCount}
-                  itemWidth="180px"
+                  itemWidth="200px"
                   isShowPlayCount={true}
                   img={
                     <Image
-                      width={180}
+                      width={200}
                       height={110}
                       src={item.coverUrl}
                       preview={false}

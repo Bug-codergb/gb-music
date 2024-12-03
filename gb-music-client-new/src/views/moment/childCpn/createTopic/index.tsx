@@ -1,12 +1,14 @@
-import React, { memo, FC, ReactElement, ChangeEvent, useState } from 'react';
+import React, { memo, FC, ReactElement, ChangeEvent, useState ,useImperativeHandle,forwardRef} from 'react';
 import { CreateTopicWrapper } from './style';
+import { Button, Modal } from 'antd';
 import UploadCpn from '../../../../components/common/upload';
 import { createTopic, uploadCover } from '../../../../network/topic';
 interface IProps {
   onClick: () => void;
 }
-const CreateTopic: FC<IProps> = (props): ReactElement => {
+const CreateTopic: FC<IProps> = forwardRef((props,ref): ReactElement => {
   const { onClick } = props;
+  const [isModalOpen,setIsModalOpen] = useState(false);
   const [name, setName] = useState<string>('');
   const [desc, setDesc] = useState<string>('');
 
@@ -28,23 +30,26 @@ const CreateTopic: FC<IProps> = (props): ReactElement => {
       });
     }
   };
-  const cancel = () => {
-    onClick();
-  };
-  const names = [
-    { name: '名称', cols: 50, rows: 2, fn: nameChange },
-    { name: '简介', cols: 50, rows: 2, fn: descChange }
-  ];
+  const showModal=()=>{
+    setIsModalOpen(true);
+  }
+  useImperativeHandle(ref,()=>{
+    return {
+      showModal
+
+    }
+  })
+
+  const handleOk=()=>{
+
+  }
+  const handleCancel=()=>{
+
+  }
   return (
-    <CreateTopicWrapper>
-      <UploadCpn
-        isShowVioPrev={false}
-        isShowImgPrev={true}
-        names={names}
-        defineBtn={(img) => define(img)}
-        cancelBtn={() => cancel()}
-      />
-    </CreateTopicWrapper>
+    <Modal title="创建话题" width="40%" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <CreateTopicWrapper>111</CreateTopicWrapper>
+    </Modal>
   );
-};
+});
 export default memo(CreateTopic);

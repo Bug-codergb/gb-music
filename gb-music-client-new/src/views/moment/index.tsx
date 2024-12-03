@@ -1,5 +1,7 @@
-import React, { memo, FC, ReactElement, useState } from 'react';
+import React, { memo, FC, ReactElement, useState,useRef } from 'react';
 import { MomentWrapper, LeftContent, RightContent, CenterContent } from './style';
+import { Button } from "antd";
+import{PlusOutlined} from '@ant-design/icons';
 import Publish from './childCpn/publish';
 import Moments from './childCpn/moments';
 import HotMoment from './childCpn/hotMoment';
@@ -11,11 +13,14 @@ const Moment: FC = memo((): ReactElement => {
   const changeShow = () => {
     setIsShow(!isShow);
   };
-  const changeTopicShow = () => {
-    setIsShowTopic(!isShowTopic);
-  };
+  
   const publishSuccess = () => {
     setKeyIndex(keyIndex + 1);
+  };
+  const momentsRef = useRef();
+  const changeTopicShow = () => {
+    console.log(momentsRef.current)
+    momentsRef.current && momentsRef.current.showModal();
   };
   return (
     <MomentWrapper>
@@ -24,20 +29,16 @@ const Moment: FC = memo((): ReactElement => {
           <div className="moment-header">
             <h3>动态</h3>
             <div className="control-btn">
-              <button onClick={(e) => changeShow()}>
-                <i className="iconfont icon-jia1"> </i>
-                发动态
-              </button>
+              
+              <Button icon={ <PlusOutlined />} onClick={(e) => changeShow()} type="primary">发动态</Button>
               {isShow && <Publish onClick={() => changeShow()} publishSuccess={() => publishSuccess()} />}
-              <button onClick={(e) => changeTopicShow()}>
-                <i className="iconfont icon-jia1"> </i>
-                创建话题
-              </button>
-              {isShowTopic && <CreateTopic onClick={() => changeTopicShow()} />}
+             
+              <Button icon={<PlusOutlined />} onClick={(e) => changeTopicShow()} type="primary">创建话题</Button>
+               <CreateTopic onClick={() => changeTopicShow()}  ref={momentsRef}/>
             </div>
           </div>
           <div className="moment-body">
-            <Moments key={keyIndex} />
+            <Moments key={keyIndex}/>
           </div>
         </LeftContent>
         <RightContent>
