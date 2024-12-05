@@ -3,10 +3,12 @@ import React, { memo, useState, useImperativeHandle, forwardRef, useRef, FC } fr
 import CustomizeUpload from '@/components/common/customizeUpload';
 interface IProps {
   getCropperFile: (file: File | null) => void;
-  title?:string
+  title?:string,
+  aspectRatio?:number,
+  realWidth ?:number
 }
 const ImgCropper: FC<IProps> = forwardRef((props, ref) => {
-  const { getCropperFile,title } = props;
+  const { getCropperFile,title,aspectRatio,realWidth } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const showModal = (file: File | null) => {
@@ -37,8 +39,8 @@ const ImgCropper: FC<IProps> = forwardRef((props, ref) => {
           ref={customizeUploadRef}
           imgWidth={8}
           scale={1}
-          aspectRatio={1}
-          realWidth={150}
+          aspectRatio={aspectRatio ? aspectRatio : 1}
+          realWidth={realWidth ? realWidth : 150}
           file={file}
           isCircle={false}
         />

@@ -80,13 +80,11 @@ class MomentController {
   }
   //获取搜索song
   async getSong(req, res, next) {
-    const { keyword = '' } = req.query;
-    if (keyword.trim().length === 0) {
-      res.json([]);
-    } else {
-      const result = await getSongService(keyword);
-      res.json(result);
-    }
+    let { keyword = '' } = req.query;
+    keyword = keyword.toString();
+    keyword = keyword.trim();
+    const result = await getSongService(keyword);
+    res.json(result);
   }
   //获取所有动态
   async getAllMoment(req, res, next) {

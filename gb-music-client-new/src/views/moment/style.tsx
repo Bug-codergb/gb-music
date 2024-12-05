@@ -3,8 +3,6 @@ export const MomentWrapper = styled.div`
   background-color: #ffffff;
 `;
 export const CenterContent = styled.div`
-  width: 1220px;
-  margin: 0 auto;
   display: flex;
   background-color: #fff;
 `;

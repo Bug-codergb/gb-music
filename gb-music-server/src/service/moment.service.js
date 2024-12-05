@@ -66,7 +66,7 @@ class MomentService {
   async getSongService(keyword) {
     try {
       const sql = `
-        select s.id,s.name,s.publishTime,alia,
+        select distinct(s.id) as id,s.name,s.publishTime,alia,
        JSON_OBJECT('id',al.id,'name',al.name,'coverUrl',al.coverUrl,'publishTime',
 			              al.publishTime,'description',al.description) AS album,
        JSON_OBJECT('id',ar.id,'name',ar.name,'description',ar.description,'avatarUrl',ar.avatarUrl) AS artist,
@@ -74,7 +74,8 @@ class MomentService {
        from song as s
        LEFT JOIN album as al on al.id=s.alId
        LEFT JOIN artist as ar on ar.id=s.arId
-       where s.name like '%${keyword}%'`;
+       ${keyword.length!==0 ? `where s.name like '%${keyword}%'` :'' }`;
+      console.log(sql)
       const result = await connection.execute(sql);
       return result[0];
     } catch (e) {

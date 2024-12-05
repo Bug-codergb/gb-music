@@ -3,12 +3,12 @@ export const TopicDetailWrapper = styled.div`
   background-color: #ffffff;
 `;
 export const CenterContent = styled.div`
-  width: 1220px;
+  width: 100%;
   margin: 0 auto;
   background-color: #fff;
   .header {
     width: 100%;
-    height: 350px;
+    height: 280px;
     background-repeat: no-repeat;
     background-color: pink;
     background-size: cover;
@@ -49,7 +49,7 @@ export const CenterContent = styled.div`
     }
   }
   .moment-list {
-    padding: 0 20px;
+    padding: 0 40px;
     & > li {
       display: flex;
       align-items: flex-start;

@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/videoDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/videoDetail/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/playlist-detail/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/playlist-detail/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/assets/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/topicDetail/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/topicDetail/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playPage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playPage/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playPage/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/childCpn/createTopic/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/childCpn/createTopic/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/myMusic/childCpn/myPlaylist/childCpn/imgCropper/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/myMusic/childCpn/myPlaylist/childCpn/imgCropper/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/moment.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/moment.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/moment.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/moment.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +138,7 @@
       <workItem from="1731931039156" duration="4291000" />
       <workItem from="1732345416076" duration="7180000" />
       <workItem from="1732534151703" duration="1524000" />
-      <workItem from="1732543608817" duration="31691000" />
+      <workItem from="1732543608817" duration="32611000" />
     </task>
     <servers />
   </component>

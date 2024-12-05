@@ -227,7 +227,9 @@ const PlayPage: FC = memo((props): ReactElement => {
           )}
           <div className="song-msg">
             <div className="song-name">
-              {songDetail.name}
+              <span className='mle'>
+                {songDetail.name}
+              </span>
               <div className="tag">
                 {songDetail && songDetail.vip === 1 && (
                   <span className="vip" onClick={(e) => payClick()}>
@@ -268,7 +270,7 @@ const PlayPage: FC = memo((props): ReactElement => {
                     );
                   })}
               </ul>
-              {lyric === '暂无歌词' ? <span className="no-tip">{lyric}</span> : ''}
+              {lyric === '暂无歌词' ? <div className="no-tip">{lyric}</div> : ''}
             </div>
           </div>
         </div>

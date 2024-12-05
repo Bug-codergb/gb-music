@@ -3,7 +3,7 @@ import singlecover from '../../../assets/img/singlecover.png';
 export const PlayPageWrapper = styled.div`
   background-color: #fff;
   .play {
-    padding: 50px 0 0 0;
+    padding: 40px 0 0 0;
     display: flex;
     justify-content: space-around;
     position: relative;
@@ -113,8 +113,17 @@ export const PlayPageWrapper = styled.div`
         font-weight: bold;
         display: flex;
         color: #2f2f2f;
+        word-break:break-all;
+        margin:0 0 20px 0;
+        &>span{
+          font-size:18px;
+        }
         .tag {
           margin: 0 0 0 10px;
+          flex:1;
+          white-space:nowrap;
+          display:flex;
+          align-items:center;
           span {
             color: #eb6363;
             border: 1px solid #eb6363;
@@ -157,12 +166,16 @@ export const PlayPageWrapper = styled.div`
       .lyric {
         width: 400px;
         height: 300px;
-        border-right: 1px solid #f9d5cb;
+        
         overflow-y: scroll;
         text-align: center;
-        span {
+        .no-tip {
           color: #ec4141;
-          padding: 300px 0 0 0;
+          width:100%;
+          display:flex;
+          height:100%;
+          justify-content:center;
+          align-items:center;
         }
 
         li {
