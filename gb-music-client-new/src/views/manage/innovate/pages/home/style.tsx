@@ -62,7 +62,6 @@ export const HomeWrapper = styled.div`
   }
   .vio-list {
     background-color: #fff;
-    margin: 20px 0 0 0;
     padding: 15px 0;
     & > li {
       display: flex;
@@ -128,7 +127,6 @@ export const HomeWrapper = styled.div`
   }
   .channel-list {
     background-color: #fff;
-    margin: 20px 0 0 0;
     padding: 15px 0;
     & > li {
       display: flex;
@@ -189,7 +187,6 @@ export const HomeWrapper = styled.div`
 `;
 export const UserMomentWrapper = styled.div`
   background-color: #fff;
-  margin: 20px 0 0 0;
   padding: 20px;
   width: 100%;
   & > ul {

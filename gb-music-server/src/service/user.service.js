@@ -620,5 +620,16 @@ class UserService {
 
     }
   }
+  async createUserService(userName,manage){
+    try{
+      const userId = new Date().getTime();
+      const password="123";
+      const sql=`insert into user(userId,userName,password,manage) values(?,?,?,?)`;
+      const result = await connection.execute(sql, [userId,userName,password,manage]);
+      return result[0];
+    }catch (e) {
+      console.log(e)
+    }
+  }
 }
 module.exports = new UserService();

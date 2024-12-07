@@ -32,7 +32,8 @@ const {
   getUserFileService,
   deleteUserService,
   getSimpleInfoService,
-  updateUserPasswordService
+  updateUserPasswordService,
+  createUserService
 } = require('../service/user.service');
 class UserController {
   //头像上传
@@ -428,7 +429,9 @@ class UserController {
         }
       } else {
         const result = await deleteUserService(userId);
-        next(new Error(errorType.PARAMETER_ERROR));
+        res.json({
+          message:"删除成功"
+        });
       }
     }
   }
@@ -445,6 +448,13 @@ class UserController {
     if(!isEmpty(userId,"用户id不能为空",next) && !isEmpty(password,"密码不能为空",next)){
       const result = await updateUserPasswordService(userId,userName,password);
       res.json(result[0]);
+    }
+  }
+  async createUser(req,res,next){
+    const { userName,manage } = req.body;
+    if(!isEmpty(userName,"用户名不能为空",next) && !isEmpty(manage,"角色不能为空",next)){
+      const result = await createUserService(userName,manage);
+      res.json(result);
     }
   }
 }

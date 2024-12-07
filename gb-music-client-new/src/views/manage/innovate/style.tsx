@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 export const InnovateWrapper = styled.div`
-  background-color: #fafafa;
+  background-color: #fff;
+  height:100%;
+  width:100%:
+  
 `;
 export const ContentBody = styled.div`
   display: flex;

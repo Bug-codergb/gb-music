@@ -1,19 +1,103 @@
 import React, { memo, FC, ReactElement } from 'react';
-
+import { Flex, Layout, Menu } from 'antd';
 import Topbar from './childCpn/topbar';
 import { InnovateWrapper, ContentBody } from './style';
 import NavList from './childCpn/navList';
-import { Outlet } from 'react-router-dom';
+import navlist from './childCpn/navList/constant/index';
+import { Outlet,useNavigate } from 'react-router-dom';
+
+const { Header, Footer, Sider, Content } = Layout;
+
+const headerStyle: React.CSSProperties = {
+  color: '#fff',
+  height: 64,
+  paddingInline: 48,
+  backgroundColor: '#fff',
+  borderBottom: '1px solid #e5e7ec'
+};
+
+const contentStyle: React.CSSProperties = {
+  color: '#fff',
+  backgroundColor: '#f1f2f4',
+  padding:'16px',
+  overflow:"hidden"
+};
+
+const siderStyle: React.CSSProperties = {
+  color: '#fff',
+  backgroundColor: '#fff',
+  borderRight: '1px solid #e5e7ec',
+  textAlign:"center"
+};
+
+const footerStyle: React.CSSProperties = {
+  color: '#fff',
+  backgroundColor: '#fff',
+  borderTop: '1px solid #e5e7ec'
+};
+
+const layoutStyle = {
+  borderRadius: 8,
+  overflow: 'hidden',
+  width: '100%',
+  height: '100%'
+};
+
 const Innovate: FC = (props): ReactElement => {
+  const navigate = useNavigate()
+  const onClick = ({item,key}) => {
+    navigate(key,{
+      replace:true
+    })
+  };
+  const defaultKey:string[]=[];
+  const defaultSelectedKeys:string[]=[]
+  const items: any[] = navlist.map((item:any,index:number)=>{
+    defaultKey.push(item.title);
+    return {
+      key:item.title,
+      label:item.title,
+      children:item.list.map((it:any,i:number)=>{
+        defaultSelectedKeys.push(it.path);
+        return {
+          key:it.path,
+          label:it.name
+        }
+      })
+    }
+  });
   return (
+    // <InnovateWrapper>
+    //   <Topbar />
+    //   <ContentBody>
+    //     <NavList />
+    //     <div className="content-body">
+    //       <Outlet/>
+    //     </div>
+    //   </ContentBody>
+    // </InnovateWrapper>
     <InnovateWrapper>
-      <Topbar />
-      <ContentBody>
-        <NavList />
-        <div className="content-body">
-          <Outlet/>
-        </div>
-      </ContentBody>
+      <Layout style={layoutStyle}>
+        <Header style={headerStyle}>Header</Header>
+        <Layout>
+          <Sider width="216px" style={siderStyle}>
+            <Menu
+              onClick={onClick}
+              style={{ width: '100%' }}
+              defaultSelectedKeys={defaultSelectedKeys[0]}
+              defaultOpenKeys={defaultKey}
+              mode="inline"
+              items={items}
+            />
+          </Sider>
+          <Content style={contentStyle}>
+            <div className='table-box'>
+            <Outlet/>
+            </div>
+          </Content>
+        </Layout>
+      
+      </Layout>
     </InnovateWrapper>
   );
 };

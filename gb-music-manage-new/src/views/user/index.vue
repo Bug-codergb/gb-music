@@ -5,13 +5,21 @@
       :columns="columns"
       :initParam="searchParams"
       dataAlias="user"
-    ></ProTable>
+      ref="tableRef"
+    >
+      <template #toolButton>
+        <el-button type="primary" @click="handleCreateUser">添加用户</el-button>
+      </template>
+    </ProTable>
+    <CreateUser ref="createUserRef" @success="handleSearch"/>
   </div>
 </template>
 <script setup lang="jsx">
+import CreateUser from "./components/createUser/index.vue"
 import { reactive, ref } from "vue";
+import {ElMessage, ElMessageBox} from "element-plus"
 import moment from "moment";
-import { getUserListApi } from "@/api/modules/user.js";
+import { getUserListApi,deleteUserApi } from "@/api/modules/user.js";
 import ProTable from "@/components/ProTable/index";
 const columns = reactive([
   {
@@ -74,11 +82,13 @@ const columns = reactive([
     prop: "action",
     isShow: true,
     fixed: "right",
+    width:200,
     render: scope => {
       return (
         <el-space size="large">
+          <el-link type="primary">上传头像</el-link>
           <el-link type="primary">编辑</el-link>
-          <el-link type="danger">删除</el-link>
+          <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
         </el-space>
       );
     }
@@ -89,4 +99,21 @@ const searchParams = reactive({
   manage: -1,
   vip: -1
 });
+const createUserRef = ref()
+const handleCreateUser  =()=>{
+  createUserRef.value && createUserRef.value.showDrawer();
+}
+const tableRef = ref();
+const handleSearch=()=>{
+  tableRef.value && tableRef.value.search();
+}
+const handleDelete=(item)=>{
+  ElMessageBox.confirm("确认删除该用户么?","提示",{
+    type:"warning"
+  }).then(async ()=>{
+    const res = deleteUserApi({userId:item.userId})
+    handleSearch();
+    ElMessage.success("删除成功")
+  })
+}
 </script>
