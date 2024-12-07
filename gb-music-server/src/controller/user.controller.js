@@ -341,7 +341,7 @@ class UserController {
   async getUserList(req, res, next) {
     try {
       const { vip = -1, manage = -1, keyword = '', offset = '0', limit = '30' } = req.body;
-      const result = await getUserListService(vip, manage, keyword, offset, limit);
+      const result = await getUserListService(vip, manage, keyword, `${offset}`, `${limit}`);
       res.json(result);
     } catch (e) {
       next(new Error(errorType.SERVER_INTERNAL_ERROR));

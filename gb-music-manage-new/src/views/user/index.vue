@@ -6,6 +6,7 @@
       :initParam="searchParams"
       dataAlias="user"
       ref="tableRef"
+      :pagination="true"
     >
       <template #toolButton>
         <el-button type="primary" @click="handleCreateUser">添加用户</el-button>
@@ -86,7 +87,6 @@ const columns = reactive([
     render: scope => {
       return (
         <el-space size="large">
-          <el-link type="primary">上传头像</el-link>
           <el-link type="primary">编辑</el-link>
           <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
         </el-space>

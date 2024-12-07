@@ -447,7 +447,7 @@ class UserService {
        from user as u
        ${exec}
        limit ?,?`;
-
+      console.log(sql);
       const countSQL = `select count(userId) as count
                       FROM user as u
                       ${exec}`;
