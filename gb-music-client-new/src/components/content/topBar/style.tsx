@@ -22,7 +22,7 @@ export const CenterContent = styled.div`
     align-items: center;
     height: 100%;
     .innovation {
-      border: 1px solid #00aeec;
+      border: 1px solid #ec4141;
       height: 40px;
       display: flex;
       align-items: center;

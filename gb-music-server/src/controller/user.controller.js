@@ -278,40 +278,10 @@ class UserController {
       const { offset = '0', limit = '10' } = req.query;
       const { userId } = req.user;
       const result = await getManageVioService(userId, offset, limit);
-      const { video, count } = result;
-      let time = [];
-      time = video.map((item, index) => {
-        return {
-          updateTime: item.createTime,
-          createTime: item.createTime.getMonth() + 1,
-          video: []
-        };
-      });
-      time = time.filter((item, index) => {
-        return (
-          index ===
-          time.findIndex((it, index) => {
-            return item.createTime === it.createTime;
-          })
-        );
-      });
-      time.forEach((item, index) => {
-        video.forEach((v, i) => {
-          if (v.createTime.getMonth() + 1 === item.createTime) {
-            item.video.push(v);
-          }
-        });
-      });
-      time.sort((a, b) => {
-        return b.createTime - a.createTime;
-      });
-      time.forEach((item, index) => {
-        delete item.createTime;
-      });
 
       res.json({
-        count,
-        video: time
+        video:result.video,
+        count:result.count
       });
     } catch (e) {
       next(new Error(errorType.SERVER_INTERNAL_ERROR));
