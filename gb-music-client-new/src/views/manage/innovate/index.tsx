@@ -1,10 +1,10 @@
-import React, { memo, FC, ReactElement } from 'react';
+import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { Flex, Layout, Menu } from 'antd';
 import Topbar from './childCpn/topbar';
 import { InnovateWrapper, ContentBody } from './style';
 import NavList from './childCpn/navList';
 import navlist from './childCpn/navList/constant/index';
-import { Outlet,useNavigate } from 'react-router-dom';
+import { Outlet,useNavigate ,useLocation} from 'react-router-dom';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -45,6 +45,7 @@ const layoutStyle = {
 
 const Innovate: FC = (props): ReactElement => {
   const navigate = useNavigate()
+  const location = useLocation();
   const onClick = ({item,key}) => {
     navigate(key,{
       replace:true
@@ -66,6 +67,10 @@ const Innovate: FC = (props): ReactElement => {
       })
     }
   });
+  const [selectedKeys,setSelectedKeys] = useState<string[]>([]);
+  useEffect(()=>{
+    setSelectedKeys([location.pathname]);
+  },[location.pathname])
   return (
     // <InnovateWrapper>
     //   <Topbar />
@@ -85,6 +90,7 @@ const Innovate: FC = (props): ReactElement => {
               onClick={onClick}
               style={{ width: '100%' }}
               defaultSelectedKeys={defaultSelectedKeys[0]}
+              selectedKeys={selectedKeys}
               defaultOpenKeys={defaultKey}
               mode="inline"
               items={items}

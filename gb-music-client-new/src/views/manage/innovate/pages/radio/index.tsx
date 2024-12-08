@@ -42,6 +42,8 @@ const Radio: FC = (props): ReactElement => {
   };
   return (
     <RadioWrapper>
+      <div className='table-box'>
+
       <ul className="channel-list">
         {channel.length !== 0 &&
           channel.map((item, index) => {
@@ -68,6 +70,7 @@ const Radio: FC = (props): ReactElement => {
             );
           })}
       </ul>
+      </div>
     </RadioWrapper>
   );
 };

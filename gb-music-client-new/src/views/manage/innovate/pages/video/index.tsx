@@ -16,7 +16,7 @@ const Video: FC = (props): ReactElement => {
   const [count, setCount] = useState<number>(0);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    getManageVio(0, 10).then((data: any) => {
+    getManageVio(0, 15).then((data: any) => {
       console.log(data);
       const { count } = data;
       const { video } = data;
@@ -26,7 +26,7 @@ const Video: FC = (props): ReactElement => {
   }, []);
   const chChange = (val: number) => {
     console.log(val)
-    getManageVio((val - 1) * 10, 10).then((data: any) => {
+    getManageVio((val - 1) * 15, 15).then((data: any) => {
       setCount(data.count);
       setVideo(data.video);
     });
@@ -75,12 +75,12 @@ const Video: FC = (props): ReactElement => {
             );
           })}
         </ul>
-        {count > 10 && (
+        {count > 15 && (
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
             <Pagination
               defaultCurrent={1}
               total={count}
-              pageSize={10}
+              pageSize={15}
               showTitle={false}
               onChange={(val: number) => chChange(val)}
             />

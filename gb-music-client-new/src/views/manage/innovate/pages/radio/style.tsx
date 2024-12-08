@@ -1,17 +1,27 @@
 import styled from 'styled-components';
 export const RadioWrapper = styled.div`
-  background-color: #fff;
-  padding: 20px;
+  .table-box{
+    overflow-y:auto;
+  }
+ @media screen and (max-width:1240px){
+    .channel-list{
+      grid-template-columns: repeat(2,49%)!important;
+    }
+    
+  }
+
   .channel-list {
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(3,32%);
+    justify-content: space-between;
+    display: grid;
     & > li {
-      width: 30%;
-      padding: 0 0 0 20px;
+    
+      background-color:#fff;
+      padding: 20px 0 20px 20px;
       display: flex;
       align-items: center;
-      border-right: 2px solid #f3f3f3;
-      border-bottom: 2px solid #f3f3f3;
+      border-radius:5px;
+    
       margin: 0 0 15px 0;
       .right-msg {
         margin: 0 0 0 40px;
