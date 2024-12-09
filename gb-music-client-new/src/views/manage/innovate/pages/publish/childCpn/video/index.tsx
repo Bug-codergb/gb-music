@@ -100,13 +100,10 @@ const Video: FC = (): ReactElement => {
           let coverFormData: FormData = new FormData();
           coverFormData.append('cover', cover);
           uploadCover(coverFormData, id).then((data: any) => {
-            setIsShow(false);
-            setDt('');
-            setCover(undefined);
-            setName('');
-            setDesc('');
-            setImgURL('');
-            setVioURL('');
+            setIsPrevCover(false);
+            setIsPrevVideo(false);
+            setVideoSource(null);
+            setIsModalOpen(false);
           });
           publishMessage('/video', '发布了', 'vId', id);
         }
@@ -126,6 +123,7 @@ const Video: FC = (): ReactElement => {
   const [form] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOk = () => {
+    form.setFieldValue("video",videoSource);
     form.submit();
     //setIsModalOpen(false);
   };
@@ -133,7 +131,31 @@ const Video: FC = (): ReactElement => {
     setIsModalOpen(false);
   };
 
-  const handleFinishForm = () => {};
+  const handleFinishForm = (values:any) => {
+    const {name,desc,cover,video} = values;
+
+    addVideo(name, desc, 0, cateId, undefined).then((data: any) => {
+      const { id } = data;
+      if (id) {
+        let formData: FormData = new FormData();
+        formData.append('video', video);
+        formData.append('dt', dt);
+        uploadVideo(formData, id).then((data: any) => {});
+        let coverFormData: FormData = new FormData();
+        coverFormData.append('cover', cover);
+        uploadCover(coverFormData, id).then((data: any) => {
+          setIsPrevCover(false);
+          setIsPrevVideo(false);
+          setVideoSource(null);
+          setIsModalOpen(false);
+          setPrevCoverURL("");
+          setPrevVideoURL("")
+
+        });
+        publishMessage('/video', '发布了', 'vId', id);
+      }
+    });
+  };
 
   const imgCropperRef = useRef();
   const [cropperImg, setCropperImg] = useState<File | null>(null);
@@ -167,11 +189,17 @@ const Video: FC = (): ReactElement => {
   const [videoIndex,setVideoIndex] = useState(1)
   const [prevVideoURL,setPrevVideoURL]= useState("")
 
+  const [videoSource,setVideoSource] = useState<File|null>(null)
   const handleVideoChange=(e:FormEvent)=>{
     if(e.currentTarget.files && e.currentTarget.files[0]){
       const file = e.currentTarget.files[0];
-      form.setFieldValue("video",file);
+      setVideoSource(file);
       setPrevVideoURL(URL.createObjectURL(file));
+
+      getVideoDuration(file).then((data: any) => {
+        setDt(data);
+      });
+
     }
     setVideoIndex(videoIndex+1);
     setIsPrevVideo(true);
@@ -179,6 +207,7 @@ const Video: FC = (): ReactElement => {
   const handleDeleteVideo=()=>{
     setIsPrevVideo(false);
     setPrevVideoURL("")
+    setVideoSource(null)
   }
   return (
     <VideoWrapper>
@@ -190,7 +219,7 @@ const Video: FC = (): ReactElement => {
         </span>
       </div>
       <Modal title="上传视频" width={'40%'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <Form name="upload-video" layout={'vertical'} form={form} onFinish={() => handleFinishForm()}>
+        <Form name="upload-video" layout={'vertical'} form={form} onFinish={handleFinishForm}>
           <Form.Item label="名称" name="name" required={true} rules={[{ required: true, message: '视频名称不能为空' }]}>
             <Input placeholder="请输入名称" />
           </Form.Item>
