@@ -1,10 +1,18 @@
-import React, { memo, FC, ReactElement, useEffect, useState, ChangeEvent } from 'react';
+import React, { memo, FC, ReactElement, useEffect, useState, ChangeEvent ,useRef, FormEvent} from 'react';
+import { Modal, Form, Input, Col, Row } from 'antd';
+import {
+  PictureOutlined,
+  PlaySquareOutlined,
+  DeleteOutlined
+} from '@ant-design/icons';
 import { VideoWrapper } from './style';
 import { addVideo, getVideoCate, uploadCover, uploadVideo } from '@/network/video';
 import { ICategory } from '@/constant/category';
 import { getVideoBase64, getVideoDuration } from '../../../../../../../utils/videoUtils';
 import { useAppDispatch } from '@/store/hooks';
 import { publishMessage } from '../../../../../../../network/message';
+
+import ImgCropper from '@/views/myMusic/childCpn/myPlaylist/childCpn/imgCropper/index';
 const Video: FC = (): ReactElement => {
   const [cateList, setCateList] = useState<ICategory[]>([]);
 
@@ -63,7 +71,7 @@ const Video: FC = (): ReactElement => {
     }
   };
   const upload = () => {
-    setIsShow(true);
+    setIsModalOpen(true);
   };
 
   const nameChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -114,6 +122,64 @@ const Video: FC = (): ReactElement => {
     setName('');
     setDesc('');
   };
+
+  const [form] = Form.useForm();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleOk = () => {
+    form.submit();
+    //setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFinishForm = () => {};
+
+  const imgCropperRef = useRef();
+  const [cropperImg, setCropperImg] = useState<File | null>(null);
+  const [isPrevCover,setIsPrevCover] = useState(false);
+  const [prevCoverURL,setPrevCoverURL] = useState("");
+
+  const [fileInputIndex, setFileInputIndex] = useState(0);
+   const handleCoverChange=(e:FormEvent)=>{
+    setFileInputIndex(fileInputIndex+1);
+    if(e.currentTarget.files && e.currentTarget.isDefaultNamespace.length!==0){
+      const file = e.currentTarget.files[0];
+      imgCropperRef.current && imgCropperRef.current.showModal(file);
+    }
+  }
+  const handleCropperImg=(file: File | null)=>{
+    if (file) {
+      setCropperImg(file);
+      form.setFieldValue('cover', file);
+      const url = URL.createObjectURL(file);
+      setPrevCoverURL(url);
+    }
+    setIsPrevCover(true);
+  }
+  const handleDeleteCover=()=>{
+    setIsPrevCover(false);
+    setPrevCoverURL("");
+    setCropperImg(null);
+  }
+
+  const [isPrevVideo,setIsPrevVideo] = useState(false);
+  const [videoIndex,setVideoIndex] = useState(1)
+  const [prevVideoURL,setPrevVideoURL]= useState("")
+
+  const handleVideoChange=(e:FormEvent)=>{
+    if(e.currentTarget.files && e.currentTarget.files[0]){
+      const file = e.currentTarget.files[0];
+      form.setFieldValue("video",file);
+      setPrevVideoURL(URL.createObjectURL(file));
+    }
+    setVideoIndex(videoIndex+1);
+    setIsPrevVideo(true);
+  }
+  const handleDeleteVideo=()=>{
+    setIsPrevVideo(false);
+    setPrevVideoURL("")
+  }
   return (
     <VideoWrapper>
       <div className="upload-outer">
@@ -123,57 +189,51 @@ const Video: FC = (): ReactElement => {
           点击上传
         </span>
       </div>
-      {isShow && (
-        <div className="upload">
-          <div className="name">
-            <span>名称:</span>
-            <textarea rows={2} cols={50} onChange={(e) => nameChange(e)} value={name}>
-              {' '}
-            </textarea>
-          </div>
-          <div className="desc">
-            <span>简介:</span>
-            <textarea rows={7} cols={50} value={desc} onChange={(e) => descChange(e)}>
-              {' '}
-            </textarea>
-          </div>
-          <div className="preview">
-            <div className="img-preview">
-              {!isShowImg && <input type="file" title="选择封面" onChange={(e) => imgPrev(e)} />}
-              {!isShowImg && <i className="iconfont icon-tupian"> </i>}
-              {isShowImg && <img src={prevImgURL} alt="封面预览" />}
-            </div>
-            <div className="video-preview">
-              {!isShowVio && <input type="file" title="选择视频" onChange={(e) => vioPrev(e)} />}
-              {!isShowVio && <i className="iconfont icon-video"> </i>}
-              {isShowVio && <img src={prevVioURL} alt="视频预览" />}
-            </div>
-          </div>
-          <div className="cate-title">分类:</div>
-          <ul className="cate-list">
-            {cateList.length !== 0 &&
-              cateList.map((item, index) => {
-                return (
-                  <li
-                    key={item.id}
-                    className={currentIndex === index ? 'active' : ''}
-                    onClick={(e) => liClick(item, index)}
-                  >
-                    {item.name}
-                  </li>
-                );
-              })}
-          </ul>
-          <div className="control-btn">
-            <button className="define" onClick={(e) => define()}>
-              确定
-            </button>
-            <button className="cancel" onClick={(e) => cancel()}>
-              取消
-            </button>
-          </div>
-        </div>
-      )}
+      <Modal title="上传视频" width={'40%'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Form name="upload-video" layout={'vertical'} form={form} onFinish={() => handleFinishForm()}>
+          <Form.Item label="名称" name="name" required={true} rules={[{ required: true, message: '视频名称不能为空' }]}>
+            <Input placeholder="请输入名称" />
+          </Form.Item>
+          <Form.Item label="简介" name="desc" required={true} rules={[{ required: true, message: '视频简介不能为空' }]}>
+            <Input.TextArea placeholder="请输入简介" />
+          </Form.Item>
+          <Row gutter={12}>
+            <Col span={12}>
+              <Form.Item label="封面" name={"cover"} required={true} rules={[{ required: true, message: '视频封面不能为空' }]}>
+                <div className='create-playlist-img-container'>
+                  {!isPrevCover && <input type="file" accept='image/*' key={fileInputIndex} onChange={(e)=>handleCoverChange(e)}/>}
+                  {!isPrevCover && <PictureOutlined className="g-pic-prev"/>}
+                  {isPrevCover && <img src={prevCoverURL} />}
+                  {isPrevCover && (
+                <div className="mask">
+                  <DeleteOutlined onClick={handleDeleteCover} />
+                </div>
+              )}
+                </div>
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item label="视频源文件" name="video" required={true} rules={[{ required: true, message: '视频源文件不能为空' }]}>
+                <div className='create-playlist-img-container'>
+                  {!isPrevVideo && <input type="file" key={videoIndex} accept='video/*' onChange={(E)=>handleVideoChange(E)} />}
+                  {!isPrevVideo && <PlaySquareOutlined className="g-pic-prev" />}
+                  {
+                    isPrevVideo && <video src={prevVideoURL}/>
+                  }
+                  {
+                    isPrevVideo && (
+                      <div className='mask'>
+                        <DeleteOutlined onClick={handleDeleteVideo} />
+                      </div>
+                    )
+                  }
+                </div>
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
+      </Modal>
+      <ImgCropper ref={imgCropperRef} aspectRatio={16/9} getCropperFile={(file) => handleCropperImg(file)} />
     </VideoWrapper>
   );
 };

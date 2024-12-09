@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 export const VideoWrapper = styled.div`
+.cover-container{
+  width:100%;
+  height:300px;
+  background-color:pink;
+}
   position: relative;
   textarea {
     resize: none;
@@ -11,7 +16,14 @@ export const VideoWrapper = styled.div`
     margin: 30px auto;
     border-radius: 8px;
     text-align: center;
-    padding-top: 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    .tip{
+      color:#ec4141;
+      margin:30px 0 0 0;
+    }
     i.iconfont {
       font-size: 50px;
       color: #ff3a3a;

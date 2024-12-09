@@ -1,5 +1,6 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
-import { Flex, Layout, Menu } from 'antd';
+import logo from '@/assets/img/logo.png';
+import { Flex, Layout, Menu,Button,Image } from 'antd';
 import Topbar from './childCpn/topbar';
 import { InnovateWrapper, ContentBody } from './style';
 import NavList from './childCpn/navList';
@@ -47,6 +48,7 @@ const Innovate: FC = (props): ReactElement => {
   const navigate = useNavigate()
   const location = useLocation();
   const onClick = ({item,key}) => {
+    console.log(key)
     navigate(key,{
       replace:true
     })
@@ -67,10 +69,18 @@ const Innovate: FC = (props): ReactElement => {
       })
     }
   });
+  items.unshift({
+    key:'/innovate/publish',
+    label:<Button color="danger" variant="solid" shape="round" size="large" danger style={{width:'100%'}}>发布</Button>
+  })
   const [selectedKeys,setSelectedKeys] = useState<string[]>([]);
   useEffect(()=>{
     setSelectedKeys([location.pathname]);
   },[location.pathname])
+
+  const handleClick=()=>{
+    navigate("/Home")
+  }
   return (
     // <InnovateWrapper>
     //   <Topbar />
@@ -83,7 +93,9 @@ const Innovate: FC = (props): ReactElement => {
     // </InnovateWrapper>
     <InnovateWrapper>
       <Layout style={layoutStyle}>
-        <Header style={headerStyle}>Header</Header>
+        <Header style={headerStyle}>
+          <Image src={logo} width={50} preview={false} style={{cursor:'pointer',borderRadius:'4px'}} onClick={()=>handleClick()}/>
+        </Header>
         <Layout>
           <Sider width="216px" style={siderStyle}>
             <Menu

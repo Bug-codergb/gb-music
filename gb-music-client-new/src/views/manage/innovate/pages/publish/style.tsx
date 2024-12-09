@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 export const PublishWrapper = styled.div`
   background-color: #fff;
-  padding: 30px 20px 80px 20px;
+  height:100%;
+  
   ul.path {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-bottom: 10px;
     border-bottom: 1px solid #eeeeee;
+    background-color:#fff;
+    padding:20px;
     .path-item {
       padding: 0 40px;
       color: #333;
@@ -21,4 +24,11 @@ export const PublishWrapper = styled.div`
       }
     }
   }
+  .publish-content{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color:#fff;
+  }  
 `;
