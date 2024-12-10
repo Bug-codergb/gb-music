@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 export const HomeWrapper = styled.div`
+  height:100%;
+  overflow-y:hidden;
+  display:flex;
+  flex-direction:column;
   .card-container p {
     margin: 0;
   }
@@ -63,6 +67,8 @@ export const HomeWrapper = styled.div`
   .vio-list {
     background-color: #fff;
     padding: 15px 0;
+    flex:1;
+    overflow-y:auto;
     & > li {
       display: flex;
       align-items: center;
@@ -88,6 +94,7 @@ export const HomeWrapper = styled.div`
         width: 30%;
         margin: 0 5px 0 0;
         font-size: 17px;
+        color:#333;
       }
       .create-time {
         width: 10%;
@@ -128,6 +135,8 @@ export const HomeWrapper = styled.div`
   .channel-list {
     background-color: #fff;
     padding: 15px 0;
+    flex:1;
+    overflow-y:auto;
     & > li {
       display: flex;
       align-items: center;
@@ -155,6 +164,7 @@ export const HomeWrapper = styled.div`
         width: 30%;
         margin: 0 5px 0 0;
         font-size: 17px;
+        color:#fff;
       }
       .create-time {
         width: 10%;
@@ -189,7 +199,10 @@ export const UserMomentWrapper = styled.div`
   background-color: #fff;
   padding: 20px;
   width: 100%;
+  overflow-y:auto;
+  flex:1;
   & > ul {
+    overflow-y:auto;
     width: 100%;
     & > li {
       display: flex;
@@ -221,6 +234,7 @@ export const UserMomentWrapper = styled.div`
       .content {
         width: 50%;
         margin: 0 35px 0 0;
+        color:#333;
       }
       .user-name {
         color: #0086b3;

@@ -54,7 +54,7 @@ const Home: FC = (props): ReactElement => {
     });
   }, []);
   useEffect(() => {
-    getUserAllMoment('0', '3').then((data: any) => {
+    getUserAllMoment('0', '5').then((data: any) => {
       setMomentCount(data.count);
       setMomentList(data.moment);
     });
@@ -78,7 +78,7 @@ const Home: FC = (props): ReactElement => {
     });
   };
   const momentChange = (e: number) => {
-    getUserAllMoment(`${(e - 1) * 3}`, '3').then((data: any) => {
+    getUserAllMoment(`${(e - 1) * 5}`, '5').then((data: any) => {
       setMomentCount(data.count);
       setMomentList(data.moment);
     });
@@ -148,6 +148,7 @@ const Home: FC = (props): ReactElement => {
               <Pagination
                 defaultCurrent={1}
                 total={vioCount}
+                showTotal={(total)=>`共 ${total} 条数据`}
                 pageSize={5}
                 showTitle={false}
                 onChange={(val: number) => vioChange(val)}
@@ -222,12 +223,12 @@ const Home: FC = (props): ReactElement => {
                 );
               })}
           </ul>
-          {momentCount > 3 && (
+          {momentCount > 5 && (
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
               <Pagination
                 defaultCurrent={1}
                 total={momentCount}
-                pageSize={3}
+                pageSize={5}
                 showTitle={false}
                 onChange={(val: number) => momentChange(val)}
               />

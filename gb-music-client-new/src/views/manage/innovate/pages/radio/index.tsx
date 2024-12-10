@@ -12,7 +12,7 @@ interface IUserChannel {
   channels: { id: string; name: string }[];
 }
 const Radio: FC = (props): ReactElement => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [channel, setChannel] = useState<{ id: string; name: string; picUrl: string }[]>([]);
   const [userChannel, setUserChannel] = useState<IUserChannel[]>([]);
   const { userMsg } = useAppSelector((state) => {
@@ -34,7 +34,7 @@ const Radio: FC = (props): ReactElement => {
     index: number
   ) => {
     e.stopPropagation();
-    navigate('/innovate/innovateCon',{
+    navigate('/innovate/innovateCon', {
       state: {
         id: item.id
       }
@@ -42,34 +42,33 @@ const Radio: FC = (props): ReactElement => {
   };
   return (
     <RadioWrapper>
-      <div className='table-box'>
-
-      <ul className="channel-list">
-        {channel.length !== 0 &&
-          channel.map((item, index) => {
-            return (
-              <li key={item.id}>
-                <div>
-                  <div style={{ backgroundImage: `url(${item.picUrl})` }} className="img-container"></div>
-                  <p className="channel-name">{item.name}</p>
-                </div>
-                <div className="right-msg" onClick={(e) => liClick(e, item, index)}>
-                  {userChannel
-                    .filter((iten, index) => {
-                      return iten.id === item.id;
-                    })
-                    .map((it, index) => {
-                      return (
-                        <span className="msg" key={it.id} onClick={(e) => liClick(e, it, index)}>
-                          共有{it.count}个声音
-                        </span>
-                      );
-                    })}
-                </div>
-              </li>
-            );
-          })}
-      </ul>
+      <div className="table-box">
+        <ul className="channel-list">
+          {channel.length !== 0 &&
+            channel.map((item, index) => {
+              return (
+                <li key={item.id}>
+                  <div>
+                    <div style={{ backgroundImage: `url(${item.picUrl})` }} className="img-container"></div>
+                    <p className="channel-name">{item.name}</p>
+                  </div>
+                  <div className="right-msg" onClick={(e) => liClick(e, item, index)}>
+                    {userChannel
+                      .filter((iten, index) => {
+                        return iten.id === item.id;
+                      })
+                      .map((it, index) => {
+                        return (
+                          <span className="msg" key={it.id} onClick={(e) => liClick(e, it, index)}>
+                            共有{it.count}个声音
+                          </span>
+                        );
+                      })}
+                  </div>
+                </li>
+              );
+            })}
+        </ul>
       </div>
     </RadioWrapper>
   );

@@ -238,15 +238,17 @@ class UserService {
   async getUserMomentDataService(userId) {
     try {
       const sql = `
-       select count(DISTINCT(m.id)) as count,count(t.userId) as thumb,
+       select count(DISTINCT(m.id)) as count,
        (select count(c.id) as count
-			 from comment as c
-			 LEFT JOIN moment as mm on mm.id=c.mId
-			 where c.mId=mm.id and c.mId is not null and mm.userId=?) as comment
+\t\t\t from comment as c
+\t\t\t LEFT JOIN moment as mm on mm.id=c.mId
+\t\t\t where c.mId=mm.id and c.mId is not null and mm.userId=?) as comment,
+\t\t\t (select count(t.userId)
+\t\t\t\tfrom moment LEFT JOIN thumb  as t on t.momentId = moment.id
+\t\t\t\tWHERE t.momentId = moment.id and moment.userId=?) as thumb
         from moment as m
-        LEFT JOIN thumb as t on t.momentId=m.id
-        where m.userId=? and t.momentId is not null `;
-      const result = await connection.execute(sql, [userId, userId]);
+        where m.userId=? `;
+      const result = await connection.execute(sql, [userId, userId,userId]);
       return result[0];
     } catch (e) {
       console.log(e);

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 export const RadioWrapper = styled.div`
+  height:100%;
+  overflow:hidden;
   .table-box{
-    overflow-y:auto;
+    overflow-y:auto!important;
   }
  @media screen and (max-width:1240px){
     .channel-list{

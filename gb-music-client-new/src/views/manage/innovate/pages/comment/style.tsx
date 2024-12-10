@@ -2,6 +2,8 @@ import styled from 'styled-components';
 export const CommentWrapper = styled.div`
   background-color: #fff;
   padding: 0 0 20px 0;
+  height:100%;
+  overflow:auto;
   h3 {
     font-weight: bolder;
     padding: 10px 0 8px 10px;
@@ -156,6 +158,7 @@ export const CommentWrapper = styled.div`
   .page {
     display: flex;
     justify-content: center;
+    margin:15px 0 0 0;
   }
   .comment-empty {
     display: flex;

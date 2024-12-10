@@ -132,7 +132,7 @@ textarea {
   -webkit-line-clamp: 2;
 }
 .ant-menu-submenu-title,.ant-menu-item{
-  padding-left: 0!important;
+  /*padding-left: 0!important;*/
 }
 .ant-menu{
  overflow-y: auto;

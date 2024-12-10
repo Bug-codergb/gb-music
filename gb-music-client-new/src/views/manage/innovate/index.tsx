@@ -1,4 +1,7 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
+import {
+  AppstoreOutlined
+} from '@ant-design/icons';
 import logo from '@/assets/img/logo.png';
 import { Flex, Layout, Menu,Button,Image } from 'antd';
 import Topbar from './childCpn/topbar';
@@ -28,7 +31,7 @@ const siderStyle: React.CSSProperties = {
   color: '#fff',
   backgroundColor: '#fff',
   borderRight: '1px solid #e5e7ec',
-  textAlign:"center"
+  
 };
 
 const footerStyle: React.CSSProperties = {
@@ -60,6 +63,7 @@ const Innovate: FC = (props): ReactElement => {
     return {
       key:item.title,
       label:item.title,
+      icon:<AppstoreOutlined />,
       children:item.list.map((it:any,i:number)=>{
         defaultSelectedKeys.push(it.path);
         return {
