@@ -1,7 +1,8 @@
 <template>
   <el-dropdown trigger="click">
     <div class="avatar">
-      <img src="@/assets/images/avatar.gif" alt="avatar" />
+      <el-avatar :size="40"
+                 :src="userStore && userStore.userInfo && userStore.userInfo.avatarUrl ? userStore.userInfo.avatarUrl : avatar" />
     </div>
     <template #dropdown>
       <el-dropdown-menu>
@@ -24,6 +25,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/modules/user.js";
 import { LOGIN_URL } from "@/config/index.js";
+import avatar from "@/assets/images/avatar.gif"
 const router = useRouter();
 
 const userStore = useUserStore();
