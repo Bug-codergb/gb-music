@@ -36,6 +36,7 @@ const TopBar: React.FC = (props) => {
     e.stopPropagation();
   };
   const searchInp = (e: FormEvent<HTMLInputElement>): void => {
+    console.log(e.currentTarget.value);
     setKeyword(e.currentTarget.value);
   };
   useEffect(() => {

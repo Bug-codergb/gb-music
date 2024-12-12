@@ -10,6 +10,8 @@ export const SearchMatchWrapper = styled.div`
   transform: translate(-50%, 0);
   border-radius: 5px;
   padding: 20px 0;
+  max-height:56vh;
+  overflow-y:auto;
   .search-title {
     padding: 3px 10px;
     background-color: #f5f5f7;

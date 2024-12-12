@@ -4,24 +4,24 @@ import { changeSongDetailAction } from "./asyncThunk"
 const songSlice = createSlice({
   name:"song",
   initialState:{
-    songUrl: `${HOST_NAME}/song/source?id=1643938595197`,
+    songUrl: ``,
     songDetail: {
-      id: '1643938595197',
+      id: '',
       vip: 0,
       album: {
-        id: '1643938531634',
-        name: '一路生花',
-        coverUrl: `${HOST_NAME}/album/cover?id=1643938531634`
+        id: '',
+        name: '',
+        coverUrl: ``
       },
       channel: {},
       video: {},
       artist: {
-        name: '温奕心',
-        id: '1643938461386'
+        name: '',
+        id: ''
       },
       user: { userName: '', avatarUrl: '', userId: '' },
-      name: '一路生花',
-      duration: 256287
+      name: '',
+      duration: 0
     },
     lyric: [{ index: 1, duration: 0, content: '' }],
     lyricLine: '',

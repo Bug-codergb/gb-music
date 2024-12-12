@@ -1,4 +1,5 @@
 import React, { memo, Suspense, useEffect, useState } from 'react';
+import {getAllSongApi} from "@/network/song/index"
 import { Outlet, Navigate } from 'react-router-dom';
 import logo from '@/assets/img/logo.png';
 import { useAppDispatch, useAppSelector } from '@/store/hooks.ts';
@@ -17,6 +18,8 @@ import useAuth from '../../hooks/useAuth/index';
 import { Layout } from 'antd';
 import NavBar from '../../components/content/topBar/childCpn/navBar';
 
+import { changeSongDetailAction } from "@/components/content/playCoin/store/asyncThunk"
+
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home: React.FC = (props) => {
@@ -26,6 +29,18 @@ const Home: React.FC = (props) => {
   const isShow = useAppSelector((state) => {
     return state['vipReducer'];
   });
+
+  const dispatch = useAppDispatch()
+
+  useEffect(()=>{
+    getAllSongApi("",0,1).then((res:any)=>{
+      if(res && res.songs && res.songs.length!==0){
+        const song = res.songs[0];
+        dispatch(changeSongDetailAction({id:song.id}))
+      }
+    })
+  },[])
+
   const [isShowBack, setIsShowBack] = useState<boolean>(false);
   useEffect(() => {
     if (userMsg && userMsg.userId) {

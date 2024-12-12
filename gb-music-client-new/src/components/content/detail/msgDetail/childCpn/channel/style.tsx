@@ -83,6 +83,6 @@ export const ChannelWrapper = styled.div`
     }
   }
   .empty {
-    padding: 150px 0;
+    padding: 50px 0;
   }
 `;

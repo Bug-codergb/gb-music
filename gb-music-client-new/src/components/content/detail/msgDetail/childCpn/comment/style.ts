@@ -99,6 +99,6 @@ export const CommentWrapper = styled.div`
     padding: 20px 0 0 0;
   }
   .empty {
-    padding: 150px 0;
+    padding: 50px 0;
   }
 `;

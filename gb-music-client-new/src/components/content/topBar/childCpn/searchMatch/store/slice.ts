@@ -13,6 +13,7 @@ const searchResultSlice = createSlice({
   },
   reducers:{
     changeSearchResult(state,{payload}){
+      console.log(payload)
       state.searchResult = payload;
     }
   }

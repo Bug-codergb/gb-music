@@ -12,6 +12,8 @@ import { IAlbum } from '../../../../../constant/album';
 import { IArtist } from '../../../../../constant/artist';
 import { IPlaylist } from '../../../../../constant/playlist';
 //import { changeSongDetailAction } from '../../../playCoin/store/actionCreators';
+import {changeSongDetailAction} from "../../../playCoin/store/asyncThunk"
+import { changeSearchResult } from "./store/slice"
 import { useNavigate } from 'react-router-dom';
 
 interface IProps {
@@ -29,18 +31,20 @@ const SearchMatch: FC<IProps> = (props): ReactElement => {
     if (keyword.trim().length !== 0) {
       getSearchMatch(keyword).then((data: any) => {
         if (data) {
+          dispatch(changeSearchResult(data));
           // dispatch(changeSearchResult(data));
-          // const { song, artist, album, playlist } = data;
-          // setSong(song);
-          // setAlbum(album);
-          // setArtist(artist);
-          // setPlaylist(playlist);
+          const { song, artist, album, playlist } = data;
+          setSong(song);
+          setAlbum(album);
+          setArtist(artist);
+          setPlaylist(playlist);
         }
       });
     }
   }, [keyword, dispatch]);
   const songClick = (item: ISong) => {
     //dispatch(changeSongDetailAction(item.id));
+    dispatch(changeSongDetailAction({id:item.id}))
   };
   const artistRouter = (item: IArtist) => {
     navigate("/Home/artistDetail",{

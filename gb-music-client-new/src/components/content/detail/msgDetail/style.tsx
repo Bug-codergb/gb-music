@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 export const MsgDetailWrapper = styled.div`
   background-color: #fff;
+  height:100%;
+  width:100%;
 `;
 export const CenterContentWrapper = styled.div`
-  width: 1220px;
-  margin: 0 auto;
   background-color: #fff;
-  padding: 30px 20px;
+  padding: 16px;
+  height:100%;
+  width:100%;
+  overflow-y:auto;
   .msg-nav-list {
     display: flex;
     align-items: center;

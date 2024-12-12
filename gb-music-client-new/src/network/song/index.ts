@@ -84,3 +84,14 @@ export function downloadSong(id: string, name: string) {
     pump();
   });
 }
+export function getAllSongApi(keyword:string,offset:number,limit:number){
+  return request({
+    url:"/song/all",
+    method:"get",
+    params:{
+      keyword,
+      offset,
+      limit
+    }
+  })
+}

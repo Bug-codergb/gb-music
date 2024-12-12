@@ -1,5 +1,6 @@
 import React, { memo, FC, ReactElement } from 'react';
-import { Empty } from 'antd';
+import { Empty,Avatar} from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import {
   useAppDispatch,
   useAppSelector
@@ -31,7 +32,8 @@ const User: FC = (props): ReactElement => {
             <li key={item.userId}>
               <div className="index">{(index + 1).toString().padStart(2, '0')}</div>
               <div className="avatar" onClick={(e) => userRouter(item)}>
-                <img src={item.avatarUrl} alt={item.userName} />
+      
+                <Avatar shape="square" src={item.avatarUrl} size={60} icon={<UserOutlined />} />
               </div>
               <div className="user-name">{item.userName}</div>
             </li>

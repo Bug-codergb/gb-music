@@ -1,4 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { message } from "antd";
+import { Navigate } from "react-router-dom"
 import store from "../store/index"
 import { HOST_NAME } from '../config';
 import { changeUserMsg, logoutAction } from '../views/Login/store/actionCreators';
@@ -30,7 +32,13 @@ function request<T>(config: AxiosRequestConfig) {
     (err) => {
       if (err.response) {
         const { status, data } = err.response;
+        console.log(status)
         if (status * 1 === 403 && data.message === '请登录') {
+          message.destroy()
+
+          message.warning("登陆已过期");
+          throw err;
+          
           // @ts-ignore
           // store.dispatch(logoutAction());
           // store.dispatch(
@@ -45,7 +53,7 @@ function request<T>(config: AxiosRequestConfig) {
           //     auth: -1
           //   })
           // );
-
+           
         } else {
           throw err;
         }

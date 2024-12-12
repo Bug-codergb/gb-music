@@ -1,4 +1,5 @@
-import React, { memo, FC, ReactElement, useState } from 'react';
+import React, { memo, FC, ReactElement, useState ,useEffect} from 'react';
+import { Tabs } from 'antd';
 import { CenterContentWrapper, MsgDetailWrapper } from './style';
 import navList from '../../../../constant/message/navList';
 
@@ -12,22 +13,25 @@ const MsgDetail: FC = (props): ReactElement => {
     navigate(item.path);
 
   };
+  const onChange = (key: string) => {
+    navigate(key);
+  };
+  const [tabs,setTabs] = useState<any[]>([]);
+  
+  useEffect(()=>{
+    const items = [];
+    for(let item of navList){
+      items.push({
+        key:item.path,
+        label:item.name
+      })
+    }
+    setTabs(items);
+  },[])
   return (
     <MsgDetailWrapper>
       <CenterContentWrapper>
-        <ul className="msg-nav-list">
-          {navList.map((item, index) => {
-            return (
-              <li
-                key={item.name}
-                onClick={(e) => liClick(item, index)}
-                className={currentIndex === index ? 'active' : ''}
-              >
-                {item.name}
-              </li>
-            );
-          })}
-        </ul>
+      <Tabs defaultActiveKey="1" items={tabs} onChange={onChange} />
         <div className="msg-detail-content">
           <Outlet/>
         </div>
