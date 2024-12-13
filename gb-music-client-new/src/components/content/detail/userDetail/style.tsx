@@ -15,6 +15,7 @@ export const LeftContentWrapper = styled.div`
     display: flex;
     padding: 30px;
     position: relative;
+    align-items:center;
     .left-content {
       width: 180px;
       height: 180px;
@@ -37,7 +38,7 @@ export const LeftContentWrapper = styled.div`
         font-size: 20px;
         font-weight: bolder;
         color: #373737;
-        margin: 0;
+        margin: 0 0 20px 0;
         padding: 0;
       }
       .line {
@@ -74,6 +75,7 @@ export const LeftContentWrapper = styled.div`
       }
       .desc {
         color: #676767;
+        margin:20px 0 0 0;
       }
     }
     .pay-attention {

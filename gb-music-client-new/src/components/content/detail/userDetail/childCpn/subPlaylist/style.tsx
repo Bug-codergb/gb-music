@@ -3,6 +3,7 @@ export const SubPlaylistWrapper = styled.div`
   padding: 0 20px;
   .title {
     font-size: 16px;
+    margin:15px 0;
   }
   .sub-playlist {
     display: flex;

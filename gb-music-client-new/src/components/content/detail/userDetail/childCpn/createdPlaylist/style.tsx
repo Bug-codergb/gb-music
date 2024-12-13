@@ -3,6 +3,7 @@ export const CreatedPlaylistWrapper = styled.div`
   padding: 0 20px;
   .title {
     font-size: 16px;
+    margin:15px 0
   }
   .play-list {
     display: flex;

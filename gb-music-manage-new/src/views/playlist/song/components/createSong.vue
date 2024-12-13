@@ -134,7 +134,7 @@ const config=computed(()=>[
       placeholder:"请选择歌曲源文件",
       attrs:{
         clearable:true,
-        accept:["mp3"]
+        accept:["mp3",'flac']
       },
       isShow:!isUpdate.value
     }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export const CreatedChannelWrapper = styled.div`
   .title {
     font-size: 18px;
-    margin: 0 10px 0 20px;
+    margin: 0 10px 16px 20px;
   }
   .channels {
     & > li {
@@ -45,6 +45,6 @@ export const CreatedChannelWrapper = styled.div`
   .page {
     display: flex;
     justify-content: flex-end;
-    padding: 0 20px 0 0;
+    padding: 10px 20px 0 0;
   }
 `;
