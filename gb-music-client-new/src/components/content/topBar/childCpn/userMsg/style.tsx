@@ -37,12 +37,16 @@ export const UserMsgWrapper = styled.div`
     border: 1px solid #eb6363;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
-    padding: 0 5px;
+    display:flex;
+    align-items:center;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    margin: 0 10px;
-    transform: scale(0.9);
+    padding:0 5px;
+    margin: 0 10px 0 3px;
+
+    height:25px;
+    transform:scale(0.8)
   }
   .userInfo-enter,
   .userIno-exit-done,

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 export const SuccessPageWrapper = styled.div`
   background-color: #fff;
-  border-left: 1px solid #d3d3d3;
-  border-right: 1px solid #d3d3d3;
   width: 800px;
   margin: 0 auto;
   padding: 100px 0 150px 0;
@@ -45,10 +43,6 @@ export const SuccessPageWrapper = styled.div`
   }
   .known {
     margin: 30px 0 0 0;
-    background-color: #fb5e5a;
-    color: #fff;
-    padding: 5px 70px;
-    border-radius: 15px;
     cursor: pointer;
   }
 `;

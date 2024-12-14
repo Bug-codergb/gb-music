@@ -30,7 +30,7 @@ const DATABASE_PORT = '3306';
 const PASSWORD = 'guobin250520';
 //前端
 const WEBFONT_HOST = 'http://localhost';
-const WEBFONT_PORT = 3000;
+const WEBFONT_PORT = 3003;
 const WS_PORT = 8201;
 
 module.exports = {

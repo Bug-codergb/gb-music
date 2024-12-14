@@ -1,4 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
+import { message } from "antd";
 import { useAppSelector,useAppDispatch } from "@/store/hooks"
 import { MemberWrapper, CenterContent } from './style';
 
@@ -50,17 +51,12 @@ const Member: FC = (): ReactElement => {
     }
   };
   const deleteHistory = (item: IVIP) => {
-
-    /*dispatch(changeMsgAction(true)).then((data) => {
-      if (data) {
-        deleteVIPHistory(item.id).then((data) => {
-          dispatch(changeShow('删除成功', 1500));
-          getVipHistory().then((data: any) => {
-            setHistory(data);
-          });
-        });
-      }
-    });*/
+    deleteVIPHistory(item.id).then((data) => {
+      message.success("删除成功")
+      getVipHistory().then((data: any) => {
+        setHistory(data);
+      });
+    });
   };
   return (
     <MemberWrapper>

@@ -1,5 +1,5 @@
 import React, { memo, ReactElement, FC, useEffect, useState } from 'react';
-
+import { Button } from "antd";
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { CheckOutlined } from '@ant-design/icons';
@@ -23,7 +23,8 @@ const SuccessPage: FC = (props): ReactElement => {
   useEffect(() => {
     const params = parseURL(window.location.href);
     setParams(params);
-    tmpParams.price = params.out_trade_no.split('_')[1];
+    if(params && params.out_trade_no){
+      tmpParams.price = params.out_trade_no.split('_')[1];
     tmpParams.name = params.out_trade_no.split('_')[2] + '个月';
     tmpParams.expireTime =
       new Date().getTime() + parseInt(params.out_trade_no.split('_')[2]) * 60 * 60 * 24 * 30 * 1000;
@@ -35,12 +36,13 @@ const SuccessPage: FC = (props): ReactElement => {
         joinVIP(cId, tmpParams.name, params.orderId).then((data) => {
           getVipMessage().then((data: any) => {
             data.token = userMsg.token;
-            dispatch(changeUserMsg(data));
+            //dispatch(changeUserMsg(data));
             window.localStorage.setItem('userMsg', JSON.stringify(data));
           });
         });
       }
     });
+    }
   }, [dispatch, tmpParams, userMsg.token]);
 
   const known = () => {
@@ -48,8 +50,8 @@ const SuccessPage: FC = (props): ReactElement => {
   };
   return (
     <SuccessPageWrapper>
-      <div className="known" onClick={(e) => known()}>
-        知道了
+      <div className="known">
+        <Button type="primary" style={{padding:'0 30px'}} onClick={(e) => known()}>知道了</Button>
       </div>
       {Object.keys(tmpParams).length && (
         <ul className="success-msg">

@@ -12,13 +12,13 @@ class AlipayService {
       console.log(e);
     }
   }
-  async createOrderService(userId, price, cId) {
+  async createOrderService(orderId,userId, price, cId) {
     try {
-      const id = new Date().getTime();
+
       const tmp = '`order`';
       const sql = `insert into ${tmp}(id,userId,price,cId,status) values(?,?,?,?,?)`;
-      const result = await connection.execute(sql, [id, userId, price, cId, 0]);
-      return id;
+      const result = await connection.execute(sql, [orderId, userId, price, cId, 0]);
+      return orderId;
     } catch (e) {
       console.log(e);
     }

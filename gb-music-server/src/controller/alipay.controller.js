@@ -10,15 +10,19 @@ const {
 const { getVipMessageService } = require('../service/vip.service');
 class AlipayController {
   async create(req, res, next) {
+    const formData = new AliPayFormData();
     try {
-      const { name, price, cId } = req.body;
-      let newName = name.substring(0, name.lastIndexOf('个'));
+      const { name, price, cId } = req.body;//cId是套餐id
       const { userId } = req.user;
-      const orderId = await createOrderService(userId, price, cId);
-      const formData = new AliPayFormData();
+
+      let newName = name.substring(0, name.lastIndexOf('个'));
+
+      const orderId = `${cId}_${price}_${newName}_${userId}_${new Date().getTime()}`
+
+
       formData.setMethod('get');
       formData.addField('bizContent', {
-        outTradeNo: `${cId}_${price}_${newName}_${userId}_${new Date().getTime()}`, //`${cId}_${price}_${newName}_${userId}`, // 商户订单号,64个字符以内、可包含字母、数字、下划线,且不能重复
+        outTradeNo:orderId , //`${cId}_${price}_${newName}_${userId}`, // 商户订单号,64个字符以内、可包含字母、数字、下划线,且不能重复
         productCode: 'FAST_INSTANT_TRADE_PAY', // 销售产品码，与支付宝签约的产品码名称,仅支持FAST_INSTANT_TRADE_PAY
         totalAmount: price, // 订单总金额，单位为元，精确到小数点后两位
         subject: `${name} 会员`, // 订单标题
@@ -26,7 +30,7 @@ class AlipayController {
       });
       formData.addField(
         'returnUrl',
-        `${WEBFONT_HOST}:${WEBFONT_PORT}/Home/success?orderId=${orderId}`
+        `${WEBFONT_HOST}:${WEBFONT_PORT}/#/Home/success?orderId=${orderId}`
       );
       const result = await alipaySdk.exec(
         // result 为可以跳转到支付链接的 url
@@ -34,6 +38,7 @@ class AlipayController {
         {}, // api 请求的参数（包含“公共请求参数”和“业务参数”）
         { formData: formData }
       );
+      const orderDataBaseId = await createOrderService(orderId,userId, price, cId);
       res.json({
         url: result,
         orderId: `${cId}_${price}_${newName}_${userId}`,
@@ -41,10 +46,13 @@ class AlipayController {
         name,
         price,
         userId,
-        orderDataBaseId: orderId
+        orderDataBaseId: orderDataBaseId
       });
     } catch (e) {
-      console.log(e);
+      formData.addField(
+        'returnUrl',
+        `${WEBFONT_HOST}:${WEBFONT_PORT}/#/Home`
+      );
     }
   }
   async queryStatus(req, res, next) {
@@ -86,6 +94,8 @@ class AlipayController {
       url: result
     });
     const { alipay_trade_close_response } = data;
+
+    console.log(alipay_trade_close_response)
     res.json(alipay_trade_close_response);
   }
   async joinVIP(req, res, next) {
