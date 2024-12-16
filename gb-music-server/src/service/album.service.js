@@ -74,7 +74,7 @@ class AlbumService {
   }
   //获取专辑分类
   async getAlbumCateService() {
-    const sql = 'select * from albumcate order by name desc';
+    const sql = 'select * from albumcate order by sort_by desc';
     const result = await connection.execute(sql);
     return result[0];
   }

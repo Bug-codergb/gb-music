@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/assets/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/network/request.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/network/request.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/hooks/useTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/hooks/useTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/dashboard/components/lineUser/LineUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/dashboard/components/lineUser/LineUser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/dashboard/components/system/System.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/dashboard/components/system/System.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/dashboard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/dashboard/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/order/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/order/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/controller/order.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/controller/order.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/service/order.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/service/order.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/utils/alipay.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/utils/alipay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/service/album.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/service/album.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
