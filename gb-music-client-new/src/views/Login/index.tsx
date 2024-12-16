@@ -42,7 +42,7 @@ const Login: React.FC = (props) => {
   };
   return (
     <LoginWrapper>
-      <Bgc />
+       <Bgc />
       <div className="mask"> </div>
       <div className="login-outer">
         <LoginCpn
@@ -51,7 +51,7 @@ const Login: React.FC = (props) => {
           onClick={(userName: string, password: string) => login(userName, password)}
           regClick={(e: any) => register()}
         />
-      </div>
+      </div> 
     </LoginWrapper>
   );
 };

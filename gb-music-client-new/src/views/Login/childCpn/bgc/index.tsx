@@ -87,7 +87,6 @@ const Bgc: FC = (): ReactElement => {
               <div className="cta-odd-image image-2"></div>
             </div>
           </div>
-
         </div>
       </div>
     </BgcWrapper>

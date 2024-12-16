@@ -1,7 +1,11 @@
 <template>
   <div class="line-count">
     <div class="count">
-      <div class="key">当前在线人数:</div>
+      <div class="key">官方榜单:</div>
+      <div class="value">{{ count }}</div>
+    </div>
+    <div class="count">
+      <div class="key">热门榜单:</div>
       <div class="value">{{ count }}</div>
     </div>
   </div>
@@ -19,15 +23,7 @@ export default {
     };
   },
   mounted() {
-    return;
-    let socket = new WebSocket(`${WS_HOST_NAME}/line/count`);
-    socket.onopen = function () {
-      console.log('success');
-      socket.send('connect');
-    };
-    socket.onmessage = (msg) => {
-      this.count = msg.data;
-    };
+
   }
 };
 </script>
@@ -39,6 +35,7 @@ export default {
   justify-content: center;
   width: 100%;
   height: 100%;
+  flex-direction: column;
   .count {
     display: flex;
     align-items: center;

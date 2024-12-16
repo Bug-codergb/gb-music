@@ -11,10 +11,12 @@ export const RegisterWrapper = styled.div`
     top: 20%;
     .reg-btn {
       width: 100%;
-      background-color: #ec4141;
+      padding: 12px 0;
+      background-color:#ec5b5b;
       color: #fff;
-      padding: 9px 15px;
+      cursor: pointer;
       border-radius: 4px;
+      margin: 0 0 10px 0;
     }
   }
 `;

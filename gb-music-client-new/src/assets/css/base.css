@@ -5,9 +5,8 @@
   font-size: 14px;
 }
 body {
-  font-family: 'Arial,Helvetica,sans-serif' !important;
+  font-family: 'Helvetica,sans-serif' !important;
   overflow-y: scroll;
-
 }
 #root{
   width: 100%;

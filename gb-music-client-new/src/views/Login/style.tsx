@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 export const LoginWrapper = styled.div`
+  background-color:pink;
   @media screen and (max-width: 1100px) {
     .login-outer {
       left: 50%!important;
@@ -20,8 +21,8 @@ export const LoginWrapper = styled.div`
     z-index: 99999999;
     .login-btn {
       width: 100%;
-      padding: 11px 0;
-      background-color: #00aeec;
+      padding: 12px 0;
+      background-color:#ec5b5b;
       color: #fff;
       cursor: pointer;
       border-radius: 4px;
@@ -32,7 +33,7 @@ export const LoginWrapper = styled.div`
     height: 100%;
     position: absolute;
     top: 0;
-    z-index: 995559;
+    z-index: 59;
     background-color: rgba(0, 0, 0, 0.1);
   }
   .verify-enter {

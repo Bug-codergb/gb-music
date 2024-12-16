@@ -1,14 +1,27 @@
 import React, { memo, useState } from 'react';
+import { useNavigate } from "react-router-dom"
+import { message } from "antd"
+import {
+  UserOutlined,
+  LockOutlined
+} from '@ant-design/icons';
 //样式
 import { LoginCpnWrapper } from './style';
+import logo from "@/assets/img/logo.png"
 interface LoginType {
   btn: any;
   isShow: boolean;
   onClick: Function;
   regClick?: Function;
+  isShowLogin?:boolean
 }
 const LoginCpn: React.FC<LoginType> = (props) => {
-  const { btn, isShow, onClick, regClick } = props;
+
+  const appName = import.meta.env.VITE_APP_NAME
+
+  const navigate = useNavigate();
+
+  const { btn, isShow, onClick, regClick ,isShowLogin} = props;
   const [isPassCheck, setIsPassCheck] = useState(false);
   const [isNameCheck, setIsNameCheck] = useState(false);
   const [userName, setUserName] = useState('');
@@ -33,8 +46,12 @@ const LoginCpn: React.FC<LoginType> = (props) => {
   };
   const login = () => {
     if (userName.trim().length === 0) {
+      message.destroy()
+      message.warning("用户名不能为空")
       setIsNameCheck(true);
     } else if (password.trim().length === 0) {
+      message.destroy()
+      message.warning("密码不能为空")
       setIsPassCheck(true);
     } else {
       onClick(userName, password);
@@ -45,25 +62,25 @@ const LoginCpn: React.FC<LoginType> = (props) => {
       regClick();
     }
   };
+  const handleLoing=()=>{
+    navigate("/Login")
+  }
   return (
     <LoginCpnWrapper>
       <div className="title-system-name">
-        <span className="title">ln-music</span>
+        <img src={logo}/>
+        <span className="title">{ appName }</span>
       </div>
       <div className="user-name">
-        <span>用户名:</span>
-        <input type="text" placeholder="请输入用户名" onInput={(e) => userNameInp(e)} />
+        <UserOutlined/>
+        <input type="text" placeholder="请输入用户名" autoComplete='off' onInput={(e) => userNameInp(e)} />
       </div>
-      <div className="user-name-check" style={{ opacity: isNameCheck ? 1 : 0 }}>
-        用户名不能为空
-      </div>
+      
       <div className="password">
-        <span>密码:</span>
-        <input type="password" placeholder="请输入密码" onInput={(e) => passInp(e)} />
+      <LockOutlined />
+        <input type="password" autoComplete='new-password' placeholder="请输入密码" onInput={(e) => passInp(e)} />
       </div>
-      <div className="password-check" style={{ opacity: isPassCheck ? 1 : 0 }}>
-        密码不能为空
-      </div>
+     
       <div className="btn" onClick={(e) => login()}>
         {btn}
       </div>
@@ -73,6 +90,14 @@ const LoginCpn: React.FC<LoginType> = (props) => {
           <span onClick={(e) => register()}>注册</span>
         </div>
       )}
+      {
+        isShowLogin && (
+          <div className="register-tip">
+            <span>已有账号?</span>
+            <span onClick={(e) => handleLoing()}>登陆</span>
+          </div>
+        )
+      }
     </LoginCpnWrapper>
   );
 };

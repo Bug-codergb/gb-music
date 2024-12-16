@@ -20,7 +20,7 @@ import LineUser from './components/lineUser/LineUser';
       </div>
       <div class="col center">
         <div class="card">
-<!--          <System/>-->
+          <System/>
         </div>
       </div>
       <div class="col">
@@ -36,7 +36,9 @@ import LineUser from './components/lineUser/LineUser';
         </div>
       </div>
       <div class="col center">
-        <div class="card"></div>
+        <div class="card">
+          <LineUser/>
+        </div>
       </div>
       <div class="col">
         <div class="card">

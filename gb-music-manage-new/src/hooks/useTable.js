@@ -25,10 +25,10 @@ export const useTable = (api, initParam, isPageable, dataCallback, requestError,
     }
   });
   const getTableList = async () => {
+
     if (!api) return;
     try {
       Object.assign(state.totalParam, initParam, isPageable ? pageParam.value : {});
-
       let res = await api({ ...state.searchInitParam, ...state.totalParam });
       dataCallback && (res = dataCallback(res));
       state.tableData = isPageable ? (dataAlias ? res[dataAlias] : res) : (dataAlias ? res[dataAlias]:res);
@@ -36,6 +36,7 @@ export const useTable = (api, initParam, isPageable, dataCallback, requestError,
         state.pageable.total = res.count;
       }
     } catch (e) {
+      console.log(e);
       requestError && requestError(e);
     }
   };

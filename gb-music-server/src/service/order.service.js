@@ -23,6 +23,7 @@ class OrderService {
      LEFT JOIN combo as c on c.id=o.cId
      ${exec}
      limit ?,?`;
+      console.log(sql)
       const countSQL = `select count(o.id) as count
                        from ${tmp} as o
                        LEFT JOIN combo as c on c.id=o.cId
@@ -42,6 +43,7 @@ class OrderService {
         result = await connection.execute(sql, [orderType, status, offset, limit]);
         count = await connection.execute(countSQL, [orderType, status]);
       }
+      console.log(sql)
       return {
         count: count[0][0].count,
         order: result[0]

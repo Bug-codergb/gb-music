@@ -32,7 +32,12 @@ function request<T>(config: AxiosRequestConfig) {
     (err) => {
       if (err.response) {
         const { status, data } = err.response;
-        console.log(status)
+       
+        if(status*1===400 || status*1 === 401){
+          message.destroy()
+          message.warning(data.message);
+          throw err;
+        }
         if (status * 1 === 403 && data.message === '请登录') {
           message.destroy()
 

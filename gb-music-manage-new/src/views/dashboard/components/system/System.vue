@@ -66,18 +66,21 @@ export default {
 
 <style scoped lang="scss">
 .system {
-  height: 100px;
+  height: 100%;
   width: 100%;
   .data-list {
     margin:0;
     padding:0;
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    align-items: center;
     & > li {
       display: flex;
       flex-direction: column-reverse;
       align-items: center;
-
+      width: 33%;
       .key {
         font-weight: bolder;
         color: #5470c6;

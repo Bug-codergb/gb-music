@@ -19,18 +19,22 @@ import album4 from '../../../../assets/img/bgc/album/T015R640x360M101004O1XDf30g
 import album5 from '../../../../assets/img/bgc/album/T015R640x360M1010002wThg1CtjIz.webp';
 import album6 from '../../../../assets/img/bgc/album/T015R640x360M1010003x77W1X0FA3.webp';
 export const BgcWrapper = styled.div`
+  height: 100%;
+  width: 100%;
   .page {
     display: flex;
-    max-width: 1900px;
+    width: 100%;
     background-color: #fff;
-    height: 100vh;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
   }
   // Start here
   .cta-container-images {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: #f3f4f5;
-    padding-top: 40px;
+    padding:5% 0 0 0;
     overflow: hidden;
     .cta-singular-cell {
     position: relative;

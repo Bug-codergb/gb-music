@@ -19,6 +19,7 @@ const Register: React.FC = (props) => {
       <div className="register">
         <LoginCpn
           isShow={false}
+          isShowLogin={true}
           onClick={(userName: string, password: string) => registerHandle(userName, password)}
           btn={<button className="reg-btn">注册</button>}
         />
