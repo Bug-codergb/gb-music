@@ -32,7 +32,7 @@ export const changeSongDetailAction = createAsyncThunk("song/changeSongDetailAct
       dispatch(changePlaylist(newPlaylist));
       dispatch(changeCurrentIndex(newPlaylist.length - 1));
 
-    const ret = await addSongPlayCount('id');
+    const ret = await addSongPlayCount(id);
     return ret
   }
   //播放列表中存在
@@ -41,7 +41,7 @@ export const changeSongDetailAction = createAsyncThunk("song/changeSongDetailAct
     dispatch(changeSongDetail(playlist[flag]));
     dispatch(changeSongURLAction({ id }));
     dispatch(changeSongLyric({ id }));
-    const ret = await addSongPlayCount('id');
+    const ret = await addSongPlayCount(id);
     return ret;
   }
 })
