@@ -91,15 +91,15 @@ const UserDetail: FC<{ userId: string }> = (props): ReactElement => {
               <ul className="fans">
                 <li>
                   <div className="description">动态</div>
-                  <div className="count">{simpleInfo?.moment}</div>
+                  <div className="count">{simpleInfo ? simpleInfo.moment : 0}</div>
                 </li>
                 <li>
                   <div className="description">关注</div>
-                  <div className="count">{simpleInfo?.pay}</div>
+                  <div className="count">{simpleInfo ? simpleInfo.pay : 0}</div>
                 </li>
                 <li>
                   <div className="description">粉丝</div>
-                  <div className="count">{simpleInfo?.fans}</div>
+                  <div className="count">{ simpleInfo ? simpleInfo.fans :0}</div>
                 </li>
               </ul>
               <div className="desc">
