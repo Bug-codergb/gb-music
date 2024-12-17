@@ -2,7 +2,7 @@ import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
-import { Empty, Pagination } from 'antd';
+import { Empty, Pagination,message } from 'antd';
 import { getUserFavorite } from '../../../../network/user';
 import { MyFavoriteWrapper } from './style';
 import { ISong } from '../../../../constant/song';
@@ -38,6 +38,7 @@ const MyFavorite: FC = (props): ReactElement => {
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {
       //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      message.warning('您正在试听VIP歌曲，开通VIP后畅想')
     }
     dispatch(changeSongDetailAction({id:item.song.id}));
   };

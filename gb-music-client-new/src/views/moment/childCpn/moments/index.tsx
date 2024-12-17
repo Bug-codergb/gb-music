@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { MomentsWrapper } from './style';
 import { delMoment, getAllMoment } from '../../../../network/moment';
 import { formatTime } from '../../../../utils/format';
-import { Pagination, Skeleton, Dropdown, Modal } from 'antd';
+import { Pagination, Skeleton, Dropdown, Modal ,message} from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 
 import Reply from '../../../../components/common/reply';
@@ -93,6 +93,7 @@ const Moments: FC = memo((props): ReactElement => {
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {
       //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      message.warning('您正在试听VIP歌曲，开通VIP后畅想')
     }
     dispatch(changeSongDetailAction({ id: item.song.id }));
   };

@@ -1,4 +1,5 @@
 import React, { memo, FC, ReactElement } from 'react';
+import {message} from "antd"
 import {
   useAppDispatch,
   useAppSelector
@@ -29,6 +30,7 @@ const SongList: FC<IProps> = ({ songs, pId, isShowUp,tId }): ReactElement => {
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {
       //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      message.warning('您正在试听VIP歌曲，开通VIP后畅想')
     }
     if (pId) {
       addPlayCount(pId).then(()=>{}).catch(()=>{})

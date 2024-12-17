@@ -1,4 +1,5 @@
 import React, { memo, ReactElement, FC } from 'react';
+import {  message } from 'antd';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 
 import { SongListWrapper } from './style';
@@ -20,7 +21,8 @@ const SongList: FC<IProps> = ({ albumDetail }): ReactElement => {
     const { vip } = item;
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {
-      //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      //dispatch(changeShow(, 3000));
+      message.warning('您正在试听VIP歌曲，开通VIP后畅想')
     }
     dispatch(changeSongDetailAction({ id }));
   };

@@ -1,4 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState, MouseEvent } from 'react';
+import {message} from "antd"
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -37,6 +38,7 @@ const RecSong: FC = (props): ReactElement => {
     const { auth } = userMsg;
     if (vip === 1 && auth * 1 === 0) {
       //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      message.warning('您正在试听VIP歌曲，开通VIP后畅想')
     }
     dispatch(changeSongDetailAction({id:item.id}));
   };

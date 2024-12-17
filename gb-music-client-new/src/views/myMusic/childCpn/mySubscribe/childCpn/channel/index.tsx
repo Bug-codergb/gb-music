@@ -11,7 +11,7 @@ const Channel: FC = (props): ReactElement => {
   const navigate = useNavigate();
   const [channel, setChannel] = useState<IChannel[]>([]);
   useEffect(() => {
-    getUserSub('channel', 0, 30).then((data: any) => {
+    getUserSub('channel', 0, 50).then((data: any) => {
       setChannel(data);
     });
   }, []);
@@ -45,8 +45,8 @@ const Channel: FC = (props): ReactElement => {
                   scale={1}
                   state={<span>{item.name}</span>}
                   itemWidth="150px"
-                  userName={item.user.userName}
-                  onClick={() => userRouter(item.user.userId)}
+                  userName={item.user?.userName}
+                  onClick={() => userRouter(item.user?.userId)}
                 />
               </li>
             );
