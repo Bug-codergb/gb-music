@@ -17,7 +17,7 @@ const Playlist: FC = (props): ReactElement => {
     return  state['loginReducer']
   });
   useEffect(() => {
-    getUserSubPlaylist(userMsg.userId, 0, 30).then((data: any) => {
+    getUserSubPlaylist(userMsg.userId, 0, 50).then((data: any) => {
       setPlaylist(data.playlist);
     });
   }, [userMsg.userId]);

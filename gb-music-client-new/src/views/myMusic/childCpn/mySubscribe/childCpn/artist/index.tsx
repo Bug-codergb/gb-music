@@ -11,7 +11,7 @@ const Artist: FC = (props): ReactElement => {
   const navigate = useNavigate();
   const [artist, setArtist] = useState<IArtist[]>([]);
   useEffect(() => {
-    getUserSub('artist', 0, 30).then((data: any) => {
+    getUserSub('artist', 0, 50).then((data: any) => {
       setArtist(data);
     });
   }, []);
