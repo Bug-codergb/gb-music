@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 export const InnovateDetailWrapper = styled.div`
-  background-color: #f5f5f5;
+  background-color: #fff;
+  height: 100%;
+  overflow-y: auto;
 `;
 export const CenterContent = styled.div`
   padding: 20px 15px;

@@ -461,5 +461,14 @@ class ChannelService {
       console.log(e);
     }
   }
+  async deleteProgramService(id){
+    try{
+      const sql=`delete from program where id=?`;
+      const res = await connection.execute(sql, [id]);
+      return res[0];
+    }catch (e){
+
+    }
+  }
 }
 module.exports = new ChannelService();

@@ -27,7 +27,8 @@ const {
   updateCover,
   updateChannel,
   deleteChannelContent,
-  getUserProgramList
+  getUserProgramList,
+  deleteProgram
 } = require('../controller/channel.controller');
 router.post('/', loginAuth, channelIcon.single('channel'), create);
 router.get('/cover', getChannelCover);
@@ -77,4 +78,6 @@ router.post('/content/update', loginAuth, updateChannel);
 router.post('/content/delete', loginAuth, deleteChannelContent);
 //用户播单列表
 router.post('/program/list', loginAuth, getUserProgramList);
+//删除节目
+router.post("/program/delete/:id",loginAuth,deleteProgram);
 module.exports = router;

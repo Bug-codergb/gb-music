@@ -170,7 +170,7 @@ const Radio: FC = (): ReactElement => {
           点击添加
         </p>
       </div>
-      <Modal title="上传视频" width={'36%'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="上传声音" width={'36%'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
       <Form name="upload-video" layout={'vertical'} form={form} onFinish={handleFinishForm}>
           <Form.Item label="名称" name="name" required={true} rules={[{ required: true, message: '视频名称不能为空' }]}>
             <Input placeholder="请输入名称" />
@@ -207,7 +207,7 @@ const Radio: FC = (): ReactElement => {
               </Form.Item>
         </Form>
       
-      <ImgCropper ref={imgCropperRef} aspectRatio={1} getCropperFile={(file) => handleCropperImg(file)} />  
+      <ImgCropper ref={imgCropperRef} title="上传声音封面" aspectRatio={1} getCropperFile={(file) => handleCropperImg(file)} />  
       </Modal> 
     </RadioWrapper>
   );

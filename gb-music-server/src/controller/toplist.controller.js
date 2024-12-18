@@ -20,7 +20,8 @@ const {
   getSimiToplistService,
   deleteToplistService,
   getAllToplistMsgService,
-  updatePlayCountService
+  updatePlayCountService,
+  getToplistTypeCountService
 } = require('../service/toplist.service');
 class ToplistController {
   async createToplist(req, res, next) {
@@ -195,6 +196,14 @@ class ToplistController {
       } else {
         next(new Error(errorType.PARAMETER_ERROR));
       }
+    }
+  }
+  async getToplistTypeCount(req,res,next){
+    try{
+      const ret = await getToplistTypeCountService();
+      res.json(ret);
+    }catch (e) {
+      next(new Error(errorType.PARAMETER_ERROR));
     }
   }
 }

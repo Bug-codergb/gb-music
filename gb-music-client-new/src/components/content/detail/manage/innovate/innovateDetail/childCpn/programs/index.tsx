@@ -1,16 +1,22 @@
 import React, { memo, FC, ReactElement } from 'react';
 
 import { ProgramWrapper } from './style';
-
+import {deleteProgam} from "@/network/channel/index"
 import { IProgram } from '@/constant/program';
 import { formatTime } from '@/utils/format';
-import { Empty } from 'antd';
+import { Empty ,message} from 'antd';
 interface IProps {
   programs: IProgram[] | undefined;
+  success:()=>void
 }
 const Programs: FC<IProps> = (props): ReactElement => {
-  const { programs } = props;
-  console.log(programs);
+  const { programs,success } = props;
+
+  const handleDelete=async (item:IProgram)=>{
+    await deleteProgam(item.id);
+    success();
+    message.success("删除成功")
+  }
   return (
     <ProgramWrapper>
       <ul className="program-list">
@@ -25,7 +31,7 @@ const Programs: FC<IProps> = (props): ReactElement => {
                 <div className="play-count">播放: {item.playCount}</div>
                 <div className="create-time">{formatTime(item.createTime, 'yyyy-MM-dd')}</div>
                 <div className="dt">{formatTime(parseInt(item.dt), 'mm:ss')}</div>
-                <div className="del">删除</div>
+                <div className="del" onClick={()=>handleDelete(item)}>删除</div>
               </li>
             );
           })}

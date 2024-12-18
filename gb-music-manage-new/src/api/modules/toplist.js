@@ -22,3 +22,6 @@ export function updateToplistApi(data) {
 export function getToplistDetailApi(data){
   return http.get("/toplist/detail", data);
 }
+export function getToplistTypeCount(data){
+  return http.post("/toplist/type/count",data);
+}

@@ -2,11 +2,11 @@
   <div class="line-count">
     <div class="count">
       <div class="key">官方榜单:</div>
-      <div class="value">{{ count }}</div>
+      <div class="value">{{ official }}</div>
     </div>
     <div class="count">
       <div class="key">热门榜单:</div>
-      <div class="value">{{ count }}</div>
+      <div class="value">{{ hot }}</div>
     </div>
   </div>
 </template>
@@ -14,16 +14,28 @@
 <script>
 //import { WS_HOST_NAME } from '@/constant/host';
 //import { getLineCount } from '@/network/user';
-
+import {getToplistTypeCount} from "@/api/modules/toplist"
 export default {
   name: 'LineUser',
   data() {
     return {
-      count: 0
+      official: 0,
+      hot:0
     };
   },
   mounted() {
-
+    getToplistTypeCount().then((res)=>{
+      if(res){
+        for(let item of res){
+          if(`${item.type}` === '1'){
+            this.official = item.count;
+          }
+          if(`${item.type}` === '0'){
+            this.hot = item.count;
+          }
+        }
+      }
+    })
   }
 };
 </script>

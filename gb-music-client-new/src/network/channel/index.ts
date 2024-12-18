@@ -166,3 +166,18 @@ export function getUserChannelPlaylist<T>() {
     }
   });
 }
+export function deleteChannel(id:string){
+  return request({
+    url:"/channel/content/delete",
+    method:"post",
+    data:{
+      id
+    }
+  })
+}
+export function deleteProgam(id:string){
+  return request({
+    url:`/channel/program/delete/${id}`,
+    method:"post"
+  })
+}

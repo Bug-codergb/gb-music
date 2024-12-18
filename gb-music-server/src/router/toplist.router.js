@@ -14,7 +14,8 @@ const {
   exportSong,
   getSimiToplist,
   deleteToplist,
-  addPlayCount
+  addPlayCount,
+  getToplistTypeCount
 } = require('../controller/toplist.controller');
 //添加榜单
 router.post('/', loginAuth, createToplist);
@@ -40,4 +41,6 @@ router.get('/simi', getSimiToplist);
 router.post('/delete', loginAuth, deleteToplist);
 //添加播放量
 router.post('/playCount/add', addPlayCount);
+//获取榜单数量
+router.post("/type/count",loginAuth,getToplistTypeCount);
 module.exports = router;

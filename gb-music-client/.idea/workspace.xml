@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="" />
+    <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/assets/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/manage/innovate/pages/publish/childCpn/radio/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/manage/innovate/pages/publish/childCpn/radio/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/toplist.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/toplist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/dashboard/components/lineUser/LineUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/dashboard/components/lineUser/LineUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/controller/channel.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/controller/channel.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/controller/toplist.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/controller/toplist.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/router/channel.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/router/channel.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/router/toplist.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/router/toplist.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/service/channel.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/service/channel.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/service/toplist.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/service/toplist.service.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +134,7 @@
       <workItem from="1725539388939" duration="1301000" />
       <workItem from="1725880397250" duration="1198000" />
       <workItem from="1726141339178" duration="5717000" />
-      <workItem from="1733551077993" duration="8909000" />
+      <workItem from="1733551077993" duration="9576000" />
     </task>
     <servers />
   </component>

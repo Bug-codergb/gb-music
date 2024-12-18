@@ -1,4 +1,6 @@
-import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
+import React, { memo, FC, ReactElement, useEffect, useState, useRef } from 'react';
+import { Tabs } from "antd";
+import type { TabsProps } from 'antd';
 import { useLocation } from 'react-router-dom';
 
 import { InnovateDetailWrapper, CenterContent, LeftContent, RightContent } from './style';
@@ -9,6 +11,8 @@ import TabControl from '../../../../../common/tabControl';
 import Programs from './childCpn/programs/index';
 import Subscriber from '../../../channelDetail/childCpn/subscriber';
 import Upload from './childCpn/upload';
+import NewUpload
+ from './childCpn/newUpload';
 import { getAudioDuration } from '../../../../../../utils/videoUtils';
 
 const InnovateDetail: FC<{ id: string }> = (props): ReactElement => {
@@ -16,16 +20,24 @@ const InnovateDetail: FC<{ id: string }> = (props): ReactElement => {
   const { id } = location.state;
   const [program, setProgram] = useState<IChannel>();
   const [isShow, setIsShow] = useState<boolean>(false);
-  useEffect(() => {
+  const search=()=>{
     getChannelDetail(id, 0, 30).then((data: any) => {
       setProgram(data);
     });
+  }
+  useEffect(() => {
+    search();
   }, [id]);
+  const newUploadRef = useRef()
   const showUpload = () => {
-    setIsShow(true);
+    
+    newUploadRef.current && newUploadRef.current.showModal();
   };
+
+  const [programIndex,setProgramIndex] = useState(0);
+ 
   const define = (name: string, dt: number | undefined, channel: File | undefined) => {
-    console.log(name, dt, channel);
+    
     if (name.trim().length === 0) {
     } else if (!channel) {
     } else {
@@ -36,7 +48,7 @@ const InnovateDetail: FC<{ id: string }> = (props): ReactElement => {
           formData.append('program', channel);
           formData.append('dt', data);
           addProgramSource(id, formData).then((data: any) => {
-            console.log(data);
+            search()
           });
         });
       });
@@ -46,6 +58,19 @@ const InnovateDetail: FC<{ id: string }> = (props): ReactElement => {
   const cancel = () => {
     setIsShow(false);
   };
+  const items: TabsProps['items'] = [
+    {
+      key: '1',
+      label: '节目列表',
+      children: <Programs programs={program?.programs} success={search}/>,
+    },
+    {
+      key:"2",
+      label:"收藏者",
+      children:<Subscriber id={id} />
+    }
+  ];
+  
   return (
     <InnovateDetailWrapper>
       <CenterContent>
@@ -86,15 +111,13 @@ const InnovateDetail: FC<{ id: string }> = (props): ReactElement => {
               )}
             </div>
           </div>
-          <TabControl
-            list={['节目列表', '收藏者']}
-            contentName={['programs', 'sub']}
-            programs={<Programs programs={program?.programs} />}
-            sub={<Subscriber id={id} />}
-          />
+          <Tabs defaultActiveKey="1" items={items} />
         </LeftContent>
         <RightContent></RightContent>
       </CenterContent>
+      <NewUpload ref={newUploadRef} defineUpload={(name: string, dt: number | undefined, channel: File | undefined) =>
+                    define(name, dt, channel)
+                  }/>
     </InnovateDetailWrapper>
   );
 };

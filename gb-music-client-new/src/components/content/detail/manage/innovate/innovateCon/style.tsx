@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 export const InnovateConWrapper = styled.div`
+ height: 100%;
+ width: 100%;
+ background-color: #fff;
+ padding: 10px 0 10px 0;
+ display: flex;
+ flex-direction: column;
   .control-btn {
     display: flex;
     justify-content: flex-end;
+    padding: 0 10px 10px;
     & > button {
       background-color: #ec4141;
       color: #fff;
@@ -21,10 +28,14 @@ export const InnovateConWrapper = styled.div`
     }
   }
   .program-list {
+    overflow-y: auto;
+    flex:1;
+    padding: 0 0 10px 0;
     & > li {
       display: flex;
       align-items: center;
       padding: 10px 0;
+      transition: all 0.3s;
       &:nth-child(odd) {
         background-color: #f9f9f9;
       }

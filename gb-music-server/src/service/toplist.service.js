@@ -448,5 +448,19 @@ class ToplistService {
       console.log(e);
     }
   }
+  async getToplistTypeCountService(){
+    try{
+      const sql=`
+      select t.type,count(t.type) as count
+      from toplist as t
+      GROUP BY t.type
+      `
+      const res = await connection.execute(sql);
+
+      return res[0];
+    }catch (e){
+
+    }
+  }
 }
 module.exports = new ToplistService();

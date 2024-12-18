@@ -1,4 +1,5 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
+import {message,Button } from "antd"
 import {
   useAppDispatch,
   useAppSelector
@@ -7,13 +8,14 @@ import { useNavigate,useLocation } from 'react-router-dom';
 
 import { InnovateConWrapper } from './style';
 
-import { getUserChannel } from '../../../../../../network/channel';
+import { getUserChannel ,deleteChannel} from '../../../../../../network/channel';
 
 import { IChannel } from '../../../../../../constant/channel';
 import { ICategory } from '../../../../../../constant/category';
 import { formatTime } from '../../../../../../utils/format';
 import Upload from './childCpn/upload';
 import { ILogin, IUserMsg } from '../../../../../../constant/store/login';
+
 interface IPrograms extends IChannel {
   channel: ICategory;
 }
@@ -26,12 +28,16 @@ const InnovateCon: FC<{ id: string }> = (props): ReactElement => {
   const { userMsg } = useAppSelector((state) => {
     return state['loginReducer']
   });
-  useEffect(() => {
-    getUserChannel(userMsg.userId, id, 0, 30).then((data: any) => {
+  const search=()=>{
+    getUserChannel(userMsg.userId, id, 0, 3000).then((data: any) => {
       setProgram(data);
       console.log(data);
     });
+  }
+  useEffect(() => {
+    search()
   }, [id, userMsg.userId]);
+  
   const addBtn = () => {
     setIsShow(true);
   };
@@ -48,6 +54,12 @@ const InnovateCon: FC<{ id: string }> = (props): ReactElement => {
       }
     });
   };
+  const handleDelete=async (item:IPrograms)=>{
+    console.log(item);
+    const res = await deleteChannel(item.id);
+    message.success("删除成功");
+    search();
+  }
   return (
     <InnovateConWrapper>
       <div className="control-btn">
@@ -77,7 +89,8 @@ const InnovateCon: FC<{ id: string }> = (props): ReactElement => {
                   创建于:
                   {formatTime(item.createTime, 'yyyy-MM-dd')}
                 </div>
-                <button className="del-btn">删除</button>
+                <Button type="primary" size="small" onClick={()=>handleDelete(item)}>删除</Button>
+                
               </li>
             );
           })}
