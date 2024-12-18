@@ -9,15 +9,31 @@ export const CenterContent = styled.div`
   background-color: #fff;
 `;
 export const LeftContent = styled.div`
-  width: 80%;
+  width: 100%;
   .header {
     display: flex;
     margin: 0 0 20px 0;
+    width: 100%;
     .upload-outer {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+    }
+    justify-content: space-between;
+    .lf{
+      display: flex;
+      flex:1;
+    }
+    .rt{
+      margin: 0 0 0 20px;
+      &>button{
+        background-color: #ec4141;
+        color: #fff;
+        padding: 5px 15px;
+        border-radius: 18px;
+        cursor: pointer;
+      }
     }
   }
   .img-container {
@@ -29,17 +45,13 @@ export const LeftContent = styled.div`
   }
   .right-msg {
     margin: 0 0 0 20px;
-    width: 70%;
+    flex:1;
     .upload-channel {
       display: flex;
       align-items: center;
       justify-content: space-between;
       & > button {
-        background-color: #ec4141;
-        color: #fff;
-        padding: 5px 15px;
-        border-radius: 18px;
-        cursor: pointer;
+       
       }
     }
     .channel-name {
@@ -50,7 +62,11 @@ export const LeftContent = styled.div`
     }
     .desc {
       margin: 10px 0 10px 0;
-      width: 80%;
+      width: 100%;
+      color: #333;
+      &>span{
+       text-align: justify;
+      }
     }
   }
 `;

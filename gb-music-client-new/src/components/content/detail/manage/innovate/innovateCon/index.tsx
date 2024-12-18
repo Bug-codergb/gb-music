@@ -63,10 +63,7 @@ const InnovateCon: FC<{ id: string }> = (props): ReactElement => {
   return (
     <InnovateConWrapper>
       <div className="control-btn">
-        <button onClick={(e) => addBtn()}>
-          <i className="iconfont icon-jia1"> </i>
-          <span>添加内容</span>
-        </button>
+  
       </div>
       <Upload isShowP={isShow} defined={() => define()} canceled={() => cancel()} id={id} />
       <ul className="program-list">

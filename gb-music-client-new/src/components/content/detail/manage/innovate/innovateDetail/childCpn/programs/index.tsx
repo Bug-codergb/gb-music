@@ -4,7 +4,7 @@ import { ProgramWrapper } from './style';
 import {deleteProgam} from "@/network/channel/index"
 import { IProgram } from '@/constant/program';
 import { formatTime } from '@/utils/format';
-import { Empty ,message} from 'antd';
+import { Empty ,message,Button} from 'antd';
 interface IProps {
   programs: IProgram[] | undefined;
   success:()=>void
@@ -27,11 +27,12 @@ const Programs: FC<IProps> = (props): ReactElement => {
             return (
               <li key={item.id}>
                 <div className="index">{(index + 1).toString().padStart(2, '0')}</div>
-                <div className="program-name">{item.name}</div>
+                <div className="program-name mle">{item.name}</div>
                 <div className="play-count">播放: {item.playCount}</div>
                 <div className="create-time">{formatTime(item.createTime, 'yyyy-MM-dd')}</div>
                 <div className="dt">{formatTime(parseInt(item.dt), 'mm:ss')}</div>
-                <div className="del" onClick={()=>handleDelete(item)}>删除</div>
+                
+                <Button size='small' type="primary" onClick={()=>handleDelete(item)}>删除</Button>
               </li>
             );
           })}

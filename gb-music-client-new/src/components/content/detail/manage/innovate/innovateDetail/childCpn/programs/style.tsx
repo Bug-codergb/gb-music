@@ -20,6 +20,7 @@ export const ProgramWrapper = styled.div`
         color: #0086b3;
         width: 40%;
         cursor: pointer;
+        padding: 0 14px 0 0;
       }
       .play-count {
         width: 15%;
