@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/manage/innovate/innovateDetail/childCpn/newUpload/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/manage/innovate/innovateDetail/childCpn/newUpload/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/manage/innovate/innovateDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/manage/innovate/innovateDetail/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/manage/innovate/innovateDetail/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/manage/innovate/innovateDetail/style.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
     </list>

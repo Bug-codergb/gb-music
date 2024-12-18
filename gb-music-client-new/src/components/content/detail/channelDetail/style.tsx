@@ -3,14 +3,12 @@ export const ChannelDetailWrapper = styled.div`
   background-color: #ffffff;
 `;
 export const CenterContent = styled.div`
-  width: 1220px;
-  margin: 0 auto;
-  padding: 20px 15px;
   background-color: #fff;
 `;
 export const LeftContent = styled.div`
   width: 70%;
   border-right: 1px solid #e0e0e0;
+  padding: 20px;
   .header {
     display: flex;
     margin: 0 0 20px 0;
