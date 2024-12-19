@@ -4,6 +4,7 @@ import moment from "moment";
 import {reactive, ref} from "vue";
 import { useRoute } from "vue-router";
 import ProTable from "@/components/ProTable/index.vue";
+import PlayContainer from "@/components/PlayContainer/index.vue";
 const route = useRoute();
 const id = ref(route.params.id);
 const toplist = ref({});
@@ -24,7 +25,7 @@ const columns = reactive([
     isShow: true,
     render:(scope)=>{
       return <el-tooltbip content={scope.row.name} show-after={500}>
-        <el-link type="primary">
+        <el-link type="primary" onClick={()=>handlePlay(scope.row)}>
           <span class="mle">{scope.row.name}</span>
         </el-link>
       </el-tooltbip>
@@ -65,6 +66,10 @@ const columns = reactive([
     }
   }
 ]);
+const playContainerRef = ref();
+const handlePlay=(item)=>{
+  playContainerRef.value && playContainerRef.value.showDialog(item.id)
+}
 </script>
 
 <template>
@@ -91,6 +96,7 @@ const columns = reactive([
         :data="toplist.songs"
       />
     </div>
+    <PlayContainer ref="playContainerRef" />
   </div>
 </template>
 

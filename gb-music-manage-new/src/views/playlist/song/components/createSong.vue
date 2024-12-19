@@ -116,11 +116,11 @@ const config=computed(()=>[
       options:[
         {
           label:"会员",
-          value:0
+          value:1
         },
         {
           label:"非会员",
-          value:1
+          value:0
         }
       ]
     }

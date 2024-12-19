@@ -4,6 +4,7 @@ import moment from "moment"
 import { formatTime } from "@/utils/time"
 import ProTable from "@/components/ProTable/index.vue"
 import { ElMessage,ElMessageBox } from "element-plus"
+import {deleteProgram} from "@/api/modules/channel"
 const emit = defineEmits(['success']);
 const props = defineProps({
   program:{
@@ -52,8 +53,9 @@ const columns = reactive([
 const handleDelete=(item)=>{
   ElMessageBox.confirm("确认删除么?","提示",{
     type:"warning"
-  }).then(()=>{
-
+  }).then(async ()=>{
+    await deleteProgram(item.id);
+    emit("success");
   }).catch(()=>{
 
   })

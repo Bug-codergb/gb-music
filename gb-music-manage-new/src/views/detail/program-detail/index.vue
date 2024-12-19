@@ -52,7 +52,7 @@ const activeName = ref("first")
     <div class="card table-box">
       <el-tabs v-model="activeName">
         <el-tab-pane label="声音列表" name="first">
-          <Program v-if="detail && detail.programs" :program="detail.programs"/>
+          <Program v-if="detail && detail.programs" :program="detail.programs" @success="search"/>
         </el-tab-pane>
       </el-tabs>
     </div>

@@ -238,12 +238,13 @@ class ChannelController {
     const { id } = req.query;
     const { offset = '0', limit = '30' } = req.query;
     if (id) {
-      const data = await getChannelDetailService(id, offset, limit);
+      let data = await getChannelDetailService(id, offset, limit);
       if (data.length !== 0) {
         const { channel } = data[0];
         data.forEach((item, index) => {
           delete item.channel;
         });
+        if(data && data.length!==0) data = data.filter((item)=>item.id!==null && item.id!=='');
         channel.programs = data;
         res.json(channel);
       } else {

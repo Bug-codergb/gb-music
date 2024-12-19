@@ -53,6 +53,7 @@
         :data="playlist.songs"
       />
     </div>
+    <PlayContainer ref="playContainerRef" />
   </div>
 </template>
 <script setup lang="jsx">
@@ -61,6 +62,7 @@ import ProTable from "@/components/ProTable/index";
 import { getPlaylistDetailApi } from "@/api/modules/playlist";
 import { useRoute,useRouter } from "vue-router";
 import moment from "moment";
+import PlayContainer from "@/components/PlayContainer/index.vue";
 
 const playlist = ref({});
 const route = useRoute();
@@ -76,7 +78,7 @@ const columns = reactive([
     render:scope=>{
       return <el-space>
         <el-tooltip content={scope.row.name} placement="top" show-after={500}>
-          <el-link type="primary">
+          <el-link type="primary" onClick={()=>handlePlay(scope.row)}>
             <span class="mle">{scope.row.name}</span>
           </el-link>
           </el-tooltip>
@@ -124,6 +126,10 @@ const handleRouterVideo = (item) => {
   router.push({
     path:"/video/"+item.video.id,
   })
+}
+const playContainerRef = ref();
+const handlePlay=(item)=>{
+  playContainerRef.value && playContainerRef.value.showDialog(item.id)
 }
 </script>
 <style scoped lang="scss">

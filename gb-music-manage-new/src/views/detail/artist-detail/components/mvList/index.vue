@@ -1,11 +1,12 @@
-<script setup>
+<script setup lang="jsx">
 import { reactive } from "vue"
-import { useRoute } from "vue-router"
+import { useRoute ,useRouter} from "vue-router"
 import moment from "moment"
 import ProTable from "@/components/ProTable/index"
 import {getArtistMVApi} from "@/api/modules/artist"
 
 const route = useRoute();
+const router = useRouter();
 const searchParams=reactive({
   id:route.params.id
 })
@@ -13,7 +14,12 @@ const columns = reactive([
   {
     label:"mv名称",
     prop:"name",
-    isShow:true
+    isShow:true,
+    render:(scope)=>{
+      return <el-link type="primary" onClick={()=>handeToVideoDetail(scope.row)}>
+        {scope.row.name}
+      </el-link>
+    }
   },
   {
     label:"创建时间",
@@ -37,6 +43,9 @@ const columns = reactive([
     }
   }
 ])
+const handeToVideoDetail=(item)=>{
+  router.push(`/video/${item.id}`);
+}
 </script>
 
 <template>

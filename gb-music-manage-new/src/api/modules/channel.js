@@ -37,3 +37,6 @@ export function uploadProgramApi(id,data){
 export function getChannelDetailApi(data){
   return http.get("/channel/detail",data)
 }
+export function deleteProgram(id){
+  return http.post(`/channel/program/delete/${id}`);
+}

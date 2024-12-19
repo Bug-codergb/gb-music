@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {changeUserDetail,changeUserMsg,changeLoginType} from "./slice"
 import { login } from '@/network/login';
-
+import {message} from "antd"
 import { getUserDetail, updateUserExpire } from '../../../network/user';
 //import { changeShow } from '../../../components/common/toast/store/actionCreators';
 import { ILoginUserAction } from './type';
@@ -17,6 +17,7 @@ export const loginAsyncThunk = createAsyncThunk("loginAsyncThunk",async (extraIn
       const res: any = await updateUserExpire(token);
       if (res.code * 1 === 200) {
         // dispatch(changeShow('您的VIP已经过期，开通VIP后畅想', 3500));
+        message.warning('您的VIP已经过期，开通VIP后畅想')
         data.auth = 0;
         delete data.vip;
       }

@@ -258,14 +258,6 @@ export function getMenuListApi(params) {
         redirect:"/role/index",
         children: [
           {
-            path: "/role/index",
-            component: "/role/index",
-            meta: {
-              title: "角色管理",
-              icon: "Menu"
-            }
-          },
-          {
             path:"/combo/index",
             component: "/combo/index",
             meta:{

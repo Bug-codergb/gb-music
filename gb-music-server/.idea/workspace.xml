@@ -6,7 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/channel.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/channel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/album-detail/components/SongList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/album-detail/components/SongList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/artist-detail/components/mvList/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/artist-detail/components/mvList/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/artist-detail/components/songList/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/artist-detail/components/songList/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/playlist-detail/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/playlist-detail/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/program-detail/components/Program.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/program-detail/components/Program.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/program-detail/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/program-detail/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/toplist-detail/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/detail/toplist-detail/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/components/createSong.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/components/createSong.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/playlist/song/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/channel.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/channel.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +143,7 @@
       <workItem from="1732534151703" duration="1524000" />
       <workItem from="1732543608817" duration="33402000" />
       <workItem from="1733549620800" duration="19000" />
-      <workItem from="1733549653510" duration="34950000" />
+      <workItem from="1733549653510" duration="37676000" />
     </task>
     <servers />
   </component>

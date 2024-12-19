@@ -6,6 +6,7 @@ import { formatTime } from "@/utils/time"
 import ProTable from "@/components/ProTable/index.vue";
 import CreateMv from "@/views/playlist/song/components/createMV.vue"
 import {deleteAlbumSongApi} from "@/api/modules/album"
+import PlayContainer from "@/components/PlayContainer/index.vue";
 
 const emit = defineEmits(['success']);
 const router = useRouter()
@@ -31,7 +32,7 @@ const columns = reactive([
     width: 260,
     render:(scope)=>{
       return <el-space>
-        <el-link type="primary">{scope.row.name}</el-link>
+        <el-link type="primary" onClick={()=>handlePlay(scope.row)}>{scope.row.name}</el-link>
         {scope.row.video && scope.row.video.id && <div className="g-mv-container" onClick={()=>handleRouterVideo(scope.row)}>MV</div>}
       </el-space>
     }
@@ -110,12 +111,17 @@ const handleUploadMV=(item)=>{
 const search=()=>{
   emit("success")
 }
+const playContainerRef = ref()
+const handlePlay=(item)=>{
+  playContainerRef.value && playContainerRef.value.showDialog(item.id);
+}
 </script>
 
 <template>
   <div class="table-box">
     <ProTable :columns="columns" :request-auto="false" :pagination="false" :data="songs"/>
     <CreateMv ref="createMVRef" @success="search"/>
+    <PlayContainer ref="playContainerRef" />
   </div>
 </template>
 
