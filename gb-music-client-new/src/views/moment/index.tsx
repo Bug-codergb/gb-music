@@ -23,7 +23,6 @@ const Moment: FC = memo((): ReactElement => {
   };
   const momentsRef = useRef();
   const changeTopicShow = () => {
-    console.log(momentsRef.current)
     momentsRef.current && momentsRef.current.showModal();
   };
   return (
@@ -33,7 +32,6 @@ const Moment: FC = memo((): ReactElement => {
           <div className="moment-header">
             <h3>动态</h3>
             <div className="control-btn">
-              
               <Button icon={ <PlusOutlined />} onClick={(e) => changeShow()} type="primary">发动态</Button>
               <CreateMoment ref={createMomentRef} onClick={() => changeShow()} publishSuccess={() => publishSuccess()} />
              

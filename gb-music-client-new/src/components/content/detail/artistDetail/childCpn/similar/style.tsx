@@ -1,9 +1,31 @@
 import styled from 'styled-components';
 export const SimilarWrapper = styled.div`
+
+  @media screen and (max-width:1390px) {
+    .artist-list{
+      grid-template-columns: repeat(6,110px) !important;
+    }
+  }
+  @media screen and (max-width:1235px) {
+    .artist-list{
+      grid-template-columns: repeat(5,110px) !important;
+    }
+  }
+  @media screen and (max-width:1110px) {
+    .artist-list{
+      grid-template-columns: repeat(4,110px) !important;
+    }
+  }
+  @media screen and (max-width:890px) {
+    .artist-list{
+      grid-template-columns: repeat(3,110px) !important;
+    }
+  }
   .artist-list {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(7,110px);
     & > li {
       width: 110px;
       display: flex;

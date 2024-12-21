@@ -19,6 +19,9 @@ export const SubscriberWrapper = styled.div`
           height: 100%;
         }
       }
+      svg{
+        font-size: 28px;
+      }
     }
   }
   .page {

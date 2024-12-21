@@ -26,7 +26,9 @@ const HotMoment: FC = memo((props): ReactElement => {
   };
   return (
     <HotMomentWrapper>
-      <h2>热门话题</h2>
+      {
+        hotTopic && hotTopic.length !== 0 && <h2>热门话题</h2>
+      }
       {hotTopic.length !== 0 &&
         hotTopic.map((item, index) => {
           return (

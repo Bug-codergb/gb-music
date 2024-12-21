@@ -33,7 +33,8 @@ const {
   deleteChannelContentService,
   getChannelFileService,
   getUserProgramListService,
-  deleteProgramService
+  deleteProgramService,
+  getUserChannelDetailService
 } = require('../service/channel.service');
 class ChannelController {
   async create(req, res, next) {
@@ -373,6 +374,13 @@ class ChannelController {
     const { id } = req.params;
     const ret = await deleteProgramService(id);
     res.json(ret);
+  }
+  async getUserChannelDetail(req,res,next){
+    const { userId } = req.params;
+    const ret = await getUserChannelDetailService(userId);
+    res.json({
+      channel:ret
+    })
   }
 }
 module.exports = new ChannelController();

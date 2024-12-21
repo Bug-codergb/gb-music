@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 export const HotMomentWrapper = styled.ul`
+  h2{
+    margin:0 0 10px 0;
+  }
   & > li {
     display: flex;
-    margin: 0 0 10px 0;
+    margin: 0 0 18px 0;
     .img-container {
       width: 90px;
       height: 60px;

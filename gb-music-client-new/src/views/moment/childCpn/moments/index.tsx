@@ -30,7 +30,7 @@ const Moments: FC = memo((props): ReactElement => {
   const [count, setCount] = useState<number>(0);
   const [comment, setComment] = useState<IComment[]>([]);
   const [totalCom, setTotalCom] = useState<number>(0);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(-1);
   const [liveIndex, setLiveIndex] = useState<number>(-1);
 
   const { userMsg } = useAppSelector((state) => {
@@ -69,6 +69,10 @@ const Moments: FC = memo((props): ReactElement => {
     });
   };
   const showComment = (item: IMoment, index: number) => {
+    if(index === currentIndex){
+      setCurrentIndex(-1);
+      return;
+    }
     setCurrentIndex(index);
     getAllComment<{ comments: IComment[]; count: number }>(item.id, 'mId', 0, 10).then((data) => {
       setComment(data.comments);
@@ -177,7 +181,7 @@ const Moments: FC = memo((props): ReactElement => {
                     </div>
                     <div className="operator" onClick={(e) => delClick(e, item, index)}>
                       <Dropdown
-                        trigger="click"
+                        trigger="hover"
                         menu={{ items, onClick: () => handleDelete(item) }}
                         placement="bottom"
                         arrow={{ pointAtCenter: true }}
@@ -210,10 +214,12 @@ const Moments: FC = memo((props): ReactElement => {
                   <div className="picture">
                     <img src={item.picUrl} alt="" />
                   </div>
+                  
                   {
                     <Reply
+                      key={item.id}
                       isShowBtn={true}
-                      isShowPublish={false}
+                      isShowPublish={currentIndex === index}
                       onClick={(content: string) => publish(content, item)}
                       thumbClick={() => thumb(item)}
                       cancelThumb={() => cancelClick(item)}
@@ -221,6 +227,7 @@ const Moments: FC = memo((props): ReactElement => {
                       id={item.id}
                     />
                   }
+                
                   {currentIndex === index && (
                     <Comment
                       comments={comment}
@@ -230,6 +237,7 @@ const Moments: FC = memo((props): ReactElement => {
                       pageClick={(e) => pageChange(e, item)}
                     />
                   )}
+                  
                 </div>
               </li>
             );

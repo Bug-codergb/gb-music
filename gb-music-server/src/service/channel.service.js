@@ -470,5 +470,16 @@ class ChannelService {
 
     }
   }
+  async getUserChannelDetailService(userId){
+    const sql=`
+    select cc.id,cc.name,coverUrl,cc.description,cc.createTime,cc.updateTime,
+      JSON_OBJECT('userId',u.userId,'userName',u.userName,'avatarUrl',u.avatarUrl) as user,
+      \t\t\t(select JSON_OBJECT('id',cc.cId,'name',c.name) from channel as c WHERE c.id = cc.cId) as channel
+      from channel_content as cc
+      LEFT JOIN user as u on u.userId = cc.userId
+      where u.userId = ?`;
+    const result = await connection.execute(sql,[userId]);
+    return result[0];
+  }
 }
 module.exports = new ChannelService();

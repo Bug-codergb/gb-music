@@ -2,29 +2,31 @@ import styled from 'styled-components';
 export const ChannelPlayWrapper = styled.div`
   background-color: #fff;
   padding: 20px 20px 30px 20px;
+  height: 100%;
+  overflow-y: auto;
   .program-list {
     & > li {
       display: flex;
       align-items: center;
       padding: 10px 0 10px 10px;
       &:nth-child(odd) {
-        background-color: #f9f9f9;
+       
       }
       &:nth-child(1),
       &:nth-child(2),
       &:nth-child(3) {
         .index {
-          background-color: #ff3a3a;
+          color: #ff3a3a;
         }
       }
       .index {
         margin: 0 15px 0 0;
-        background-color: #cccccc;
+       
         padding: 5px 6px;
         border-radius: 8px;
         font-size: 13px;
-        color: #fff;
-        font-weight: bold;
+        color: #656565;
+        font-weight: normal;
       }
       .img-container {
         width: 50px;

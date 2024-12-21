@@ -1,9 +1,10 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
+import { UserOutlined } from '@ant-design/icons';
 import { getChannelSubUser } from '../../../../../../network/channel';
 import { IUser } from '../../../../../../constant/user';
 import { SubWrapper } from './style';
 import { useNavigate } from 'react-router-dom';
-import { Pagination } from 'antd';
+import { Pagination ,Avatar} from 'antd';
 interface IProps  {
   id: string;
 }
@@ -40,7 +41,8 @@ const Subscriber: FC<IProps> = (props): ReactElement => {
             return (
               <li key={item.userId}>
                 <div className="img-container" onClick={(e) => userRouter(item)}>
-                  <img src={item.avatarUrl} alt={item.userName} />
+                
+                  <Avatar src={item.avatarUrl} icon={<UserOutlined />}  style={{width:'80px',height:'80px'}}/>
                 </div>
                 <p onClick={(e) => userRouter(item)}>{item.userName}</p>
               </li>

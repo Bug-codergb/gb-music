@@ -12,3 +12,14 @@ export function payUser(upId: string) {
     }
   });
 }
+
+export function cancelPayUser(userId:string,upId:string){
+  return request({
+    url:"/fans/cancel",
+    method:"post",
+    data:{
+      userId,
+      upId
+    }
+  })
+}

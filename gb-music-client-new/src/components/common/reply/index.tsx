@@ -1,4 +1,4 @@
-import React, { memo, FC, ReactElement, useState, FormEvent } from 'react';
+import React, { memo, FC, ReactElement, useState, useEffect,FormEvent } from 'react';
 
 import { ReplyWrapper } from './style';
 import {
@@ -49,6 +49,7 @@ const Reply: FC<IProps> = (props): ReactElement => {
       showCommentClick();
     }
   };
+
   const isThumb = (): boolean => {
     let momentFlag = -1;
     let commentFlag = -1;
@@ -82,6 +83,7 @@ const Reply: FC<IProps> = (props): ReactElement => {
           <li onClick={(e) => thumb()} className={isThumb() ? 'active' : ''}>
             <i className="iconfont icon-dianzan"> </i>
           </li>
+          
           <li onClick={(e) => liClick()}>
             <i className="iconfont icon-pinglun1"> </i>
           </li>
@@ -100,6 +102,7 @@ const Reply: FC<IProps> = (props): ReactElement => {
           </div>
         </div>
       )}
+     
     </ReplyWrapper>
   );
 };

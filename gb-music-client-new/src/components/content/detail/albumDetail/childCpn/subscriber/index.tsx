@@ -1,8 +1,9 @@
 import React, { memo, FC, ReactElement, useState, useEffect } from 'react';
+import { UserOutlined } from '@ant-design/icons';
 import { IPlaylistSub } from '@/constant/IPlaylistSub';
 import { SubscriberWrapper } from './style';
 import { getAlbumSub } from '@/network/album';
-import { Empty, Pagination } from 'antd';
+import { Empty, Pagination,Avatar, } from 'antd';
 import { IUser } from '@/constant/user';
 import { useNavigate } from 'react-router-dom';
 
@@ -43,7 +44,7 @@ const Subscriber: FC<IProps> = memo((props): ReactElement => {
             return (
               <li key={item.user.userId}>
                 <div className="img-container" onClick={(e) => userRouter(item.user)}>
-                  <img src={item.user.avatarUrl} alt="头像" />
+                  <Avatar src={item.user.avatarUrl} icon={<UserOutlined />}  style={{width:'80px',height:'80px'}}/>
                 </div>
                 <div className="user-name" onClick={(e) => userRouter(item.user)}>
                   {item.user.userName}

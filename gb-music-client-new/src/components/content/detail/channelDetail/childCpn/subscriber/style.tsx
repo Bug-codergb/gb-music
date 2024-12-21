@@ -23,6 +23,9 @@ export const SubWrapper = styled.div`
           left: 50%;
           height: 100%;
         }
+        svg{
+          font-size: 28px;
+        }
       }
       p {
         text-align: center;

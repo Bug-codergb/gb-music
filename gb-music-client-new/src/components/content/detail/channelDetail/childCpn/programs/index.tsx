@@ -31,7 +31,7 @@ const Programs: FC<IProps> = (props): ReactElement => {
             return (
               <li key={item.id}>
                 <div className="index">{(index + 1).toString().padStart(2, '0')}</div>
-                <div className="program-name" onClick={(e) => addPlayCount(item)}>
+                <div className="program-name mle" onClick={(e) => addPlayCount(item)}>
                   {item.name}
                 </div>
                 <div className="play-count">播放: {item.playCount}</div>

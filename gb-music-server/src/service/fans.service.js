@@ -20,5 +20,14 @@ class FansService {
       console.log(e);
     }
   }
+  async cancelFansService(userId, upId) {
+    try{
+      const sql=`delete from fans where userId=? and upId=?`;
+      const res = await connection.execute(sql, [userId, upId]);
+      return res[0];
+    }catch (e) {
+      console.log(e);
+    }
+  }
 }
 module.exports = new FansService();

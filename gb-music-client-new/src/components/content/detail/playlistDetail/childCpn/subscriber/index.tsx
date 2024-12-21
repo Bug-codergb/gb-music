@@ -3,7 +3,8 @@ import { SubscriberWrapper } from './style';
 import { getPlaylistSub } from '../../../../../../network/playlist';
 import { IPlaylistSub } from '../../../../../../constant/IPlaylistSub';
 import { useNavigate } from 'react-router-dom';
-import { Pagination } from 'antd';
+import { Pagination ,Avatar} from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 interface IProps  {
   id: string;
@@ -41,7 +42,7 @@ const Subscriber: FC<IProps> = memo((props): ReactElement => {
             return (
               <li key={item.user.userId}>
                 <div className="img-container" onClick={(e) => userRouter(item)}>
-                  <img src={item.user.avatarUrl} alt="头像" />
+                  <Avatar src={item.user.avatarUrl} icon={<UserOutlined />} style={{width:'80px',height:'80px'}}/>
                 </div>
                 <div className="user-name" onClick={(e) => userRouter(item)}>
                   {item.user.userName}

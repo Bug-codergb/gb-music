@@ -11,7 +11,7 @@ import { IVideo } from '../../../../constant/video';
 import CreatedPlaylist from './childCpn/createdPlaylist';
 import CreatedChannel from './childCpn/createdChannel';
 import SubPlaylist from './childCpn/subPlaylist';
-import { payUser } from '../../../../network/fans';
+import { payUser,cancelPayUser } from '../../../../network/fans';
 import { useAppDispatch,useAppSelector } from "@/store/hooks"
 
 import { changeUserDetailAction } from '../../../../views/Login/store/asyncThunk';
@@ -58,13 +58,17 @@ const UserDetail: FC<{ userId: string }> = (props): ReactElement => {
       let isExists: number = userDetail.follow.findIndex((item: any, index: number) => {
         return item.userId === userId;
       });
+      console.log(isExists)
       if (isExists !== -1) {
         setIsPay(true);
       } else {
         setIsPay(false);
       }
     }
-  }, [userId, userDetail.follow]);
+    if(userDetail && userDetail.follow.length ===0){
+      setIsPay(false);
+    }
+  }, [userId, userDetail,userDetail.follow]);
 
   useEffect(() => {
     getSimpleUserInfo<IUserSimple>(userId).then((data) => {
@@ -77,6 +81,11 @@ const UserDetail: FC<{ userId: string }> = (props): ReactElement => {
       dispatch(changeUserDetailAction());
     });
   };
+  const handleCancelPay=()=>{
+    cancelPayUser(userDetail.userId,userId).then((data)=>{
+      dispatch(changeUserDetailAction());
+    })
+  }
   return (
     <UserDetailWrapper>
       <CenterContentWrapper>
@@ -106,15 +115,15 @@ const UserDetail: FC<{ userId: string }> = (props): ReactElement => {
                 <span>个人介绍:</span>日常琐碎
               </div>
             </div>
-            {!isPay && (
+            {!isPay && userId!==userDetail.userId && (
               <div className="pay-attention" onClick={(e) => payUserClick()}>
                 <i className="iconfont icon-jia1"> </i>
                 <span>关注</span>
               </div>
             )}
             {isPay && (
-              <div className="pay-attention">
-                <span>已关注</span>
+              <div className="pay-attention" onClick={()=>handleCancelPay()}>
+                <span>取消关注</span>
               </div>
             )}
           </div>

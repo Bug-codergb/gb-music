@@ -28,7 +28,8 @@ const {
   updateChannel,
   deleteChannelContent,
   getUserProgramList,
-  deleteProgram
+  deleteProgram,
+  getUserChannelDetail
 } = require('../controller/channel.controller');
 router.post('/', loginAuth, channelIcon.single('channel'), create);
 router.get('/cover', getChannelCover);
@@ -80,4 +81,6 @@ router.post('/content/delete', loginAuth, deleteChannelContent);
 router.post('/program/list', loginAuth, getUserProgramList);
 //删除节目
 router.post("/program/delete/:id",loginAuth,deleteProgram);
+//获取用户频道
+router.post("/user/detail/:userId",loginAuth,getUserChannelDetail);
 module.exports = router;

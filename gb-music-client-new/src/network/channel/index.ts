@@ -181,3 +181,9 @@ export function deleteProgam(id:string){
     method:"post"
   })
 }
+export function getUserChannelDetail(userId:string){
+  return request({
+    url:"/channel/user/detail/"+userId,
+    method:"post"
+  })
+}

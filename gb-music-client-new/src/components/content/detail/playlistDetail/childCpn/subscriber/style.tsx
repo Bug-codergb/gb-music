@@ -18,6 +18,9 @@ export const SubscriberWrapper = styled.div`
         img {
           height: 100%;
         }
+        svg{
+          font-size: 28px;
+        }
       }
     }
   }
