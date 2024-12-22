@@ -1,4 +1,5 @@
 const path = require('path');
+const moment = require('moment');
 const errorType = require('../constants/errorType');
 const { isEmpty } = require('../utils/isEmpty');
 const { tran } = require('../utils/tran');
@@ -355,7 +356,7 @@ class UserController {
       if (!isEmpty(userId, '用户id不能为空', next) && !isEmpty(name, '用户名不能为空', next)) {
         if (vip === 0) {
           combo = null;
-          expireTime = 0;
+          expireTime = moment(new Date()).format('YYYY-MM-DD HH:mm');
           const result = await updateUserMsgService(userId, vip, name, manage, expireTime, combo);
           res.json(result);
         } else if (vip === 1) {

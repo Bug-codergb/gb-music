@@ -17,3 +17,6 @@ export function createUserApi(data){
 export function deleteUserApi(data){
   return http.post("/user/delete",data);
 }
+export function updateUserApi(data){
+  return http.post("/user/update",data);
+}

@@ -8,20 +8,30 @@
       ref="tableRef"
       :pagination="true"
     >
+      <template #tableHeader>
+        <el-form>
+          <el-form-item>
+            <el-input v-model="searchParams.keyword" placeholder="请输入用户名称" @input="search"/>
+          </el-form-item>
+        </el-form>
+      </template>
       <template #toolButton>
         <el-button type="primary" @click="handleCreateUser">添加用户</el-button>
       </template>
     </ProTable>
     <CreateUser ref="createUserRef" @success="handleSearch"/>
+    <UpdateUser ref="updateUserRef" @success="handleSearch"/>
   </div>
 </template>
 <script setup lang="jsx">
 import CreateUser from "./components/createUser/index.vue"
+import UpdateUser from "./components/updateUser/index.vue"
 import { reactive, ref } from "vue";
 import {ElMessage, ElMessageBox} from "element-plus"
 import moment from "moment";
 import { getUserListApi,deleteUserApi } from "@/api/modules/user.js";
 import ProTable from "@/components/ProTable/index";
+import debounce from "lodash/debounce"
 const columns = reactive([
   {
     label: "用户名称",
@@ -87,7 +97,7 @@ const columns = reactive([
     render: scope => {
       return (
         <el-space size="large">
-          <el-link type="primary">编辑</el-link>
+          <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
           <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
         </el-space>
       );
@@ -107,13 +117,20 @@ const tableRef = ref();
 const handleSearch=()=>{
   tableRef.value && tableRef.value.search();
 }
+const search=debounce(()=>{
+  handleSearch()
+},500)
 const handleDelete=(item)=>{
   ElMessageBox.confirm("确认删除该用户么?","提示",{
     type:"warning"
   }).then(async ()=>{
-    const res = deleteUserApi({userId:item.userId})
+    const res = await deleteUserApi({userId:item.userId})
     handleSearch();
     ElMessage.success("删除成功")
   })
+}
+const updateUserRef = ref();
+const handleEdit=(row)=>{
+  updateUserRef.value && updateUserRef.value.showDrawer(row);
 }
 </script>

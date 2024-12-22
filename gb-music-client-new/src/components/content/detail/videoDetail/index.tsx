@@ -42,7 +42,8 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
   const dispatch = useAppDispatch();
   useBackTop();
   useEffect(() => {
-    dispatch(changeVideoDetailAction({ id: vid }));
+    if(vid){
+      dispatch(changeVideoDetailAction({ id: vid }));
     getVideoURL(vid).then((data: any) => {
       getFileBlob(verifyURL(data.url)).then(() => {
         //const url = URL.createObjectURL(data);
@@ -60,6 +61,7 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
       })
       });
     });
+    }
     setIsPlay(true);
     if (videoRef.current) {
       videoRef.current.volume = 0.1;
@@ -115,7 +117,7 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
   const playSimiVideo = (item: IVideo) => {
     //console.log(item);
     setURL('');
-    dispatch(changeVideoDetailAction(item.id));
+    dispatch(changeVideoDetailAction({id:item.id}));
     getVideoURL(item.id).then((data: any) => {
       setURL(data.url);
     });

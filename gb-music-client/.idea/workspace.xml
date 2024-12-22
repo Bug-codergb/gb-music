@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/user/components/updateUser/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/api/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-manage-new/src/views/user/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-manage-new/src/views/user/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/controller/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/controller/user.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
