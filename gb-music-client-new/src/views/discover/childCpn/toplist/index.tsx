@@ -1,7 +1,11 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
+import {
+  useAppDispatch,
+  useAppSelector
+} from "@/store/hooks.ts";
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '@/store/hooks';
-import { Skeleton, Image, Spin } from 'antd';
+
+import { Skeleton, Image, Spin ,message} from 'antd';
 import { ToplistWrapper } from './style';
 import {addToplistPlayCount, getOfficial, getToplistDetail} from '@/network/toplist/toplist';
 import { IToplist } from '@/constant/toplist';
@@ -19,6 +23,10 @@ const Toplist: FC = (props): ReactElement => {
   const navigate = useNavigate();
   const [official, setOfficial] = useState<IToplist[]>([]);
   const [detail, setDetail] = useState<IDetail[]>([]);
+
+  const { userMsg } = useAppSelector((state) => {
+    return  state['loginReducer']
+  });
 
   const dispatch = useAppDispatch();
 
@@ -46,6 +54,12 @@ const Toplist: FC = (props): ReactElement => {
     });
   };
   const playSong = (item: IToplist,it:ISong) => {
+    const { vip } = it;
+    const { auth } = userMsg;
+    if (vip === 1 && auth * 1 === 0) {
+      //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
+      message.warning('您正在试听VIP歌曲，开通VIP后畅想')
+    }
     dispatch(changeSongDetailAction({id:it.id}));
     addToplistPlayCount(item.id).then(()=>{}).catch(()=>{})
   };
