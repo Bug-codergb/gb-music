@@ -28,6 +28,18 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
     return state['songReducer'];
   });
 
+  const { isPlayMusic,isPlayVideo } = useAppSelector((state)=>{
+    return state['playReducer']
+  })
+
+  useEffect(()=>{
+    console.log(isPlayVideo,isPlay);
+    if(isPlayVideo && isPlay){
+      setIsPlay(false);
+      audioRef.current && audioRef.current.pause()
+    }
+  },[isPlayVideo])
+
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -37,8 +49,10 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
         console.log(song.songUrl);
         audioRef.current.src = song.songUrl;
         audioRef.current.volume = 0.2;
-        audioRef.current.play();
-        setIsPlay(true);
+        if(isPlayMusic){
+          audioRef.current.play();
+          setIsPlay(true);
+        }
       }
     });
   }, [song.songUrl]);

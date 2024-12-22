@@ -9,10 +9,11 @@ import { ISongStore } from '../../../../constant/store/song';
 import { changeCurrentIndex, changeSongDetail, changeSongURL, changeLyric, changePlaylist } from './slice';
 import { ISong } from '@/constant/song';
 import { changePlayType } from '@/store/playType/slice';
+import { changePlayMusic, changePlayVideo } from "@/store/modules/play/slice";
 
 
 export const changeSongDetailAction = createAsyncThunk("song/changeSongDetailAction",async (extraInfo:any,{dispatch,getState})=>{
-  const {id} = extraInfo
+  const {id,isPlay = true} = extraInfo
    const state:any = getState();
    const { playlist } = state['songReducer'];
   let flag = playlist.findIndex((item: ISong, index: number) => {
@@ -25,7 +26,7 @@ export const changeSongDetailAction = createAsyncThunk("song/changeSongDetailAct
   if (flag === -1) {
     const data:any = await getSongDetail(id)
       dispatch(changeSongDetail(data));
-      dispatch(changeSongURLAction({ id }));
+      dispatch(changeSongURLAction({ id,isPlay }));
       dispatch(changeSongLyric({ id }));
       const newPlaylist = [...playlist];
       newPlaylist.push(data);
@@ -39,7 +40,7 @@ export const changeSongDetailAction = createAsyncThunk("song/changeSongDetailAct
   if (flag !== -1) {
     dispatch(changeCurrentIndex(flag));
     dispatch(changeSongDetail(playlist[flag]));
-    dispatch(changeSongURLAction({ id }));
+    dispatch(changeSongURLAction({ id,isPlay }));
     dispatch(changeSongLyric({ id }));
     const ret = await addSongPlayCount(id);
     return ret;
@@ -75,10 +76,12 @@ export const changeCurrentSongAction = createAsyncThunk("currentSongAction",(ext
   dispatch(changeSongURLAction({id: playlist[currentIndex].id }));
 })
 export const changeSongURLAction = createAsyncThunk("songUrlAction",(extraInfo:any,{dispatch,getState})=>{
-  const {id} = extraInfo;
+  const {id,isPlay = true} = extraInfo;
   getSongURL(id).then((data: any) => {
     const { mp3Url } = data;
     const url = verifyURL(mp3Url);
+    dispatch(changePlayVideo(false));
+    dispatch(changePlayMusic(isPlay));
     dispatch(changeSongURL(url));
   });
 })

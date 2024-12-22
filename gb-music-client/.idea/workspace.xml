@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b46abf-51b6-4e08-9d97-d2e1e816712c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/userDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/userDetail/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/network/channel/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/network/channel/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/childCpn/moments/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/childCpn/moments/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/controller/channel.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/controller/channel.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/controller/fans.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/controller/fans.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/router/channel.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/router/channel.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/router/fans.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/router/fans.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/service/channel.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/service/channel.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-server/src/service/fans.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-server/src/service/fans.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -22,6 +22,7 @@ import useBackTop from '../../../../hooks/useBackTop';
 import { IVideoStore } from '../../../../constant/store/video';
 import { Dispatch } from 'redux';
 import { IVideoDetailAction } from './store/type';
+import { changePlayMusic, changePlayVideo } from '@/store/modules/play/slice';
 
 const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
   const location = useLocation();
@@ -46,6 +47,8 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
       getFileBlob(verifyURL(data.url)).then(() => {
         //const url = URL.createObjectURL(data);
         setURL(verifyURL(data.url));
+        dispatch(changePlayMusic(false));
+        dispatch(changePlayVideo(true));
         const player = new Player({
           id: 'vs',
           url: data.url,

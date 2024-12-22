@@ -36,7 +36,7 @@ const Home: React.FC = (props) => {
     getAllSongApi("",0,1).then((res:any)=>{
       if(res && res.songs && res.songs.length!==0){
         const song = res.songs[0];
-        dispatch(changeSongDetailAction({id:song.id}))
+        dispatch(changeSongDetailAction({id:song.id,isPlay:false}))
       }
     })
   },[])

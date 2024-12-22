@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/userDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/userDetail/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/network/channel/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/network/channel/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/childCpn/moments/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/childCpn/moments/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/views/moment/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/channel.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/channel.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/fans.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/fans.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/channel.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/channel.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/fans.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/fans.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/channel.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/channel.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/fans.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/fans.service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +131,7 @@
       <workItem from="1732534151703" duration="1524000" />
       <workItem from="1732543608817" duration="33402000" />
       <workItem from="1733549620800" duration="19000" />
-      <workItem from="1733549653510" duration="42486000" />
+      <workItem from="1733549653510" duration="43666000" />
     </task>
     <servers />
   </component>

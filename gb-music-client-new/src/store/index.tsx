@@ -9,6 +9,8 @@ import { reducer as messageReducer } from '../components/common/message/store/in
 import { reducer as programReducer } from '../components/content/detail/channelDetail/childCpn/programs/store/index';
 import { reducer as playModeTypeReducer } from './playType/index';
 import { reducer as vipReducer } from '../components/content/vip/store/index';
+
+import {reducer as playReducer} from "./modules/play/slice";
 const store = configureStore({
   reducer:{
     loginReducer,
@@ -19,7 +21,8 @@ const store = configureStore({
     videoReducer,
     programReducer,
     playModeTypeReducer,
-    vipReducer
+    vipReducer,
+    playReducer,
   },
   devTools:true
 })
