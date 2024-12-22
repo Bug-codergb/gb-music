@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="" />
+    <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/alipay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/alipay.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,7 +131,7 @@
       <workItem from="1732534151703" duration="1524000" />
       <workItem from="1732543608817" duration="33402000" />
       <workItem from="1733549620800" duration="19000" />
-      <workItem from="1733549653510" duration="46898000" />
+      <workItem from="1733549653510" duration="47366000" />
     </task>
     <servers />
   </component>
