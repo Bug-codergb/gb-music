@@ -53,11 +53,22 @@ export function addSongPlayCount(id: string) {
 }
 //下载歌曲
 export function downloadSong(id: string, name: string) {
+
+  return request({
+    url: '/song/download',
+    method: 'post',
+    data: {
+      id
+    },
+    responseType:"blob"
+  });
+
+
   fetch(`${HOST_NAME}/song/download`, {
     method: 'post',
     headers: {
       // @ts-ignore
-      authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token,
+      //authorization: store.getState().getIn(['loginReducer', 'login', 'userMsg']).token,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ id })

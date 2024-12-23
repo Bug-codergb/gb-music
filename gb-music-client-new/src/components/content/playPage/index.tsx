@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { Modal,Empty } from 'antd';
+import { Modal,Empty,message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 import { PlayPageWrapper, CenterContent } from './style';
@@ -24,6 +24,7 @@ import { ILogin, IUserDetail, IUserMsg } from '../../../constant/store/login';
 import { IComment } from '../../../constant/comment';
 import { IPlaylist } from '../../../constant/playlist';
 import { ISongStore } from '../../../constant/store/song';
+
 
 const PlayPage: FC = memo((props): ReactElement => {
   const navigate = useNavigate();
@@ -176,11 +177,21 @@ const PlayPage: FC = memo((props): ReactElement => {
       });
     }
   };
-  const download = () => {
+  const download = async () => {
     if (userMsg && userMsg.auth === 0) {
-      payClick();
+      message.warning("您还未开通VIP，开通后畅想")
     } else {
-      downloadSong(songDetail.id, songDetail.name);
+      const res = await downloadSong(songDetail.id, songDetail.name);
+      const link = document.createElement('a')
+      const blob = new Blob([res])
+
+
+      link.href = URL.createObjectURL(blob)
+      link.setAttribute('download', `${songDetail.name}.mp3`) // 自定义文件名
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+
     }
   };
   return (

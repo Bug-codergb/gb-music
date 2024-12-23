@@ -10,7 +10,7 @@ export const PlayCoinWrapper = styled.div`
   left: 0;
   top: 100%;
   transform: translate(0, -100%);
-  z-index: 9999099909;
+  z-index: 99;
 
   display: flex;
   justify-content: center;
