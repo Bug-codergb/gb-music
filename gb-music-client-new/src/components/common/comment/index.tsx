@@ -5,7 +5,7 @@ import {
   useAppSelector
 } from "@/store/hooks"
 
-import { Pagination } from 'antd';
+import { message, Pagination } from 'antd';
 
 import { CommentWrapper } from './style';
 import { IComment } from '@/constant/comment';
@@ -25,10 +25,12 @@ interface IProps  {
   comments: IComment[];
   onClick: () => void;
   pageClick?: (count: number) => void;
+  cols?:number
+  repCols:number
 }
 const Comment: FC<IProps> = memo((props): ReactElement => {
   const navigate = useNavigate()
-  const { comments, onClick, isPage, total, pageClick } = props;
+  const { comments, onClick, isPage, total, pageClick,cols=80 ,repCols=80} = props;
   const dispatch = useAppDispatch();
   const reply = (content: string, item: IComment): void => {
     if (content.trim().length !== 0) {
@@ -54,14 +56,10 @@ const Comment: FC<IProps> = memo((props): ReactElement => {
     }
   };
   const deleteCom = (item: IComment) => {
-    // @ts-ignore
-   /* dispatch(changeMsgAction(true)).then((data) => {
-      if (data) {
-        deleteComment(item.id).then((data: any) => {
-          onClick();
-        });
-      }
-    });*/
+    deleteComment(item.id).then((data: any) => {
+      onClick();
+      message.success("删除成功");
+    });
   };
   const userRouter = (item: IUser) => {
     navigate('/Home/userDetail',{
@@ -101,6 +99,7 @@ const Comment: FC<IProps> = memo((props): ReactElement => {
                       delComment={() => deleteCom(item)}
                       id={item.id}
                       userId={item.user.userId}
+                      cols={cols}
                     />
                   </div>
                   <ul className="reply">
@@ -118,7 +117,7 @@ const Comment: FC<IProps> = memo((props): ReactElement => {
                                 }
                               </div>
                             </div>
-                            <div>
+                            <div style={{flex:1}}>
                               <div className="reply-user-name">{item.user.userName}</div>
                               <div className="reply-content">{item.content}</div>
                               <div className="reply-time">{formatTime(item.createTime, 'yyyy-MM-dd hh:mm:ss')}</div>
@@ -132,6 +131,8 @@ const Comment: FC<IProps> = memo((props): ReactElement => {
                                   delComment={() => deleteCom(item)}
                                   id={item.id}
                                   userId={item.user.userId}
+                                  cols={repCols}
+                                  isReply={false}
                                 />
                               </div>
                             </div>

@@ -54,7 +54,7 @@ const PlayPage: FC = memo((props): ReactElement => {
     if (playType === 1) {
       id = 'cId';
     }
-    getAllComment(songDetail.id, id, 0, 30).then((data: any) => {
+    getAllComment(songDetail.id, id, 0, 10).then((data: any) => {
       setComment(data.comments);
       setTotal(data.count);
     });
@@ -117,14 +117,14 @@ const PlayPage: FC = memo((props): ReactElement => {
     if (content.trim().length !== 0 && songDetail.id) {
       if (playType === 0) {
         publishComment(content, 'songId', songDetail.id).then((data) => {
-          getAllComment(songDetail.id, 'songId', 0, 30).then((data: any) => {
+          getAllComment(songDetail.id, 'songId', 0, 10).then((data: any) => {
             setComment(data.comments);
             setTotal(data.count);
           });
         });
       } else if (playType === 1) {
         publishComment(content, 'cId', songDetail.id).then((data) => {
-          getAllComment(songDetail.id, 'cId', 0, 30).then((data: any) => {
+          getAllComment(songDetail.id, 'cId', 0, 10).then((data: any) => {
             setComment(data.comments);
             setTotal(data.count);
           });
@@ -135,17 +135,23 @@ const PlayPage: FC = memo((props): ReactElement => {
   //回复
   const reply = () => {
     if (playType === 0) {
-      getAllComment(songDetail.id, 'songId', 0, 30).then((data: any) => {
+      getAllComment(songDetail.id, 'songId', 0, 10).then((data: any) => {
         setComment(data.comments);
         setTotal(data.count);
       });
     } else if (playType === 1) {
-      getAllComment(songDetail.id, 'cId', 0, 30).then((data: any) => {
+      getAllComment(songDetail.id, 'cId', 0, 10).then((data: any) => {
         setComment(data.comments);
         setTotal(data.count);
       });
     }
   };
+  const handlePageChange=(e:number)=>{
+    getAllComment(songDetail.id, playType===1 ?'cId' :'songId', (e-1)*10, 10).then((data: any) => {
+      setComment(data.comments);
+      setTotal(data.count);
+    });
+  }
   const isLove = (): boolean => {
     const index = userDetail.love.findIndex((item: { songId: string }, index: number) => {
       return item.songId === songDetail.id;
@@ -179,7 +185,8 @@ const PlayPage: FC = memo((props): ReactElement => {
             <div className="rotate-album">
               <img src={songDetail.album ? songDetail.album.coverUrl : songDetail.channel.coverUrl} alt="cover" />
             </div>
-            <div className="control-btn">
+            {
+              playType === 0 && <div className="control-btn">
               <ul>
                 <li onClick={(e) => loveClick()}>
                   {!isLove() && <i className="iconfont icon-love"> </i>}
@@ -197,6 +204,7 @@ const PlayPage: FC = memo((props): ReactElement => {
                 </li>
               </ul>
             </div>
+            }
           </div>
           {isShow && (
             <div className="user-album">
@@ -280,7 +288,7 @@ const PlayPage: FC = memo((props): ReactElement => {
             <p className="comment-title">歌曲评论</p>
             <Reply isShowPublish={true} isShowBtn={false} onClick={(content: string) => publish(content)} />
             <br />
-            <Comment comments={comment} onClick={() => reply()} isPage={true} total={total} />
+            <Comment cols={70} repCols={65} comments={comment} pageClick={(e)=>handlePageChange(e)} onClick={() => reply()} isPage={true} total={total} />
           </div>
           <div className="play-right">
             <IncludePlaylist id={songDetail.id} />

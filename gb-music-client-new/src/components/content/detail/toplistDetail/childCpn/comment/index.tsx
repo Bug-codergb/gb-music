@@ -12,30 +12,36 @@ const Comment: FC<IProps> = memo((props): ReactElement => {
   const [comments, setComment] = useState<IComment[]>([]);
   const [total, setTotal] = useState<number>(0);
   useEffect(() => {
-    getAllComment(id, 'tId', 0, 30).then((data: any) => {
+    getAllComment(id, 'tId', 0, 10).then((data: any) => {
       setComment(data.comments);
       setTotal(data.count);
     });
   }, [id]);
   const publish = (content: string) => {
     publishComment(content, 'tId', id).then((data) => {
-      getAllComment(id, 'tId', 0, 30).then((data: any) => {
+      getAllComment(id, 'tId', 0, 10).then((data: any) => {
         setComment(data.comments);
         setTotal(data.count);
       });
     });
   };
   const reply = () => {
-    getAllComment(id, 'tId', 0, 30).then((data: any) => {
+    getAllComment(id, 'tId', 0, 10).then((data: any) => {
       setComment(data.comments);
       setTotal(data.count);
     });
   };
+  const handlePageChange=(e:number)=>{
+    getAllComment(id, 'tId', (e-1)*10, 10).then((data: any) => {
+      setComment(data.comments);
+      setTotal(data.count);
+    });
+  }
   return (
     <CommentWrapper>
       <Reply isShowBtn={false} isShowPublish={true} id={id} onClick={(content: string) => publish(content)} />
 
-      <ToplistComment comments={comments} onClick={() => reply()} isPage={true} total={total} />
+      <ToplistComment comments={comments} pageClick={(e)=>handlePageChange(e)} onClick={() => reply()} isPage={true} total={total} />
     </CommentWrapper>
   );
 });

@@ -47,6 +47,7 @@ export const CommentWrapper = styled.div`
         width: 100%;
         display: flex;
         justify-content: flex-end;
+        overflow: hidden;
       }
       .reply {
         & > li {

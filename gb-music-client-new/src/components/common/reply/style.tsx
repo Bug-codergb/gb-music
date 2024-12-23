@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 export const ReplyWrapper = styled.div`
+  width: 100%;
   .control-btn {
     display: flex;
     align-items: center;
@@ -27,12 +28,14 @@ export const ReplyWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
   }
   textarea {
     border: 1px solid #e5e5e5;
     resize: none;
     height: 55px;
     padding: 5px;
+    flex:1;
   }
   .reply-btn {
     font-size: 13px;

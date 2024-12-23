@@ -198,10 +198,11 @@ export const PlayPageWrapper = styled.div`
     .play-left {
       width: 820px;
       border-right: 1px solid #f1f1f1;
-      padding: 0 20px;
+      padding: 0 20px 0 0;
       .comment-title {
         font-size: 16px;
         font-weight: bold;
+        margin: 0 0 12px 0;
       }
     }
     .play-right {

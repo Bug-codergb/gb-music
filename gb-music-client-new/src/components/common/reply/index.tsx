@@ -17,9 +17,11 @@ interface IProps {
   showCommentClick?: () => void;
   isShowBtn: boolean;
   isShowPublish: boolean;
+  cols?:number,
+  isReply?:boolean
 }
 const Reply: FC<IProps> = (props): ReactElement => {
-  const { onClick, thumbClick, isShowBtn, isShowPublish, showCommentClick, id, userId, delComment, cancelThumb } =
+  const { onClick, thumbClick, isShowBtn, isShowPublish,cols = 80,isReply=true, showCommentClick, id, userId, delComment, cancelThumb } =
     props;
   const [content, setContent] = useState<string>('');
   const [isShow, setIsShow] = useState<boolean>(false);
@@ -84,9 +86,11 @@ const Reply: FC<IProps> = (props): ReactElement => {
             <i className="iconfont icon-dianzan"> </i>
           </li>
           
-          <li onClick={(e) => liClick()}>
+          {
+            isReply && <li onClick={(e) => liClick()}>
             <i className="iconfont icon-pinglun1"> </i>
           </li>
+          }
           {userDetail.userId === userId && (
             <li onClick={(e) => deleteCom()}>
               <i className="iconfont icon-huishouzhan"> </i>
@@ -96,7 +100,7 @@ const Reply: FC<IProps> = (props): ReactElement => {
       )}
       {(isShow || isShowPublish) && (
         <div className="publish">
-          <textarea cols={80} rows={3} onInput={(e) => changeContent(e)} value={content} />
+          <textarea cols={cols} rows={3} onInput={(e) => changeContent(e)} value={content} />
           <div className="reply-btn" onClick={(e) => publish()}>
             发表评论
           </div>
