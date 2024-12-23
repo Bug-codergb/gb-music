@@ -33,7 +33,7 @@ function request<T>(config: AxiosRequestConfig) {
       if (err.response) {
         const { status, data } = err.response;
        
-        if(status*1===400 || status*1 === 401){
+        if(status*1===400 || status*1 === 401 || status*1 === 409){
           message.destroy()
           message.warning(data.message);
           throw err;

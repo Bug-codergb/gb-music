@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/channelDetail/childCpn/programs/store/asyncThunk.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/channelDetail/childCpn/programs/store/asyncThunk.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/assets/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/assets/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/videoDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/detail/videoDetail/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playPage/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playPage/style.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/components/content/playPage/style.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/src/network/request.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/src/network/request.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -133,7 +136,7 @@
       <workItem from="1732534151703" duration="1524000" />
       <workItem from="1732543608817" duration="33402000" />
       <workItem from="1733549620800" duration="19000" />
-      <workItem from="1733549653510" duration="50210000" />
+      <workItem from="1733549653510" duration="51961000" />
     </task>
     <servers />
   </component>

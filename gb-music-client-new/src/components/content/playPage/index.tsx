@@ -1,5 +1,6 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
+import { Modal } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 import { PlayPageWrapper, CenterContent } from './style';
@@ -25,7 +26,7 @@ import { IPlaylist } from '../../../constant/playlist';
 import { ISongStore } from '../../../constant/store/song';
 
 const PlayPage: FC = memo((props): ReactElement => {
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const [userAlbum, setAlbum] = useState<IPlaylist[]>([]);
   const [isShow, setIsShow] = useState<boolean>(false);
   const [comment, setComment] = useState<IComment[]>([]);
@@ -34,10 +35,10 @@ const PlayPage: FC = memo((props): ReactElement => {
     return state['songReducer'];
   });
   const { userMsg } = useAppSelector((state) => {
-    return state['loginReducer']
+    return state['loginReducer'];
   });
   const { userDetail } = useAppSelector((state) => {
-    return state['loginReducer']
+    return state['loginReducer'];
   });
   const playType = useAppSelector((state) => {
     return state['playModeTypeReducer']['playType'];
@@ -62,13 +63,13 @@ const PlayPage: FC = memo((props): ReactElement => {
 
   const albumRouter = () => {
     if (playType === 0) {
-      navigate('/Home/albumDetail',{
+      navigate('/Home/albumDetail', {
         state: {
           id: songDetail.album.id
         }
       });
     } else if (playType === 1) {
-      navigate('/Home/channelDetail',{
+      navigate('/Home/channelDetail', {
         state: {
           id: songDetail.channel.id
         }
@@ -77,13 +78,13 @@ const PlayPage: FC = memo((props): ReactElement => {
   };
   const artistRouter = () => {
     if (playType === 0) {
-      navigate('/Home/artistDetail',{
+      navigate('/Home/artistDetail', {
         state: {
           id: songDetail.artist.id
         }
       });
     } else if (playType === 1) {
-      navigate('/Home/userDetail',{
+      navigate('/Home/userDetail', {
         state: {
           userId: songDetail.user.userId
         }
@@ -97,6 +98,8 @@ const PlayPage: FC = memo((props): ReactElement => {
   //为歌单添加歌曲
   const addSong = (item: IPlaylist, index: number) => {
     addSongToPlay(item.id, songDetail.id).then((data) => {
+      setIsShow(false);
+    }).finally(()=>{
       setIsShow(false);
     });
   };
@@ -146,12 +149,12 @@ const PlayPage: FC = memo((props): ReactElement => {
       });
     }
   };
-  const handlePageChange=(e:number)=>{
-    getAllComment(songDetail.id, playType===1 ?'cId' :'songId', (e-1)*10, 10).then((data: any) => {
+  const handlePageChange = (e: number) => {
+    getAllComment(songDetail.id, playType === 1 ? 'cId' : 'songId', (e - 1) * 10, 10).then((data: any) => {
       setComment(data.comments);
       setTotal(data.count);
     });
-  }
+  };
   const isLove = (): boolean => {
     const index = userDetail.love.findIndex((item: { songId: string }, index: number) => {
       return item.songId === songDetail.id;
@@ -159,11 +162,11 @@ const PlayPage: FC = memo((props): ReactElement => {
     return index !== -1;
   };
   const payClick = () => {
-    dispatch(changeIsShowAction(true));
+    //dispatch(changeIsShowAction(true));
   };
   const videoRouter = () => {
     if (songDetail && songDetail.video) {
-      navigate('/Home/videoDetail',{
+      navigate('/Home/videoDetail', {
         state: {
           id: songDetail.video.id
         }
@@ -185,38 +188,41 @@ const PlayPage: FC = memo((props): ReactElement => {
             <div className="rotate-album">
               <img src={songDetail.album ? songDetail.album.coverUrl : songDetail.channel.coverUrl} alt="cover" />
             </div>
-            {
-              playType === 0 && <div className="control-btn">
-              <ul>
-                <li onClick={(e) => loveClick()}>
-                  {!isLove() && <i className="iconfont icon-love"> </i>}
-                  {isLove() && (
-                    <i className="iconfont icon-loveit" style={{ color: '#ec4141' }}>
-                      {' '}
-                    </i>
-                  )}
-                </li>
-                <li title="收藏" onClick={(e) => subSong()}>
-                  <i className="iconfont icon-xinjianshoucangjia"> </i>
-                </li>
-                <li onClick={(e) => download()}>
-                  <i className="iconfont icon-download"> </i>
-                </li>
-              </ul>
-            </div>
-            }
+            {playType === 0 && (
+              <div className="control-btn">
+                <ul>
+                  <li onClick={(e) => loveClick()}>
+                    {!isLove() && <i className="iconfont icon-love"> </i>}
+                    {isLove() && (
+                      <i className="iconfont icon-loveit" style={{ color: '#ec4141' }}>
+                        {' '}
+                      </i>
+                    )}
+                  </li>
+                  <li title="收藏" onClick={(e) => subSong()}>
+                    <i className="iconfont icon-xinjianshoucangjia"> </i>
+                  </li>
+                  <li onClick={(e) => download()}>
+                    <i className="iconfont icon-download"> </i>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
-          {isShow && (
-            <div className="user-album">
-              <div className="exit" onClick={(e) => setIsShow(false)}>
+          {/* {isShow && (
+            
+          )} */}
+          <Modal title={'添加至歌单'} open={isShow} footer={null}>
+            <div className="user-album g-user-playlist-container">
+              {/* <div className="exit" onClick={(e) => setIsShow(false)}>
                 <i className="iconfont icon-jia1"> </i>
               </div>
               <p>已创建歌单</p>
               <div className="create-play-list">
                 <i className="iconfont icon-jia1"> </i>
                 <span>新建歌单</span>
-              </div>
-              <ul>
+              </div> */}
+              <ul className=''>
                 {userAlbum.length !== 0 &&
                   userAlbum.map((item, index) => {
                     return (
@@ -232,12 +238,10 @@ const PlayPage: FC = memo((props): ReactElement => {
                   })}
               </ul>
             </div>
-          )}
+          </Modal>
           <div className="song-msg">
             <div className="song-name">
-              <span className='mle'>
-                {songDetail.name}
-              </span>
+              <span className="mle">{songDetail.name}</span>
               <div className="tag">
                 {songDetail && songDetail.vip === 1 && (
                   <span className="vip" onClick={(e) => payClick()}>
@@ -288,7 +292,15 @@ const PlayPage: FC = memo((props): ReactElement => {
             <p className="comment-title">歌曲评论</p>
             <Reply isShowPublish={true} isShowBtn={false} onClick={(content: string) => publish(content)} />
             <br />
-            <Comment cols={70} repCols={65} comments={comment} pageClick={(e)=>handlePageChange(e)} onClick={() => reply()} isPage={true} total={total} />
+            <Comment
+              cols={70}
+              repCols={65}
+              comments={comment}
+              pageClick={(e) => handlePageChange(e)}
+              onClick={() => reply()}
+              isPage={true}
+              total={total}
+            />
           </div>
           <div className="play-right">
             <IncludePlaylist id={songDetail.id} />

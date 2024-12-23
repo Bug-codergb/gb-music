@@ -97,14 +97,7 @@ export const PlayPageWrapper = styled.div`
           margin: 0 10px 0 0;
         }
       }
-      ul {
-        background-color: #fff;
-        overflow-y: scroll;
-        height: 280px;
-        li:hover {
-          background-color: #eeeff0;
-        }
-      }
+      
     }
     .song-msg {
       width: 34%;

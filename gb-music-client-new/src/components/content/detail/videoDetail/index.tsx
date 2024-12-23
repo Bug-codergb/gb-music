@@ -57,7 +57,8 @@ const VideoDetail: FC<{ id: string }> = memo((props): ReactElement => {
           width: '100%',
           autoplay:true,
           marginControls:false,
-          "download": false
+          "download": false,
+          cssFullscreen:false
       })
       });
     });
