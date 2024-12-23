@@ -1,6 +1,6 @@
 import React, { memo, FC, ReactElement, useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
-import { Modal } from 'antd';
+import { Modal,Empty } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 import { PlayPageWrapper, CenterContent } from './style';
@@ -95,6 +95,9 @@ const PlayPage: FC = memo((props): ReactElement => {
   const subSong = () => {
     setIsShow(!isShow);
   };
+  const handleCloseModal=()=>{
+    setIsShow(false)
+  }
   //为歌单添加歌曲
   const addSong = (item: IPlaylist, index: number) => {
     addSongToPlay(item.id, songDetail.id).then((data) => {
@@ -212,17 +215,11 @@ const PlayPage: FC = memo((props): ReactElement => {
           {/* {isShow && (
             
           )} */}
-          <Modal title={'添加至歌单'} open={isShow} footer={null}>
+          <Modal title={'添加至歌单'} open={isShow} footer={null} onCancel={handleCloseModal}>
             <div className="user-album g-user-playlist-container">
-              {/* <div className="exit" onClick={(e) => setIsShow(false)}>
-                <i className="iconfont icon-jia1"> </i>
-              </div>
-              <p>已创建歌单</p>
-              <div className="create-play-list">
-                <i className="iconfont icon-jia1"> </i>
-                <span>新建歌单</span>
-              </div> */}
-              <ul className=''>
+              
+              {
+                userAlbum && userAlbum.length!==0 && <ul className=''>
                 {userAlbum.length !== 0 &&
                   userAlbum.map((item, index) => {
                     return (
@@ -237,6 +234,12 @@ const PlayPage: FC = memo((props): ReactElement => {
                     );
                   })}
               </ul>
+              }
+              {
+                (!userAlbum || userAlbum.length===0) && <div className='g-playlist-no-empty-container'>
+                  <Empty image={Empty.PRESENTED_IMAGE_SIMPLE}  description={"暂无歌单，请在 “我的歌单” 创建"}/>
+                </div>
+              }
             </div>
           </Modal>
           <div className="song-msg">

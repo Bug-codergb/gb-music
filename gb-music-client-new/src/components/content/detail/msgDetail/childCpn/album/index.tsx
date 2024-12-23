@@ -5,7 +5,7 @@ import { IAlbum } from '../../../../../../constant/album';
 import { IArtist } from '../../../../../../constant/artist';
 import { deleteMsg, getAlbumMsg, readSingleMsg } from '../../../../../../network/message';
 import { useNavigate } from 'react-router-dom';
-import { Pagination } from 'antd';
+import { Pagination,message } from 'antd';
 
 import {
   useAppDispatch,
@@ -47,17 +47,13 @@ const Album: FC = (props): ReactElement => {
     });
   };
   const deleteMessage = (item: IAlbumMsg) => {
-    /*dispatch(changeMsgAction(true)).then((data) => {
-      if (data) {
-        deleteMsg(item.id).then((data) => {
-          dispatch(changeShow('删除成功', 1500));
-          getAlbumMsg(`0`, '5').then((data: any) => {
-            setCount(data.count);
-            setAlbumMsg(data.message);
-          });
-        });
-      }
-    });*/
+    deleteMsg(item.id).then((data) => {
+      message.success("删除成功")
+      getAlbumMsg(`0`, '5').then((data: any) => {
+        setCount(data.count);
+        setAlbumMsg(data.message);
+      });
+    });
   };
   const artistRouter = (item: IArtist) => {
     navigate('/Home/artistDetail',{

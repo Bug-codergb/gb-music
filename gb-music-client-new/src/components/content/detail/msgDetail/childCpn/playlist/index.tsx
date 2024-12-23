@@ -4,7 +4,7 @@ import { IPlaylist } from '../../../../../../constant/playlist';
 import { IUser } from '../../../../../../constant/user';
 import { deleteMsg, getPlaylistMsg, readSingleMsg } from '../../../../../../network/message';
 import { useNavigate } from 'react-router-dom';
-import { Empty } from 'antd';
+import { Empty,message } from 'antd';
 
 import {
   useAppDispatch,
@@ -40,18 +40,13 @@ const Playlist: FC = (props): ReactElement => {
     });
   };
   const deleteMessage = (item: IPlayMsg) => {
-    // @ts-ignore
-    /*dispatch(changeMsgAction(true)).then((data) => {
-      if (data) {
-        deleteMsg(item.id).then((data) => {
-          dispatch(changeShow('删除成功', 1500));
-          getPlaylistMsg('0', '15').then((data: any) => {
-            setTotal(data.count);
-            setPlayMsg(data.message);
-          });
-        });
-      }
-    });*/
+    deleteMsg(item.id).then((data) => {
+      message.success('删除成功');
+      getPlaylistMsg('0', '15').then((data: any) => {
+        setTotal(data.count);
+        setPlayMsg(data.message);
+      });
+    });
   };
   const userRouter = (item: IUser) => {
     navigate('/Home/userDetail',{

@@ -5,12 +5,13 @@ import { CommentWrapper } from './style';
 import { deleteMsg, getCommentMsg, readSingleMsg } from '../../../../../../network/message';
 import { IUser } from '../../../../../../constant/user';
 import { IComment } from '../../../../../../constant/comment';
-import { Empty, Pagination } from 'antd';
+import { Empty, Pagination,message } from 'antd';
 
 import {
   useAppDispatch,
   useAppSelector
 } from "@/store/hooks.ts"
+
 interface IMsgComment {
   id: string;
   checkout: number;
@@ -39,17 +40,14 @@ const Comment: FC = (props): ReactElement => {
   };
   const deleteMessage = (item: IMsgComment) => {
 
-    /*dispatch(changeMsgAction(true)).then((data) => {
-      if (data) {
-        deleteMsg(item.id).then((data) => {
-          //dispatch(changeShow('删除成功', 1500));
-          getCommentMsg('0', '10').then((data: any) => {
-            setCount(data.count);
-            setCommentMsg(data.message);
-          });
-        });
-      }
-    });*/
+    deleteMsg(item.id).then((data) => {
+      //dispatch(changeShow('删除成功', 1500));
+      message.success("删除成功")
+      getCommentMsg('0', '10').then((data: any) => {
+        setCount(data.count);
+        setCommentMsg(data.message);
+      });
+    });
   };
   const readMsg = (item: IMsgComment) => {
     //dispatch(changeShow('消息已读', 1500));

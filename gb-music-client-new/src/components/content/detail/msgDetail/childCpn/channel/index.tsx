@@ -5,7 +5,7 @@ import { deleteMsg, getChannelMsg, readSingleMsg } from '../../../../../../netwo
 import { IChannel } from '../../../../../../constant/channel';
 import { IUser } from '../../../../../../constant/user';
 import { useNavigate } from 'react-router-dom';
-import { Empty } from 'antd';
+import { Empty,message } from 'antd';
 import {
   useAppDispatch,
   useAppSelector
@@ -49,16 +49,17 @@ const Channel: FC = (props): ReactElement => {
     });
   };
   const deleteMessage = (item: IChannelMsg) => {
-
+    
+    deleteMsg(item.id).then((data) => {
+      message.success("删除成功")
+      getChannelMsg('0', '15').then((data: any) => {
+        setTotal(data.count);
+        setChannelMsg(data.message);
+      });
+    });
     /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
-        deleteMsg(item.id).then((data) => {
-          dispatch(changeShow('删除成功', 1500));
-          getChannelMsg('0', '15').then((data: any) => {
-            setTotal(data.count);
-            setChannelMsg(data.message);
-          });
-        });
+        
       }
     });*/
   };

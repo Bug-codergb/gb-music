@@ -4,7 +4,7 @@ import { deleteMsg, getVideoMsg, readSingleMsg } from '../../../../../../network
 import { IUser } from '../../../../../../constant/user';
 import { IVideo } from '../../../../../../constant/video';
 import { useNavigate } from 'react-router-dom';
-import { Empty, Pagination } from 'antd';
+import { Empty, Pagination,message } from 'antd';
 import {
   useAppDispatch,
   useAppSelector
@@ -44,18 +44,13 @@ const Video: FC = (props): ReactElement => {
     });
   };
   const deleteMessage = (item: IMsgVideo) => {
-    // @ts-ignore
-    /*dispatch(changeMsgAction(true)).then((data) => {
-      if (data) {
-        deleteMsg(item.id).then((data) => {
-          dispatch(changeShow('删除成功', 1500));
-          getVideoMsg(`0`, `${5}`).then((data: any) => {
-            setCount(data.count);
-            setVideoMsg(data.message);
-          });
-        });
-      }
-    });*/
+    deleteMsg(item.id).then((data) => {
+     message.success("删除成功")
+      getVideoMsg(`0`, `${5}`).then((data: any) => {
+        setCount(data.count);
+        setVideoMsg(data.message);
+      });
+    });
   };
   const userRouter = (item: IUser) => {
     navigate('/Home/userDetail',{
