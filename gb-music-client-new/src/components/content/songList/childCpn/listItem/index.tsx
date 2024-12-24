@@ -1,5 +1,6 @@
 import React, { memo, FC } from 'react';
 import { ListItemWrapper } from './style';
+import { message } from "antd";
 import { formatTime } from '@/utils/format';
 import VipMv from '../../../../common/vip-mv';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +9,7 @@ import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
 //import { changeShow } from '../../../../common/toast/store/actionCreators';
 import { useAppDispatch,useAppSelector } from "@/store/hooks"
 import { ILogin, IUserDetail } from '../../../../../constant/store/login';
+import { downloadSong } from '@/network/song';
 
 interface IProps  {
   id: string;
@@ -26,6 +28,9 @@ const ListItem: FC<IProps> = (props) => {
   const navigate = useNavigate();
   const { index, id, name, createName, alName, time, play, vip, video, arId } = props;
   const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const { userMsg } = useAppSelector((state) => {
     return state['loginReducer']
   });
   const dispatch = useAppDispatch();
@@ -68,11 +73,28 @@ const ListItem: FC<IProps> = (props) => {
       });
     }
   };
+  const handleDownload=async ()=>{
+    if(userMsg && userMsg.auth*1==0){
+      message.warning("您还未开通VIP，开通后畅想")
+    }else{
+      //downloadSong(id,state)
+      const res = await downloadSong(id,name);
+      const link = document.createElement('a')
+      const blob = new Blob([res])
+
+
+      link.href = URL.createObjectURL(blob)
+      link.setAttribute('download', `${name}.mp3`) // 自定义文件名
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
+  }
   return (
     <ListItemWrapper>
       <div className="index">{(index + 1).toString().padStart(2, '0')}</div>
       <div className="love">
-        <i className="iconfont icon-download"> </i>
+        <i className="iconfont icon-download" onClick={()=>handleDownload()}> </i>
         {!isLove(id) && (
           <i className="iconfont icon-love" onClick={(e) => loveClick(id)}>
             {' '}

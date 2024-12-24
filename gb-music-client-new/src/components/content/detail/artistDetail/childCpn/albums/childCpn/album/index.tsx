@@ -1,5 +1,5 @@
 import React, { FC, memo, ReactElement } from 'react';
-
+import { message } from "antd"
 import { AlbumWrapper } from './style';
 import { IAlbum } from '../../../../../../../../constant/album';
 import { ISong } from '../../../../../../../../constant/albumDetail';
@@ -16,6 +16,7 @@ import { changeUserDetailAction } from '../../../../../../../../views/Login/stor
 import { ILogin, IUserDetail } from '../../../../../../../../constant/store/login';
 import {Image} from "antd";
 import placeholder from "../../../../../../../../assets/img/holder/placeholder.png";
+import { downloadSong } from '@/network/song';
 
 interface IAlbumItem extends IAlbum {
   songs: ISong[];
@@ -28,6 +29,9 @@ const Album: FC<IProps> = (props): ReactElement => {
   const { album, play } = props;
   const navigate = useNavigate()
   const { userDetail } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
+  const { userMsg } = useAppSelector((state) => {
     return state['loginReducer']
   });
   const dispatch = useAppDispatch();
@@ -70,6 +74,23 @@ const Album: FC<IProps> = (props): ReactElement => {
       });
     }
   };
+  const handleDownload=async (item:ISong)=>{
+    if(userMsg && userMsg.auth*1==0){
+      message.warning("您还未开通VIP，开通后畅想")
+    }else{
+      //downloadSong(id,state)
+      const res = await downloadSong(item.id,item.name);
+      const link = document.createElement('a')
+      const blob = new Blob([res])
+
+
+      link.href = URL.createObjectURL(blob)
+      link.setAttribute('download', `${item.name}.mp3`) // 自定义文件名
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
+  }
   return (
     <AlbumWrapper>
       <div className="img-container" onClick={(e) => albumRouter()}>
@@ -92,7 +113,7 @@ const Album: FC<IProps> = (props): ReactElement => {
               <li key={item.id}>
                 <div className="index">{(index + 1).toString().padStart(2, '0')}</div>
                 <div className="love">
-                  <i className="iconfont icon-download"> </i>
+                  <i className="iconfont icon-download" onClick={()=>handleDownload(item)}> </i>
                   {!isLove(item.id) && (
                     <i className="iconfont icon-love" onClick={(e) => loveClick(item.id)}>
                       {' '}

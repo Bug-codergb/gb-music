@@ -1,4 +1,5 @@
 import React, { memo, FC } from 'react';
+import { message } from "antd"
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ import {ILogin, IUserDetail, IUserMsg} from '../../../constant/store/login';
 //import { changeShow } from '../../common/toast/store/actionCreators';
 import {changeIsShowAction} from "../vip/store/slice";
 import {downloadSong} from "../../../network/song";
+
 
 interface IProps {
   id: string;
@@ -83,11 +85,21 @@ const SongListItem: FC<IProps> = (props) => {
       }
     });
   };
-  const downloadSongHandle=()=>{
+  const downloadSongHandle=async ()=>{
     if(userMsg && userMsg.auth*1==0){
-      dispatch(changeIsShowAction(true));
+      message.warning("您还未开通VIP，开通后畅想")
     }else{
-      downloadSong(id,state)
+      //downloadSong(id,state)
+      const res = await downloadSong(id,state);
+      const link = document.createElement('a')
+      const blob = new Blob([res])
+
+
+      link.href = URL.createObjectURL(blob)
+      link.setAttribute('download', `${state}.mp3`) // 自定义文件名
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
     }
   }
   return (

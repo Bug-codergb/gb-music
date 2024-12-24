@@ -10,6 +10,7 @@ export const CenterContentWrapper = styled.div`
 export const LeftContent = styled.div`
   width: 920px;
   border-right: 1px solid #e0e0e0;
+  padding-bottom: 20px;
   .toplist-detail-header {
     padding: 20px;
     display: flex;
