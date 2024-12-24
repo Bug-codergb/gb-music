@@ -110,17 +110,19 @@ export const CenterContent = styled.div`
             margin: 0 0 0 20px;
           }
           .finish {
-            color: #0086b3;
+            color: #7ec050;
           }
           .delete {
             font-size: 14px;
             margin: 0 0 0 20px;
             cursor: pointer;
-            color: #656565;
+            color: #eb4d45;
           }
           .go-pay {
             margin: 0 0 0 20px;
             font-size: 14px;
+            cursor: pointer;
+            color: #5a9cf8;
           }
         }
       }

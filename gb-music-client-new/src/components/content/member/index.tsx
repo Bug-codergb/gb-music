@@ -50,6 +50,15 @@ const Member: FC = (): ReactElement => {
       });
     }
   };
+  const toPay=(item:any)=>{
+    if(item.vip){
+      payMoney(item.vip.price, item.vip.name, item.vip.id).then((data: any) => {
+        // @ts-ignore
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        window.open(data.url, '_blank').location;
+      });
+    }
+  }
   const deleteHistory = (item: IVIP) => {
     deleteVIPHistory(item.id).then((data) => {
       message.success("删除成功")
@@ -141,7 +150,7 @@ const Member: FC = (): ReactElement => {
                           <span className={`status ${item.status === 1 ? 'finish' : ''}`}>
                             {item.status === 0 ? '待付款' : '已完成'}
                           </span>
-                          {item.status === 0 && <span className="go-pay">去付款</span>}
+                          {item.status === 0 && <span className="go-pay" onClick={()=>toPay(item)}>去付款</span>}
                           <span className="delete" onClick={(e) => deleteHistory(item)}>
                             删除
                           </span>
