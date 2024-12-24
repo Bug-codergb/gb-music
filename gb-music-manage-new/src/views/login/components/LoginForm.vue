@@ -38,6 +38,7 @@ import { HOME_URL } from "@/config/index";
 
 import { initDynamicRouter } from "@/router/modules/dynamicRouter";
 import { CircleClose, UserFilled } from "@element-plus/icons-vue";
+import {ElMessage} from "element-plus";
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -65,12 +66,17 @@ const login = formEl => {
         userName: loginForm.username,
         password: loginForm.password
       });
-      
-      userStore.token = res.token;
-      userStore.userInfo = res;
+      if(res.manage === 1){
+        userStore.token = res.token;
+        userStore.userInfo = res;
 
-      await initDynamicRouter();
-      router.push(HOME_URL);
+        await initDynamicRouter();
+        router.push(HOME_URL);
+      }else{
+        ElMessage.closeAll();
+        ElMessage.warning("您当前无权限访问，请联系管理员")
+      }
+
     } finally {
       loading.value = false;
     }
