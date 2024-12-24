@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
 import { Empty, Pagination,message } from 'antd';
-import { getUserFavorite } from '../../../../network/user';
+import { cancelFavorite, getUserFavorite, setUserFavorite } from '../../../../network/user';
 import { MyFavoriteWrapper } from './style';
 import { ISong } from '../../../../constant/song';
 import { formatTime } from '../../../../utils/format';
@@ -13,6 +13,8 @@ import { changeSongDetailAction } from '../../../../components/content/playCoin/
 import VipMv from '../../../../components/common/vip-mv';
 //import { changeShow } from '../../../../components/common/toast/store/actionCreators';
 import { ILogin, IUserMsg } from '../../../../constant/store/login';
+import { downloadSong } from '@/network/song';
+import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
 
 interface IUserSong {
   createTime: string;
@@ -23,7 +25,7 @@ const MyFavorite: FC = (props): ReactElement => {
   const [songs, setSongs] = useState<IUserSong[]>([]);
   const [count, setCount] = useState<number>(0);
   const dispatch = useAppDispatch();
-  const { userMsg } = useAppSelector((state) => {
+  const { userMsg,userDetail } = useAppSelector((state) => {
     return state['loginReducer']
   });
   useEffect(() => {
@@ -71,6 +73,45 @@ const MyFavorite: FC = (props): ReactElement => {
       setCount(data.songList.count);
     });
   };
+
+  const handleDownload=async(item:ISong)=>{
+    if(userMsg && userMsg.auth*1==0){
+      message.warning("您还未开通VIP，开通后畅想")
+    }else{
+      //downloadSong(id,state)
+      const res = await downloadSong(item.id,item.name);
+      const link = document.createElement('a')
+      const blob = new Blob([res])
+
+
+      link.href = URL.createObjectURL(blob)
+      link.setAttribute('download', `${item.name}.mp3`) // 自定义文件名
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
+  }
+  const isLove = (song:ISong) => {
+    const isExists = userDetail.love.findIndex((item: { songId: string }, index: number) => {
+      return item.songId === song.id;
+    });
+    return isExists !== -1;
+  };
+
+  const loveClick = (song:ISong
+  ) => {
+    if (!isLove(song)) {
+      setUserFavorite(song.id).then((data) => {
+        dispatch(changeUserDetailAction());
+        message.success("添加到我喜欢的音乐")
+      });
+    } else {
+      cancelFavorite(song.id).then((data) => {
+        dispatch(changeUserDetailAction());
+      });
+    }
+  };
+  
   return (
     <MyFavoriteWrapper>
       <ul className="user-favorite-list">
@@ -80,8 +121,17 @@ const MyFavorite: FC = (props): ReactElement => {
               <li key={item.song.id}>
                 <div className="index">{(index + 1).toString().padStart(2, '0')}</div>
                 <div className="control-btn">
-                  <i className="iconfont icon-loveit"> </i>
-                  <i className="iconfont icon-download"> </i>
+                {!isLove(item.song) && (
+          <i className="iconfont icon-love" onClick={(e) => loveClick(item.song)}>
+            {' '}
+          </i>
+        )}
+        {isLove(item.song) && (
+          <i className="iconfont icon-loveit" onClick={(e) => loveClick(item.song)}>
+            {' '}
+          </i>
+        )}
+                  <i className="iconfont icon-download" onClick={()=>handleDownload(item.song)}> </i>
                 </div>
                 <div className="img-container" onClick={(e) => playSong(item)}>
                   <img src={item.song.album.coverUrl} alt="" />
