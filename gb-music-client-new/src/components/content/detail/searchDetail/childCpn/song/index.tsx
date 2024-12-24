@@ -9,7 +9,7 @@ import { changeSongDetailAction } from '../../../../playCoin/store/asyncThunk';
 import { Empty } from 'antd';
 import VipMv from '../../../../../common/vip-mv';
 import { ISearchStore } from '../../../../../../constant/store/search';
-
+import moment from "moment";
 const Song: FC = (props): ReactElement => {
   const navigate = useNavigate();
   const { song } = useAppSelector((state) => {
@@ -17,7 +17,7 @@ const Song: FC = (props): ReactElement => {
   });
   const dispatch = useAppDispatch();
   const songPlay = (item: ISong, index: number): void => {
-    dispatch(changeSongDetailAction(item.id));
+    dispatch(changeSongDetailAction({id:item.id}));
   };
   const artistRouter = (item: ISong, index: number) => {
     navigate('/Home/artistDetail',{
@@ -55,10 +55,10 @@ const Song: FC = (props): ReactElement => {
               <div className="artist-name" onClick={(e) => artistRouter(item, index)}>
                 {item.artist.name}
               </div>
-              <div className="album-name" onClick={(e) => albumRouter(item, index)}>
+              <div className="album-name mle" onClick={(e) => albumRouter(item, index)}>
                 {item.album.name}
               </div>
-              <div className="dt">{formatTime(item.duration!, 'mm:ss')}</div>
+              <div className="dt">{moment(item.duration).format('mm:ss')}</div>
             </li>
           );
         })}

@@ -226,7 +226,7 @@ const PlayPage: FC = memo((props): ReactElement => {
           {/* {isShow && (
             
           )} */}
-          <Modal title={'添加至歌单'} open={isShow} footer={null} onCancel={handleCloseModal}>
+          <Modal title={'添加至歌单'} zIndex={1000000} open={isShow} footer={null} onCancel={handleCloseModal}>
             <div className="user-album g-user-playlist-container">
               
               {

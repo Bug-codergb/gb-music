@@ -27,8 +27,8 @@ const Playlist: FC = (): ReactElement => {
       <div className="g-control">
         <div className="total">总{playlist.length}首</div>
         <div className="sub-all">
-          <i className="iconfont icon-jiarushoucang"> </i>
-          <span>收藏全部</span>
+         
+          
         </div>
       </div>
       <ul className="play-list-song" ref={songList}>

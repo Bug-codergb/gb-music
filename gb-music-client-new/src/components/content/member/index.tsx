@@ -12,6 +12,7 @@ import { payMoney } from '../../../network/pay';
 import { ILogin, IUserMsg } from '../../../constant/store/login';
 import { Image } from 'antd';
 import placeholder from '../../../assets/img/holder/user-placehoder.png';
+import moment from "moment";
 interface IVip {
   id: string;
   name: string;
@@ -87,7 +88,7 @@ const Member: FC = (): ReactElement => {
                 {userMsg.vip && (
                   <p className="expireTime">
                     <span>会员有效期至:</span>
-                    {formatTime(userMsg.vip.expireTime, 'yyyy-MM-dd')}
+                    {moment(userMsg.vip.expireTime).format('yyyy-MM-DD')}
                   </p>
                 )}
               </div>
@@ -138,7 +139,7 @@ const Member: FC = (): ReactElement => {
                           </div>
                           <div className="time">
                             <span>购买时间：</span>
-                            <span>{formatTime(item.createTime, 'yyyy-MM-dd hh:mm')}</span>
+                            <span>{moment(item.createTime).format('yyyy-MM-DD HH:mm')}</span>
                           </div>
                           <div className="order">
                             <span>订单编号：</span>

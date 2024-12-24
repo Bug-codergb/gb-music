@@ -7,7 +7,7 @@ import { IAlbum } from '../../../../../../constant/album';
 import { formatTime } from '../../../../../../utils/format';
 import { Empty } from 'antd';
 import { ISearchStore } from '../../../../../../constant/store/search';
-
+import moment from "moment";
 const Album: FC = (props): ReactElement => {
   const navigate = useNavigate();
   const { album } = useAppSelector((state) => {
@@ -34,7 +34,7 @@ const Album: FC = (props): ReactElement => {
               <div className="name" onClick={(e) => albumRouter(item, index)}>
                 {item.name}
               </div>
-              <div className="publish-time">{formatTime(parseInt(item.publishTime), 'yyyy-MM-dd')}</div>
+              <div className="publish-time">{moment(item.publishTime).format('yyyy-MM-DD')}</div>
             </li>
           );
         })}

@@ -24,7 +24,7 @@ import { cancelSub, sub } from '@/network/subscriber';
 import { useAppDispatch, useAppSelector } from '@/store/hooks.ts';
 import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
 import HotPlaylist from './childCpn/hotPlaylist';
-
+import moment from "moment"
 interface IPlaylistDetail extends IPlaylist {
   category: ICategory[];
   songs: ISong[];
@@ -111,7 +111,7 @@ const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
                   />
                   <div className="time">
                     <span>创建时间:</span>
-                    {formatTime(playlistDetail.createTime, 'yyyy-MM-dd')}
+                    {moment(playlistDetail.createTime).format('yyyy-MM-DD')}
                   </div>
                 </div>
                 <div className={`sub ${isSub() ? 'active' : ''}`} onClick={(e) => subPlayList()}>

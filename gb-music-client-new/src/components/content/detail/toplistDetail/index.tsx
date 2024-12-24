@@ -10,7 +10,7 @@ import TabControl from '../../../common/tabControl';
 import SongList from '../playlistDetail/childCpn/songList';
 import Comment from './childCpn/comment';
 import SimiToplist from './childCpn/simiToplist';
-
+import moment from "moment";
 interface IDetail extends IToplist {
   songs: ISong[];
 }
@@ -62,7 +62,7 @@ const ToplistDetail: FC<{ id: string; name: string; userId: string }> = (
                   />
                   <div className="time">
                     <span>创建于:</span>
-                    <span>{formatTime(detail.createTime!, 'yyyy-MM-dd')}</span>
+                    <span>{moment(detail.createTime!).format('yyyy-MM-DD')}</span>
                   </div>
                 </div>
                 <div className="count">

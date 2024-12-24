@@ -10,7 +10,7 @@ import SongList from '../../songList';
 import AlbumComment from './childCpn/comment/index';
 import { cancelSub, sub } from '../../../../network/subscriber';
 import Subscriber from './childCpn/subscriber';
-
+import moment from "moment"
 import {
   useAppDispatch,
   useAppSelector
@@ -101,7 +101,7 @@ const AlbumDetail: FC< { id: string }> = (props): ReactElement => {
                 {/*发行时间*/}
                 <div className="publish-time">
                   <span>发行时间: </span>
-                  <span>{formatTime(parseInt(albumDetail.publishTime), 'yyyy-MM-dd')}</span>
+                  <span>{moment(albumDetail.publishTime).format('yyyy-MM-DD')}</span>
                 </div>
                 <div className="desc">
                   <span>简介: </span>

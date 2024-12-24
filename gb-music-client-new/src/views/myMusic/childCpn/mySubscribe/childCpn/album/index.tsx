@@ -5,7 +5,7 @@ import { IAlbum } from '../../../../../../constant/album';
 import { formatTime } from '../../../../../../utils/format';
 import { useNavigate } from 'react-router-dom';
 import { getUserSub } from '../../../../../../network/user';
-
+import moment from "moment";
 const Album: FC = (props): ReactElement => {
   const navigate = useNavigate();
   const [album, setAlbum] = useState<IAlbum[]>([]);
@@ -41,10 +41,10 @@ const Album: FC = (props): ReactElement => {
                 <div className="img-container" onClick={(e) => albumRouter(item)}>
                   <img src={item.coverUrl} alt="" />
                 </div>
-                <div className="name" onClick={(e) => albumRouter(item)}>
+                <div className="name mle" onClick={(e) => albumRouter(item)}>
                   {item.name}
                 </div>
-                <div className="publish-time">{formatTime(parseInt(item.publishTime), 'yyyy-MM-dd')}</div>
+                <div className="publish-time">{moment(item.publishTime).format("yyyy-MM-DD")}</div>
               </li>
             );
           })}

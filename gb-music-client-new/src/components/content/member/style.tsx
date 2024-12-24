@@ -6,6 +6,7 @@ export const MemberWrapper = styled.div`
 export const CenterContent = styled.div`
   width: 1220px;
   margin: 0 auto;
+  padding-bottom: 30px;
   .header-msg {
     display: flex;
     align-items: flex-start;

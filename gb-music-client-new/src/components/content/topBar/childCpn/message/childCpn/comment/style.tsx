@@ -5,7 +5,7 @@ export const CommentWrapper = styled.div`
     & > li {
       display: flex;
       align-items: center;
-      padding: 10px 0;
+      padding: 15px 0;
       border-bottom: 1px solid #f2f2f2;
       .comment-content {
         display: flex;
@@ -38,6 +38,7 @@ export const CommentWrapper = styled.div`
         .user-name {
           font-size: 13px;
           color: #9f9f9f;
+          line-height: 14px;
           span {
             color: #5d86b5;
             margin: 0 3px 0 0;
@@ -46,6 +47,8 @@ export const CommentWrapper = styled.div`
         }
         .content {
           font-size: 13px;
+          line-height: 15px;
+          margin: 3px 0;
         }
       }
     }

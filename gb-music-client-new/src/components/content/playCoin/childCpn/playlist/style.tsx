@@ -9,6 +9,7 @@ export const PlaylistWrapper = styled.div`
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 15px 0;
   border-radius: 5px;
+  z-index: 9999199!important;
   .title {
     font-size: 20px;
     font-weight: bolder;
@@ -42,6 +43,7 @@ export const PlaylistWrapper = styled.div`
       display: flex;
       align-items: center;
       padding: 10px 15px;
+      background-color: #fff;
       &:nth-child(odd) {
         background-color: #f9f9f9;
       }
