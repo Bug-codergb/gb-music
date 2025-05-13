@@ -65,7 +65,7 @@ const PlayCoin: FC<IProps> = (props): ReactElement => {
     if (!isDrag) {
       setCurrentTime(e.target.currentTime * 1000);
       if (e.target.currentTime * 1000 > song.songDetail.duration * 0.2) {
-        if (userMsg.auth * 1 === 0 && song.songDetail.vip === 1) {
+        if ((!userMsg||userMsg.auth * 1 === 0) && song.songDetail.vip === 1) {
           if (audioRef.current) {
             audioRef.current.currentTime = 0;
           }

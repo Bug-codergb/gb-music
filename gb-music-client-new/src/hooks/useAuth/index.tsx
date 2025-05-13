@@ -10,7 +10,7 @@ const useAuth = (props:any) => {
   });
   if (location.pathname !== '/Login') {
     if (!userMsg || !userMsg.token) {
-      return <Navigate to={'/Login'} />;
+      return <Navigate to={'/Home'} />;
     } else {
       return <Navigate to={props.location.pathname} />;
     }

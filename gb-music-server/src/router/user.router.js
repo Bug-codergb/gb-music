@@ -39,7 +39,7 @@ router.get('/favorite', loginAuth, getUserFavorite);
 //取消喜欢
 router.post('/favorite/cancel', loginAuth, cancelFavorite);
 router.get('/detail', loginAuth, getUserDetail);
-router.post('/other/detail', loginAuth, getOtherUserDetail);
+router.post('/other/detail', getOtherUserDetail);
 router.post('/channel', loginAuth, getUserChannel);
 
 //获取用户视频数据
@@ -71,7 +71,7 @@ router.post('/system/data', loginAuth, getSystemData);
 //删除用户
 router.post('/delete', loginAuth, deleteUser);
 //获取用户简略信息 (关注，粉丝，动态)
-router.get('/simple', loginAuth, getSimpleInfo);
+router.get('/simple', getSimpleInfo);
 router.post("/update/password",loginAuth, updateUserPassword);
 //添加用户
 router.post("/add",loginAuth,createUser);

@@ -70,7 +70,7 @@ const ArtistDetail: FC<{ id: string }> = memo((props): ReactElement => {
   };
   const isSub = (): boolean => {
     let flag: number = -1;
-    if (userDetail.subscriber && userDetail.subscriber.artist) {
+    if (userDetail && userDetail.subscriber && userDetail.subscriber.artist) {
       flag = userDetail.subscriber.artist.findIndex((item: { id: string; name: string }, index: number) => {
         if (item) return item.id === arId;
         else {

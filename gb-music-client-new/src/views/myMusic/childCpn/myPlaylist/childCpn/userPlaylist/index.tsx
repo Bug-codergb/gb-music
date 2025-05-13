@@ -29,12 +29,12 @@ const UserPlaylist: FC = memo((props): ReactElement => {
     return state['loginReducer'];
   });
   useEffect(() => {
-    getUserPlaylist(userMsg.userId, 0, 30).then((data: any) => {
+    userMsg && getUserPlaylist(userMsg.userId, 0, 30).then((data: any) => {
       if (data && data.playlist !== 0) {
         setUserPlay(data.playlist);
       }
     });
-  }, [userMsg.userId]);
+  }, [userMsg,userMsg?.userId]);
   const playlistRouter = (item: IPlaylist, index: number) => {
     navigate('/Home/playlistDetail', {
       state: {

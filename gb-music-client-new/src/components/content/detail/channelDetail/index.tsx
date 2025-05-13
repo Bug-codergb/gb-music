@@ -33,7 +33,7 @@ const ChannelDetail: FC<{ id: string }> = (props) => {
   }, [id]);
   const isSub = (): boolean => {
     let flag = -1;
-    if (userDetail.subscriber && userDetail.subscriber.channel) {
+    if (userDetail && userDetail.subscriber && userDetail.subscriber.channel) {
       flag = userDetail.subscriber.channel.findIndex((item: { id: string; name: string }, index: number) => {
         if (item) return item.id === id;
       });

@@ -51,7 +51,7 @@ const AlbumDetail: FC< { id: string }> = (props): ReactElement => {
   };
   const isSub = () => {
     let flag = -1;
-    if (userDetail.subscriber && userDetail.subscriber.album) {
+    if (userDetail && userDetail.subscriber && userDetail.subscriber.album) {
       flag = userDetail.subscriber.album.findIndex((item: { id: string; name: string }, index: number) => {
         if (item) return item.id === aId;
         else {

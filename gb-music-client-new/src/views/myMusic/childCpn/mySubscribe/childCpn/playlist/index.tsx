@@ -17,10 +17,10 @@ const Playlist: FC = (props): ReactElement => {
     return  state['loginReducer']
   });
   useEffect(() => {
-    getUserSubPlaylist(userMsg.userId, 0, 50).then((data: any) => {
+    userMsg && getUserSubPlaylist(userMsg.userId, 0, 50).then((data: any) => {
       setPlaylist(data.playlist);
     });
-  }, [userMsg.userId]);
+  }, [userMsg,userMsg?.userId]);
   const playlistRouter = (item: IPlaylist) => {
     navigate('/Home/playlistDetail',{
       state: {

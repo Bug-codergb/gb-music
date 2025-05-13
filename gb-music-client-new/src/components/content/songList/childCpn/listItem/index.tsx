@@ -38,6 +38,8 @@ const ListItem: FC<IProps> = (props) => {
     play(id, name);
   };
   const isLove = (id: string) => {
+    if(!userDetail || Object.keys(userDetail).length === 0) return false;
+
     const isExists = userDetail.love.findIndex((item: { songId: string }, index: number) => {
       return item.songId === id;
     });

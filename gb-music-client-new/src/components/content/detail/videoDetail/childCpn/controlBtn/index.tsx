@@ -41,7 +41,7 @@ const ControlBtn: FC<IProps> = memo((props): ReactElement => {
   };
   const isThumb = (): boolean => {
     let flag = -1;
-    if (userDetail.thumb && userDetail.thumb.video) {
+    if (userDetail && userDetail.thumb && userDetail.thumb.video) {
       flag = userDetail.thumb.video.findIndex((item: string, index: number) => {
         return item === vid;
       });
@@ -50,7 +50,7 @@ const ControlBtn: FC<IProps> = memo((props): ReactElement => {
   };
   const isSub = (): boolean => {
     let flag = -1;
-    if (userDetail.subscriber && userDetail.subscriber.video) {
+    if (userDetail && userDetail.subscriber && userDetail.subscriber.video) {
       flag = userDetail.subscriber.video.findIndex((item: { id: string; name: string }, index: number) => {
         if (item) return item.id === vid;
         else {

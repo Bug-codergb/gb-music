@@ -32,18 +32,18 @@ function request<T>(config: AxiosRequestConfig) {
     (err) => {
       if (err.response) {
         const { status, data } = err.response;
-       
+
         if(status*1===400 || status*1 === 401 || status*1 === 409){
           message.destroy()
           message.warning(data.message);
           throw err;
         }
         if (status * 1 === 403 && data.message === '请登录') {
-          message.destroy()
+          //message.destroy()
 
-          message.warning("登陆已过期");
+          //message.warning("登陆已过期");
           throw err;
-          
+
           // @ts-ignore
           // store.dispatch(logoutAction());
           // store.dispatch(
@@ -58,7 +58,7 @@ function request<T>(config: AxiosRequestConfig) {
           //     auth: -1
           //   })
           // );
-           
+
         } else {
           throw err;
         }

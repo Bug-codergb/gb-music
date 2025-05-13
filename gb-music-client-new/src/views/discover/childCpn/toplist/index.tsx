@@ -55,7 +55,7 @@ const Toplist: FC = (props): ReactElement => {
   };
   const playSong = (item: IToplist,it:ISong) => {
     const { vip } = it;
-    const { auth } = userMsg;
+    const { auth } = userMsg || {auth:0};
     if (vip === 1 && auth * 1 === 0) {
       //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
       message.warning('您正在试听VIP歌曲，开通VIP后畅想')

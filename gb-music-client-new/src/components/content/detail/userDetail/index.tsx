@@ -54,7 +54,10 @@ const UserDetail: FC<{ userId: string }> = (props): ReactElement => {
   }, [userId]);
 
   useEffect(() => {
-    if (userDetail.follow && userDetail.follow.length !== 0) {
+    if(!userDetail){
+      setIsPay(false)
+    }
+    if (userDetail && userDetail.follow && userDetail.follow.length !== 0) {
       let isExists: number = userDetail.follow.findIndex((item: any, index: number) => {
         return item.userId === userId;
       });
@@ -68,7 +71,7 @@ const UserDetail: FC<{ userId: string }> = (props): ReactElement => {
     if(userDetail && userDetail.follow.length ===0){
       setIsPay(false);
     }
-  }, [userId, userDetail,userDetail.follow]);
+  }, [userId, userDetail,userDetail?.follow]);
 
   useEffect(() => {
     getSimpleUserInfo<IUserSimple>(userId).then((data) => {
@@ -82,7 +85,7 @@ const UserDetail: FC<{ userId: string }> = (props): ReactElement => {
     });
   };
   const handleCancelPay=()=>{
-    cancelPayUser(userDetail.userId,userId).then((data)=>{
+    userDetail && cancelPayUser(userDetail.userId,userId).then((data)=>{
       dispatch(changeUserDetailAction());
     })
   }
@@ -115,7 +118,7 @@ const UserDetail: FC<{ userId: string }> = (props): ReactElement => {
                 <span>个人介绍:</span>日常琐碎
               </div>
             </div>
-            {!isPay && userId!==userDetail.userId && (
+            {userDetail && !isPay && userId!==userDetail.userId && (
               <div className="pay-attention" onClick={(e) => payUserClick()}>
                 <i className="iconfont icon-jia1"> </i>
                 <span>关注</span>

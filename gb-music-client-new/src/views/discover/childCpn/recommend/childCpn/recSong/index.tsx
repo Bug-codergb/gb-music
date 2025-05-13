@@ -35,7 +35,7 @@ const RecSong: FC = (props): ReactElement => {
   const dispatch = useAppDispatch();
   const playSong = (item: ISong) => {
     const { vip } = item;
-    const { auth } = userMsg;
+    const { auth } = userMsg||{auth:0};
     if (vip === 1 && auth * 1 === 0) {
       //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
       message.warning('您正在试听VIP歌曲，开通VIP后畅想')

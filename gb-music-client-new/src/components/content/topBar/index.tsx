@@ -15,7 +15,7 @@ const TopBar: React.FC = (props) => {
   const navigate = useNavigate()
   const [isShow, setIsShow] = useState<boolean>(false);
   const [keyword, setKeyword] = useState<string>('');
-  const [count, setCount] = useState<number>(10);
+  const [count, setCount] = useState<number>(0);
   const [isShowMsg, setIsShowMsg] = useState<boolean>(false);
   useEffect(() => {
     getAllMsg().then((data: any) => {

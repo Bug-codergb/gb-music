@@ -42,7 +42,7 @@ const SubPlaylist = lazy(() => import('../views/playlist/index'));
 const routes: RouteObject[] = [
   {
     path: '/',
-    element: <Navigate to="/Login" />
+    element: <Navigate to="/Home" />
   },
   {
     path: '/Login',

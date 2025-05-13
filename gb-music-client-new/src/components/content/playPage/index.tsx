@@ -27,6 +27,7 @@ import { ISongStore } from '../../../constant/store/song';
 
 
 const PlayPage: FC = memo((props): ReactElement => {
+  const [modal, contextHolder] = Modal.useModal();
   const navigate = useNavigate();
   const [userAlbum, setAlbum] = useState<IPlaylist[]>([]);
   const [isShow, setIsShow] = useState<boolean>(false);
@@ -46,10 +47,10 @@ const PlayPage: FC = memo((props): ReactElement => {
   });
   const dispatch = useAppDispatch();
   useEffect(() => {
-    getUserPlaylist(userMsg.userId).then((data: any) => {
+    userMsg && getUserPlaylist(userMsg.userId).then((data: any) => {
       setAlbum(data.playlist);
     });
-  }, [userMsg.userId]);
+  }, [userMsg,userMsg?.userId]);
   //获取所有评论
   useEffect(() => {
     let id = 'songId';
@@ -109,6 +110,18 @@ const PlayPage: FC = memo((props): ReactElement => {
   };
   //用户喜欢歌曲
   const loveClick = () => {
+    if(!userMsg || Object.keys(userMsg).length === 0){
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if (!isLove()) {
       setUserFavorite(songDetail.id).then((data: any) => {
         dispatch(changeUserDetailAction());
@@ -160,6 +173,7 @@ const PlayPage: FC = memo((props): ReactElement => {
     });
   };
   const isLove = (): boolean => {
+    if(!userDetail || Object.keys(userDetail).length === 0) return false;
     const index = userDetail.love.findIndex((item: { songId: string }, index: number) => {
       return item.songId === songDetail.id;
     });
@@ -178,6 +192,19 @@ const PlayPage: FC = memo((props): ReactElement => {
     }
   };
   const download = async () => {
+    if(!userMsg|| Object.keys(userMsg).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+
+      return
+    }
     if (userMsg && userMsg.auth === 0) {
       message.warning("您还未开通VIP，开通后畅想")
     } else {
@@ -224,11 +251,11 @@ const PlayPage: FC = memo((props): ReactElement => {
             )}
           </div>
           {/* {isShow && (
-            
+
           )} */}
           <Modal title={'添加至歌单'} zIndex={1000000} open={isShow} footer={null} onCancel={handleCloseModal}>
             <div className="user-album g-user-playlist-container">
-              
+
               {
                 userAlbum && userAlbum.length!==0 && <ul className=''>
                 {userAlbum.length !== 0 &&
@@ -321,6 +348,7 @@ const PlayPage: FC = memo((props): ReactElement => {
           </div>
         </div>
       </CenterContent>
+      {contextHolder}
     </PlayPageWrapper>
   );
 });

@@ -1,5 +1,5 @@
 import React, { memo, FC } from 'react';
-import { message } from "antd"
+import { message, Modal } from 'antd';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useNavigate } from 'react-router-dom';
 
@@ -34,6 +34,7 @@ interface IProps {
 }
 const SongListItem: FC<IProps> = (props) => {
   const navigate = useNavigate();
+  const [modal, contextHolder] = Modal.useModal();
   const { index, id, state, creator, alName, dt, onClick, arId, alId, vip, video, isShowUp, diff } = props;
   const { userDetail } = useAppSelector((state) => {
     return state['loginReducer']
@@ -47,12 +48,27 @@ const SongListItem: FC<IProps> = (props) => {
     onClick(id);
   };
   const isLove = () => {
-    const isExists = userDetail.love.findIndex((item: { songId: string }, index: number) => {
+    if(!userDetail || Object.keys(userDetail).length === 0) return false;
+
+    const isExists = userDetail && userDetail.love.findIndex((item: { songId: string }, index: number) => {
       return item.songId === id;
     });
     return isExists !== -1;
   };
   const loveClick = () => {
+    if(!userMsg || Object.keys(userMsg).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
+
     if (!isLove()) {
       setUserFavorite(id).then((data) => {
         dispatch(changeUserDetailAction());
@@ -86,6 +102,18 @@ const SongListItem: FC<IProps> = (props) => {
     });
   };
   const downloadSongHandle=async ()=>{
+    if(!userMsg || Object.keys(userMsg).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if(userMsg && userMsg.auth*1==0){
       message.warning("您还未开通VIP，开通后畅想")
     }else{
@@ -135,6 +163,9 @@ const SongListItem: FC<IProps> = (props) => {
         {alName}
       </div>
       <div className="dt">{formatTime(dt, 'mm:ss')}</div>
+      {
+        contextHolder
+      }
     </SongListItemWrapper>
   );
 };

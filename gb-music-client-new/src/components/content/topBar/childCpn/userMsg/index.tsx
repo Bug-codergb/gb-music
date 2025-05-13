@@ -3,7 +3,7 @@ import { Dropdown, Space } from 'antd';
 import type { MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { logoutAction } from '@/views/Login/store/asyncThunk';
-import { PoweroffOutlined, PoundCircleOutlined, UserOutlined } from '@ant-design/icons';
+import { PoweroffOutlined, PoundCircleOutlined, UserOutlined,ApiOutlined } from '@ant-design/icons';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { CSSTransition } from 'react-transition-group';
@@ -21,7 +21,7 @@ const UserMsg: React.FC = () => {
   const { loginType } = useAppSelector((state) => {
     return state['loginReducer'];
   });
-  const { userMsg } = useAppSelector((state) => {
+  const { userMsg={} } = useAppSelector((state) => {
     return state['loginReducer'];
   });
   const docClick = () => {
@@ -69,14 +69,14 @@ const UserMsg: React.FC = () => {
     },
     {
       key: 'exit',
-      label: <div>退出登录</div>,
-      icon: <PoweroffOutlined />
+      label: <div>{!userMsg || Object.keys(userMsg).length===0?'登录':'退出登录'}</div>,
+      icon: !userMsg || Object.keys(userMsg).length===0? <ApiOutlined />:<PoweroffOutlined />
     }
   ];
   const onClick: MenuProps['onClick'] = ({ key }) => {
     switch (key) {
       case 'user':
-        console.log(profileRef.current);
+
         profileRef.current && profileRef.current.showModal();
         break;
       case 'vip':
@@ -106,7 +106,7 @@ const UserMsg: React.FC = () => {
         <div className="avatar" onClick={(e) => changeShow(e)}>
           {loginType === 0 ? (
             <i className="iconfont icon-user1"> </i>
-          ) : userMsg.avatarUrl ? (
+          ) : userMsg?.avatarUrl ? (
             <img src={userMsg?.avatarUrl + '&w=42'} alt="暂无头像" />
           ) : (
             <i className="iconfont icon-user1"> </i>
@@ -114,7 +114,7 @@ const UserMsg: React.FC = () => {
         </div>
       </Dropdown>
       <div className="user-name" onClick={(e) => changeShow(e)}>
-        {loginType === 0 ? <span>未登录</span> : <span>{userMsg.userName}</span>}
+        {loginType === 0||!userMsg ? <span>未登录</span> : <span>{userMsg?userMsg.userName:""}</span>}
       </div>
       {userMsg && userMsg.auth === 1 && <div className="is-vip">VIP</div>}
       {/*<CSSTransition in={isShow} timeout={1000} unmountOnExit={true} classNames="userInfo">*/}

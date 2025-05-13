@@ -24,7 +24,7 @@ const NavBar: React.FC = (props) => {
   });
   const [userPlaylist, setUserPlaylist] = useState<IPlaylist[]>([]);
   useEffect(() => {
-    getUserSubPlaylist(userMsg.userId, 0, 30).then((res: any) => {
+    userMsg && getUserSubPlaylist(userMsg.userId, 0, 30).then((res: any) => {
       setUserPlaylist(res.playlist);
     });
   }, [userMsg]);

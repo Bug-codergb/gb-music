@@ -84,51 +84,43 @@ const Home: React.FC = (props) => {
       setIsShowBack(false);
     }
   };
-  if (!userMsg || !userMsg.token) {
-    console.log(userMsg);
-    console.log(userMsg.token);
-    return <Navigate to={'/Login'} />;
-  } else {
-    return (
-      <HomeWrapper>
-        {(!userMsg || !userMsg.token) && <Navigate to={'/Login'} />}
-
-        {isShow && false && <VipOuter />}
+  return (
+    <HomeWrapper>
+      {isShow && false && <VipOuter />}
+      <Layout>
+        <Header className="gb-music-header">
+          <TopBar />
+        </Header>
         <Layout>
-          <Header className="gb-music-header">
-            <TopBar />
-          </Header>
-          <Layout>
-            <Sider className={'gb-music-sider'} style={{ width: '190px' }}>
-              <NavBar />
-            </Sider>
-            <Content className="gb-music-content">
-              <div className="content-body">
-                <Suspense
-                  fallback={
-                    <div className="router-loading">
-                      <Skeleton active paragraph={{ rows: 15 }} />
-                    </div>
-                  }
-                >
-                  <Outlet />
-                </Suspense>
-              </div>
-            </Content>
-          </Layout>
-          {/*<Footer className={"gb-music-footer"}>*/}
-          <PlayCoin />
-          {/*  {isShowBack && (*/}
-          {/*    <div className="back-to-top" onClick={(e) => backToTop()}>*/}
-          {/*      <VerticalAlignTopOutlined />*/}
-          {/*      top*/}
-          {/*    </div>*/}
-          {/*  )}*/}
-          {/*</Footer>*/}
+          <Sider className={'gb-music-sider'} style={{ width: '190px' }}>
+            <NavBar />
+          </Sider>
+          <Content className="gb-music-content">
+            <div className="content-body">
+              <Suspense
+                fallback={
+                  <div className="router-loading">
+                    <Skeleton active paragraph={{ rows: 15 }} />
+                  </div>
+                }
+              >
+                <Outlet />
+              </Suspense>
+            </div>
+          </Content>
         </Layout>
-        {/* <Footer className={'gb-music-footer'} /> */}
-      </HomeWrapper>
-    );
-  }
+        {/*<Footer className={"gb-music-footer"}>*/}
+        <PlayCoin />
+        {/*  {isShowBack && (*/}
+        {/*    <div className="back-to-top" onClick={(e) => backToTop()}>*/}
+        {/*      <VerticalAlignTopOutlined />*/}
+        {/*      top*/}
+        {/*    </div>*/}
+        {/*  )}*/}
+        {/*</Footer>*/}
+      </Layout>
+      {/* <Footer className={'gb-music-footer'} /> */}
+    </HomeWrapper>
+  );
 };
 export default memo(Home);

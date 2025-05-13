@@ -1,5 +1,6 @@
 import React, { memo, FC, useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Modal } from "antd"
 import { CheckOutlined,FolderAddOutlined  } from '@ant-design/icons';
 import UserMsg from '../../../common/userMsg';
 import SongList from './childCpn/songList';
@@ -33,6 +34,7 @@ interface IPlaylistDetail extends IPlaylist {
 const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [modal, contextHolder] = Modal.useModal();
   const { id } = location.state;
   console.log(id);
   const [pId, setPid] = useState<string>(id);
@@ -49,6 +51,18 @@ const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
   }, [pId]);
   //收藏歌单
   const subPlayList = (): void => {
+    if(!userDetail || Object.keys(userDetail).length === 0){
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return;
+    }
     if (playlistDetail) {
       if (!isSub()) {
         sub(playlistDetail.id, 'pId').then((data) => {
@@ -64,7 +78,7 @@ const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
   };
   const isSub = (): boolean => {
     let flag = -1;
-    if (userDetail.subscriber && userDetail.subscriber.playlist) {
+    if (userDetail && userDetail.subscriber && userDetail.subscriber.playlist) {
       flag = userDetail.subscriber.playlist.findIndex((item: { id: string; name: string }, index: number) => {
         if (item) return item.id === pId;
         else {
@@ -164,6 +178,9 @@ const PlaylistDetail: FC<{ id: string; userId: string }> = memo((props) => {
         <RightContent>
           {playlistDetail && <HotPlaylist id={playlistDetail.id} onClick={(id: string) => hotClick(id)} />}
         </RightContent>
+        {
+          contextHolder
+        }
       </CenterContentWrapper>
     </PlaylistDetailWrapper>
   );
