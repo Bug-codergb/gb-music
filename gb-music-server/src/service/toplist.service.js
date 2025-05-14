@@ -306,7 +306,9 @@ class ToplistService {
             await new ToplistService().deleteSongService(item.id);
             for (let it of cate[0]) {
               if (it.name === '欧美') {
+                console.log(item,"---")
                 const res = await new ToplistService().getCateSongService(it.id);
+                console.log(res)
                 if (res.length !== 0) {
                   for (let iten of res.slice(0, 50)) {
                     await new ToplistService().addSongToTopService(item.id, iten.id);

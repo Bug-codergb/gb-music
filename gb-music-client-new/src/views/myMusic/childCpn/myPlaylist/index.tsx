@@ -5,10 +5,18 @@ import UserPlaylist from './childCpn/userPlaylist';
 //网络请求
 import { createPlayList, uploadPlayCover } from '@/network/playlist';
 import { publishMessage } from '@/network/message';
+import { useAppSelector } from '@/store/hooks';
+import { Modal } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const MyPlaylist: FC = (): ReactElement => {
   const [isShow, setIsShow] = useState<boolean>(false);
   const [keyId, setKeyId] = useState<number>(0);
+  const navigate = useNavigate();
+  const [modal, contextHolder] = Modal.useModal();
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer']
+  });
   const define = (name: string, desc: string, file: File | null): void => {
     createPlayList(name, desc).then((data: any) => {
       const { id } = data;
@@ -28,6 +36,18 @@ const MyPlaylist: FC = (): ReactElement => {
   const creayePlaylistRef = useRef();
   //创建歌单
   const createPlaylist = () => {
+    if(!userMsg || Object.keys(userMsg).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     creayePlaylistRef.current && creayePlaylistRef.current.showModal();
   };
   return (
@@ -42,6 +62,9 @@ const MyPlaylist: FC = (): ReactElement => {
       />
       {/*用户歌单列表*/}
       <UserPlaylist key={keyId} />
+      {
+        contextHolder
+      }
     </MyPlayList>
   );
 };

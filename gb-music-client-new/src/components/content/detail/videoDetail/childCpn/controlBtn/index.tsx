@@ -7,17 +7,33 @@ import { ControlBtnWrapper } from './style';
 import { useAppSelector,useAppDispatch } from "@/store/hooks"
 import { changeUserDetailAction } from '../../../../../../views/Login/store/asyncThunk';
 import { ILogin, IUserDetail } from '../../../../../../constant/store/login';
+import { Modal } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
   vid: string;
 }
 const ControlBtn: FC<IProps> = memo((props): ReactElement => {
   const { vid } = props;
+  const [modal, contextHolder] = Modal.useModal();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { userDetail } = useAppSelector((state) => {
     return  state['loginReducer']
   });
   const subVideo = (): void => {
+    if(!userDetail || Object.keys(userDetail).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if (!isSub()) {
       sub(vid, 'vId').then((data) => {
         dispatch(changeUserDetailAction());
@@ -29,6 +45,18 @@ const ControlBtn: FC<IProps> = memo((props): ReactElement => {
     }
   };
   const thumb = () => {
+    if(!userDetail || Object.keys(userDetail).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if (!isThumb()) {
       thumbVideo('vId', vid).then((data) => {
         dispatch(changeUserDetailAction());
@@ -72,6 +100,9 @@ const ControlBtn: FC<IProps> = memo((props): ReactElement => {
         {!isSub() && <span>收藏</span>}
         {isSub() && <span>已收藏</span>}
       </div>
+      {
+        contextHolder
+      }
     </ControlBtnWrapper>
   );
 });

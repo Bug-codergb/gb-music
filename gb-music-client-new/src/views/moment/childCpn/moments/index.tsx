@@ -26,6 +26,7 @@ import type { MenuProps } from 'antd';
 
 const Moments: FC = memo((props): ReactElement => {
   const navigate = useNavigate();
+  const [modal, contextHolder] = Modal.useModal();
   const [moments, setMoments] = useState<IMoment[]>([]);
   const [count, setCount] = useState<number>(0);
   const [comment, setComment] = useState<IComment[]>([]);
@@ -94,7 +95,7 @@ const Moments: FC = memo((props): ReactElement => {
 
   const playSong = (item: IMoment) => {
     const { vip } = item.song;
-    const { auth } = userMsg;
+    const { auth } = userMsg||{auth:0};
     if (vip === 1 && auth * 1 === 0) {
       //dispatch(changeShow('您正在试听VIP歌曲，开通VIP后畅想', 3000));
       message.warning('您正在试听VIP歌曲，开通VIP后畅想')
@@ -106,7 +107,7 @@ const Moments: FC = memo((props): ReactElement => {
     // @ts-ignore
     dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
-        
+
       }
     });
   };
@@ -140,7 +141,7 @@ const Moments: FC = memo((props): ReactElement => {
   const ReachableContext = createContext<string | null>(null);
   const UnreachableContext = createContext<string | null>(null);
 
-  const [modal, contextHolder] = Modal.useModal();
+
   const config = {
     title: '提示',
     content: (
@@ -150,8 +151,20 @@ const Moments: FC = memo((props): ReactElement => {
     )
   };
   const handleDelete = async (item: any) => {
+    if(!userMsg || Object.keys(userMsg).length === 0){
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     const confirmed = await modal.confirm(config);
-   
+
     if(confirmed){
       delMoment(item.id).then((data) => {
         getAllMoment<{ moments: IMoment[]; count: number }>(0, 6).then((data) => {
@@ -214,7 +227,7 @@ const Moments: FC = memo((props): ReactElement => {
                   <div className="picture">
                     <img src={item.picUrl} alt="" />
                   </div>
-                  
+
                   {
                     <Reply
                       key={item.id}
@@ -227,7 +240,7 @@ const Moments: FC = memo((props): ReactElement => {
                       id={item.id}
                     />
                   }
-                
+
                   {currentIndex === index && (
                     <Comment
                       comments={comment}
@@ -237,7 +250,7 @@ const Moments: FC = memo((props): ReactElement => {
                       pageClick={(e) => pageChange(e, item)}
                     />
                   )}
-                  
+
                 </div>
               </li>
             );

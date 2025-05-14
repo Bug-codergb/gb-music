@@ -1,6 +1,6 @@
 import React, { memo, FC } from 'react';
 import { ListItemWrapper } from './style';
-import { message } from "antd";
+import { message, Modal } from 'antd';
 import { formatTime } from '@/utils/format';
 import VipMv from '../../../../common/vip-mv';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +26,7 @@ interface IProps  {
 }
 const ListItem: FC<IProps> = (props) => {
   const navigate = useNavigate();
+  const [modal, contextHolder] = Modal.useModal();
   const { index, id, name, createName, alName, time, play, vip, video, arId } = props;
   const { userDetail } = useAppSelector((state) => {
     return state['loginReducer']
@@ -46,6 +47,18 @@ const ListItem: FC<IProps> = (props) => {
     return isExists !== -1;
   };
   const loveClick = (id: string) => {
+    if(!userMsg || Object.keys(userMsg).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if (!isLove(id)) {
       setUserFavorite(id).then((data) => {
         dispatch(changeUserDetailAction());
@@ -76,6 +89,18 @@ const ListItem: FC<IProps> = (props) => {
     }
   };
   const handleDownload=async ()=>{
+    if(!userMsg || Object.keys(userMsg).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if(userMsg && userMsg.auth*1==0){
       message.warning("您还未开通VIP，开通后畅想")
     }else{
@@ -121,6 +146,9 @@ const ListItem: FC<IProps> = (props) => {
       </div>
       <div className="al-name text-nowrap">{alName}</div>
       <div className="time">{formatTime(parseInt(time), 'mm:ss')}</div>
+      {
+        contextHolder
+      }
     </ListItemWrapper>
   );
 };

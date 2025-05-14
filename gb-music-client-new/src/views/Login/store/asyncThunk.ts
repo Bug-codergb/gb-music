@@ -46,6 +46,8 @@ export const changeUserDetailAction = createAsyncThunk("changeUserDetailAction",
 })
 export const logoutAction=createAsyncThunk("logoutAction",(extraInfo,{dispatch})=>{
   window.localStorage.clear();
+  window.sessionStorage.clear()
   dispatch(changeLoginType(0));
-
+  dispatch(changeUserDetail(null))
+  dispatch(changeUserMsg(null))
 })

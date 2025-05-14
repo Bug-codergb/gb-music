@@ -65,6 +65,9 @@ const LoginCpn: React.FC<LoginType> = (props) => {
   const handleLoing=()=>{
     navigate("/Login")
   }
+  const handleToHome=()=>{
+    navigate("/Home")
+  }
   return (
     <LoginCpnWrapper>
       <div className="title-system-name">
@@ -75,19 +78,22 @@ const LoginCpn: React.FC<LoginType> = (props) => {
         <UserOutlined/>
         <input type="text" placeholder="请输入用户名" autoComplete='off' onInput={(e) => userNameInp(e)} />
       </div>
-      
+
       <div className="password">
       <LockOutlined />
         <input type="password" autoComplete='new-password' placeholder="请输入密码" onInput={(e) => passInp(e)} />
       </div>
-     
+
       <div className="btn" onClick={(e) => login()}>
         {btn}
       </div>
       {isShow && (
-        <div className="register-tip">
-          <span>还没有账号?</span>
-          <span onClick={(e) => register()}>注册</span>
+        <div className="register-tip flex" style={{"justifyContent":"space-between"}}>
+          <div className={"lf danger-text"} onClick={handleToHome}>暂不登录</div>
+          <div className={"flex"}>
+            <span>还没有账号?</span>
+            <span onClick={(e) => register()}>注册</span>
+          </div>
         </div>
       )}
       {

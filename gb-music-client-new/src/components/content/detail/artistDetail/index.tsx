@@ -30,6 +30,7 @@ import { changeUserDetailAction } from '../../../../views/Login/store/asyncThunk
 import Similar from './childCpn/similar';
 import Desc from './childCpn/desc';
 import HotArtist from './childCpn/hotArtist';
+import { Modal } from 'antd';
 
 interface IAlbums extends IAlbum {
   songs: ISong[];
@@ -38,7 +39,7 @@ interface IArtistDetail extends IArtist {
   album: IAlbums[];
 }
 const ArtistDetail: FC<{ id: string }> = memo((props): ReactElement => {
-
+  const [modal, contextHolder] = Modal.useModal();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -58,6 +59,18 @@ const ArtistDetail: FC<{ id: string }> = memo((props): ReactElement => {
   }, [arId]);
   //function handle
   const subArtist = (): void => {
+    if(!userDetail || Object.keys(userDetail).length === 0){
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if (!isSub()) {
       sub(arId, 'arId').then((data) => {
         dispatch(changeUserDetailAction());
@@ -126,6 +139,9 @@ const ArtistDetail: FC<{ id: string }> = memo((props): ReactElement => {
           <HotArtist id={arId} onClick={(id: string) => simiClick(id)} />
         </RightContent>
       </CenterContent>
+      {
+        contextHolder
+      }
     </ArtistDetailWrapper>
   );
 });

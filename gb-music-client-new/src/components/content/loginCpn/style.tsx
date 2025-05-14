@@ -57,7 +57,7 @@ export const LoginCpnWrapper = styled.div`
     }
     span {
       margin-right: 10px;
-     
+
       display: inline-block;
       white-space: nowrap;
     }
@@ -85,6 +85,13 @@ export const LoginCpnWrapper = styled.div`
         color:#da4f49;
         margin: 0 0 0 5px;
         cursor: pointer;
+      }
+    }
+    .danger-text{
+      color:#da4f49;
+      cursor: pointer;
+      &:hover{
+        text-decoration: underline;
       }
     }
   }

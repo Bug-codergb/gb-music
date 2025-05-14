@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState, MouseEvent, useRef } from 'react';
-import { Dropdown, Space } from 'antd';
+import { Dropdown, Modal, Space } from 'antd';
 import type { MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { logoutAction } from '@/views/Login/store/asyncThunk';
@@ -16,6 +16,7 @@ import {uploadAvatar,updateUserPassword} from "@/network/user/index"
 
 const UserMsg: React.FC = () => {
   const navigate = useNavigate();
+  const [modal, contextHolder] = Modal.useModal();
   const [isShow, setIsShow] = useState<boolean>(false);
   const [isShowProfile, setIsShowProfile] = useState<boolean>(false);
   const { loginType } = useAppSelector((state) => {
@@ -76,10 +77,33 @@ const UserMsg: React.FC = () => {
   const onClick: MenuProps['onClick'] = ({ key }) => {
     switch (key) {
       case 'user':
-
+        if(!userMsg || Object.keys(userMsg).length === 0) {
+          modal.confirm({
+            type:"warning",
+            title:"提示",
+            content:"您还未登录，登录后享受更多内容，去登录？"
+          }).then((ret)=>{
+            if(ret){
+              navigate("/Login")
+            }
+          })
+          return
+        }
         profileRef.current && profileRef.current.showModal();
         break;
       case 'vip':
+        if(!userMsg || Object.keys(userMsg).length === 0) {
+          modal.confirm({
+            type:"warning",
+            title:"提示",
+            content:"您还未登录，登录后享受更多内容，去登录？"
+          }).then((ret)=>{
+            if(ret){
+              navigate("/Login")
+            }
+          })
+          return
+        }
         navigate('/Home/member');
         break;
       case 'exit':
@@ -124,6 +148,9 @@ const UserMsg: React.FC = () => {
         <Profile onClick={()=>exit()} />
       </CSSTransition> */}
       <Profile ref={profileRef} onClick={(name:string,password:string,cover:File|null)=>exit(name,password,cover)}/>
+      {
+        contextHolder
+      }
     </UserMsgWrapper>
   );
 };

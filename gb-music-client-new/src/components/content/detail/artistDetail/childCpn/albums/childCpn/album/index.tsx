@@ -1,5 +1,5 @@
 import React, { FC, memo, ReactElement } from 'react';
-import { message } from "antd"
+import { message, Modal } from 'antd';
 import { AlbumWrapper } from './style';
 import { IAlbum } from '../../../../../../../../constant/album';
 import { ISong } from '../../../../../../../../constant/albumDetail';
@@ -27,6 +27,7 @@ interface IProps {
 }
 const Album: FC<IProps> = (props): ReactElement => {
   const { album, play } = props;
+  const [modal, contextHolder] = Modal.useModal();
   const navigate = useNavigate()
   const { userDetail } = useAppSelector((state) => {
     return state['loginReducer']
@@ -46,6 +47,18 @@ const Album: FC<IProps> = (props): ReactElement => {
     return isExists !== -1;
   };
   const loveClick = (id: string) => {
+    if(!userDetail || Object.keys(userDetail).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if (!isLove(id)) {
       setUserFavorite(id).then((data) => {
         dispatch(changeUserDetailAction());
@@ -76,6 +89,18 @@ const Album: FC<IProps> = (props): ReactElement => {
     }
   };
   const handleDownload=async (item:ISong)=>{
+    if(!userMsg || Object.keys(userMsg).length===0){
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if(userMsg && userMsg.auth*1==0){
       message.warning("您还未开通VIP，开通后畅想")
     }else{
@@ -139,6 +164,9 @@ const Album: FC<IProps> = (props): ReactElement => {
             );
           })}
       </ul>
+      {
+        contextHolder
+      }
     </AlbumWrapper>
   );
 };

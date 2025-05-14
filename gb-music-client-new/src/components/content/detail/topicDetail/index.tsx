@@ -8,11 +8,14 @@ import { formatTime } from '../../../../utils/format';
 import Reply from '../../../common/reply';
 import Comment from '../../../common/comment';
 import { IComment } from '../../../../constant/comment';
-import { useAppDispatch } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { getAllComment, publishComment } from '../../../../network/comment';
 import { thumb as thumbMoment } from '../../../../network/thumbs';
 import { changeUserDetailAction } from '@/views/Login/store/asyncThunk';
 import { changeSongDetailAction } from '../../playCoin/store/asyncThunk';
+import { delMoment, getAllMoment } from '@/network/moment';
+import { Dropdown, type MenuProps, Modal } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 interface ITopicDetail extends ITopic {
   moments: IMoment[];
@@ -20,7 +23,11 @@ interface ITopicDetail extends ITopic {
 
 const TopicDetail: FC<{ id: string }> = (props): ReactElement => {
   const location = useLocation();
+  const { userMsg } = useAppSelector((state) => {
+    return state['loginReducer'];
+  });
   const navigate = useNavigate()
+  const [modal, contextHolder] = Modal.useModal();
   const { id } = location.state;
   const [comment, setComment] = useState<IComment[]>([]);
   const [total, setTotal] = useState<number>(0);
@@ -28,6 +35,13 @@ const TopicDetail: FC<{ id: string }> = (props): ReactElement => {
   const [liveIndex, setLiveIndex] = useState<number>(-1);
 
   const [topicDetail, setTopicDetail] = useState<ITopicDetail>();
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      icon: <DeleteOutlined />,
+      label: <div>删除</div>
+    }
+  ];
   useEffect(() => {
     getTopicDetail<ITopicDetail>(id, '0', '30').then((data) => {
       setTopicDetail(data);
@@ -42,7 +56,10 @@ const TopicDetail: FC<{ id: string }> = (props): ReactElement => {
   //function handle
   const publish = (content: string, item: IMoment) => {
     publishComment(content, 'mId', item.id).then((data) => {
-      console.log(data);
+      getAllComment<{ count: number; comments: IComment[] }>(item.id, 'mId', 0, 30).then((data) => {
+        setComment(data.comments);
+        setTotal(data.count);
+      });
     });
   };
   const thumb = (item: IMoment) => {
@@ -57,17 +74,51 @@ const TopicDetail: FC<{ id: string }> = (props): ReactElement => {
       setTotal(data.count);
     });
   };
-  const reply = () => {
-    console.log('reply');
+  const reply = (item:IMoment,index:number) => {
+    getAllComment<{ comments: IComment[]; count: number }>(item.id, 'mId', 0, 30).then((data) => {
+      setComment(data.comments);
+      setTotal(data.count);
+    });
   };
   const playSong = (item: IMoment) => {
     console.log(item);
-    dispatch(changeSongDetailAction(item.song.id));
+    dispatch(changeSongDetailAction({id:item.song.id}));
   };
   //删除按钮显示
   const delClick = (e: MouseEvent<HTMLDivElement>, item: IMoment, index: number): void => {
     e.stopPropagation();
     setLiveIndex(index);
+  };
+  const config = {
+    title: '提示',
+    content: (
+      <>
+        <div>确认删除吗？</div>
+      </>
+    )
+  };
+  const handleDelete = async (item: any) => {
+    if(!userMsg || Object.keys(userMsg).length === 0){
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
+    const confirmed = await modal.confirm(config);
+
+    if(confirmed){
+      delMoment(item.id).then((data) => {
+        getTopicDetail<ITopicDetail>(id, '0', '30').then((data) => {
+          setTopicDetail(data);
+        });
+      });
+    }
   };
   return (
     <TopicDetailWrapper>
@@ -115,21 +166,28 @@ const TopicDetail: FC<{ id: string }> = (props): ReactElement => {
                       />
                     }
                     {currentIndex === index && (
-                      <Comment comments={comment} onClick={() => reply()} total={total} isPage={true} />
+                      <Comment comments={comment} onClick={() => reply(item,index)} total={total} isPage={true} />
                     )}
                   </div>
                   {/*操作*/}
                   <div className="operator" onClick={(e) => delClick(e, item, index)}>
-                    <i className="iconfont icon-MoreVertical"> </i>
-                    <div className="del-outer" style={{ display: liveIndex === index ? 'block' : 'none' }}>
-                      <i className="iconfont icon-huishouzhan"> </i>
-                    </div>
+                    <Dropdown
+                      trigger="hover"
+                      menu={{ items, onClick: () => handleDelete(item) }}
+                      placement="bottom"
+                      arrow={{ pointAtCenter: true }}
+                    >
+                      <i className="iconfont icon-MoreVertical"> </i>
+                    </Dropdown>
                   </div>
                 </li>
               );
             })}
         </ul>
       </CenterContent>
+      {
+        contextHolder
+      }
     </TopicDetailWrapper>
   );
 };

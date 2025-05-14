@@ -14,10 +14,12 @@ import {
   useAppSelector
 } from "@/store/hooks.ts"
 import { changeUserDetailAction } from '../../../../views/Login/store/asyncThunk';
+import { Modal } from 'antd';
 
 const ChannelDetail: FC<{ id: string }> = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [modal, contextHolder] = Modal.useModal();
   const id = location.state.id;
   const [program, setProgram] = useState<IChannel>();
   const { userDetail } = useAppSelector((state) => {
@@ -42,6 +44,18 @@ const ChannelDetail: FC<{ id: string }> = (props) => {
   };
   //收藏频道
   const subChannel = (): void => {
+    if(!userDetail || Object.keys(userDetail).length===0){
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return
+    }
     if (!isSub()) {
       sub(id, 'cId').then((data: any) => {
         dispatch(changeUserDetailAction());
@@ -102,6 +116,9 @@ const ChannelDetail: FC<{ id: string }> = (props) => {
           <RightContent></RightContent>
         </CenterContent>
       )}
+      {
+        contextHolder
+      }
     </ChannelDetailWrapper>
   );
 };

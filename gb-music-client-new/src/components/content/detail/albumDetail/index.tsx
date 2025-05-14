@@ -19,10 +19,12 @@ import {
 import { changeUserDetailAction } from '../../../../views/Login/store/asyncThunk';
 import HotAlbum from './childCpn/hotAlbum';
 import { ILogin, IUserDetail } from '../../../../constant/store/login';
+import { Modal } from 'antd';
 
 const AlbumDetail: FC< { id: string }> = (props): ReactElement => {
   const navigate = useNavigate()
   const location = useLocation();
+  const [modal, contextHolder] = Modal.useModal();
   const { id } = location.state;
   const [aId, setAid] = useState<string>(id);
   const [albumDetail, setDetail] = useState<IAlbumDetail>();
@@ -39,6 +41,18 @@ const AlbumDetail: FC< { id: string }> = (props): ReactElement => {
   }, [aId]);
   //function handle
   const subAlbum = (): void => {
+    if(!userDetail || Object.keys(userDetail).length === 0) {
+      modal.confirm({
+        type:"warning",
+        title:"提示",
+        content:"您还未登录，登录后享受更多内容，去登录？"
+      }).then((ret)=>{
+        if(ret){
+          navigate("/Login")
+        }
+      })
+      return ;
+    }
     if (!isSub()) {
       sub(aId, 'alId').then((data) => {
         dispatch(changeUserDetailAction());
@@ -124,6 +138,9 @@ const AlbumDetail: FC< { id: string }> = (props): ReactElement => {
           <HotAlbum id={aId} onClick={(id: string) => hotClick(id)} />
         </RightContent>
       </CenterContentWrapper>
+      {
+        contextHolder
+      }
     </AlbumDetailWrapper>
   );
 };
