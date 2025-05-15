@@ -46,12 +46,13 @@ const NewUpload:FC<IProps> = forwardRef((props, ref) => {
     };
   });
   const onFinish = (values:any) => {
+    console.log(source)
     defineUpload(values.name,dt,source);
     setIsModalOpen(false);
   };
   const handleFileChange=(e:ChangeEvent<HTMLInputElement>)=>{
     const file = e.currentTarget.files[0];
-    
+
     if(!file.name.includes(".mp3")){
       message.warning('请上传mp3文件');
       return;
@@ -68,7 +69,7 @@ const NewUpload:FC<IProps> = forwardRef((props, ref) => {
         setIsPrev(true);
       });
 
-    } 
+    }
   }
   const handleDelete=()=>{
     form.setFieldValue("source",null);
@@ -89,7 +90,7 @@ const NewUpload:FC<IProps> = forwardRef((props, ref) => {
           <Form.Item<FieldType>
             label="名称"
             name="name"
-        
+
             rules={[{ required: true, message: '节目名称不能为空' }]}
           >
             <Input placeholder='请输入节目名称' maxLength={299}/>

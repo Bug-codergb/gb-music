@@ -453,7 +453,7 @@ class ChannelService {
               p.createTime,p.dt
         from program as p
         LEFT JOIN channel_content as c on c.id=p.cId
-        where p.userId=?
+        where p.userId=? and c.id is not null
         order by p.playCount*1 desc`;
       const result = await connection.execute(sql, [userId]);
       return result[0];

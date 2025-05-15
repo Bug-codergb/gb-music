@@ -6,12 +6,14 @@ import { getManageVio } from '../../../../../network/manage/video';
 import { formatTime } from '../../../../../utils/format';
 import MsgItem from '../../../../../components/content/msgItem';
 import { holder } from '../../../../../utils/holder';
-import { Empty, Pagination } from 'antd';
+import { Empty, Pagination,Modal } from 'antd';
 import { useAppDispatch } from '@/store/hooks';
 import { deleteVideo } from '../../../../../network/video';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 const Video: FC = (props): ReactElement => {
   const navigate = useNavigate();
+  const [modal, contextHolder] = Modal.useModal();
   const [video, setVideo] = useState<any[]>([]);
   const [count, setCount] = useState<number>(0);
   const dispatch = useAppDispatch();
@@ -32,6 +34,24 @@ const Video: FC = (props): ReactElement => {
     });
   };
   const deleteVio = (item: any, index: number) => {
+    modal.confirm({
+      title: '提示',
+      icon: <ExclamationCircleOutlined />,
+      content: '确认删除吗',
+      okText: '确认',
+      cancelText: '取消',
+    }).then((res)=>{
+      if(res){
+        deleteVideo(item.id).then((data) => {
+          getManageVio(0, 10).then((data: any) => {
+            const { count } = data;
+            const { video } = data;
+            setCount(count);
+            setVideo(video);
+          });
+        });
+      }
+    })
     /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
         deleteVideo(item.id).then((data) => {
@@ -93,6 +113,9 @@ const Video: FC = (props): ReactElement => {
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'暂无视频'} />
         </div>
       )}
+      {
+        contextHolder
+      }
     </VideoWrapper>
   );
 };

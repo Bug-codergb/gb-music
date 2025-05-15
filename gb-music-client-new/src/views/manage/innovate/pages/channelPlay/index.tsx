@@ -46,7 +46,7 @@ const ChannelPlay: FC = (props): ReactElement => {
       key: 'name',
       width:100,
       render:(value:any,record:any,index:number)=>{
-        return record.category ? <Image onClick={()=>channelRouter(record)} preview={false} src={record.category.coverUrl} width={80}/>:''
+        return record.category ? <Image onClick={()=>channelRouter(record)} preview={false} src={record.category?.coverUrl} width={80}/>:''
       }
     },
     {
@@ -73,7 +73,7 @@ const ChannelPlay: FC = (props): ReactElement => {
       key: 'category',
       width:150,
       render:(value:any,record:any,index:number)=>{
-        return record.category? record.category.channel.name:"--"
+        return record.category? record.category.channel?.name:"--"
       }
     },
     {

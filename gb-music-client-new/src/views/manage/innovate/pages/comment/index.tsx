@@ -4,11 +4,12 @@ import { CommentWrapper } from './style';
 import { getUserAllComment } from '../../../../../network/manage/comment';
 import { IUser } from '../../../../../constant/user';
 import { formatTime } from '../../../../../utils/format';
-import { Empty, Pagination } from 'antd';
+import { Empty, Pagination,Modal } from 'antd';
 import { holder } from '../../../../../utils/holder';
 //import { changeMsgAction } from '../../../../../components/common/message/store/asyncThunk';
 import { useDispatch } from 'react-redux';
 import { deleteComment } from '../../../../../network/comment';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 interface IUserComment {
   id: string;
@@ -28,6 +29,7 @@ interface IUserComment {
 }
 const Comment: FC = (props): ReactElement => {
   const navigate = useNavigate();
+  const [modal, contextHolder] = Modal.useModal();
   const [count, setCount] = useState<number>(0);
   const [userComment, setUserComment] = useState<IUserComment[]>([]);
   useEffect(() => {
@@ -97,6 +99,22 @@ const Comment: FC = (props): ReactElement => {
     });
   };
   const deleteCom = (item: IUserComment) => {
+    modal.confirm({
+      title: '提示',
+      icon: <ExclamationCircleOutlined />,
+      content: '确认删除吗',
+      okText: '确认',
+      cancelText: '取消',
+    }).then((res)=>{
+      if(res){
+        deleteComment(item.id).then((data) => {
+                getUserAllComment(0, 5).then((data: any) => {
+                  setCount(data.count);
+                  setUserComment(data.comment);
+                });
+              });
+      }
+    });
     // @ts-ignore
     // dispatch(changeMsgAction(true)).then((data) => {
     //   if (data) {
@@ -243,6 +261,9 @@ const Comment: FC = (props): ReactElement => {
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'暂无评论'} />
         </div>
       )}
+      {
+        contextHolder
+      }
     </CommentWrapper>
   );
 };
