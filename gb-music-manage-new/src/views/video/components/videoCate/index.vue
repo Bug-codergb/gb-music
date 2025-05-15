@@ -1,6 +1,11 @@
 <template>
   <div class="table-box">
     <ProTable :columns="columns" :requestApi="getVideoCateApi" ref="tableRef">
+      <template #tableHeader>
+        <div style="font-size:14px;color:#919398">
+          注意，删除分类会关联删除分类下视频
+        </div>
+      </template>
       <template #toolButton>
         <el-button type="primary" @click="handleCreate">新增</el-button>
       </template>

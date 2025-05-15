@@ -25,7 +25,7 @@ const Playlist: FC = (props): ReactElement => {
   const [playMsg, setPlayMsg] = useState<IPlayMsg[]>([]);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    getPlaylistMsg('0', '15').then((data: any) => {
+    getPlaylistMsg('0', '150').then((data: any) => {
       setTotal(data.count);
       setPlayMsg(data.message);
     });
@@ -42,7 +42,7 @@ const Playlist: FC = (props): ReactElement => {
   const deleteMessage = (item: IPlayMsg) => {
     deleteMsg(item.id).then((data) => {
       message.success('删除成功');
-      getPlaylistMsg('0', '15').then((data: any) => {
+      getPlaylistMsg('0', '150').then((data: any) => {
         setTotal(data.count);
         setPlayMsg(data.message);
       });

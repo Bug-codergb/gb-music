@@ -285,7 +285,7 @@ class MessageService {
         from message as m
         LEFT JOIN channel_content as cc on cc.id=m.ccId
         LEFT JOIN fans as f on f.upId=m.userId
-        where m.ccId is not null and f.userId=?
+        where m.ccId is not null and cc.id is not null and f.userId=?
         limit ?,?`;
       const result = await connection.execute(sql, [userId, offset, limit]);
       const countSQL = `
@@ -293,7 +293,7 @@ class MessageService {
           from message as m
           LEFT JOIN channel_content as cc on cc.id=m.ccId
           LEFT JOIN fans as f on f.upId=m.userId
-          where m.ccId is not null and f.userId=?`;
+          where m.ccId is not null and cc.id is not null and f.userId=?`;
       const count = await connection.execute(countSQL, [userId]);
       return {
         count: count[0][0].count,

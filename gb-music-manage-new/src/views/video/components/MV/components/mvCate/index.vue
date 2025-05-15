@@ -45,6 +45,11 @@ const searchParams = reactive({
 <template>
   <div class="table-box">
     <ProTable :init-param="searchParams" ref="tableRef" :columns="columns" :request-api="getMVListApi" :request-auto="true" :pagination="false">
+      <template #tableHeader>
+        <div style="font-size:14px;color:#919398">
+          注意，删除分类会关联删除分类下MV
+        </div>
+      </template>
       <template #toolButton>
         <el-button type="primary" @click="handleCreate">新增分类</el-button>
       </template>

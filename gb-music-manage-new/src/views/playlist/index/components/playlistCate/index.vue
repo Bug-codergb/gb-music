@@ -41,6 +41,11 @@ const handleCreate=()=>{
 <template>
   <div class="table-box">
     <ProTable :columns="columns" ref="tableRef" :request-api="getPlaylistCateApi" :request-auto="true" :pagination="false">
+      <template #tableHeader>
+        <div style="font-size:14px;color:#919398">
+          注意，删除分类会关联删除分类下歌单
+        </div>
+      </template>
       <template #toolButton>
         <el-button type="primary" @click="handleCreate">新增分类</el-button>
       </template>

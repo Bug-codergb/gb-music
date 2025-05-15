@@ -27,7 +27,7 @@ const Channel: FC = (props): ReactElement => {
   const [channelMsg, setChannelMsg] = useState<IChannelMsg[]>([]);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    getChannelMsg('0', '15').then((data: any) => {
+    getChannelMsg('0', '150').then((data: any) => {
       setTotal(data.count);
       setChannelMsg(data.message);
     });
@@ -49,17 +49,17 @@ const Channel: FC = (props): ReactElement => {
     });
   };
   const deleteMessage = (item: IChannelMsg) => {
-    
+
     deleteMsg(item.id).then((data) => {
       message.success("删除成功")
-      getChannelMsg('0', '15').then((data: any) => {
+      getChannelMsg('0', '150').then((data: any) => {
         setTotal(data.count);
         setChannelMsg(data.message);
       });
     });
     /*dispatch(changeMsgAction(true)).then((data) => {
       if (data) {
-        
+
       }
     });*/
   };
