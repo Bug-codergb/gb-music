@@ -10,6 +10,7 @@ import UserMsg from './childCpn/userMsg';
 import SearchMatch from './childCpn/searchMatch';
 import Message from './childCpn/message';
 import { getAllMsg } from '../../../network/message';
+import { useAppSelector } from '@/store/hooks';
 
 const TopBar: React.FC = (props) => {
   const navigate = useNavigate()
@@ -17,8 +18,11 @@ const TopBar: React.FC = (props) => {
   const [keyword, setKeyword] = useState<string>('');
   const [count, setCount] = useState<number>(0);
   const [isShowMsg, setIsShowMsg] = useState<boolean>(false);
+  let { userMsg } = useAppSelector((state) => {
+    return state['loginReducer'];
+  });
   useEffect(() => {
-    getAllMsg().then((data: any) => {
+    userMsg && Object.keys(userMsg).length!==0 &&getAllMsg().then((data: any) => {
       if (data) {
         setCount(data.count);
       }

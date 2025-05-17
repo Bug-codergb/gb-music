@@ -1,4 +1,5 @@
 const express = require('express');
+const { URL } = require('url');
 //const http2Express = require('http2-express-bridge');
 //const compression = require('compression');
 const {whiteList} = require("../constants/whiteList")
@@ -25,8 +26,10 @@ app.use(async (req, res, next) => {
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Access-Control-Allow-Headers', 'POST,Origin,Content-Type,Accept,authorization');
   const authorization = req.get('authorization');
-  if(whiteList.includes(req.url)){
-    console.log(22)
+  const baseUrl = req.url.replace(/[?#].*$/, '');
+
+  if(whiteList.includes(baseUrl)){
+    console.log(req.url)
     return next();
   }else{
     if (authorization) {

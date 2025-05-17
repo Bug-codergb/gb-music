@@ -1,10 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { message } from "antd";
 import { Navigate } from "react-router-dom"
-import store from "../store/index"
-import { HOST_NAME } from '../config';
-import { changeUserMsg, logoutAction } from '../views/Login/store/actionCreators';
 
+import store from "../store/index"
+import { logoutAction } from '@/views/Login/store/asyncThunk';
 function request<T>(config: AxiosRequestConfig) {
   const instance: AxiosInstance = axios.create({
     baseURL: "/api",
@@ -42,6 +41,11 @@ function request<T>(config: AxiosRequestConfig) {
           //message.destroy()
 
           //message.warning("登陆已过期");
+
+          if(err.config.url === "/message"){
+            message.warning("登陆已过期");
+            store.dispatch(logoutAction())
+          }
           throw err;
 
           // @ts-ignore

@@ -1,5 +1,35 @@
 const whiteList = [
-  "/login"
+  "/login",
+  "/banner/recommend",
+  "/playlist/recommend",
+  "/album/recommend",
+  "/artist/recommend",
+  "song/recommend",
+  "/playlist/cate",
+  "/playlist/cate/detail",
+  "/toplist/detail",
+  "/toplist/hot",
+  "/toplist/official",
+  "/artist/type",
+  "/artist/cate",
+  "/artist/cate/detail",
+  "/album/cate",
+  "/album/cate/detail",
+  "/video/cate/all",
+  "/video/cate/detail",
+  "/video/toplist",
+  "/video/detail",
+  "/video/url",
+  "/playlist/detail",
+  "/song/detail",
+  "/song/url",
+  "/comment/all",
+  "/toplist/detail",
+  "/artist/detail",
+  "/album/detail",
+  "/search",
+  "/moment/all",
+  "/topic/hot"
 ]
 module.exports = {
   whiteList

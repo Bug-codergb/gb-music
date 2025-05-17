@@ -8,6 +8,7 @@ import Video from './childCpn/video';
 import Playlist from './childCpn/playlist';
 import Channel from './childCpn/channel';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '@/store/hooks';
 const Message: FC = (props): ReactElement => {
   const navigate= useNavigate()
   const [count, setCount] = useState<number>(0);
@@ -15,8 +16,11 @@ const Message: FC = (props): ReactElement => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [msgItem, setMsgItem] = useState<string>('');
   const msgList = ['评论', '专辑', '视频', '歌单', '声音'];
+  let { userMsg } = useAppSelector((state) => {
+    return state['loginReducer'];
+  });
   useEffect(() => {
-    getAllMsg().then((data: any) => {
+    userMsg && Object.keys(userMsg).length!==0 &&getAllMsg().then((data: any) => {
       setMsg(data.message);
       setMsgItem(msgList[0]);
     });
