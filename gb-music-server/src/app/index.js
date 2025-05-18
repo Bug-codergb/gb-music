@@ -29,7 +29,6 @@ app.use(async (req, res, next) => {
   const baseUrl = req.url.replace(/[?#].*$/, '');
 
   if(whiteList.includes(baseUrl)){
-    console.log(req.url)
     return next();
   }else{
     if (authorization) {
