@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../gb-music-client-new/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/alipay/private.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/alipay/private.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/alipay/public.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/alipay/public.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +138,7 @@
       <workItem from="1739106051717" duration="4646000" />
       <workItem from="1744981303651" duration="435000" />
       <workItem from="1746942908843" duration="16540000" />
-      <workItem from="1772324894691" duration="2123000" />
+      <workItem from="1772324894691" duration="3627000" />
     </task>
     <servers />
   </component>

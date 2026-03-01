@@ -1,10 +1,11 @@
-import { Modal } from 'antd';
+import { Modal, message } from 'antd';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import React, { memo, useRef, useState, useImperativeHandle, forwardRef,FC, FormEvent, useEffect } from 'react';
+import React, { memo, useRef, useState, useImperativeHandle, forwardRef, FC, FormEvent, useEffect } from 'react';
 import { PictureOutlined, DeleteOutlined } from '@ant-design/icons';
 import ImgCropper from '@/views/myMusic/childCpn/myPlaylist/childCpn/imgCropper';
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input, Row, Col } from 'antd';
+import { uploadAvatar } from '@/network/user';
 
 type FieldType = {
   username?: string;
@@ -15,7 +16,7 @@ interface IProps {
   onClick: (name: string, password: string, file: File | null) => void;
 }
 
-const Profile:FC<IProps> = forwardRef((props, ref) => {
+const Profile: FC<IProps> = forwardRef((props, ref) => {
   const { onClick } = props;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -48,7 +49,7 @@ const Profile:FC<IProps> = forwardRef((props, ref) => {
   };
 
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-    console.log(props)
+    console.log(props);
     onClick(values.username, values.password, values.cover);
     setIsOpen(false);
   };
@@ -69,14 +70,20 @@ const Profile:FC<IProps> = forwardRef((props, ref) => {
     }
   };
   const [cropperImg, setCropperImg] = useState<File | null>(null);
-  const handleCropperImg = (file: File | null) => {
+  const handleCropperImg = async (file: File | null) => {
     if (file) {
       setCropperImg(file);
       form.setFieldValue('cover', file);
       const url = URL.createObjectURL(file);
       setPrevUrl(url);
     }
-    console.log(file)
+
+    if (file && typeof file !== 'string') {
+      let f = new FormData();
+      file && f.append('avatar', file);
+      const res = await uploadAvatar(f);
+      message.success('头像更新成功');
+    }
     setIsPrev(true);
   };
   const handleDeleteFile = () => {
@@ -124,7 +131,7 @@ const Profile:FC<IProps> = forwardRef((props, ref) => {
           </Col>
         </Row>
       </Form>
-      <ImgCropper ref={imgCropperRef} title='上传头像' getCropperFile={(file) => handleCropperImg(file)} />
+      <ImgCropper ref={imgCropperRef} title="上传头像" getCropperFile={(file) => handleCropperImg(file)} />
     </Modal>
   );
 });

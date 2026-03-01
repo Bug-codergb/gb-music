@@ -44,11 +44,6 @@ const UserMsg: React.FC = () => {
     setIsShowProfile(true);
   };
   const exit = async (name: string, password: string, cover: File | null): void => {
-    if (cover && typeof cover !== 'string') {
-      let f = new FormData();
-      cover && f.append('avatar', cover);
-      const res = await uploadAvatar(f);
-    }
     await updateUserPassword(name, password);
     setIsShowProfile(false);
   };
