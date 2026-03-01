@@ -3,7 +3,7 @@ import { Dropdown, Modal, Space } from 'antd';
 import type { MenuProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { logoutAction } from '@/views/Login/store/asyncThunk';
-import { PoweroffOutlined, PoundCircleOutlined, UserOutlined,ApiOutlined } from '@ant-design/icons';
+import { PoweroffOutlined, PoundCircleOutlined, UserOutlined, ApiOutlined } from '@ant-design/icons';
 
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { CSSTransition } from 'react-transition-group';
@@ -12,7 +12,7 @@ import { UserMsgWrapper } from './style';
 import UserInfo from './childCpn/userInfo';
 import Profile from './childCpn/newProfile/index';
 import { ILogin, IUserMsg } from '../../../../../constant/store/login';
-import {uploadAvatar,updateUserPassword} from "@/network/user/index"
+import { uploadAvatar, updateUserPassword } from '@/network/user/index';
 
 const UserMsg: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const UserMsg: React.FC = () => {
   const { loginType } = useAppSelector((state) => {
     return state['loginReducer'];
   });
-  const { userMsg={} } = useAppSelector((state) => {
+  const { userMsg = {} } = useAppSelector((state) => {
     return state['loginReducer'];
   });
   const docClick = () => {
@@ -43,13 +43,13 @@ const UserMsg: React.FC = () => {
   const infoClick = (): void => {
     setIsShowProfile(true);
   };
-  const exit = async (name:string,password:string,cover:File|null): void => {
-    if(cover && typeof cover !=="string"){
+  const exit = async (name: string, password: string, cover: File | null): void => {
+    if (cover && typeof cover !== 'string') {
       let f = new FormData();
-      cover && f.append("avatar",cover);
+      cover && f.append('avatar', cover);
       const res = await uploadAvatar(f);
     }
-    await updateUserPassword(name,password);
+    await updateUserPassword(name, password);
     setIsShowProfile(false);
   };
   const dispatch = useAppDispatch();
@@ -70,39 +70,43 @@ const UserMsg: React.FC = () => {
     },
     {
       key: 'exit',
-      label: <div>{!userMsg || Object.keys(userMsg).length===0?'登录':'退出登录'}</div>,
-      icon: !userMsg || Object.keys(userMsg).length===0? <ApiOutlined />:<PoweroffOutlined />
+      label: <div>{!userMsg || Object.keys(userMsg).length === 0 ? '登录' : '退出登录'}</div>,
+      icon: !userMsg || Object.keys(userMsg).length === 0 ? <ApiOutlined /> : <PoweroffOutlined />
     }
   ];
   const onClick: MenuProps['onClick'] = ({ key }) => {
     switch (key) {
       case 'user':
-        if(!userMsg || Object.keys(userMsg).length === 0) {
-          modal.confirm({
-            type:"warning",
-            title:"提示",
-            content:"您还未登录，登录后享受更多内容，去登录？"
-          }).then((ret)=>{
-            if(ret){
-              navigate("/Login")
-            }
-          })
-          return
+        if (!userMsg || Object.keys(userMsg).length === 0) {
+          modal
+            .confirm({
+              type: 'warning',
+              title: '提示',
+              content: '您还未登录，登录后享受更多内容，去登录？'
+            })
+            .then((ret) => {
+              if (ret) {
+                navigate('/Login');
+              }
+            });
+          return;
         }
         profileRef.current && profileRef.current.showModal();
         break;
       case 'vip':
-        if(!userMsg || Object.keys(userMsg).length === 0) {
-          modal.confirm({
-            type:"warning",
-            title:"提示",
-            content:"您还未登录，登录后享受更多内容，去登录？"
-          }).then((ret)=>{
-            if(ret){
-              navigate("/Login")
-            }
-          })
-          return
+        if (!userMsg || Object.keys(userMsg).length === 0) {
+          modal
+            .confirm({
+              type: 'warning',
+              title: '提示',
+              content: '您还未登录，登录后享受更多内容，去登录？'
+            })
+            .then((ret) => {
+              if (ret) {
+                navigate('/Login');
+              }
+            });
+          return;
         }
         navigate('/Home/member');
         break;
@@ -127,19 +131,22 @@ const UserMsg: React.FC = () => {
   return (
     <UserMsgWrapper>
       <Dropdown menu={{ items, onClick }} placement={'topCenter'} trigger={['click']} arrow={true}>
-        <div className="avatar" onClick={(e) => changeShow(e)}>
-          {loginType === 0 ? (
-            <i className="iconfont icon-user1"> </i>
-          ) : userMsg?.avatarUrl ? (
-            <img src={userMsg?.avatarUrl + '&w=42'} alt="暂无头像" />
-          ) : (
-            <i className="iconfont icon-user1"> </i>
-          )}
+        <div className="avatar-container" onClick={(e) => changeShow(e)}>
+          <div className="avatar">
+            {loginType === 0 ? (
+              <i className="iconfont icon-user1"> </i>
+            ) : userMsg?.avatarUrl ? (
+              <img src={userMsg?.avatarUrl + '&w=42'} alt="暂无头像" />
+            ) : (
+              <i className="iconfont icon-user1"> </i>
+            )}
+          </div>
+          <div className="user-name">
+            {loginType === 0 || !userMsg ? <span>未登录</span> : <span>{userMsg ? userMsg.userName : ''}</span>}
+          </div>
         </div>
       </Dropdown>
-      <div className="user-name" onClick={(e) => changeShow(e)}>
-        {loginType === 0||!userMsg ? <span>未登录</span> : <span>{userMsg?userMsg.userName:""}</span>}
-      </div>
+
       {userMsg && userMsg.auth === 1 && <div className="is-vip">VIP</div>}
       {/*<CSSTransition in={isShow} timeout={1000} unmountOnExit={true} classNames="userInfo">*/}
       {/*  <UserInfo onClick={() => infoClick()} />*/}
@@ -147,10 +154,11 @@ const UserMsg: React.FC = () => {
       {/* <CSSTransition timeout={1000} in={isShowProfile} unmountOnExit={true} classNames="profile">
         <Profile onClick={()=>exit()} />
       </CSSTransition> */}
-      <Profile ref={profileRef} onClick={(name:string,password:string,cover:File|null)=>exit(name,password,cover)}/>
-      {
-        contextHolder
-      }
+      <Profile
+        ref={profileRef}
+        onClick={(name: string, password: string, cover: File | null) => exit(name, password, cover)}
+      />
+      {contextHolder}
     </UserMsgWrapper>
   );
 };

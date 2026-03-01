@@ -30,7 +30,7 @@ const columns = reactive([
     isShow:true,
     render:(scope)=>{
       return <el-space>
-        <el-link type="primary">编辑</el-link>
+        <el-link type="primary" onClick={()=>handleEdit(scope.row)}>编辑</el-link>
         <el-link type="danger" onClick={()=>handleDelete(scope.row)}>删除</el-link>
       </el-space>
     }
@@ -39,6 +39,9 @@ const columns = reactive([
 const createComboRef = ref();
 const handleCreate=()=>{
   createComboRef.value && createComboRef.value.showDrawer()
+}
+const handleEdit=(row)=>{
+  createComboRef.value && createComboRef.value.showDrawer(row)
 }
 const tableRef = ref();
 const search=()=>{

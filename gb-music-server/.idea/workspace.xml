@@ -7,7 +7,6 @@
     <list default="true" id="b66e0d45-4a37-44c0-9aaa-6b3c945dba81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../gb-music-client-new/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../gb-music-client-new/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,23 +38,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "editorconfig.notification": "lf ",
-    "git-widget-placeholder": "feature-25-5-13",
-    "last_opened_file_path": "/Users/guobin/Visual Studio Code Project/gb-music/gb-music-server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;editorconfig.notification&quot;: &quot;lf &quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-25-5-13&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/guobin/Visual Studio Code Project/gb-music/gb-music-server&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\project\gb-music\gb-music-be" />
@@ -137,7 +136,8 @@
       <workItem from="1735130175711" duration="685000" />
       <workItem from="1739106051717" duration="4646000" />
       <workItem from="1744981303651" duration="435000" />
-      <workItem from="1746942908843" duration="16529000" />
+      <workItem from="1746942908843" duration="16540000" />
+      <workItem from="1772324894691" duration="2123000" />
     </task>
     <servers />
   </component>

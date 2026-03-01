@@ -1,15 +1,17 @@
 <script setup>
 import ProDrawer from "@/components/ProDrawer/index.vue"
 import ProForm from "@/components/ProForm/index.vue"
-import {createComboApi} from "@/api/modules/combo"
+import {createComboApi,updateComboApi} from "@/api/modules/combo"
 import { ref } from "vue"
 import {ElMessage} from "element-plus";
 
 const emit = defineEmits(['success']);
 const isShow = ref(false);
+const isUpdate = ref(false);
 const formData = ref({
   name:"",
   price:undefined,
+  id:undefined
 })
 const config = ref([
   [
@@ -41,16 +43,19 @@ const config = ref([
   ]
 ])
 const formRef = ref();
-const showDrawer=()=>{
-  formData.value.name="";
-  formData.value.price = undefined;
+const showDrawer=(row)=>{
+  isUpdate.value = Boolean(row);
+  formData.value.name= isUpdate.value ? row.name: "";
+  formData.value.price = isUpdate.value ? row.price:undefined;
+  formData.value.id = isUpdate.value ? row.id:undefined;
   isShow.value=true;
 }
 const handleConfirm=()=>{
   formRef.value && formRef.value.formRef.validate(async (e)=>{
     if(e){
-      const res = await createComboApi(formData.value);
-      ElMessage.success("创建成功");
+      console.log(isUpdate.value)
+      const res = isUpdate.value ? await updateComboApi(formData.value) : await createComboApi(formData.value);
+      ElMessage.success(isUpdate.value?"编辑成功":"创建成功");
       emit("success");
       isShow.value = false;
     }
@@ -63,7 +68,7 @@ defineExpose({
 </script>
 
 <template>
-  <ProDrawer v-model="isShow" title="创建套餐" @confirm="handleConfirm" @cancel="handleCancel">
+  <ProDrawer v-model="isShow" :title="isUpdate?'编辑套餐':'创建套餐'" @confirm="handleConfirm" @cancel="handleCancel">
     <ProForm v-model="formData" ref="formRef" :config="config"/>
   </ProDrawer>
 </template>

@@ -8,3 +8,6 @@ export function createComboApi(data){
 export function deleteComboApi(data){
   return http.post("/combo/delete",data);
 }
+export function updateComboApi(data){
+  return http.post("/combo/update",data)
+}
